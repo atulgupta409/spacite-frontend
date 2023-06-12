@@ -1,0 +1,170 @@
+.banner_search span.heading_span {
+  display: inline-block;
+  position: relative;
+}
+.find:after {
+  content: "Best";
+  position: absolute;
+  top: -44px;
+  color: rgb(208, 156, 255);
+  font-size: 26px;
+  font-weight: 600;
+}
+.spaces,
+.cowrk {
+  position: relative;
+}
+.spaces:after {
+  position: absolute;
+  background-image: url("https://cofynd-staging.s3.ap-south-1.amazonaws.com/images/original/e952271d00eb3de4234d9ad6651e35954606256a.png");
+  background-size: cover;
+  content: "";
+  width: 46px;
+  height: 46px;
+  top: -41px;
+  right: -17px;
+}
+
+.cowrk:before {
+  position: absolute;
+  left: -22px;
+  background-image: url("https://cofynd-staging.s3.ap-south-1.amazonaws.com/images/original/4a3a57156e053915a02306080f19626db61a2239.png");
+  background-size: cover;
+  content: "";
+  width: 46px;
+  height: 46px;
+  top: -12px;
+  rotate: 13deg;
+}
+
+.banner_search .inner-content-box {
+  background-color: #fff;
+  padding: 25px 25px 80px;
+  border-radius: 20px;
+  width: 70%;
+  margin: 80px auto 0px;
+  border: 1px solid rgba(33, 37, 41, 0.1);
+  box-shadow: 0px 0px 12px -5px rgba(0, 0, 0, 0.1);
+}
+.city-box {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  margin-top: -70px;
+  padding: 5px 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  border: 1px solid rgba(33, 37, 41, 0.1);
+  box-shadow: 0px 0px 12px -5px rgba(0, 0, 0, 0.1);
+}
+.city_item {
+  display: inline-block;
+  padding: 15px 25px;
+  text-align: center;
+}
+.city-box img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.stars {
+  display: inline-block;
+  position: absolute;
+  top: -43px;
+  left: 61%;
+}
+.stars img {
+  width: 45px;
+}
+.city-box p {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.content-box2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.city-box::-webkit-scrollbar {
+  display: none;
+}
+.home_dropdown {
+  width: 32%;
+}
+
+.css-13cymwt-control {
+  padding: 5px 0;
+  font-size: 13px;
+}
+.css-t3ipsp-control {
+  padding: 5px 0;
+  font-size: 13px;
+}
+
+@media only screen and (max-width: 768px) {
+  .find:after {
+    font-size: 15px;
+    top: -30px;
+  }
+  .cowrk:before {
+    width: 33px;
+    height: 33px;
+    top: -4px;
+    left: -17px;
+  }
+  .spaces:after {
+    width: 33px;
+    height: 33px;
+    top: -29px;
+  }
+  .banner_search .inner-content-box {
+    background-color: #ffffff00;
+    padding: 0;
+    border: none;
+    box-shadow: 0px 0px 12px -5px rgba(0, 0, 0, 0);
+    width: 100%;
+  }
+  .city-box {
+    width: 100%;
+    margin-top: -70px;
+    justify-content: flex-start;
+    padding: 0;
+    background-color: #ffffff00;
+    border: none;
+    box-shadow: none;
+    overflow-x: scroll;
+    margin-bottom: 10px;
+  }
+  .city_item {
+    padding: 15px 48px 15px 0px;
+  }
+  .content-box2 {
+    display: block;
+  }
+  .home_dropdown {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  .css-13cymwt-control {
+    padding: 5px 0;
+    font-size: 13px;
+  }
+  .css-t3ipsp-control {
+    padding: 5px 0;
+    font-size: 13px;
+  }
+  .home_btn {
+    width: 42%;
+  }
+  .searchSpaceBtn {
+    padding: 14px 22px;
+  }
+}

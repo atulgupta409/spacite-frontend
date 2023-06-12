@@ -1,0 +1,41 @@
+.outer_top_city_box {
+  background: linear-gradient(90deg, #f8f4fb 0%, #fefdff 100%);
+}
+.top_city_container {
+  padding: 120px 0;
+}
+.top_city_span {
+  color: #d09cff;
+  position: relative;
+}
+.top_city_span:after {
+  position: absolute;
+  background-image: url("https://cofynd-staging.s3.ap-south-1.amazonaws.com/images/original/e952271d00eb3de4234d9ad6651e35954606256a.png");
+  background-size: cover;
+  content: "";
+  width: 30px;
+  height: 30px;
+  top: -11px;
+  left: 89px;
+}
+.top_city_box {
+  margin-top: 60px;
+}
+.city_img_box {
+  position: relative;
+  margin-bottom: 20px;
+}
+.city_img_box img {
+  width: 100%;
+  border-radius: 20px;
+}
+.top_city_overlay {
+  position: absolute;
+  width: 89%;
+  height: 70px;
+  background: linear-gradient(180deg, rgba(33, 37, 41, 0) 0%, #212529 100%);
+  bottom: 0;
+  margin: auto;
+  border-radius: 0px 0px 20px 20px;
+  z-index: 10;
+}

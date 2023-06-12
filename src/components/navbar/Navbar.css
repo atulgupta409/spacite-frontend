@@ -1,0 +1,69 @@
+.nav-main {
+  box-shadow: 0px 4px 12px -5px rgba(0, 0, 0, 0.25);
+  height: 70px;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  background-color: #fff;
+  top: 0;
+}
+.navbar {
+  height: 70px;
+}
+.navbar .megamenu {
+  padding: 1rem;
+  width: 509px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  box-shadow: 0px 4px 12px -5px rgba(0, 0, 0, 0.25);
+  border: none;
+  margin-top: 7px;
+}
+.nav-link {
+  color: #444444;
+  font-size: 15px;
+  font-weight: 600;
+}
+.nav-link:hover {
+  color: #d09cff;
+}
+.megamenu-row {
+  margin-bottom: 20px;
+}
+.megamenu-row a {
+  color: #444444;
+  text-decoration: none;
+  font-size: 15px;
+  margin-left: 8px;
+}
+.megamenu-row a:hover {
+  color: #d09cff;
+}
+.dropdown-item {
+  padding: 1rem 1rem;
+  font-size: 15px;
+}
+.dropdown-menu {
+  box-shadow: 0px 4px 12px -5px rgba(0, 0, 0, 0.25);
+  border: none;
+}
+.city-icon {
+  width: 30px;
+}
+
+@media all and (min-width: 992px) {
+  .navbar .has-megamenu {
+    position: static !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar.fixed-top .navbar-collapse,
+  .navbar.sticky-top .navbar-collapse {
+    overflow-y: auto;
+    max-height: 90vh;
+    margin-top: 10px;
+  }
+}

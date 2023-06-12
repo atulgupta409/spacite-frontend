@@ -1,0 +1,19 @@
+.facility_main {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px 0;
+  margin-top: 100px;
+}
+.facility_name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+.facility_description {
+  font-size: 14px;
+  font-weight: 500;
+}
+.facility_box {
+  margin-top: 60px;
+}

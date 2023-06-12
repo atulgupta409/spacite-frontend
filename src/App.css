@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&family=Babylonica&family=Kaushan+Script&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Mr+Dafoe&family=Piazzolla:wght@200;300;400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 45px;
+  font-weight: 600;
+  text-align: center;
+}
+h2 {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  color: #444444;
+}
+.main_banner {
+  padding-top: 157px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  margin-top: 70px;
+}
+.main_banner2 {
+  padding: 100px 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* height: 90vh; */
+}
+.globalBtn {
+  border: none;
+  padding: 14px 23px;
+  border-radius: 4px;
+  background: #d09cff;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s ease-in-out;
+}
+.globalBtn:hover {
+  background: #bc79f9;
+}
+.top_space_row {
+  margin: 60px 0 0;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+.top_space_row::-webkit-scrollbar {
+  display: none;
+}
+.card {
+  border-radius: 20px;
+  min-width: 32%;
+  margin: 0 10px;
+}
+.card img {
+  border-radius: 20px 20px 0 0;
+}
+.card-title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+}
+/* scrollbar button */
+.eVXyLj,
+.jrqawY {
+  display: none;
+}
+.carousel_arrow {
+  align-self: center;
+  border: none;
+  background: transparent;
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 30px;
+    text-align: left;
+    margin-top: 53px;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .main_banner {
+    padding-top: 0px;
+    height: auto;
+    padding-bottom: 40px;
+  }
+  .main_banner2 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: auto;
+    background-image: none !important;
+  }
+  .cjzNGz,
+  .gCDpsR,
+  .carousel_arrow {
+    display: none;
+  }
+  .card-title {
+    font-size: 15px;
+    line-height: 12px;
+  }
+  .top_space_row {
+    margin: 20px 0;
+  }
+}

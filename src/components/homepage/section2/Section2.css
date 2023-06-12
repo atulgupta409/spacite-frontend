@@ -1,0 +1,72 @@
+.sub_heading {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 34px;
+  color: #d09cff;
+  text-align: center;
+}
+.sub_heading span {
+  position: relative;
+}
+.sub_heading span:before {
+  position: absolute;
+  background-image: url("https://cofynd-staging.s3.ap-south-1.amazonaws.com/images/original/e952271d00eb3de4234d9ad6651e35954606256a.png");
+  background-size: cover;
+  content: "";
+  width: 30px;
+  height: 30px;
+  top: -2px;
+  left: -35px;
+}
+.section_heading {
+  width: 68%;
+  margin: auto;
+}
+.find_space {
+  text-align: center;
+  margin-top: 60px;
+}
+.find_space img {
+  width: 20%;
+}
+.find_space p {
+  font-size: 50px;
+  font-weight: 500;
+  color: #444;
+}
+.find_space p span {
+  font-size: 26px;
+  font-weight: 500;
+  color: #d09cff;
+}
+.enquire_btn_box {
+  text-align: center;
+  margin-top: 60px;
+}
+
+@media only screen and (max-width: 768px) {
+  .find_space p {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  .find_space p span {
+    font-size: 14px;
+    display: block;
+  }
+  .find_space img {
+    width: 33%;
+    margin-bottom: 10px;
+  }
+  .section_heading {
+    display: none;
+  }
+  .find_space {
+    margin-top: 25px;
+  }
+  .enquire_btn_box {
+    display: none;
+  }
+  .sub_heading {
+    font-size: 20px;
+  }
+}
