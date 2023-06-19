@@ -29,6 +29,7 @@ function PremiumBrands() {
     <div
       style={{
         background: "linear-gradient(90deg, #FEEFF8 0%, #EEFBFE 100%)",
+        marginTop: "-2px",
       }}
       className="main_banner2"
     >

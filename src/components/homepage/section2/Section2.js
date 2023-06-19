@@ -13,15 +13,15 @@ function Section2() {
     >
       <div className="container">
         <h3 className="sub_heading">
-          <span>Find</span> Your Space With Spacite
+          <span>Find</span> Your Office Space With Spacite
         </h3>
         <div className="section_heading">
           <h2>
-            Spacite online discovery platform, allows users to search and book
+            Spacite office space platform, allows users to search and book
             Coworking spaces and Virtual offices.
           </h2>
         </div>
-        <div className="row">
+        <div className="row mb-5">
           <div className="col-4 find_space">
             <img src={spaces} alt="spaces" />
             <p>
@@ -41,9 +41,6 @@ function Section2() {
               No. 1 <span>in country</span>
             </p>
           </div>
-        </div>
-        <div className="enquire_btn_box">
-          <button className="globalBtn">Enquire Now</button>
         </div>
       </div>
     </div>

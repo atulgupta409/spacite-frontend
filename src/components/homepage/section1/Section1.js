@@ -11,10 +11,18 @@ import Select from "react-select";
 import main_banner from "../../media/main_banner.png";
 
 function Section1() {
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
+  const optionsLookingFor = [
+    { value: "Coworking Space", label: "Coworking Space" },
+    { value: "Virtual Office", label: "Virtual Office" },
+  ];
+  const optionsCity = [
+    { value: "Pune", label: "Pune" },
+    { value: "Noida", label: "Noida" },
+    { value: "Gurgaon", label: "Gurgaon" },
+    { value: "Mumbai", label: "Mumbai" },
+    { value: "Hyderabad", label: "Hyderabad" },
+    { value: "Ahmedabad", label: "Ahmedabad" },
+    { value: "Bangalore", label: "Bangalore" },
   ];
 
   const [selectedOption, setSelectedOption] = useState(null);
@@ -79,7 +87,7 @@ function Section1() {
                       <Select
                         defaultValue={selectedOption}
                         onChange={setSelectedOption}
-                        options={options}
+                        options={optionsLookingFor}
                         placeholder="What are you looking for?"
                       />
                     </div>
@@ -87,7 +95,7 @@ function Section1() {
                       <Select
                         defaultValue={selectedOption}
                         onChange={setSelectedOption}
-                        options={options}
+                        options={optionsCity}
                         placeholder="Select city"
                       />
                     </div>
