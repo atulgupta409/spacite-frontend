@@ -3,7 +3,7 @@ import "./TopCities.css";
 import pune from "../../media/city-images/pune.png";
 import gurgaon from "../../media/city-images/gurgaon.png";
 import mumbai from "../../media/city-images/mumbai.png";
-import main_banner from "../../media/top_city_banner.png";
+import main_banner from "../../media/top_city_banner.svg";
 
 function TopCities() {
   return (
