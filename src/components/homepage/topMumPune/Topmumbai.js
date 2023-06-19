@@ -29,7 +29,7 @@ function Topmumbai() {
 
   return (
     <div>
-      <div className="container main_banner2" style={{ height: "auto" }}>
+      <div className="container" style={{ height: "auto" }}>
         <h2>
           Top Coworking Spaces for rent in{" "}
           <span className="top_gurgaon_span">Mumbai</span>

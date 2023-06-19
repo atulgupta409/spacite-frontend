@@ -1,15 +1,12 @@
 .nav-main {
   box-shadow: 0px 4px 12px -5px rgba(0, 0, 0, 0.25);
-  height: 70px;
+  /* height: 70px; */
   display: flex;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   z-index: 999;
   background-color: #fff;
   top: 0;
-}
-.navbar {
-  height: 70px;
 }
 .navbar .megamenu {
   padding: 1rem;
@@ -51,6 +48,22 @@
 }
 .city-icon {
   width: 30px;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+@media only screen and (max-width: 600px) {
+  .navbar .megamenu {
+    width: 90%;
+  }
+  .megamenu-row div {
+    width: 45%;
+  }
+}
+@media only screen and (max-width: 476px) {
+  .megamenu-row div {
+    width: 100%;
+  }
 }
 
 @media all and (min-width: 992px) {

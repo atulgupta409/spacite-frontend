@@ -3,10 +3,14 @@ import "./TopCities.css";
 import pune from "../../media/city-images/pune.png";
 import gurgaon from "../../media/city-images/gurgaon.png";
 import mumbai from "../../media/city-images/mumbai.png";
+import main_banner from "../../media/top_city_banner.png";
 
 function TopCities() {
   return (
-    <div className="outer_top_city_box">
+    <div
+      className="outer_top_city_box"
+      style={{ backgroundImage: `url(${main_banner})` }}
+    >
       <div className="container top_city_container">
         <h2>
           Top Coworking <span className="top_city_span">Cities</span>

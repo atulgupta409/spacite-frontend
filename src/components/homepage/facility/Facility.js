@@ -1,6 +1,6 @@
 import React from "react";
 import "./Facility.css";
-import facilityBanner from "../../media/page_banner/whatWeOffer-banner.png";
+import facilityBanner from "../../media/facility_banner.png";
 
 function Facility() {
   return (

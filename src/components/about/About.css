@@ -1,0 +1,158 @@
+#about_area {
+  padding: 40px 0px;
+}
+.about-content h3 {
+  padding-bottom: 0px;
+  font-size: 32px;
+  line-height: 42px;
+}
+.about-content p {
+  font-size: 19px;
+  line-height: 30px;
+}
+#banner_area {
+  padding: 60px 0px;
+  margin-top: 70px;
+}
+.banner_img {
+  background: #ffffff;
+  box-shadow: -8px 6px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 40px;
+  -ms-transform: skewY(-6deg);
+  transform: skewY(-6deg);
+  padding: 0;
+  overflow: hidden;
+  height: 570px;
+}
+.banner_img img {
+  -ms-transform: skewY(6deg);
+  transform: skewY(6deg);
+  height: 640px;
+  margin-top: -31px;
+  object-fit: cover;
+  width: 100%;
+}
+#about_section {
+  background: linear-gradient(
+    93.31deg,
+    rgb(254, 239, 248) 10.86%,
+    rgb(238, 251, 254) 80.85%
+  );
+  padding: 60px 0px;
+}
+.about-text h4 {
+  font-size: 17px;
+  line-height: 34px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.about-text p {
+  line-height: 26px;
+  letter-spacing: 0em;
+  font-size: 14px;
+}
+#mission_vission_sec {
+  margin: 100px 0;
+}
+.mission-content p,
+.vission-content p {
+  font-size: 19px;
+  line-height: 30px;
+}
+.mission-content,
+.vission-content {
+  padding: 10px 80px;
+}
+.experts_area {
+  background: linear-gradient(
+    93.31deg,
+    rgb(254, 239, 248) 10.86%,
+    rgb(238, 251, 254) 80.85%
+  );
+  padding: 60px 0px;
+}
+#experts_area {
+  padding: 70px 0px 80px;
+}
+#experts_area .experts_list {
+  width: 80%;
+  margin: 0 auto;
+}
+.experts_box {
+  background: #ffffff;
+  box-shadow: -8px 6px 20px rgba(0, 0, 0, 0.22);
+  border-radius: 40px;
+  -ms-transform: skewY(6deg);
+  transform: skewY(-6deg);
+  padding: 0;
+  overflow: hidden;
+  width: 85%;
+  margin: 0 auto;
+}
+.experts-item {
+  -ms-transform: skewY(6deg);
+  transform: skewY(6deg);
+  text-align: center;
+  margin-top: 0;
+  height: 250px;
+}
+.experts-img {
+  position: relative;
+  top: -20px;
+}
+.experts-item img {
+  height: 460px;
+  object-fit: cover;
+}
+.experts-content {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 9px 15px;
+  transition: all 0.5s;
+}
+.experts-item:hover .experts-content {
+  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 20px;
+}
+.experts-content h4 {
+  margin-bottom: 0px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+}
+#cta_sec {
+  padding: 120px 0px;
+}
+#cta_sec .cta_text .site_btn {
+  background-color: #222;
+  color: #fff;
+  margin-top: 2px;
+}
+#cta_sec .listing_cta {
+  margin-bottom: 0px;
+}
+#cta_area .row {
+  border-radius: 10px !important;
+}
+
+.cta_box {
+  padding: 58px 20px 58px 80px;
+}
+#cta_area3 {
+  padding: 60px 0px;
+}
+#cta_area3 .row {
+  filter: drop-shadow(0px 8px 14px rgba(0, 0, 0, 0.2));
+  border-radius: 10px;
+}
+#cta_area3 h3 {
+  margin-bottom: 30px;
+}
+.cta_box2 {
+  padding: 80px 20px 80px 80px;
+  z-index: 999;
+  position: relative;
+}

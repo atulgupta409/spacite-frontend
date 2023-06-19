@@ -5,9 +5,11 @@ import TopCities from "../topCities/TopCities";
 import Topgurgaon from "../topSpaceGurgaon/Topgurgaon";
 import Topbangalore from "../topSpaceBangalore/Topbangalore";
 import Facility from "../facility/Facility";
-import Topmumbai from "../topSpaceMumbai/Topmumbai";
-import Toppune from "../topSpacePune/Toppune";
-import Findspace from "../findSpace/Findspace";
+import Topmumpune from "../topMumPune/Topmumpune";
+import HomeContact from "../home-contact/HomeContact";
+import PremiumBrands from "../premium-brands/PremiumBrands";
+import Partner from "../partner/Partner";
+import Faq from "../faq/Faq";
 
 function Herohome() {
   return (
@@ -18,9 +20,11 @@ function Herohome() {
       <Topgurgaon />
       <Topbangalore />
       <Facility />
-      <Topmumbai />
-      <Toppune />
-      <Findspace />
+      <Topmumpune />
+      <HomeContact />
+      <PremiumBrands />
+      <Partner />
+      <Faq />
     </div>
   );
 }

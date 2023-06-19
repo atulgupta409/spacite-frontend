@@ -18,6 +18,9 @@ h2 {
   text-align: center;
   color: #444444;
 }
+.sub_heading {
+  font-size: 19px !important;
+}
 .main_banner {
   padding-top: 157px;
   background-repeat: no-repeat;
@@ -45,6 +48,11 @@ h2 {
 }
 .globalBtn:hover {
   background: #bc79f9;
+  color: #444444;
+}
+.form-control:focus {
+  border-color: #ced4da !important;
+  box-shadow: none !important;
 }
 .top_space_row {
   margin: 60px 0 0;
@@ -74,10 +82,18 @@ h2 {
 .jrqawY {
   display: none;
 }
+.css-t3ipsp-control {
+  border-color: hsl(0, 0%, 80%) !important;
+  box-shadow: none !important;
+}
 .carousel_arrow {
   align-self: center;
   border: none;
   background: transparent;
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #d09cff !important;
 }
 
 @media only screen and (max-width: 768px) {

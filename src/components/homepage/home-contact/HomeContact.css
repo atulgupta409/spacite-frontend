@@ -1,0 +1,21 @@
+.contact_section .col-md-6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact_section .col-md-6 img {
+  width: 70%;
+}
+.contact_form_box {
+  width: 80%;
+  padding: 60px;
+  background-color: #fff;
+  box-shadow: 0px 0px 12px -4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+.contact_form_box .form-control {
+  padding: 10px !important;
+}
+.css-1jqq78o-placeholder {
+  font-size: 16px !important;
+}
