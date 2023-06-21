@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../media/logo.png";
 import "./Navbar.css";
@@ -10,6 +10,7 @@ import ahemdabad from "../media/city-icon/Ahemdabad.png";
 import mumbai from "../media/city-icon/Mumbai.png";
 import bangalore from "../media/city-icon/bangalore 1.png";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
+import { getCity } from "./Service";
 
 function Navbar() {
   let coworkingCities = [
@@ -21,7 +22,23 @@ function Navbar() {
     { id: 6, name: "Hyderabad", img: hyderabad },
     { id: 7, name: "Ahmedabad", img: ahemdabad },
   ];
+  const [allCity, setAllCity] = useState([]);
+  const [cities, setCities] = useState([]);
+  const handleFetchCity = async () => {
+    await getCity(setAllCity);
+  };
 
+  useEffect(() => {
+    const combinedArray = allCity.map((city, index) => ({
+      city,
+      cityImg: coworkingCities[index].img,
+    }));
+    setCities([...combinedArray]);
+  }, [allCity]);
+  useEffect(() => {
+    handleFetchCity();
+  }, []);
+  console.log(cities);
   return (
     <div className="nav-main">
       <div className="container">

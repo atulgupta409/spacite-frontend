@@ -7,6 +7,7 @@ import About from "./components/about/About";
 import PageNotExist from "./components/pagenotexist/PageNotExist";
 import CityPage from "./components/coworkingCityPage/CityPage";
 import Footer from "./components/footer/Footer";
+import PropertyPage from "./components/propertyPage/PropertyPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           path="/coworking-spaces/:id"
           element={[<Navbar />, <CityPage />]}
         />
+        <Route path="/property-page" element={[<Navbar />, <PropertyPage />]} />
         <Route path="*" element={<PageNotExist />} />
       </Routes>
     </div>
