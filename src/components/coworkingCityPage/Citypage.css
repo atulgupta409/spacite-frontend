@@ -1,0 +1,134 @@
+.breadcrumb-item a:not(.active) {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+}
+.city_span {
+  color: #d09cff;
+}
+.robot {
+  width: 80px;
+}
+.city_heading {
+  margin-left: 40px;
+}
+.microlocation_tab {
+  box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 40px 40px 60px;
+}
+.microlocation_tab ul li {
+  display: inline-block;
+  list-style-type: none;
+  padding: 10px;
+  color: #444;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid #f7f7f7;
+  transition: all 0.3s ease-in-out;
+}
+.microlocation_tab ul li:hover {
+  color: #d09cff !important;
+}
+.microlocation_tab ul {
+  margin-bottom: 0 !important;
+  padding-left: 0 !important;
+}
+.city_page_title {
+  font-size: 25px;
+  font-weight: 600;
+  color: #444444;
+}
+.space_card {
+  text-align: center;
+}
+.location_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.location_box img {
+  display: inline-block;
+  width: 16px;
+}
+.location_box p {
+  display: inline-block;
+  margin-bottom: 0;
+  margin-left: 8px;
+  color: gray;
+  font-size: 14px;
+  line-height: 30px;
+  font-weight: 500;
+}
+.price_from {
+  font-size: 16px;
+  line-height: 31px;
+  color: #d09cff;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+.price {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.price span {
+  color: #d09cff;
+}
+.price_box {
+  display: flex;
+  justify-content: center;
+}
+.explore_box p {
+  display: inline-block;
+  margin-right: 7px;
+  margin-bottom: 0px;
+  color: rgb(208, 156, 255);
+  font-weight: 600;
+  font-size: 14px;
+}
+.city_page_title_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 40px;
+}
+.city_explore a {
+  color: #d09cff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.other_location_box {
+  background: linear-gradient(90deg, #feeff9 0%, #eefbfe 100%);
+}
+.other_location_box a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  font-size: 16px;
+}
+@media only screen and (max-width: 768px) {
+  .css-1bechtd-curveStyle {
+    margin-top: -25px;
+  }
+  .location_box p {
+    font-size: 12px;
+  }
+  .price_from {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .price {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .explore_box p {
+    font-size: 14px;
+    margin-right: 3px;
+  }
+  .top_city_span:after {
+    background-image: none;
+    width: 0;
+    height: 0;
+  }
+}

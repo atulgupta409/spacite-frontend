@@ -10,10 +10,12 @@ function Facility() {
       style={{ backgroundImage: `url(${facilityBanner})` }}
     >
       <div className="container">
-        <h3 className="sub_heading">
+        {/* <h3 className="sub_heading">
           <span>Best</span> Coworking space for you
-        </h3>
-        <h2>What we offer to you</h2>
+        </h3> */}
+        <h2>
+          Best Spaces . Best <span className="top_city_span">Amenities</span>
+        </h2>
         <div className="row facility_box">
           <div className="col-lg-4">
             <img src={wifi_icon} alt="wifi" />
