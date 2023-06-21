@@ -29,12 +29,13 @@ function PremiumBrands() {
     <div
       style={{
         background: "linear-gradient(90deg, #FEEFF8 0%, #EEFBFE 100%)",
+        marginTop: "-2px",
       }}
       className="main_banner2"
     >
       <div className="container">
         <h3 className="sub_heading">
-          <span>Premium</span> Brands
+          <span>Top</span> Coworking in India
         </h3>
         <div className="section_heading">
           <h2>Coworking Spaces, Virtual Offices and More</h2>

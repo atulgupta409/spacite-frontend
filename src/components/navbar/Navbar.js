@@ -1,44 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../media/logo.png";
 import "./Navbar.css";
-import gurugram from "../media/city-icon/Gurugram.png";
-import noida from "../media/city-icon/noida.png";
-import pune from "../media/city-icon/Pune.png";
-import hyderabad from "../media/city-icon/Hyderabad.png";
-import ahemdabad from "../media/city-icon/Ahemdabad.png";
-import mumbai from "../media/city-icon/Mumbai.png";
-import bangalore from "../media/city-icon/bangalore 1.png";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
-import { getCity } from "./Service";
+import { CityContext } from "../context/CityContext";
 
 function Navbar() {
-  let coworkingCities = [
-    { id: 1, name: "Gurugram", img: gurugram },
-    { id: 2, name: "Noida", img: noida },
-    { id: 3, name: "Mumbai", img: mumbai },
-    { id: 4, name: "Bangalore", img: bangalore },
-    { id: 5, name: "Pune", img: pune },
-    { id: 6, name: "Hyderabad", img: hyderabad },
-    { id: 7, name: "Ahmedabad", img: ahemdabad },
-  ];
-  const [allCity, setAllCity] = useState([]);
-  const [cities, setCities] = useState([]);
-  const handleFetchCity = async () => {
-    await getCity(setAllCity);
-  };
+  const { allCities, handleFetchCities } = useContext(CityContext);
 
   useEffect(() => {
-    const combinedArray = allCity.map((city, index) => ({
-      city,
-      cityImg: coworkingCities[index].img,
-    }));
-    setCities([...combinedArray]);
-  }, [allCity]);
-  useEffect(() => {
-    handleFetchCity();
+    handleFetchCities();
   }, []);
-  console.log(cities);
+
   return (
     <div className="nav-main">
       <div className="container">
@@ -71,21 +44,22 @@ function Navbar() {
                   <div className="dropdown-menu megamenu" role="menu">
                     <div className="container">
                       <div className="row megamenu-row">
-                        {coworkingCities.map((elem, i) => {
+                        {allCities?.map((elem, i) => {
                           return (
                             <div
                               className="col-md-4"
                               style={{ paddingBottom: "20px" }}
+                              key={i}
                             >
                               <img
                                 className="city-icon"
-                                src={elem.img}
-                                alt={elem.name}
+                                src={elem.cityImg}
+                                alt={elem.city.name}
                               />
                               <NavLink
-                                to={`/coworking-spaces/${elem.name.toLowerCase()}`}
+                                to={`/coworking-space/${elem.city.name.toLowerCase()}`}
                               >
-                                {elem.name}
+                                {elem.city.name}
                               </NavLink>
                             </div>
                           );

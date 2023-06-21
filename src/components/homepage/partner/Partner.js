@@ -6,11 +6,15 @@ function Partner() {
   return (
     <div
       className="main_banner2"
-      style={{ backgroundImage: `url(${main_banner})`, height: "90vh" }}
+      style={{
+        backgroundImage: `url(${main_banner})`,
+        height: "90vh",
+        marginTop: "-2px",
+      }}
     >
       <div className="container">
         <h2>
-          Our Coworking <span className="top_gurgaon_span">Partners</span>
+          Our Brands <span className="top_city_span">Partners</span>
         </h2>
       </div>
     </div>

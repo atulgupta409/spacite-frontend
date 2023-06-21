@@ -5,7 +5,7 @@ import image from "../media/propertyPage.png";
 import wifi from "../media/wifi_icon.png";
 import Select from "react-select";
 
-const PropertyPage = () => {
+const PropertyPage = ({ workSpace }) => {
   const location = useLocation();
   let pathArray = location.pathname.split("/");
   let lastElem = pathArray[pathArray.length - 1];
@@ -62,9 +62,21 @@ const PropertyPage = () => {
         <div className="row title_section">
           <div className="col-md-6">
             <h2 className="title_heading">
-              10 Gulmohar by <span className="title_color">Ideashacks</span>
+              {workSpace.name.split(" ").length > 1 ? (
+                <span>
+                  {workSpace.name
+                    .split(" ")
+                    .slice(0, workSpace.name.split(" ").length - 1)
+                    .join(" ")}{" "}
+                  <span className="title_color">
+                    {workSpace.name.split(" ").pop()}
+                  </span>
+                </span>
+              ) : (
+                workSpace.name
+              )}
             </h2>
-            <p>JMD Megapolis, Gurugram</p>
+            <p>{workSpace.location?.address}, Gurugram</p>
           </div>
           <div className="col-md-3">
             <p>Starting From</p>
