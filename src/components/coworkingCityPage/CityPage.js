@@ -11,6 +11,7 @@ import LeftArrow from "../media/icon/left_arrow.png";
 import RightArrow from "../media/icon/right_arrow.png";
 import HomeContact from "../homepage/home-contact/HomeContact";
 import { CityContext } from "../context/CityContext";
+import card_image_shape from "../media/card-image-shape.svg";
 
 function CityPage() {
   const location = useLocation();
@@ -98,7 +99,7 @@ function CityPage() {
             <span className="city_span"> Road</span>
           </h3>
           <div className="city_explore">
-            <Link to="/microlocation">
+            <Link>
               View All{" "}
               <img
                 src={exploreArrow}
@@ -110,8 +111,10 @@ function CityPage() {
         </div>
         <div className="top_space_row">
           <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-            <div className="card">
-              <img src={top_gurgaon} className="card-img-top" alt="..." />
+            <div className="property-card">
+              <div className="property_img">
+                <img src={top_gurgaon} alt="" className="propery_card_img" />
+              </div>
               <div className="card-body space_card">
                 <p className="card-title">Accesswork Sohna Road</p>
                 <div className="location_box">
@@ -130,8 +133,10 @@ function CityPage() {
                 </div>
               </div>
             </div>
-            <div className="card">
-              <img src={top_gurgaon} className="card-img-top" alt="..." />
+            <div className="property-card">
+              <div className="property_img">
+                <img src={top_gurgaon} alt="" className="propery_card_img" />
+              </div>
               <div className="card-body space_card">
                 <p className="card-title">Accesswork Sohna Road</p>
                 <div className="location_box">
@@ -150,8 +155,10 @@ function CityPage() {
                 </div>
               </div>
             </div>
-            <div className="card">
-              <img src={top_gurgaon} className="card-img-top" alt="..." />
+            <div className="property-card">
+              <div className="property_img">
+                <img src={top_gurgaon} alt="" className="propery_card_img" />
+              </div>
               <div className="card-body space_card">
                 <p className="card-title">Accesswork Sohna Road</p>
                 <div className="location_box">
@@ -170,8 +177,32 @@ function CityPage() {
                 </div>
               </div>
             </div>
-            <div className="card">
-              <img src={top_gurgaon} className="card-img-top" alt="..." />
+            <div className="property-card">
+              <div className="property_img">
+                <img src={top_gurgaon} alt="" className="propery_card_img" />
+              </div>
+              <div className="card-body space_card">
+                <p className="card-title">Accesswork Sohna Road</p>
+                <div className="location_box">
+                  <img src={location_icon} alt="location-icon" />
+                  <p>JMD Megapolis, Gurgaon</p>
+                </div>
+                <div className="location_box">
+                  <img src={office_icon} alt="office-icon" />
+                  <p>Private Office</p>
+                </div>
+                <p className="price_from">Starting from</p>
+                <div className="price_box">
+                  <p className="price">
+                    ₹9,000/<span>month</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="property-card">
+              <div className="property_img">
+                <img src={top_gurgaon} alt="" className="propery_card_img" />
+              </div>
               <div className="card-body space_card">
                 <p className="card-title">Accesswork Sohna Road</p>
                 <div className="location_box">

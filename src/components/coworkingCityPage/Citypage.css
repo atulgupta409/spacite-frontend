@@ -27,6 +27,22 @@
   border-bottom: 1px solid #f7f7f7;
   transition: all 0.3s ease-in-out;
 }
+
+.propery_card_img {
+  margin: 0px auto;
+  display: block;
+  width: 100%;
+  height: 270px;
+  -webkit-mask-image: url(http://localhost:3000/static/media/card-image-shape.cd25fba5267b6b94d36e.svg);
+  mask-image: url(http://localhost:3000/static/media/card-image-shape.cd25fba5267b6b94d36e.svg);
+  -webkit-mask-position: top left;
+  mask-position: top left;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 250px 250px;
+}
+
 .microlocation_tab ul li:hover {
   color: #d09cff !important;
 }
