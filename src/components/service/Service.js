@@ -19,3 +19,12 @@ export const getMicrolocationByCity = async (cityName, setMicrolocations) => {
     console.log(error);
   }
 };
+
+export const getWorkSpaceData = async (setWorkspaces) => {
+  try {
+    const { data } = await axios.get("http://localhost:5000/api/workSpace");
+    setWorkspaces(data);
+  } catch (err) {
+    console.log(err);
+  }
+};

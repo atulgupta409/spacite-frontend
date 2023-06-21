@@ -33,8 +33,8 @@
   display: block;
   width: 100%;
   height: 270px;
-  -webkit-mask-image: url(http://localhost:3000/static/media/card-image-shape.cd25fba5267b6b94d36e.svg);
-  mask-image: url(http://localhost:3000/static/media/card-image-shape.cd25fba5267b6b94d36e.svg);
+  -webkit-mask-image: url("../media/card-image-shape.svg");
+  mask-image: url("../media/card-image-shape.svg");
   -webkit-mask-position: top left;
   mask-position: top left;
   -webkit-mask-repeat: no-repeat;

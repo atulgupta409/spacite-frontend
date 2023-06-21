@@ -7,10 +7,21 @@ import About from "./components/about/About";
 import PageNotExist from "./components/pagenotexist/PageNotExist";
 import CityPage from "./components/coworkingCityPage/CityPage";
 import Footer from "./components/footer/Footer";
+import PropertyPage from "./components/propertyPage/PropertyPage";
+import { getWorkSpaceData } from "./components/service/Service";
+import { useEffect, useState } from "react";
 import Microlocation from "./components/coworkingMicrolocation/Microlocation";
 import FooterBottom from "./components/footer/FooterBottom";
 
 function App() {
+  const [workSpaces, setWorkspaces] = useState([]);
+  const handleFetchWorkSpaceData = async () => {
+    await getWorkSpaceData(setWorkspaces);
+  };
+  useEffect(() => {
+    handleFetchWorkSpaceData();
+  }, []);
+  console.log(workSpaces);
   return (
     <div>
       <Routes>
@@ -54,7 +65,15 @@ function App() {
             <Footer key={15} />,
           ]}
         />
+        {/* <Route path="/property-page" element={[<Navbar />, <PropertyPage />]} /> */}
         <Route path="*" element={<PageNotExist />} />
+        {workSpaces.map((item, index) => (
+          <Route
+            key={index}
+            path={`/coworking/${item.slug}`}
+            element={[<Navbar />, <PropertyPage workSpace={item} />]}
+          />
+        ))}
       </Routes>
     </div>
   );
