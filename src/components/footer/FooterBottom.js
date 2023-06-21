@@ -1,18 +1,17 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import "./Footer.css";
 import logo from "../media/logo.png";
 import { Link } from "react-router-dom";
+import { CityContext } from "../context/CityContext";
 
 function FooterBottom() {
-  let coworkingCities = [
-    { id: 1, name: "Gurugram" },
-    { id: 2, name: "Noida" },
-    { id: 3, name: "Mumbai" },
-    { id: 4, name: "Bangalore" },
-    { id: 5, name: "Pune" },
-    { id: 6, name: "Hyderabad" },
-    { id: 7, name: "Ahmedabad" },
-  ];
+  const { cities, handleFetchCities } = useContext(CityContext);
+
+  useEffect(() => {
+    handleFetchCities();
+  }, []);
+
+  let curYear = new Date().getFullYear();
 
   return (
     <div className="footer_bottom_main">
@@ -30,24 +29,28 @@ function FooterBottom() {
           <div className="col-md-3">
             <h4 className="footer_h4">Coworking Space</h4>
             <ul style={{ paddingLeft: "0" }}>
-              {coworkingCities.map((city, i) => {
+              {cities?.map((city, i) => {
                 return (
                   <li className="footer_list_item" key={i}>
-                    <Link to={`/coworking-spaces/${city.name.toLowerCase()}`}>
+                    <Link to={`/coworking-space/${city.name.toLowerCase()}`}>
                       Coworking space in {city.name}
                     </Link>
                   </li>
                 );
               })}
             </ul>
+            <div className="footer_phone">
+              <p style={{ marginBottom: "0" }}>Phone :</p>
+              <a href="tel: 9999108078">+91 9999108078</a>
+            </div>
           </div>
           <div className="col-md-3">
             <h4 className="footer_h4">Virtual Office</h4>
             <ul style={{ paddingLeft: "0" }}>
-              {coworkingCities.map((city, i) => {
+              {cities?.map((city, i) => {
                 return (
                   <li className="footer_list_item" key={i}>
-                    <Link to={`/coworking-spaces/${city.name.toLowerCase()}`}>
+                    <Link to={`/virtual-office/${city.name.toLowerCase()}`}>
                       Virtual office in {city.name}
                     </Link>
                   </li>
@@ -57,7 +60,28 @@ function FooterBottom() {
           </div>
           <div className="col-md-3">
             <h4 className="footer_h4">Knowledge Center</h4>
+            <ul style={{ paddingLeft: "0" }}>
+              <li className="footer_list_item">
+                <Link>Coworking Space</Link>
+              </li>
+              <li className="footer_list_item">
+                <Link>Virtual Office</Link>
+              </li>
+              <li className="footer_list_item">
+                <Link to="/about">About Us</Link>
+              </li>
+              <li className="footer_list_item">
+                <Link to="/contact">Contact Us</Link>
+              </li>
+            </ul>
           </div>
+        </div>
+        <hr style={{ color: "rgba(33, 37, 41, 0.5)" }} />
+        <div className="footer_copyright">
+          <p>
+            COPYRIGHT &#169; {curYear} SPACITE ALL RIGHTS RESERVED | SPACITE IS
+            A PART OF COFYND SPACE NETWORK
+          </p>
         </div>
       </div>
     </div>

@@ -35,7 +35,8 @@ function HomeContact() {
     >
       <div className="container">
         <h2>
-          Find your space with <span className="top_gurgaon_span">Spacite</span>
+          Let RoBi find your perfect office at{" "}
+          <span className="top_city_span">Spacite</span>
         </h2>
         <div className="row contact_section">
           <div className="col-md-6">
@@ -43,7 +44,7 @@ function HomeContact() {
           </div>
           <div className="col-md-6">
             <div className="contact_form_box">
-              <h4>Please Share Your Details With Robi</h4>
+              <h4>Please Share Your Details With RoBi</h4>
               <form>
                 <div className="row">
                   <div className="col-md-12 mb-4">

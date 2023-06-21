@@ -14,7 +14,7 @@ function Partner() {
     >
       <div className="container">
         <h2>
-          Our Coworking <span className="top_gurgaon_span">Partners</span>
+          Our Brands <span className="top_city_span">Partners</span>
         </h2>
       </div>
     </div>

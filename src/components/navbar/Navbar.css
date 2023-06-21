@@ -26,6 +26,9 @@
 .nav-link:hover {
   color: #d09cff;
 }
+.nav-link:focus {
+  color: #d09cff;
+}
 .megamenu-row {
   margin-bottom: 20px;
 }

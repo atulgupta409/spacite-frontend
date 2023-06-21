@@ -84,6 +84,7 @@
 .city-box p {
   font-size: 12px;
   margin-bottom: 0;
+  color: #444;
 }
 .content-box2 {
   display: flex;
