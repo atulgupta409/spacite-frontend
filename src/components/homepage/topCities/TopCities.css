@@ -41,3 +41,15 @@
   border-radius: 0px 0px 20px 20px;
   z-index: 10;
 }
+.card-title-cities {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 9px;
+}
+.price_box_city p {
+  font-size: 17px;
+  font-weight: 600;
+}
+.price_box_city p span {
+  font-size: 14px;
+}

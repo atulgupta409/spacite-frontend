@@ -12,6 +12,7 @@ import { getWorkSpaceData } from "./components/service/Service";
 import { useEffect, useState } from "react";
 import Microlocation from "./components/coworkingMicrolocation/Microlocation";
 import FooterBottom from "./components/footer/FooterBottom";
+import ThankuPage from "./components/thankuPage/ThankuPage";
 
 function App() {
   const [workSpaces, setWorkspaces] = useState([]);
@@ -71,9 +72,20 @@ function App() {
           <Route
             key={index}
             path={`/coworking/${item.slug}`}
-            element={[<Navbar />, <PropertyPage workSpace={item} />]}
+            element={[
+              <Navbar key={16} />,
+              <PropertyPage key={17} workSpace={item} />,
+            ]}
           />
         ))}
+        <Route
+          path="/thank-you"
+          element={[
+            <Navbar key={18} />,
+            <ThankuPage key={19} />,
+            <Footer key={20} />,
+          ]}
+        />
       </Routes>
     </div>
   );

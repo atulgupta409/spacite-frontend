@@ -22,3 +22,33 @@
 .accordion-body {
   padding-left: 0;
 }
+.section_heading_faq {
+  width: 68%;
+  margin: auto;
+}
+.sub_heading_faq {
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 34px;
+  color: #d09cff;
+  text-align: center;
+}
+@media only screen and (max-width: 768px) {
+  .section_heading_faq {
+    width: 100%;
+    font-size: 19px;
+  }
+  .sub_heading_faq {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  .accordion-button {
+    font-size: 14px;
+  }
+  .accordion-body {
+    font-size: 14px;
+  }
+  .accordion-button::after {
+    background-size: 14px;
+  }
+}

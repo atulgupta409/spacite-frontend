@@ -10,6 +10,9 @@
   font-size: 26px;
   font-weight: 600;
 }
+.main_banner_section1 {
+  background-image: url("../../media/main_banner_desktop.png");
+}
 .spaces,
 .cowrk {
   position: relative;
@@ -110,6 +113,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .main_banner_section1 {
+    background-image: url("../../media/main_banner.png");
+  }
   .find:after {
     font-size: 15px;
     top: -30px;
@@ -135,19 +141,19 @@
   .city-box {
     width: 100%;
     margin-top: -70px;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 0;
     background-color: #ffffff00;
     border: none;
     box-shadow: none;
-    overflow-x: scroll;
+    flex-wrap: wrap;
     margin-bottom: 10px;
   }
-  .city_item {
-    padding: 15px 48px 15px 0px;
-  }
+  /* .city_item {
+    padding: 0px;
+  } */
   .content-box2 {
-    display: block;
+    display: none;
   }
   .home_dropdown {
     width: 100%;

@@ -1,4 +1,5 @@
 .facility_main {
+  background-image: url("../../media/facility_banner.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,4 +21,20 @@
 .facility_box img {
   width: 50px;
   height: 50px;
+}
+@media only screen and (max-width: 768px) {
+  .facility_main {
+    background-image: url("../../media/facility_banner_mob.png");
+    padding: 60px 0;
+  }
+  .facility_description {
+    display: none;
+  }
+  .facility_box img {
+    width: 40px;
+    height: 40px;
+  }
+  .facility_box {
+    margin-top: 30px;
+  }
 }

@@ -5,10 +5,10 @@ function Faq() {
   return (
     <div style={{ marginTop: "120px" }}>
       <div className="container">
-        <h3 className="sub_heading">
+        <h3 className="sub_heading_faq">
           <span>You've</span> Got Questions?
         </h3>
-        <div className="section_heading">
+        <div className="section_heading_faq">
           <h2>We've got Answers!</h2>
         </div>
         <div className="accordion" id="accordionExample">

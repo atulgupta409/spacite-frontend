@@ -1,7 +1,9 @@
 import axios from "axios";
+import baseUrl from "../../environment/api-config";
+
 export const getCity = async (setCities) => {
   try {
-    const { data } = await axios.get("http://localhost:5000/api/city/cities");
+    const { data } = await axios.get(`${baseUrl}/api/cities`);
     setCities(data);
   } catch (err) {
     console.log(err);
@@ -11,7 +13,7 @@ export const getCity = async (setCities) => {
 export const getMicrolocationByCity = async (cityName, setMicrolocations) => {
   try {
     await axios
-      .get(`http://localhost:5000/api/microlocation/microlocations/${cityName}`)
+      .get(`${baseUrl}/api/microlocations/${cityName}`)
       .then((result) => {
         setMicrolocations(result.data);
       });
@@ -22,7 +24,21 @@ export const getMicrolocationByCity = async (cityName, setMicrolocations) => {
 
 export const getWorkSpaceData = async (setWorkspaces) => {
   try {
-    const { data } = await axios.get("http://localhost:5000/api/workSpace");
+    const { data } = await axios.get(`${baseUrl}/api/workSpace`);
+    setWorkspaces(data);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getWorkSpaceByMicrolocation = async (
+  setWorkspaces,
+  microlocationName
+) => {
+  try {
+    const { data } = await axios.get(
+      `${baseUrl}/api/coworking-details/${microlocationName}`
+    );
     setWorkspaces(data);
   } catch (err) {
     console.log(err);

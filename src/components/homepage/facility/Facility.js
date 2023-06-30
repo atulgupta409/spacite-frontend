@@ -5,10 +5,7 @@ import wifi_icon from "../../media/wifi_icon.png";
 
 function Facility() {
   return (
-    <div
-      className="facility_main"
-      style={{ backgroundImage: `url(${facilityBanner})` }}
-    >
+    <div className="facility_main">
       <div className="container">
         {/* <h3 className="sub_heading">
           <span>Best</span> Coworking space for you
@@ -17,14 +14,14 @@ function Facility() {
           Best Spaces . Best <span className="top_city_span">Amenities</span>
         </h2>
         <div className="row facility_box">
-          <div className="col-lg-4">
+          <div className="col-4">
             <img src={wifi_icon} alt="wifi" />
             <p className="facility_name">High speed wifi</p>
             <p className="facility_description">
               High-Speed Wifi, HDTVs everything you need to do your best work.
             </p>
           </div>
-          <div className="col-lg-4">
+          <div className="col-4">
             <img src={wifi_icon} alt="wifi" />
             <p className="facility_name">Comfy workstation</p>
             <p className="facility_description">
@@ -32,7 +29,7 @@ function Facility() {
               quick growth.
             </p>
           </div>
-          <div className="col-lg-4">
+          <div className="col-4">
             <img src={wifi_icon} alt="wifi" />
             <p className="facility_name">Meeting rooms</p>
             <p className="facility_description">
@@ -42,14 +39,14 @@ function Facility() {
           </div>
         </div>
         <div className="row facility_box">
-          <div className="col-lg-4">
+          <div className="col-4">
             <img src={wifi_icon} alt="wifi" />
             <p className="facility_name">Printer</p>
             <p className="facility_description">
               Printing and scanning facilities available without any extra cost.
             </p>
           </div>
-          <div className="col-lg-4">
+          <div className="col-4">
             <img src={wifi_icon} alt="wifi" />
             <p className="facility_name">Pantry</p>
             <p className="facility_description">
@@ -57,7 +54,7 @@ function Facility() {
               and lounge seating.
             </p>
           </div>
-          <div className="col-lg-4">
+          <div className="col-4">
             <img src={wifi_icon} alt="wifi" />
             <p className="facility_name">Parking</p>
             <p className="facility_description">

@@ -38,3 +38,28 @@
 .robi_mail_box a span {
   font-weight: 600;
 }
+.home_contact_main {
+  background-image: url("../../media/home_contact_banner.svg");
+}
+
+@media only screen and (max-width: 768px) {
+  .home_contact_img {
+    display: none !important;
+  }
+  .contact_section {
+    margin-top: 0;
+  }
+  .contact_form_box {
+    width: 95%;
+    padding: 40px 31px;
+    margin-top: 30px;
+  }
+  .home_contact_main {
+    background-image: none;
+  }
+  .d_flex_mob {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}

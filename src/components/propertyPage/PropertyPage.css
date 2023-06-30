@@ -4,40 +4,49 @@
   font-weight: 500;
 }
 
-.title_section {
+.title_section_property {
   display: flex;
   justify-content: space-between;
 }
-.amenity_section {
+.amenity_section_property {
   margin-top: 30px;
-  border-bottom: 1px solid rgba(68, 68, 68, 0.1);
   font-size: 14px;
 }
 
-.title_heading {
+.title_heading_property {
   text-align: left;
 }
-.title_color {
+.title_color_property {
   color: #d09cff;
 }
-.price_section {
+.price_section_property {
+  font-weight: 600;
+  font-size: 30px !important;
+}
+.price_section_box {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+}
+.price_section_property span {
+  color: #d09cff;
+  font-size: 20px;
   font-weight: 600;
 }
-.price_section span {
-  color: #d09cff;
-}
-.title_section > div > p {
+.title_section_property > div > p {
   font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
 }
+
 .about_property_section {
   margin-top: 30px;
-  border-bottom: 1px solid rgba(68, 68, 68, 0.1);
 }
 .about_property_section p {
   font-size: 14px;
   text-align: inherit;
 }
-.category_section {
+.category_section_property {
   margin-top: 30px;
   background: linear-gradient(
     90deg,
@@ -48,30 +57,31 @@
   border-radius: 20px;
   padding: 12px;
 }
-.category_section h3 {
+.category_section_property h4 {
   font-size: 17px;
+  font-weight: 600;
 }
-.category_section div p {
+.category_section_property div p {
   font-size: 14px;
 }
-.category_section div p span {
+.category_section_property div p span {
   color: #d09cff;
 }
-.offers_section {
+.offers_section_property {
   margin-top: 30px;
 }
-.contact_section .col-md-6 {
+.contact_section_property .col-md-6 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.contact_section .col-md-6 img {
+.contact_section_property .col-md-6 img {
   width: 70%;
 }
-.contact_section {
+.contact_section_property {
   margin-top: 60px;
 }
-.contact_form_box {
+.contact_form_box_property {
   width: 100%;
   padding: 40px 35px;
   background-color: #fff;
@@ -81,13 +91,13 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-.contact_form_box h4 {
+.contact_form_box_property h4 {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 21px;
   text-align: center;
 }
-.contact_form_box .form-control {
+.contact_form_box_property .form-control {
   padding: 7px !important;
   border-radius: 10px;
   border: 1px solid rgba(33, 37, 41, 0.1);
@@ -96,37 +106,142 @@
 .css-1jqq78o-placeholder {
   font-size: 16px !important;
 }
-.robi_mail_box {
+.robi_mail_box_property {
   margin-top: 20px;
 }
-.robi_mail_box a {
+.robi_mail_box_property a {
   color: #444;
   text-decoration: none;
   font-weight: 500;
 }
-.robi_mail_box a span {
+.robi_mail_box_property a span {
   font-weight: 600;
 }
 
-.select_option {
+.select_option_property {
   width: 100%;
 }
-.select_option Select {
+.select_option_property Select {
   border-radius: 10px;
 }
-.css-13cymwt-control {
+.select_option_property .css-t3ipsp-control {
   border-radius: 10px !important;
   padding: 0 !important;
 }
-.css-1nmdiq5-menu {
+.select_option_property .css-13cymwt-control {
+  border-radius: 10px !important;
+  padding: 0 !important;
+}
+.select_option_property .css-1nmdiq5-menu {
   min-height: 0 !important;
 }
 
 .contact_btn {
   padding: 8px 23px;
 }
-.contact_form {
+.sticky_form {
   position: -webkit-sticky;
   position: sticky;
   top: 100px;
+}
+.property_icon {
+  margin-bottom: 10px;
+}
+.facility_name_property {
+  margin-bottom: 9px;
+}
+.desk_icon_box {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-around;
+}
+.desk_icon_box img {
+  width: 70px;
+}
+.property_h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.property_h2 {
+  text-align: left;
+}
+.main_amenity_icon img {
+  width: 23px;
+}
+.main_amenity_box {
+  display: flex;
+}
+.main_amenity_box div:nth-child(2) {
+  margin-left: 14px;
+}
+.main_amenity_box div:nth-child(2) p {
+  font-size: 16px;
+  font-weight: 500;
+}
+.devider_line {
+  color: rgba(68, 68, 68, 0.4);
+  margin: 50px 0;
+}
+.contact_form_footer {
+  background-image: url("../media/contact_footer_bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.1);
+  padding: 36px;
+  text-align: center;
+  margin-top: 30px;
+}
+.explore_box img {
+  width: 10px;
+}
+@media only screen and (max-width: 768px) {
+  .fix_btn {
+    position: fixed;
+    bottom: 0;
+  }
+  .price_section_box {
+    display: none;
+  }
+  .amenity_section_property .col-md-4 {
+    display: flex;
+    align-items: center;
+  }
+  .amenity_section_property .col-md-4 div {
+    margin-left: 12px;
+  }
+  .property_icon {
+    width: 40px;
+  }
+  .facility_name_property {
+    margin-bottom: 0;
+  }
+  .devider_line {
+    margin: 12px 0;
+  }
+  .category_section_property {
+    margin: 30px 4px 0;
+    border-radius: 10px;
+  }
+  .category_section_property div p {
+    margin-bottom: 0;
+  }
+  .desk_icon_box img {
+    width: 50px;
+  }
+  .explore_box img {
+    width: 8px;
+  }
+  .main_amenity_box div:nth-child(2) p {
+    font-size: 14px;
+  }
+  .text_left {
+    margin-top: 30px;
+  }
+  .mb_30 {
+    margin-bottom: 30px;
+  }
 }

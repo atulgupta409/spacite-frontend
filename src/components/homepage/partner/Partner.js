@@ -1,17 +1,9 @@
 import React from "react";
 import "./Partner.css";
-import main_banner from "../../media/partner_bannner.png";
 
 function Partner() {
   return (
-    <div
-      className="main_banner2"
-      style={{
-        backgroundImage: `url(${main_banner})`,
-        height: "90vh",
-        marginTop: "-2px",
-      }}
-    >
+    <div className="main_banner2 main_banner_partner">
       <div className="container">
         <h2>
           Our Brands <span className="top_city_span">Partners</span>

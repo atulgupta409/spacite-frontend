@@ -4,3 +4,14 @@
 .curve_img_box {
   text-align: center;
 }
+.main_banner_partner {
+  background-image: url("../../media/partner_bannner.png");
+  height: 90vh;
+  margin-top: -2px;
+}
+@media only screen and (max-width: 768px) {
+  .main_banner_partner {
+    background-image: url("../../media/partner_banner_mob.png");
+    height: 26vh;
+  }
+}

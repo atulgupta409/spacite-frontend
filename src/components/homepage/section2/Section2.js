@@ -9,7 +9,7 @@ function Section2() {
   return (
     <div
       style={{ backgroundImage: `url(${section2_banner})` }}
-      className="main_banner2"
+      className="main_banner2 mob_hide"
     >
       <div className="container">
         <h3 className="sub_heading">

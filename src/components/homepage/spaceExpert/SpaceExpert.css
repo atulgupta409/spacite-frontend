@@ -1,0 +1,30 @@
+.space_expert_main {
+  background: linear-gradient(
+    90deg,
+    #feeff8 0%,
+    rgba(238, 251, 254, 0.81) 100%
+  );
+  padding: 30px 0;
+}
+.contact_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contact_us {
+  margin-left: 30px;
+}
+.contact_us p {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 10px;
+  color: #444;
+  margin-bottom: 2px;
+}
+.contact_us a {
+  text-decoration: none;
+  font-weight: 500;
+  color: #444;
+  font-size: 15px;
+  line-height: 10px;
+}

@@ -46,6 +46,33 @@ h2 {
   font-weight: 500;
   transition: 0.3s ease-in-out;
 }
+.thanku_btn {
+  border: 2px solid #d09cff;
+  padding: 13px 23px;
+  border-radius: 4px;
+  color: #d09cff;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s ease-in-out;
+  background-color: #fff;
+}
+.space_link {
+  color: #444;
+  text-decoration: none;
+}
+.thanku_btn:hover {
+  background-color: #d09cff;
+  color: #444444;
+}
+.thanku_main {
+  height: 100vh;
+}
+.thanku_main .row:first-child {
+  height: 100%;
+}
+.thanku_img {
+  width: 95%;
+}
 .globalBtn:hover {
   background: #bc79f9;
   color: #444444;
@@ -95,12 +122,28 @@ h2 {
 .dropdown-item:active {
   background-color: #d09cff !important;
 }
-
+.desk_hide {
+  display: none;
+}
+.error_validate {
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
 @media only screen and (max-width: 768px) {
+  .desk_hide {
+    display: block;
+  }
   h1 {
     font-size: 30px;
+    /* margin: 50px; */
+  }
+  .page_main_title {
+    font-size: 20px;
+    margin: 0;
+    line-height: 24px;
     text-align: left;
-    margin-top: 53px;
   }
   h2 {
     font-size: 20px;
@@ -109,13 +152,13 @@ h2 {
   .main_banner {
     padding-top: 0px;
     height: auto;
-    padding-bottom: 40px;
+    padding: 114px 0;
   }
   .main_banner2 {
     padding-top: 20px;
     padding-bottom: 20px;
     height: auto;
-    background-image: none !important;
+    background-image: none;
   }
   .cjzNGz,
   .gCDpsR,
@@ -128,5 +171,11 @@ h2 {
   }
   .top_space_row {
     margin: 20px 0;
+  }
+  .globalBtn {
+    padding: 14px 5px;
+  }
+  .sub_heading {
+    line-height: 14px !important;
   }
 }

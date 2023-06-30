@@ -17,6 +17,10 @@
   border-radius: 8px;
   margin: 40px 40px 60px;
 }
+.microlocation_tab ul {
+  margin-bottom: 0 !important;
+  padding-left: 0 !important;
+}
 .microlocation_tab ul li {
   display: inline-block;
   list-style-type: none;
@@ -25,6 +29,11 @@
   font-size: 14px;
   font-weight: 500;
   border-bottom: 1px solid #f7f7f7;
+  transition: all 0.3s ease-in-out;
+}
+.microlocation_tab ul li a {
+  color: #222;
+  text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
 
@@ -43,12 +52,8 @@
   mask-size: 250px 250px;
 }
 
-.microlocation_tab ul li:hover {
+.microlocation_tab ul li a:hover {
   color: #d09cff !important;
-}
-.microlocation_tab ul {
-  margin-bottom: 0 !important;
-  padding-left: 0 !important;
 }
 .city_page_title {
   font-size: 25px;
@@ -116,6 +121,7 @@
 }
 .other_location_box {
   background: linear-gradient(90deg, #feeff9 0%, #eefbfe 100%);
+  padding-top: 100px;
 }
 .other_location_box a {
   text-decoration: none;
@@ -123,7 +129,24 @@
   font-weight: 500;
   font-size: 16px;
 }
+.other_location_box .col-md-3 {
+  padding-bottom: 11px;
+}
+
 @media only screen and (max-width: 768px) {
+  .microlocation_tab {
+    margin: 30px 10px;
+  }
+  .microlocation_tab ul {
+    white-space: nowrap;
+    overflow-x: scroll;
+  }
+  .microlocation_tab ul::-webkit-scrollbar {
+    display: none;
+  }
+  .microlocation_tab ul li {
+    min-width: 100px;
+  }
   .css-1bechtd-curveStyle {
     margin-top: -25px;
   }
@@ -146,5 +169,27 @@
     background-image: none;
     width: 0;
     height: 0;
+  }
+  .other_location_box {
+    padding-top: 40px;
+  }
+  .other_location_box a {
+    font-size: 15px;
+  }
+  .robot {
+    width: 60px;
+  }
+  .city_heading {
+    margin-left: 0px;
+  }
+  .city_page_title_box {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .city_explore a {
+    font-size: 12px;
+  }
+  .city_explore img {
+    width: 8px;
   }
 }

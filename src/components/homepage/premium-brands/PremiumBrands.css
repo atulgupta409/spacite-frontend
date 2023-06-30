@@ -38,3 +38,17 @@
   border-radius: 50%;
   overflow: hidden;
 }
+.sub_heading span:nth-child(2)::before {
+  content: "";
+  background-image: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .section_heading_brands {
+    width: 100%;
+    margin: auto;
+  }
+  .sub_heading span {
+    font-size: 14px;
+  }
+}

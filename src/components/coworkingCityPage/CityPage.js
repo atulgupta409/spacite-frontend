@@ -6,12 +6,9 @@ import exploreArrow from "../media/icon/explore_arrow.png";
 import top_gurgaon from "../media/coworking_img/top-gurgaon.png";
 import location_icon from "../media/icon/location.png";
 import office_icon from "../media/icon/private_office.png";
-import Carousel, { consts } from "react-elastic-carousel";
-import LeftArrow from "../media/icon/left_arrow.png";
-import RightArrow from "../media/icon/right_arrow.png";
+import Carousel from "react-elastic-carousel";
 import HomeContact from "../homepage/home-contact/HomeContact";
 import { CityContext } from "../context/CityContext";
-import card_image_shape from "../media/card-image-shape.svg";
 
 function CityPage() {
   const location = useLocation();
@@ -19,31 +16,12 @@ function CityPage() {
   let lastElem = pathArray[pathArray.length - 1];
   let cityName = lastElem.charAt(0).toUpperCase() + lastElem.slice(1);
 
-  const { microlocations, handleFetchMicrolocations } = useContext(CityContext);
+  const { microlocations, handleFetchMicrolocations, breakPoints, Myarrow } =
+    useContext(CityContext);
 
   useEffect(() => {
     handleFetchMicrolocations();
   }, [cityName]);
-
-  // console.log(microlocations);
-
-  function Myarrow({ type, onClick, isEdge }) {
-    const pointer = type === consts.PREV ? LeftArrow : RightArrow;
-    return (
-      <button onClick={onClick} disabled={isEdge} className="carousel_arrow">
-        <img src={pointer} alt="arrow" />
-      </button>
-    );
-  }
-  const breakPoints = [
-    { width: 1, itemsToShow: 1.5 },
-    // { width: 420, itemsToShow:  },
-    { width: 500, itemsToShow: 2.2 },
-    { width: 768, itemsToShow: 4 },
-    { width: 992, itemsToShow: 4 },
-    { width: 1200, itemsToShow: 4 },
-    { width: 1500, itemsToShow: 4 },
-  ];
 
   return (
     <div className="city_page_main" style={{ marginTop: "100px" }}>
@@ -71,33 +49,33 @@ function CityPage() {
       <div className="container">
         <div className="d-flex align-items-center city_heading">
           <img className="robot" src={robot} alt="robot" />
-          <h2 style={{ marginLeft: "10px" }}>
+          <h1 className="page_main_title" style={{ marginLeft: "10px" }}>
             Coworking Space in <span className="top_city_span">{cityName}</span>
-          </h2>
+          </h1>
         </div>
         <div className="microlocation_tab">
           <ul>
             {microlocations?.map((elem, i) => {
               return (
-                <div key={i} className="d-inline-block">
+                <li key={i}>
                   <NavLink
                     to={`/coworking-space/${cityName.toLowerCase()}/${elem.name
                       .toLowerCase()
                       .split(" ")
                       .join("-")}`}
                   >
-                    <li>{elem.name}</li>
+                    <span>{elem.name}</span>
                   </NavLink>
-                </div>
+                </li>
               );
             })}
           </ul>
         </div>
         <div className="city_page_title_box">
-          <h3 className="city_page_title">
+          <h2>
             Golf Course
             <span className="city_span"> Road</span>
-          </h3>
+          </h2>
           <div className="city_explore">
             <Link>
               View All{" "}
@@ -226,11 +204,26 @@ function CityPage() {
       </div>
       <HomeContact />
       <div className="other_location_box">
+        <h2>
+          Other <span style={{ color: "#d09cff" }}>Locations</span>
+        </h2>
         <div className="container">
           <div className="row">
-            <div className="col-md-3">
-              <NavLink to="/microlocation">Golf Course Road</NavLink>
-            </div>
+            {microlocations?.map((elem, i) => {
+              return (
+                <div className="col-6 col-md-3" key={i}>
+                  <NavLink
+                    to={`/coworking-space/${cityName.toLowerCase()}/${elem.name
+                      .toLowerCase()
+                      .split(" ")
+                      .join("-")}`}
+                  >
+                    <span className="mob_hide">Coworking space in</span>{" "}
+                    {elem.name}
+                  </NavLink>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

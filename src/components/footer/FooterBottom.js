@@ -17,7 +17,7 @@ function FooterBottom() {
     <div className="footer_bottom_main">
       <div className="container">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-3 col-12">
             <div className="footer_logo">
               <img src={logo} alt="logo" />
             </div>
@@ -26,7 +26,7 @@ function FooterBottom() {
               and accessing coworking spaces around the world.
             </p>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3 col-6">
             <h4 className="footer_h4">Coworking Space</h4>
             <ul style={{ paddingLeft: "0" }}>
               {cities?.map((city, i) => {
@@ -39,12 +39,15 @@ function FooterBottom() {
                 );
               })}
             </ul>
-            <div className="footer_phone">
+            <Link to="/about" className="desk_hide mb-0 contact_mob">
+              About Us
+            </Link>
+            <div className="footer_phone mob_hide">
               <p style={{ marginBottom: "0" }}>Phone :</p>
               <a href="tel: 9999108078">+91 9999108078</a>
             </div>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3 col-6">
             <h4 className="footer_h4">Virtual Office</h4>
             <ul style={{ paddingLeft: "0" }}>
               {cities?.map((city, i) => {
@@ -57,8 +60,11 @@ function FooterBottom() {
                 );
               })}
             </ul>
+            <Link to="/contact" className="desk_hide mb-0 contact_mob">
+              Contact Us
+            </Link>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3 mob_hide">
             <h4 className="footer_h4">Knowledge Center</h4>
             <ul style={{ paddingLeft: "0" }}>
               <li className="footer_list_item">

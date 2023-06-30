@@ -45,6 +45,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .mob_hide {
+    display: none;
+  }
   .find_space p {
     font-size: 20px;
     line-height: 20px;

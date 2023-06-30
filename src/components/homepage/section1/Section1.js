@@ -30,12 +30,7 @@ function Section1() {
 
   return (
     <>
-      <section
-        className="main_banner"
-        style={{
-          backgroundImage: `url(${main_banner})`,
-        }}
-      >
+      <section className="main_banner main_banner_section1">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
