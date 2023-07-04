@@ -114,7 +114,7 @@ function Contact() {
                         ></textarea>
                       </div>
                       <div className="col-12 form_btn text-center">
-                        <button type="submit" className="globalBtn">
+                        <button type="submit" className="globalBtn contactBtn">
                           BOOK NOW
                         </button>
                       </div>
@@ -138,7 +138,7 @@ function Contact() {
                     <hr />
                   </div>
                   <div className="row">
-                    <div className="col-6">
+                    <div className="col-12 col-sm-6 mb-4">
                       <div className="contact_icon_box">
                         <div className="call_icon">
                           <IoMdCall />
@@ -151,16 +151,16 @@ function Contact() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-sm-6 mb-4">
                       <div className="contact_icon_box">
                         <div className="call_icon">
                           <AiOutlineMail />
                         </div>
-                        <div>
+                        <div className="email_box_contact">
                           <h5>Email</h5>
                           <p>
-                            <a href="mailto:info@spacite.com">
-                              info@spacite.com
+                            <a href="mailto:thespacite@gmail.com">
+                              thespacite@gmail.com
                             </a>
                           </p>
                         </div>

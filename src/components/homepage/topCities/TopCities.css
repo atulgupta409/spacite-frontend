@@ -40,6 +40,14 @@
   margin: auto;
   border-radius: 0px 0px 20px 20px;
   z-index: 10;
+  display: flex;
+  color: white;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+}
+.top_city_overlay p {
+  margin-bottom: 0;
 }
 .card-title-cities {
   font-size: 17px;

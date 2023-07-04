@@ -84,7 +84,7 @@ function Navbar() {
                     Knowledge
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end">
-                    <li>
+                    {/* <li>
                       <a className="dropdown-item" href="#">
                         Enterprise Solutions
                       </a>
@@ -98,7 +98,7 @@ function Navbar() {
                       <a className="dropdown-item" href="#">
                         Franchise
                       </a>
-                    </li>
+                    </li> */}
                     <li>
                       <NavLink className="dropdown-item" to="/about">
                         About Us

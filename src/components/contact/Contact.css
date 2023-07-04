@@ -97,4 +97,21 @@
   align-items: center;
   justify-content: center;
   font-size: 31px;
+  padding: 9px;
+}
+.email_box_contact {
+  margin-left: 13px;
+}
+
+@media only screen and (max-width: 768px) {
+  #contact_info_sec .info_row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  #contact_info_sec .form_col {
+    padding: 20px 10px;
+  }
+  .contactBtn {
+    width: 150px;
+  }
 }

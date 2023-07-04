@@ -2,3 +2,48 @@
   text-align: left;
   font-size: 33px;
 }
+.pagination_icons {
+  font-size: 24px;
+}
+.page_item.active .page_link {
+  z-index: 3;
+  color: #d09cff !important;
+  border-color: #d09cff !important;
+  background-color: #fff !important;
+}
+.page_item {
+  box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.1);
+}
+.page_item .page_link {
+  font-weight: 600;
+  font-size: 20px;
+  color: #444;
+}
+.pagination_icon {
+  font-size: 27px;
+  color: #d09fef;
+}
+.page_link:focus {
+  background-color: #fff;
+  outline: 0;
+  box-shadow: none;
+}
+.mb_5 {
+  margin-bottom: 60px;
+}
+@media only screen and (max-width: 768px) {
+  .card_body_mob {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .mb_5 {
+    margin-bottom: 20px;
+  }
+  .propery_card_img {
+    height: 200px;
+  }
+  .card_title {
+    line-height: 18px;
+  }
+}

@@ -15,7 +15,10 @@ function Facility() {
         </h2>
         <div className="row facility_box">
           <div className="col-4">
-            <img src={wifi_icon} alt="wifi" />
+            <img
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1687863293358.svg"
+              alt="wifi"
+            />
             <p className="facility_name">High speed wifi</p>
             <p className="facility_description">
               High-Speed Wifi, HDTVs everything you need to do your best work.

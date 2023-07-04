@@ -1,11 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./PropertyPage.css";
-import image from "../media/propertyPage.png";
 import wifi_icon from "../media/wifi_icon.png";
 import printer_icon from "../media/printer_icon.svg";
 import parking_icon from "../media/parking_icon.svg";
-import desk_icon from "../media/desk_icon.svg";
 import explore_icon from "../media/icon/explore_arrow.png";
 import Select from "react-select";
 import Footer from "../footer/Footer";
@@ -16,10 +14,21 @@ import location_icon from "../media/icon/location.png";
 import Carousel from "react-elastic-carousel";
 import axios from "axios";
 import Modal from "react-modal";
+import { RxCross2 } from "react-icons/rx";
+import { AiOutlineMail } from "react-icons/ai";
 
 const PropertyPage = ({ workSpace }) => {
   const { breakPoints, Myarrow } = useContext(CityContext);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const navigate = useNavigate();
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   const location = useLocation();
   let pathArray = location.pathname.split("/");
@@ -46,6 +55,46 @@ const PropertyPage = ({ workSpace }) => {
     { value: "3-4 month", label: "3-4 Month" },
     { value: "after 4 month", label: "After 4 Month" },
   ];
+
+  const [plans, setPlans] = useState([]);
+
+  let coworkingPlans = [
+    {
+      id: 1,
+      name: "Virtual Office",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688105578710.svg",
+      description: "Book and experience the un-conventional work culture.",
+    },
+    {
+      id: 2,
+      name: "Hot Desk",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688105892652.svg",
+      description: "Dynamic workspace for versatile professionals.",
+    },
+    {
+      id: 3,
+      name: "Dedicated Desk",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688105556307.svg",
+      description: "A fixed desk in a shared coworking space.",
+    },
+    {
+      id: 4,
+      name: "Private Cabin",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688105567255.svg",
+      description: "Private office space dedicated to you and your team.",
+    },
+  ];
+
+  useEffect(() => {
+    const mainPriceCategory = workSpace.plans.map((plan, i) => ({
+      plan,
+      planImg: coworkingPlans[i].img,
+      description: coworkingPlans[i].description,
+    }));
+    setPlans([...mainPriceCategory]);
+  }, [workSpace.plans]);
+
+  console.log(plans);
 
   const [officeType, setOfficeType] = useState("");
   const [noSeats, setNoSeats] = useState("");
@@ -133,6 +182,7 @@ const PropertyPage = ({ workSpace }) => {
       validation();
     }
   };
+  console.log(workSpace);
 
   return (
     <>
@@ -200,19 +250,18 @@ const PropertyPage = ({ workSpace }) => {
               data-bs-ride="carousel"
             >
               <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img
-                    src={workSpace.images[0].image}
-                    className="d-block w-100"
-                    alt="..."
-                  />
-                </div>
-                <div className="carousel-item">
-                  <img src={image} className="d-block w-100" alt="..." />
-                </div>
-                <div className="carousel-item">
-                  <img src={image} className="d-block w-100" alt="..." />
-                </div>
+                {workSpace.images.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`carousel-item ${index === 0 ? "active" : ""}`}
+                  >
+                    <img
+                      src={image.image}
+                      className="d-block w-100"
+                      alt={`Image ${index + 1}`}
+                    />
+                  </div>
+                ))}
               </div>
               <button
                 className="carousel-control-prev"
@@ -279,109 +328,46 @@ const PropertyPage = ({ workSpace }) => {
             <hr className="devider_line" />
             <div className="row about_property_section">
               <h3 className="property_h3">About this property</h3>
-              {workSpace.description}
+              <p>{workSpace.description}</p>
             </div>
             <hr className="devider_line" />
-            <div className="row category_section_property">
-              <div className="col-6">
-                <h4>Dedicated Desk</h4>
-                <p className="mob_hide">
-                  A fixed desk in a shared coworking space.
-                </p>
-                <p className="facility_name">Starting From</p>
-                <p className="facility_name">
-                  <span>₹468/</span>Seat
-                </p>
-              </div>
-              <div className="col-6 desk_icon_box">
-                <img src={desk_icon} alt="desk" />
-                <div className="explore_box">
-                  <p>Enquire</p>
-                  <img src={explore_icon} alt="explore" />
+            {plans?.map((planElem, i) => {
+              return (
+                <div className="row category_section_property" key={i}>
+                  <div className="col-6">
+                    <h4>{planElem?.plan.category.name}</h4>
+                    <p className="mob_hide">{planElem.description}</p>
+                    <p className="facility_name">Starting From</p>
+                    <p className="facility_name">
+                      <span>₹{planElem.plan.price}/*</span>
+                      {planElem.plan.duration === "Year" ? "Year" : "Seat"}
+                    </p>
+                  </div>
+                  <div className="col-6 desk_icon_box">
+                    <img src={planElem.planImg} alt="desk" />
+                    <div className="explore_box">
+                      <p>Enquire</p>
+                      <img src={explore_icon} alt="explore" />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="row category_section_property">
-              <div className="col-6">
-                <h4>Private Cabin</h4>
-                <p className="mob_hide">
-                  Private office space dedicated to you and your team.
-                </p>
-                <p className="facility_name">Starting From</p>
-                <p className="facility_name">
-                  <span>₹468/</span>Seat
-                </p>
-              </div>
-              <div className="col-6 desk_icon_box">
-                <img src={desk_icon} alt="desk" />
-                <div className="explore_box">
-                  <p>Enquire</p>
-                  <img src={explore_icon} alt="explore" />
-                </div>
-              </div>
-            </div>
-            <div className="row category_section_property mb_30">
-              <div className="col-6">
-                <h4>Virtual Office</h4>
-                <p className="mob_hide">
-                  Book and experience the un-conventional work culture.
-                </p>
-                <p className="facility_name">Starting From</p>
-                <p className="facility_name">
-                  <span>₹468/</span>Seat
-                </p>
-              </div>
-              <div className="col-6 desk_icon_box">
-                <img src={desk_icon} alt="desk" />
-                <div className="explore_box">
-                  <p>Enquire</p>
-                  <img src={explore_icon} alt="explore" />
-                </div>
-              </div>
-            </div>
+              );
+            })}
             <hr className="devider_line" />
             <div className="row offers_section_property">
               <h3 className="property_h3">What this Space Offers</h3>
-              <div className="col-md-4 col-6 main_amenity_box">
-                <div className="main_amenity_icon">
-                  <img src={wifi_icon} alt="wifi" />
-                </div>
-                <div>
-                  <p>wifi</p>
-                </div>
-              </div>
-              <div className="col-md-4 col-6 main_amenity_box">
-                <div className="main_amenity_icon">
-                  <img src={wifi_icon} alt="wifi" />
-                </div>
-                <div>
-                  <p>Comfy Workstation</p>
-                </div>
-              </div>
-              <div className="col-md-4 col-6 main_amenity_box">
-                <div className="main_amenity_icon">
-                  <img src={wifi_icon} alt="wifi" />
-                </div>
-                <div>
-                  <p>Meeting Rooms</p>
-                </div>
-              </div>
-              <div className="col-md-4 col-6 main_amenity_box">
-                <div className="main_amenity_icon">
-                  <img src={wifi_icon} alt="wifi" />
-                </div>
-                <div>
-                  <p>Pantry</p>
-                </div>
-              </div>
-              <div className="col-md-4 col-6 main_amenity_box">
-                <div className="main_amenity_icon">
-                  <img src={wifi_icon} alt="wifi" />
-                </div>
-                <div>
-                  <p>Parking</p>
-                </div>
-              </div>
+              {workSpace?.amenties?.map((amenity, i) => {
+                return (
+                  <div className="col-md-4 col-6 main_amenity_box" key={i}>
+                    <div className="main_amenity_icon">
+                      <img src={wifi_icon} alt="wifi" />
+                    </div>
+                    <div>
+                      <p>{amenity?.name}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div className="col-lg-4 mob_hide">
@@ -609,155 +595,150 @@ const PropertyPage = ({ workSpace }) => {
           </Carousel>
         </div>
       </div>
-      <Footer />
-      <div className="desk_hide">
+      <div className="footer_mob">
+        <Footer />
+      </div>
+      <div className="desk_hide fixed_div">
+        <div className="starting_price">
+          <p>Starting from</p>
+          <p>
+            ₹
+            {
+              workSpace.plans.reduce((prev, current) => {
+                return current.price < prev.price ? current : prev;
+              }).price
+            }
+            /*<span>Month</span>
+          </p>
+        </div>
         <button
-          type="button"
-          className="btn btn-primary fix_btn"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
+          onClick={openModal}
+          className="fix_btn globalBtn"
+          style={{ width: "110px" }}
         >
-          Launch demo modal
+          Enquire
         </button>
-        <div
-          className="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={() => setModalIsOpen(false)}
+          contentLabel="Example Modal"
         >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
-                  Modal title
-                </h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+          <div className="close_icon_box">
+            <button>
+              <RxCross2 className="close_icon" onClick={closeModal} />
+            </button>
+          </div>
+
+          <form onSubmit={sendEmail}>
+            <div className="row">
+              <div className="col-md-12 mb-4">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="exampleInputtext"
+                  aria-describedby="emailHelp"
+                  placeholder="Name*"
+                  value={user.name}
+                  name="name"
+                  onChange={inputChangeHandler}
+                  onBlur={validation}
+                />
+                {nameError && <p className="error_validate">{nameError}</p>}
               </div>
-              <div className="modal-body">
-                <form onSubmit={sendEmail}>
-                  <div className="row">
-                    <div className="col-md-12 mb-4">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="exampleInputtext"
-                        aria-describedby="emailHelp"
-                        placeholder="Name*"
-                        value={user.name}
-                        name="name"
-                        onChange={inputChangeHandler}
-                        onBlur={validation}
-                      />
-                      {nameError && (
-                        <p className="error_validate">{nameError}</p>
-                      )}
-                    </div>
-                    <div className="col-md-12 mb-4">
-                      <input
-                        type="email"
-                        placeholder="Email"
-                        className="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        onChange={inputChangeHandler}
-                        onBlur={validation}
-                        name="email"
-                        value={user.email}
-                      />
-                      {emailError && (
-                        <p className="error_validate">{emailError}</p>
-                      )}
-                    </div>
-                    <div className="col-md-12 mb-4">
-                      <input
-                        type="text"
-                        placeholder="Phone"
-                        className="form-control"
-                        id="exampleInputEmail1"
-                        name="phone"
-                        value={user.phone}
-                        aria-describedby="emailHelp"
-                        onChange={inputChangeHandler}
-                        onBlur={validation}
-                      />
-                      {phoneError && (
-                        <p className="error_validate">{phoneError}</p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <div className="select_option_property">
-                        <Select
-                          value={optionsOfficeType.find(
-                            (option) => option.value === officeType
-                          )}
-                          onChange={selectChangeHandlerOffice}
-                          options={optionsOfficeType}
-                          placeholder="Office Type"
-                          inputProps={{
-                            name: "Office type",
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-md-6 mb-4">
-                      <div className="select_option_property">
-                        <Select
-                          value={optionSeats.find(
-                            (option) => option.value === noSeats
-                          )}
-                          onChange={selectChangeHandlerSeats}
-                          options={optionSeats}
-                          placeholder="No. of Seats"
-                          inputProps={{
-                            name: "No. of seats",
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-6">
-                      <div className="select_option_property">
-                        <Select
-                          defaultValue={moveIn}
-                          onChange={selectChangeHandlerMove}
-                          options={optionsMoveIn}
-                          placeholder="Move In"
-                          inputProps={{
-                            name: "Move in",
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className="col-6">
-                      <button
-                        type="submit"
-                        className="globalBtn w-100 contact_btn"
-                        data-bs-dismiss={
-                          user.name.trim() !== "" &&
-                          emailPattern.test(user.email) &&
-                          phonePattern.test(user.phone) &&
-                          loading &&
-                          "modal"
-                        }
-                      >
-                        {loading ? "sending..." : "Find your space"}
-                      </button>
-                    </div>
-                  </div>
-                </form>
+              <div className="col-md-12 mb-4">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  onChange={inputChangeHandler}
+                  onBlur={validation}
+                  name="email"
+                  value={user.email}
+                />
+                {emailError && <p className="error_validate">{emailError}</p>}
+              </div>
+              <div className="col-md-12 mb-4">
+                <input
+                  type="text"
+                  placeholder="Phone"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  name="phone"
+                  value={user.phone}
+                  aria-describedby="emailHelp"
+                  onChange={inputChangeHandler}
+                  onBlur={validation}
+                />
+                {phoneError && <p className="error_validate">{phoneError}</p>}
               </div>
             </div>
-          </div>
-        </div>
+            <div className="row">
+              <div className="col-md-6 mb-4">
+                <div className="select_option_property">
+                  <Select
+                    value={optionsOfficeType.find(
+                      (option) => option.value === officeType
+                    )}
+                    onChange={selectChangeHandlerOffice}
+                    options={optionsOfficeType}
+                    placeholder="Office Type"
+                    inputProps={{
+                      name: "Office type",
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6 mb-4">
+                <div className="select_option_property">
+                  <Select
+                    value={optionSeats.find(
+                      (option) => option.value === noSeats
+                    )}
+                    onChange={selectChangeHandlerSeats}
+                    options={optionSeats}
+                    placeholder="No. of Seats"
+                    inputProps={{
+                      name: "No. of seats",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-6">
+                <div className="select_option_property">
+                  <Select
+                    defaultValue={moveIn}
+                    onChange={selectChangeHandlerMove}
+                    options={optionsMoveIn}
+                    placeholder="Move In"
+                    inputProps={{
+                      name: "Move in",
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-6">
+                <button
+                  type="submit"
+                  className="globalBtn w-100 contact_btn"
+                  data-bs-dismiss={
+                    user.name.trim() !== "" &&
+                    emailPattern.test(user.email) &&
+                    phonePattern.test(user.phone) &&
+                    loading &&
+                    "modal"
+                  }
+                >
+                  {loading ? "sending..." : "Find your space"}
+                </button>
+              </div>
+            </div>
+          </form>
+        </Modal>
       </div>
     </>
   );

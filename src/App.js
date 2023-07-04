@@ -22,7 +22,6 @@ function App() {
   useEffect(() => {
     handleFetchWorkSpaceData();
   }, []);
-  console.log(workSpaces);
   return (
     <div>
       <Routes>
@@ -51,7 +50,7 @@ function App() {
           ]}
         />
         <Route
-          path="coworking-space/:id"
+          path="coworking-space/:cityName"
           element={[
             <Navbar key={10} />,
             <CityPage key={11} />,

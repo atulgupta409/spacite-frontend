@@ -1,9 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import contactImg from "../../media/home_contact_img.png";
 import "./HomeContact.css";
 import Select from "react-select";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
@@ -56,7 +55,6 @@ function HomeContact() {
     setMoveIn(moveIn?.value);
   };
 
-  const formRef = useRef(null);
   const phonePattern = /^\d{10}$/;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const validation = () => {
@@ -122,7 +120,6 @@ function HomeContact() {
   return (
     <div className="main_banner2 home_contact_main">
       <div className="container">
-        <ToastContainer />
         <div className="row">
           <div className="col-4 desk_hide">
             <img src={contactImg} alt="contact" className="img-fluid" />
@@ -251,8 +248,8 @@ function HomeContact() {
                 </div>
               </form>
               <div className="robi_mail_box">
-                <a href="mailto: robi@spacite.com">
-                  <span>Email : </span>robi@spacite.com
+                <a href="mailto:thespacite@gmail.com">
+                  <span>Email : </span>thespacite@gmail.com
                 </a>
               </div>
             </div>

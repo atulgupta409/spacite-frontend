@@ -52,7 +52,7 @@ export const CityProvider = ({ children }) => {
     );
   }
   const breakPoints = [
-    { width: 1, itemsToShow: 1.2 },
+    { width: 1, itemsToShow: 1.4 },
     // { width: 420, itemsToShow:  },
     { width: 500, itemsToShow: 2 },
     { width: 768, itemsToShow: 4 },
@@ -63,12 +63,13 @@ export const CityProvider = ({ children }) => {
 
   // Provide the cities data and handleFetchCities function to consuming components
   useEffect(() => {
-    const mainCities = cities.map((city, i) => ({
+    const mainCities = cities?.map((city, i) => ({
       city,
-      cityImg: coworkingCities[i].img,
+      cityImg: coworkingCities[i]?.img,
     }));
     setAllCities([...mainCities]);
   }, [cities]);
+  // console.log(filteredCities);
 
   const cityData = {
     cities,

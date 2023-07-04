@@ -199,9 +199,35 @@
   width: 10px;
 }
 @media only screen and (max-width: 768px) {
-  .fix_btn {
+  .fixed_div {
     position: fixed;
     bottom: 0;
+    width: 100%;
+    padding: 14px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #fff;
+    align-items: center;
+    box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.1);
+  }
+  .footer_mob {
+    margin-bottom: 63px;
+  }
+  .starting_price p:nth-child(1) {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #444;
+  }
+  .starting_price p:nth-child(2) {
+    font-size: 20px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 0;
+  }
+  .starting_price p:nth-child(2) span {
+    font-size: 16px;
+    color: #d09cff;
   }
   .price_section_box {
     display: none;
@@ -243,5 +269,27 @@
   }
   .mb_30 {
     margin-bottom: 30px;
+  }
+  .ReactModal__Overlay {
+    margin-top: 77px !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+  }
+  .ReactModal__Content {
+    inset: 13px !important;
+  }
+  .close_icon_box {
+    text-align: right;
+  }
+  .close_icon_box button {
+    border: none;
+    background-color: #fff;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .close_icon {
+    border: none;
+    background-color: #fff;
+    font-size: 28px;
+    margin-bottom: 10px;
   }
 }

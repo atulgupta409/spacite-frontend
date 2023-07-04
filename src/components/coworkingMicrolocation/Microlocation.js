@@ -3,10 +3,11 @@ import { Link, useLocation, NavLink } from "react-router-dom";
 import { CityContext } from "../context/CityContext";
 import "./Microlocation.css";
 import robot from "../media/robi.png";
-import top_gurgaon from "../media/coworking_img/top-gurgaon.png";
 import location_icon from "../media/icon/location.png";
 import HomeContact from "../homepage/home-contact/HomeContact";
 import { getWorkSpaceByMicrolocation } from "../service/Service";
+import ReactPaginate from "react-paginate";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 function Microlocation() {
   const location = useLocation();
@@ -18,22 +19,36 @@ function Microlocation() {
   let microName = microlocation.split("-").join(" ");
 
   const [workSpaces, setWorkSpaces] = useState([]);
+  const [totalCount, setTotalCount] = useState("");
+  let item_per_page = 8;
+  let totalPage = Math.ceil(totalCount / item_per_page);
 
   const { microlocations, handleFetchMicrolocations } = useContext(CityContext);
-  const handleFetchWorkSpaces = async () => {
-    await getWorkSpaceByMicrolocation(setWorkSpaces, microName);
+  const handleFetchWorkSpaces = async (current_page) => {
+    await getWorkSpaceByMicrolocation(
+      setWorkSpaces,
+      microName,
+      item_per_page,
+      current_page,
+      setTotalCount
+    );
   };
-  console.log(microName);
+
+  let current_page;
+  const handlePageClick = async (data_page) => {
+    current_page = data_page.selected + 1;
+    handleFetchWorkSpaces(current_page);
+  };
 
   useEffect(() => {
     handleFetchMicrolocations();
-    handleFetchWorkSpaces();
+    handleFetchWorkSpaces(current_page);
   }, [cityName]);
-  console.log(workSpaces);
 
-  // products.reduce((prev, current) => {
-  //   return (current.price < prev.price) ? current : prev;
-  // })
+  const extractedWorkspaces = workSpaces?.slice(0, 4);
+  const extractedWorkspaces2 = workSpaces?.slice(4);
+
+  // console.log(workSpaces?.coworkingSpaces);
 
   return (
     <div style={{ marginTop: "100px" }}>
@@ -88,44 +103,111 @@ function Microlocation() {
             })}
           </ul>
         </div>
-        <div className="top_space_row">
-          {workSpaces?.map((workspace, i) => {
-            return (
-              <Link to={`/coworking/${workspace.slug}`} className="space_link">
-                <div className="property-card" key={i}>
-                  <div className="property_img">
-                    <img
-                      src={workspace.images[0].image}
-                      alt=""
-                      className="propery_card_img"
-                    />
+      </div>
+      <div className="container">
+        <div className="row top_space_row">
+          {extractedWorkspaces?.map((workspace, i) => (
+            <div className="col-md-6 col-lg-3 property-card mb_5" key={i}>
+              <Link
+                to={`/coworking/${workspace?.slug}`}
+                className="row space_link"
+              >
+                <div className="col-6 col-md-12 property_img">
+                  <img
+                    src={workspace?.images[0].image}
+                    alt=""
+                    className="propery_card_img"
+                  />
+                </div>
+                <div className="col-6 col-md-12 card-body space_card card_body_mob">
+                  <p className="card-title card_title">{workspace.name}</p>
+                  <div className="location_box">
+                    <img src={location_icon} alt="location-icon" />
+                    <p>
+                      {workspace?.location.address.length > 20
+                        ? workspace?.location.address.slice(0, 20) + "..."
+                        : workspace?.location.address}
+                    </p>
                   </div>
-                  <div className="card-body space_card">
-                    <p className="card-title">{workspace.name}</p>
-                    <div className="location_box">
-                      <img src={location_icon} alt="location-icon" />
-                      <p>{workspace.location.address}</p>
-                    </div>
-                    <p className="price_from">Starting from</p>
-                    <div className="price_box">
-                      <p className="price">
-                        ₹
-                        {
-                          workspace.plans.reduce((prev, current) => {
-                            return current.price < prev.price ? current : prev;
-                          }).price
-                        }
-                        /*<span>month</span>
-                      </p>
-                    </div>
+                  <p className="price_from">Starting from</p>
+                  <div className="price_box">
+                    <p className="price">
+                      ₹
+                      {
+                        workspace?.plans.reduce((prev, current) => {
+                          return current.price < prev.price ? current : prev;
+                        }).price
+                      }
+                      /*<span>month</span>
+                    </p>
                   </div>
                 </div>
               </Link>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
       <HomeContact />
+      <div className="container">
+        <div className="row top_space_row">
+          {extractedWorkspaces2?.map((workspace, i) => (
+            <div className="col-md-6 col-lg-3 property-card mb_5" key={i}>
+              <Link
+                to={`/coworking/${workspace?.slug}`}
+                className="row space_link"
+              >
+                <div className="col-6 col-md-12 property_img">
+                  <img
+                    src={workspace?.images[0].image}
+                    alt=""
+                    className="propery_card_img"
+                  />
+                </div>
+                <div className="col-6 col-md-12 card-body space_card card_body_mob">
+                  <p className="card-title card_title">{workspace.name}</p>
+                  <div className="location_box">
+                    <img src={location_icon} alt="location-icon" />
+                    <p>
+                      {workspace?.location.address.length > 20
+                        ? workspace?.location.address.slice(0, 20) + "..."
+                        : workspace?.location.address}
+                    </p>
+                  </div>
+                  <p className="price_from">Starting from</p>
+                  <div className="price_box">
+                    <p className="price">
+                      ₹
+                      {
+                        workspace?.plans.reduce((prev, current) => {
+                          return current.price < prev.price ? current : prev;
+                        }).price
+                      }
+                      /*<span>month</span>
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <ReactPaginate
+        previousLabel={<MdKeyboardArrowLeft className="pagination_icon" />}
+        nextLabel={<MdKeyboardArrowRight className="pagination_icon" />}
+        breakLabel={"..."}
+        pageCount={totalPage}
+        marginPagesDisplayed={2}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination justify-content-center"}
+        pageClassName={"page-item page_item"}
+        pageLinkClassName={"page-link page_link"}
+        previousClassName={"page-item page_item"}
+        previousLinkClassName={"page-link page_link"}
+        nextClassName={"page-item page_item"}
+        nextLinkClassName={"page-link page_link"}
+        activeClassName={"active"}
+      ></ReactPaginate>
       <div className="other_location_box">
         <h2>
           Other <span style={{ color: "#d09cff" }}>Locations</span>

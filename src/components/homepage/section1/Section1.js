@@ -56,8 +56,8 @@ function Section1() {
                             to={`/coworking-space/${elem.city.name.toLowerCase()}`}
                           >
                             <div className="city_item">
-                              <img src={elem.cityImg} alt={elem.city.name} />
-                              <p>{elem.city.name}</p>
+                              <img src={elem?.cityImg} alt={elem.city.name} />
+                              <p>{elem?.city.name}</p>
                             </div>
                           </NavLink>
                         </div>
