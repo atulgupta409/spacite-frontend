@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import contactBanner from "../media/contact-banner.png";
-import contactImg from "../media/contact-img.png";
 import "./Contact.css";
 import { IoMdCall } from "react-icons/io";
 import { AiOutlineMail } from "react-icons/ai";
@@ -30,7 +28,7 @@ function Contact() {
       <section
         id="contact_banner_area"
         style={{
-          backgroundImage: `url(${contactBanner})`,
+          backgroundImage: `url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688627675212.png")`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "right",
@@ -127,7 +125,11 @@ function Contact() {
               <div className="row">
                 <div className="col-12">
                   <div className="contact_img">
-                    <img src={contactImg} alt="contact" className="img-fluid" />
+                    <img
+                      src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688627764667.png"
+                      alt="contact"
+                      className="img-fluid"
+                    />
                   </div>
                 </div>
               </div>

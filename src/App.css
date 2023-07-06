@@ -46,6 +46,29 @@ h2 {
   font-weight: 500;
   transition: 0.3s ease-in-out;
 }
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.wave-effect {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
 .contact_wrapper {
   margin-bottom: 80px;
 }

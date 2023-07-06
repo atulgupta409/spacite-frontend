@@ -5,13 +5,13 @@
   text-align: center;
 }
 .main_banner_partner {
-  background-image: url("../../media/partner_bannner.png");
+  background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688621645584.png");
   height: 90vh;
   margin-top: -2px;
 }
 @media only screen and (max-width: 768px) {
   .main_banner_partner {
-    background-image: url("../../media/partner_banner_mob.png");
+    background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688621422812.png");
     height: 26vh;
   }
 }

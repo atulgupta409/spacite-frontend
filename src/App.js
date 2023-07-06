@@ -58,7 +58,7 @@ function App() {
           ]}
         />
         <Route
-          path="coworking-space/:id1/:id2"
+          path="coworking-space/:id/:id2"
           element={[
             <Navbar key={13} />,
             <Microlocation key={14} />,

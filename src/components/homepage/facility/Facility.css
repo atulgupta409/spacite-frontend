@@ -1,5 +1,5 @@
 .facility_main {
-  background-image: url("../../media/facility_banner.png");
+  background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688620820028.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,7 +24,7 @@
 }
 @media only screen and (max-width: 768px) {
   .facility_main {
-    background-image: url("../../media/facility_banner_mob.png");
+    background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688620847918.png");
     padding: 60px 0;
   }
   .facility_description {

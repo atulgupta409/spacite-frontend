@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import contactImg from "../../media/home_contact_img.png";
 import "./HomeContact.css";
 import Select from "react-select";
 import axios from "axios";
@@ -122,7 +121,11 @@ function HomeContact() {
       <div className="container">
         <div className="row">
           <div className="col-4 desk_hide">
-            <img src={contactImg} alt="contact" className="img-fluid" />
+            <img
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688621027741.png"
+              alt="contact"
+              className="img-fluid"
+            />
           </div>
           <div className="col-8 desk_hide">
             <div className="d_flex_mob">
@@ -139,7 +142,11 @@ function HomeContact() {
         </h2>
         <div className="row contact_section">
           <div className="col-md-6 home_contact_img">
-            <img src={contactImg} alt="contact" className="img-fluid" />
+            <img
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688621027741.png"
+              alt="contact"
+              className="img-fluid"
+            />
           </div>
           <div className="col-md-6">
             <div className="contact_form_box">

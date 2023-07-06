@@ -11,7 +11,7 @@
   font-weight: 600;
 }
 .main_banner_section1 {
-  background-image: url("../../media/main_banner_desktop.png");
+  background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688468030292.png");
 }
 .spaces,
 .cowrk {
@@ -19,7 +19,7 @@
 }
 .spaces:after {
   position: absolute;
-  background-image: url("https://cofynd-staging.s3.ap-south-1.amazonaws.com/images/original/e952271d00eb3de4234d9ad6651e35954606256a.png");
+  background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362509644.png");
   background-size: cover;
   content: "";
   width: 46px;
@@ -31,7 +31,7 @@
 .cowrk:before {
   position: absolute;
   left: -22px;
-  background-image: url("https://cofynd-staging.s3.ap-south-1.amazonaws.com/images/original/4a3a57156e053915a02306080f19626db61a2239.png");
+  background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362499825.png");
   background-size: cover;
   content: "";
   width: 46px;
@@ -114,7 +114,7 @@
 
 @media only screen and (max-width: 768px) {
   .main_banner_section1 {
-    background-image: url("../../media/main_banner.png");
+    background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688622110357.png");
   }
   .find:after {
     font-size: 15px;

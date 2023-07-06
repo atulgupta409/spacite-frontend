@@ -1,13 +1,6 @@
 import React from "react";
 import "./About.css";
-import listSpaceBanner from "../media/list-your-space-banner.png";
 import { NavLink } from "react-router-dom";
-import missionImg from "../media/mission-img.png";
-import visionImg from "../media/vission-img.png";
-import expert1 from "../media/expert-profile-1.jpg";
-import expert2 from "../media/expert-profile-2.jpg";
-import expert3 from "../media/expert-profile-3.jpg";
-import ctaBack from "../media/CTA-back.jpg";
 
 function About() {
   return (
@@ -18,7 +11,7 @@ function About() {
             <div className="col-sm-5 order-sm-last">
               <div className="banner_img your_space_img">
                 <img
-                  src={listSpaceBanner}
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688629365491.png"
                   alt="listSpaceBanner"
                   className="img-fluid mx-auto d-block"
                 />
@@ -76,7 +69,11 @@ function About() {
           <div className="row align-items-center">
             <div className="col-md-5">
               <div className="about-img">
-                <img src={missionImg} alt="missionImg" className="img-fluid" />
+                <img
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688627981282.png"
+                  alt="missionImg"
+                  className="img-fluid"
+                />
               </div>
             </div>
             <div className="col-md-7">
@@ -95,7 +92,11 @@ function About() {
           <div className="row align-items-center">
             <div className="col-md-5 order-sm-last">
               <div className="about-img">
-                <img src={visionImg} alt="visionImg" className="img-fluid" />
+                <img
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688628065983.png"
+                  alt="visionImg"
+                  className="img-fluid"
+                />
               </div>
             </div>
             <div className="col-md-7 order-sm-first">
@@ -132,7 +133,11 @@ function About() {
               <div className="experts_box">
                 <div className="experts-item">
                   <div className="experts-img">
-                    <img src={expert1} alt="expert1" className="img-fluid" />
+                    <img
+                      src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688628135891.jpg"
+                      alt="expert1"
+                      className="img-fluid"
+                    />
                   </div>
                   <div className="experts-content">
                     <h4>John Smith</h4>
@@ -144,7 +149,11 @@ function About() {
               <div className="experts_box">
                 <div className="experts-item">
                   <div className="experts-img">
-                    <img src={expert2} alt="expert2" className="img-fluid" />
+                    <img
+                      src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688628194842.jpg"
+                      alt="expert2"
+                      className="img-fluid"
+                    />
                   </div>
                   <div className="experts-content">
                     <h4>Will Smith</h4>
@@ -156,7 +165,11 @@ function About() {
               <div className="experts_box">
                 <div className="experts-item">
                   <div className="experts-img">
-                    <img src={expert3} alt="expert3" className="img-fluid" />
+                    <img
+                      src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688628221693.jpg"
+                      alt="expert3"
+                      className="img-fluid"
+                    />
                   </div>
                   <div className="experts-content">
                     <h4>Williams</h4>
@@ -172,7 +185,7 @@ function About() {
           <div
             className="row"
             style={{
-              backgroundImage: `url(${ctaBack})`,
+              backgroundImage: `url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688627849173.jpg")`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "right",

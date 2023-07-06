@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from "react";
 import "./Footer.css";
-import logo from "../media/logo.png";
 import { Link } from "react-router-dom";
 import { CityContext } from "../context/CityContext";
 
@@ -19,7 +18,10 @@ function FooterBottom() {
         <div className="row">
           <div className="col-md-3 col-12">
             <div className="footer_logo">
-              <img src={logo} alt="logo" />
+              <img
+                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688623571085.png"
+                alt="logo"
+              />
             </div>
             <p className="footer_tagline">
               Coworking India is an online platform for discovering, booking,

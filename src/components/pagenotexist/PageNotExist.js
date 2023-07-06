@@ -1,5 +1,4 @@
 import React from "react";
-import pageNotFound from "../media/page-not-found.png";
 import { NavLink } from "react-router-dom";
 
 function PageNotExist() {
@@ -13,7 +12,11 @@ function PageNotExist() {
         height: "100vh",
       }}
     >
-      <img src={pageNotFound} alt="page-not-found" width="300px" />
+      <img
+        src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688628578317.png"
+        alt="page-not-found"
+        width="300px"
+      />
       <NavLink to="/">
         <button className="globalBtn">Back to home</button>
       </NavLink>

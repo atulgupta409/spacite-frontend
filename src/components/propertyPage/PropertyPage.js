@@ -1,21 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./PropertyPage.css";
-import wifi_icon from "../media/wifi_icon.png";
-import printer_icon from "../media/printer_icon.svg";
-import parking_icon from "../media/parking_icon.svg";
-import explore_icon from "../media/icon/explore_arrow.png";
 import Select from "react-select";
 import Footer from "../footer/Footer";
 import SpaceExpert from "../homepage/spaceExpert/SpaceExpert";
 import { CityContext } from "../context/CityContext";
 import top_gurgaon from "../media/coworking_img/top-gurgaon.png";
-import location_icon from "../media/icon/location.png";
 import Carousel from "react-elastic-carousel";
 import axios from "axios";
 import Modal from "react-modal";
 import { RxCross2 } from "react-icons/rx";
-import { AiOutlineMail } from "react-icons/ai";
 
 const PropertyPage = ({ workSpace }) => {
   const { breakPoints, Myarrow } = useContext(CityContext);
@@ -33,7 +27,8 @@ const PropertyPage = ({ workSpace }) => {
   const location = useLocation();
   let pathArray = location.pathname.split("/");
   let lastElem = pathArray[pathArray.length - 1];
-  let cityName = lastElem.charAt(0).toUpperCase() + lastElem.slice(1);
+  let str = lastElem.charAt(0).toUpperCase() + lastElem.slice(1);
+  let cityName = str.split("-").join(" ");
 
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
@@ -62,39 +57,112 @@ const PropertyPage = ({ workSpace }) => {
     {
       id: 1,
       name: "Virtual Office",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688105578710.svg",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626834011.png",
       description: "Book and experience the un-conventional work culture.",
     },
     {
       id: 2,
       name: "Hot Desk",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688105892652.svg",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626806995.png",
       description: "Dynamic workspace for versatile professionals.",
     },
     {
       id: 3,
       name: "Dedicated Desk",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688105556307.svg",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png",
       description: "A fixed desk in a shared coworking space.",
     },
     {
       id: 4,
       name: "Private Cabin",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688105567255.svg",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626825661.png",
       description: "Private office space dedicated to you and your team.",
     },
   ];
 
+  const amenityIcons = [
+    {
+      id: 1,
+      name: "Air Conditioning",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362238486.png",
+    },
+    {
+      id: 2,
+      name: "Coffee and Tea",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362247987.png",
+    },
+    {
+      id: 3,
+      name: "Reception",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362269832.png",
+    },
+    {
+      id: 4,
+      name: "Housekeeping",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362257976.png",
+    },
+    {
+      id: 5,
+      name: "Dedicated Desk",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png",
+    },
+    {
+      id: 6,
+      name: "Private Cabin",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626825661.png",
+    },
+    {
+      id: 7,
+      name: "High-Speed Wifi",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png",
+    },
+    {
+      id: 8,
+      name: "Meeting Rooms",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361881320.png",
+    },
+    {
+      id: 9,
+      name: "Comfy Workstation",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361858729.png",
+    },
+    {
+      id: 10,
+      name: "Parking",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png",
+    },
+  ];
+
+  const [amenities, setAmenities] = useState([]);
+
   useEffect(() => {
-    const mainPriceCategory = workSpace.plans.map((plan, i) => ({
+    const mainAmenities = workSpace?.amenties?.map((amenity, i) => ({
+      amenity,
+      amenityImg: amenityIcons[i]?.icon,
+    }));
+    setAmenities([...mainAmenities]);
+  }, [workSpace?.amenties]);
+  console.log(amenities);
+
+  const location_icon =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png";
+  const explore_icon =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624307161.png";
+  const wifi_icon =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png";
+  const parking_icon =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png";
+  const printer_icon =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361932524.png";
+
+  useEffect(() => {
+    const mainPriceCategory = workSpace?.plans?.map((plan, i) => ({
       plan,
-      planImg: coworkingPlans[i].img,
-      description: coworkingPlans[i].description,
+      planImg: coworkingPlans[i]?.img,
+      description: coworkingPlans[i]?.description,
     }));
     setPlans([...mainPriceCategory]);
-  }, [workSpace.plans]);
-
-  console.log(plans);
+  }, [workSpace?.plans]);
 
   const [officeType, setOfficeType] = useState("");
   const [noSeats, setNoSeats] = useState("");
@@ -113,7 +181,6 @@ const PropertyPage = ({ workSpace }) => {
   const selectChangeHandlerOffice = (officeType, noSeats, moveIn) => {
     setOfficeType(officeType?.value);
   };
-  console.log(officeType);
   const selectChangeHandlerSeats = (noSeats) => {
     setNoSeats(noSeats?.value);
   };
@@ -182,7 +249,6 @@ const PropertyPage = ({ workSpace }) => {
       validation();
     }
   };
-  console.log(workSpace);
 
   return (
     <>
@@ -209,32 +275,33 @@ const PropertyPage = ({ workSpace }) => {
           </li>
         </ol>
       </nav>
+      <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} />
       <div className="container">
         <div className="row title_section_property">
           <div className="col-md-6">
             <h1 className="title_heading_property">
-              {workSpace.name.split(" ").length > 1 ? (
+              {workSpace?.name.split(" ").length > 1 ? (
                 <span>
-                  {workSpace.name
+                  {workSpace?.name
                     .split(" ")
                     .slice(0, workSpace.name.split(" ").length - 1)
                     .join(" ")}{" "}
                   <span className="title_color_property">
-                    {workSpace.name.split(" ").pop()}
+                    {workSpace?.name.split(" ").pop()}
                   </span>
                 </span>
               ) : (
-                workSpace.name
+                workSpace?.name
               )}
             </h1>
-            <p>{workSpace.location?.address}</p>
+            <p>{workSpace?.location?.address}</p>
           </div>
           <div className="col-md-3 price_section_box">
             <p>Starting From</p>
             <p className="price_section_property">
               ₹
               {
-                workSpace.plans.reduce((prev, current) => {
+                workSpace?.plans.reduce((prev, current) => {
                   return current.price < prev.price ? current : prev;
                 }).price
               }
@@ -250,13 +317,13 @@ const PropertyPage = ({ workSpace }) => {
               data-bs-ride="carousel"
             >
               <div className="carousel-inner">
-                {workSpace.images.map((image, index) => (
+                {workSpace?.images?.map((image, index) => (
                   <div
                     key={index}
                     className={`carousel-item ${index === 0 ? "active" : ""}`}
                   >
                     <img
-                      src={image.image}
+                      src={image?.image}
                       className="d-block w-100"
                       alt={`Image ${index + 1}`}
                     />
@@ -328,23 +395,23 @@ const PropertyPage = ({ workSpace }) => {
             <hr className="devider_line" />
             <div className="row about_property_section">
               <h3 className="property_h3">About this property</h3>
-              <p>{workSpace.description}</p>
+              <p>{workSpace?.description}</p>
             </div>
             <hr className="devider_line" />
             {plans?.map((planElem, i) => {
               return (
                 <div className="row category_section_property" key={i}>
                   <div className="col-6">
-                    <h4>{planElem?.plan.category.name}</h4>
-                    <p className="mob_hide">{planElem.description}</p>
+                    <h4>{planElem?.plan?.category?.name}</h4>
+                    <p className="mob_hide">{planElem?.description}</p>
                     <p className="facility_name">Starting From</p>
                     <p className="facility_name">
-                      <span>₹{planElem.plan.price}/*</span>
-                      {planElem.plan.duration === "Year" ? "Year" : "Seat"}
+                      <span>₹{planElem?.plan?.price}/*</span>
+                      {planElem?.plan.duration === "Year" ? "Year" : "Seat"}
                     </p>
                   </div>
                   <div className="col-6 desk_icon_box">
-                    <img src={planElem.planImg} alt="desk" />
+                    <img src={planElem?.planImg} alt="desk" />
                     <div className="explore_box">
                       <p>Enquire</p>
                       <img src={explore_icon} alt="explore" />
@@ -356,14 +423,17 @@ const PropertyPage = ({ workSpace }) => {
             <hr className="devider_line" />
             <div className="row offers_section_property">
               <h3 className="property_h3">What this Space Offers</h3>
-              {workSpace?.amenties?.map((amenity, i) => {
+              {amenities?.map((amenity, i) => {
                 return (
                   <div className="col-md-4 col-6 main_amenity_box" key={i}>
                     <div className="main_amenity_icon">
-                      <img src={wifi_icon} alt="wifi" />
+                      <img
+                        src={amenity.amenityImg}
+                        alt={amenity.amenity?.name}
+                      />
                     </div>
                     <div>
-                      <p>{amenity?.name}</p>
+                      <p>{amenity.amenity?.name}</p>
                     </div>
                   </div>
                 );

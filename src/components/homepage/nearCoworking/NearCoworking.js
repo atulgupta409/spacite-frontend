@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import top_gurgaon from "../../media/coworking_img/top-gurgaon.png";
-import location_icon from "../../media/icon/location.png";
 import Carousel from "react-elastic-carousel";
 import "./NearCoworking.css";
 import { CityContext } from "../../context/CityContext";
 
 function NearCoworking() {
   const { breakPoints, Myarrow } = useContext(CityContext);
+
+  const location_icon =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png";
 
   return (
     <div className="mob_section">

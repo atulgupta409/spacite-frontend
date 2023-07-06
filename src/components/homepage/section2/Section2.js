@@ -1,14 +1,12 @@
 import React from "react";
-import section2_banner from "../../media/home_bg/section2_patterns.png";
 import "./Section2.css";
-import spaces from "../../media/home_bg/space.png";
-import cities from "../../media/home_bg/cities.png";
-import country from "../../media/home_bg/country.png";
 
 function Section2() {
   return (
     <div
-      style={{ backgroundImage: `url(${section2_banner})` }}
+      style={{
+        backgroundImage: `url(https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688620396063.png)`,
+      }}
       className="main_banner2 mob_hide"
     >
       <div className="container">
@@ -23,20 +21,29 @@ function Section2() {
         </div>
         <div className="row mb-5">
           <div className="col-4 find_space">
-            <img src={spaces} alt="spaces" />
+            <img
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361770470.png"
+              alt="spaces"
+            />
             <p>
               9500+ <span>Spaces</span>
             </p>
           </div>
           <div className="col-4 find_space">
-            <img src={cities} alt="cities" />
+            <img
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361800856.png"
+              alt="cities"
+            />
             <p>
               7+
               <span>Cities</span>
             </p>
           </div>
           <div className="col-4 find_space">
-            <img src={country} alt="country" />
+            <img
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361785577.png"
+              alt="country"
+            />
             <p>
               No. 1 <span>in country</span>
             </p>

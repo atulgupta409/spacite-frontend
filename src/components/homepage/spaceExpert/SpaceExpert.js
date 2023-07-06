@@ -1,6 +1,5 @@
 import React from "react";
 import "./SpaceExpert.css";
-import robi from "../../media/robi.png";
 
 function SpaceExpert() {
   return (
@@ -12,7 +11,11 @@ function SpaceExpert() {
         <div className="row">
           <div className="col-6">
             <div className="robi_img_box">
-              <img className="img-fluid" src={robi} alt="robi" />
+              <img
+                className="img-fluid"
+                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688621027741.png"
+                alt="robi"
+              />
             </div>
           </div>
           <div className="col-6 contact_box">

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../media/logo.png";
 import "./Navbar.css";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { CityContext } from "../context/CityContext";
@@ -18,7 +17,11 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg">
           <div className="container-fluid">
             <NavLink className="navbar-brand" to="/">
-              <img src={logo} alt="specite-logo" width="150px" />
+              <img
+                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688623571085.png"
+                alt="specite-logo"
+                width="150px"
+              />
             </NavLink>
             <button
               className="navbar-toggler"

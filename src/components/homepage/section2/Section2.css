@@ -10,7 +10,7 @@
 }
 .sub_heading span:before {
   position: absolute;
-  background-image: url("https://cofynd-staging.s3.ap-south-1.amazonaws.com/images/original/e952271d00eb3de4234d9ad6651e35954606256a.png");
+  background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362509644.png");
   background-size: cover;
   content: "";
   width: 30px;

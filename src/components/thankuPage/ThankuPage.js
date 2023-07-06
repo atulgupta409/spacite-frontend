@@ -1,5 +1,4 @@
 import React from "react";
-import thankYou from "../media/Thank you page vector.svg";
 import { Link, useNavigate } from "react-router-dom";
 
 function ThankuPage() {
@@ -30,7 +29,11 @@ function ThankuPage() {
           </div>
         </div>
         <div className="col-12 col-md-5 d-flex justify-content-center align-items-center">
-          <img src={thankYou} alt="thank you" className="thanku_img" />
+          <img
+            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688629207512.png"
+            alt="thank you"
+            className="thanku_img"
+          />
         </div>
       </div>
     </div>
