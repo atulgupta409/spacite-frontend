@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.3c236a58.css",
-    "main.js": "/static/js/main.e7f6afe7.js",
+    "main.js": "/static/js/main.3f31ecfa.js",
     "static/js/787.57ed4475.chunk.js": "/static/js/787.57ed4475.chunk.js",
     "static/media/premium_brand.png": "/static/media/premium_brand.a2d17dc8b195ccc1948f.png",
     "static/media/top-gurgaon.png": "/static/media/top-gurgaon.040562cdf63a32f3ec04.png",
     "index.html": "/index.html",
     "static/media/card-image-shape.svg": "/static/media/card-image-shape.cd25fba5267b6b94d36e.svg",
     "main.3c236a58.css.map": "/static/css/main.3c236a58.css.map",
-    "main.e7f6afe7.js.map": "/static/js/main.e7f6afe7.js.map",
+    "main.3f31ecfa.js.map": "/static/js/main.3f31ecfa.js.map",
     "787.57ed4475.chunk.js.map": "/static/js/787.57ed4475.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3c236a58.css",
-    "static/js/main.e7f6afe7.js"
+    "static/js/main.3f31ecfa.js"
   ]
 }

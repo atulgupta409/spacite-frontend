@@ -4,6 +4,7 @@ import Select from "react-select";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import baseUrl from "../../../environment/api-config";
 
 function HomeContact() {
   const navigate = useNavigate();
@@ -90,8 +91,8 @@ function HomeContact() {
       validation();
       setLoading(true);
       try {
-        const response = await axios.post(
-          "http://localhost:5000/sendmail",
+        await axios.post(
+          `${baseUrl}/sendmail`,
           {
             name: user.name,
             email: user.email,
