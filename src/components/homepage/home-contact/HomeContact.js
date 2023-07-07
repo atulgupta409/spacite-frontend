@@ -91,7 +91,9 @@ function HomeContact() {
       validation();
       setLoading(true);
       try {
+
         await axios.post(
+
           `${baseUrl}/sendmail`,
           {
             name: user.name,
