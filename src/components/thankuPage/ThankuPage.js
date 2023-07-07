@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./ThankuPage.css";
 
 function ThankuPage() {
   const navigate = useNavigate();
@@ -9,19 +10,19 @@ function ThankuPage() {
   return (
     <div className="container thanku_main">
       <div className="row">
-        <div className="col-12 col-md-7 d-flex justify-content-center flex-column">
-          <h1>Thank you for submitting the Query</h1>
+        <div className="col-12 col-md-7 d-flex justify-content-center flex-column mt-5 mt-md-0">
+          <h1 className="thanku_heading">Thank you for submitting the Query</h1>
           <p>
             We have received your request and will be sending you an email from
             a Spacite Space expert shortly.
           </p>
           <div className="row">
-            <div className="col-3">
+            <div className="col-4 col-md-3">
               <button className="globalBtn" onClick={goBack}>
                 Previus page
               </button>
             </div>
-            <div className="col-3" style={{ marginLeft: "-23px" }}>
+            <div className="col-4 col-md-3" style={{ marginLeft: "-23px" }}>
               <Link to="/">
                 <button className="thanku_btn">Homepage</button>
               </Link>

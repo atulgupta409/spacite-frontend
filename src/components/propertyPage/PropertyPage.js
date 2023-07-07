@@ -6,7 +6,7 @@ import Footer from "../footer/Footer";
 import SpaceExpert from "../homepage/spaceExpert/SpaceExpert";
 import { CityContext } from "../context/CityContext";
 import top_gurgaon from "../media/coworking_img/top-gurgaon.png";
-import Carousel from "react-elastic-carousel";
+import Carousel from "@itseasy21/react-elastic-carousel";
 import axios from "axios";
 import Modal from "react-modal";
 import { RxCross2 } from "react-icons/rx";

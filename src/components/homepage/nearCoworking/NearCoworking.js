@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import top_gurgaon from "../../media/coworking_img/top-gurgaon.png";
-import Carousel from "react-elastic-carousel";
+import Carousel from "@itseasy21/react-elastic-carousel";
 import "./NearCoworking.css";
 import { CityContext } from "../../context/CityContext";
 

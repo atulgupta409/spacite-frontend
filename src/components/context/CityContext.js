@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import { getCity } from "../service/Service";
-import Carousel, { consts } from "react-elastic-carousel";
+import Carousel, { consts } from "@itseasy21/react-elastic-carousel";
 
 // Create the CityContext
 export const CityContext = createContext();

@@ -44,7 +44,6 @@ function Microlocation() {
   const handlePageClick = async (data_page) => {
     current_page += data_page.selected;
     handleFetchWorkSpaces(current_page);
-    console.log(current_page);
   };
 
   const [microlocations, setMicrolocations] = useState([]);
@@ -273,6 +272,7 @@ function Microlocation() {
         previousLinkClassName={"page-link page_link"}
         nextClassName={"page-item page_item"}
         nextLinkClassName={"page-link page_link"}
+        forcePage={current_page}
         activeClassName={"active"}
       ></ReactPaginate>
       <div className="other_location_box">

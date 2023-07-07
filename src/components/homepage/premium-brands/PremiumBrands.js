@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Carousel from "react-elastic-carousel";
+import Carousel from "@itseasy21/react-elastic-carousel";
 import premiumBrand from "../../media/premium_brand.png";
 import "./PremiumBrands.css";
 import brand_logo from "../../media/brand_logo.png";

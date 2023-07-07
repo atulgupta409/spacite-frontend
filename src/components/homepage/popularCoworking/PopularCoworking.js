@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { CityContext } from "../../context/CityContext";
 import HomeContact from "../home-contact/HomeContact";
 import top_gurgaon from "../../media/coworking_img/top-gurgaon.png";
-import Carousel from "react-elastic-carousel";
+import Carousel from "@itseasy21/react-elastic-carousel";
 
 function PopularCoworking({ city }) {
   const { cities, breakPoints, Myarrow } = useContext(CityContext);

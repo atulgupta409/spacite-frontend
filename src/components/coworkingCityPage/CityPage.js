@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Citypage.css";
-import Carousel from "react-elastic-carousel";
+import Carousel from "@itseasy21/react-elastic-carousel";
 import HomeContact from "../homepage/home-contact/HomeContact";
 import { CityContext } from "../context/CityContext";
 import { getWorkSpaceByCity, getMicrolocationByCity } from "../service/Service";
@@ -40,7 +40,7 @@ function CityPage() {
     handleFetchWorkspacesByCity();
   }, [cityName]);
   let topMicrolocations = microlocations.slice(0, 6);
-  // console.log(cityworkSpaces);
+  console.log(cityworkSpaces);
 
   return (
     <div className="city_page_main" style={{ marginTop: "100px" }}>
@@ -142,62 +142,55 @@ function CityPage() {
 
                   <div className="top_space_row">
                     <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-                      {cityworkSpaces?.map((workspace, j) => {
-                        if (
-                          workspace?.location?.micro_location?.name ===
-                          microlocation?.name
-                        ) {
-                          return (
-                            <Link
-                              to={`/coworking/${workspace?.slug}`}
-                              className="space_link"
-                              key={j}
-                            >
-                              <div className="property-card" key={j}>
-                                <div className="property_img">
+                      {cityworkSpaces
+                        ?.filter(
+                          (workspace) =>
+                            workspace?.location?.micro_location?.name ===
+                            microlocation?.name
+                        )
+                        .slice(0, 10)
+                        .map((workspace, j) => (
+                          <Link
+                            to={`/coworking/${workspace?.slug}`}
+                            className="space_link"
+                            key={j}
+                          >
+                            <div className="property-card" key={j}>
+                              <div className="property_img">
+                                <img
+                                  src={workImage}
+                                  alt=""
+                                  className="propery_card_img"
+                                />
+                              </div>
+                              <div className="card-body space_card">
+                                <p className="card-title">{workspace?.name}</p>
+                                <div className="location_box">
                                   <img
-                                    // src={workspace?.images[0]?.image}
-                                    src={workImage}
-                                    alt=""
-                                    className="propery_card_img"
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png"
+                                    alt="location-icon"
                                   />
+                                  <p>{microlocation?.name + " " + cityName}</p>
                                 </div>
-                                <div className="card-body space_card">
-                                  <p className="card-title">
-                                    {workspace?.name}
+                                <p className="price_from">Starting from</p>
+                                <div className="price_box">
+                                  <p className="price">
+                                    ₹
+                                    {
+                                      workspace?.plans?.reduce(
+                                        (prev, current) =>
+                                          current.price < prev.price
+                                            ? current
+                                            : prev
+                                      ).price
+                                    }
+                                    /*<span>Month</span>
                                   </p>
-                                  <div className="location_box">
-                                    <img
-                                      src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png"
-                                      alt="location-icon"
-                                    />
-                                    <p>
-                                      {microlocation?.name + " " + cityName}
-                                    </p>
-                                  </div>
-                                  <p className="price_from">Starting from</p>
-                                  <div className="price_box">
-                                    <p className="price">
-                                      ₹
-                                      {
-                                        workspace?.plans?.reduce(
-                                          (prev, current) => {
-                                            return current.price < prev.price
-                                              ? current
-                                              : prev;
-                                          }
-                                        ).price
-                                      }
-                                      /*<span>Month</span>
-                                    </p>
-                                  </div>
                                 </div>
                               </div>
-                            </Link>
-                          );
-                        }
-                        return null;
-                      })}
+                            </div>
+                          </Link>
+                        ))}
                     </Carousel>
                   </div>
                 </React.Fragment>
@@ -232,62 +225,55 @@ function CityPage() {
 
                   <div className="top_space_row">
                     <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-                      {cityworkSpaces?.map((workspace, j) => {
-                        if (
-                          workspace?.location?.micro_location?.name ===
-                          microlocation?.name
-                        ) {
-                          return (
-                            <Link
-                              to={`/coworking/${workspace?.slug}`}
-                              className="space_link"
-                              key={j}
-                            >
-                              <div className="property-card" key={j}>
-                                <div className="property_img">
+                      {cityworkSpaces
+                        ?.filter(
+                          (workspace) =>
+                            workspace?.location?.micro_location?.name ===
+                            microlocation?.name
+                        )
+                        .slice(0, 10)
+                        .map((workspace, j) => (
+                          <Link
+                            to={`/coworking/${workspace?.slug}`}
+                            className="space_link"
+                            key={j}
+                          >
+                            <div className="property-card" key={j}>
+                              <div className="property_img">
+                                <img
+                                  src={workImage}
+                                  alt=""
+                                  className="propery_card_img"
+                                />
+                              </div>
+                              <div className="card-body space_card">
+                                <p className="card-title">{workspace?.name}</p>
+                                <div className="location_box">
                                   <img
-                                    // src={workspace?.images[0]?.image}
-                                    src={workImage}
-                                    alt=""
-                                    className="propery_card_img"
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png"
+                                    alt="location-icon"
                                   />
+                                  <p>{microlocation?.name + " " + cityName}</p>
                                 </div>
-                                <div className="card-body space_card">
-                                  <p className="card-title">
-                                    {workspace?.name}
+                                <p className="price_from">Starting from</p>
+                                <div className="price_box">
+                                  <p className="price">
+                                    ₹
+                                    {
+                                      workspace?.plans?.reduce(
+                                        (prev, current) =>
+                                          current.price < prev.price
+                                            ? current
+                                            : prev
+                                      ).price
+                                    }
+                                    /*<span>Month</span>
                                   </p>
-                                  <div className="location_box">
-                                    <img
-                                      src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png"
-                                      alt="location-icon"
-                                    />
-                                    <p>
-                                      {microlocation?.name + " " + cityName}
-                                    </p>
-                                  </div>
-                                  <p className="price_from">Starting from</p>
-                                  <div className="price_box">
-                                    <p className="price">
-                                      ₹
-                                      {
-                                        workspace?.plans.reduce(
-                                          (prev, current) => {
-                                            return current.price < prev.price
-                                              ? current
-                                              : prev;
-                                          }
-                                        ).price
-                                      }
-                                      /*<span>Month</span>
-                                    </p>
-                                  </div>
                                 </div>
                               </div>
-                            </Link>
-                          );
-                        }
-                        return null;
-                      })}
+                            </div>
+                          </Link>
+                        ))}
                     </Carousel>
                   </div>
                 </React.Fragment>
