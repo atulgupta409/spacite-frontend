@@ -41,7 +41,7 @@ function CityPage() {
   }, [cityName]);
   let topMicrolocations = microlocations.slice(0, 6);
   console.log(cityworkSpaces);
-
+  console.log(microlocations);
   return (
     <div className="city_page_main" style={{ marginTop: "100px" }}>
       <nav aria-label="breadcrumb" style={{ paddingLeft: "20px" }}>
