@@ -45,7 +45,7 @@
   -webkit-mask-image: url("../media/card-image-shape.svg");
   mask-image: url("../media/card-image-shape.svg");
   -webkit-mask-position: top left;
-  mask-position: top left;
+  mask-position: top center;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
