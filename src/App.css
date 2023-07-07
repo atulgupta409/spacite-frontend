@@ -114,7 +114,7 @@ h2 {
 .top_space_row {
   margin: 30px 0 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   overflow-x: scroll;
   scroll-behavior: smooth;
 }
@@ -138,6 +138,9 @@ h2 {
 .eVXyLj,
 .jrqawY {
   display: none;
+}
+.fAQxiW {
+  display: none !important;
 }
 .css-t3ipsp-control {
   border-color: hsl(0, 0%, 80%) !important;

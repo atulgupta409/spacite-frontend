@@ -40,7 +40,7 @@ function CityPage() {
     handleFetchWorkspacesByCity();
   }, [cityName]);
   let topMicrolocations = microlocations.slice(0, 6);
-  console.log(cityworkSpaces);
+  // console.log(cityworkSpaces);
 
   return (
     <div className="city_page_main" style={{ marginTop: "100px" }}>
@@ -298,10 +298,8 @@ function CityPage() {
                       .split(" ")
                       .join("-")}`}
                   >
-                    <span className="mob_hide">Coworking space in</span>{" "}
-                    {elem.name.length > 15
-                      ? elem.name.substring(0, 11) + "..."
-                      : elem.name}
+                    {/* <span className="mob_hide">Coworking space in</span>{" "} */}
+                    {elem.name}
                   </NavLink>
                 </div>
               );
