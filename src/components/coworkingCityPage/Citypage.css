@@ -44,12 +44,12 @@
   height: 270px;
   -webkit-mask-image: url("../media/card-image-shape.svg");
   mask-image: url("../media/card-image-shape.svg");
-  -webkit-mask-position: top left;
+  -webkit-mask-position: top center;
   mask-position: top center;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
-  mask-size: 250px 250px;
+  mask-size: 100% 100%;
 }
 
 .microlocation_tab ul li a:hover {
@@ -152,6 +152,7 @@
   }
   .location_box p {
     font-size: 12px;
+    line-height: 20px;
   }
   .price_from {
     font-size: 14px;
