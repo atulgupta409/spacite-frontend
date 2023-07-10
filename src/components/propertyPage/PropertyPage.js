@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import "./PropertyPage.css";
 import Select from "react-select";
 import Footer from "../footer/Footer";
@@ -10,12 +10,15 @@ import Carousel from "@itseasy21/react-elastic-carousel";
 import axios from "axios";
 import Modal from "react-modal";
 import { RxCross2 } from "react-icons/rx";
+import { getWorkSpaceBySlug } from "../service/Service";
 
-const PropertyPage = ({ workSpace }) => {
+const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [workSpace, setWorkSpaces] = useState({});
+  const [pageLoading, setLoadingSpaces] = useState(false);
+  const { slug } = useParams();
   const navigate = useNavigate();
-
   const openModal = () => {
     setModalIsOpen(true);
   };
@@ -29,7 +32,12 @@ const PropertyPage = ({ workSpace }) => {
   let lastElem = pathArray[pathArray.length - 1];
   let str = lastElem.charAt(0).toUpperCase() + lastElem.slice(1);
   let cityName = str.split("-").join(" ");
-
+  const handleFetchWorkspacesBySlug = async () => {
+    await getWorkSpaceBySlug(setWorkSpaces, slug, setLoadingSpaces);
+  };
+  useEffect(() => {
+    handleFetchWorkspacesBySlug();
+  }, [slug]);
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
     { value: "private cabin", label: "Private Cabin" },
@@ -134,16 +142,15 @@ const PropertyPage = ({ workSpace }) => {
   ];
 
   const [amenities, setAmenities] = useState([]);
+  const { amenties } = workSpace;
 
   useEffect(() => {
-    const mainAmenities = workSpace?.amenties?.map((amenity, i) => ({
-      amenity,
+    const mainAmenities = amenties?.map((amenity, i) => ({
+      ...amenity,
       amenityImg: amenityIcons[i]?.icon,
     }));
-    setAmenities([...mainAmenities]);
-  }, [workSpace?.amenties]);
-  console.log(amenities);
-
+    setAmenities(mainAmenities);
+  }, [amenties]);
   const location_icon =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png";
   const explore_icon =
@@ -157,11 +164,11 @@ const PropertyPage = ({ workSpace }) => {
 
   useEffect(() => {
     const mainPriceCategory = workSpace?.plans?.map((plan, i) => ({
-      plan,
+      ...plan,
       planImg: coworkingPlans[i]?.img,
       description: coworkingPlans[i]?.description,
     }));
-    setPlans([...mainPriceCategory]);
+    setPlans(mainPriceCategory);
   }, [workSpace?.plans]);
 
   const [officeType, setOfficeType] = useState("");
@@ -249,6 +256,9 @@ const PropertyPage = ({ workSpace }) => {
       validation();
     }
   };
+  if (pageLoading) {
+    return "<h1>loading....</h1>";
+  }
 
   return (
     <>
@@ -280,7 +290,7 @@ const PropertyPage = ({ workSpace }) => {
         <div className="row title_section_property">
           <div className="col-md-6">
             <h1 className="title_heading_property">
-              {workSpace?.name.split(" ").length > 1 ? (
+              {workSpace?.name?.split(" ").length > 1 ? (
                 <span>
                   {workSpace?.name
                     .split(" ")
@@ -301,7 +311,7 @@ const PropertyPage = ({ workSpace }) => {
             <p className="price_section_property">
               ₹
               {
-                workSpace?.plans.reduce((prev, current) => {
+                workSpace?.plans?.reduce((prev, current) => {
                   return current.price < prev.price ? current : prev;
                 }).price
               }
@@ -402,12 +412,12 @@ const PropertyPage = ({ workSpace }) => {
               return (
                 <div className="row category_section_property" key={i}>
                   <div className="col-6">
-                    <h4>{planElem?.plan?.category?.name}</h4>
+                    <h4>{planElem?.category?.name}</h4>
                     <p className="mob_hide">{planElem?.description}</p>
                     <p className="facility_name">Starting From</p>
                     <p className="facility_name">
-                      <span>₹{planElem?.plan?.price}/*</span>
-                      {planElem?.plan.duration === "Year" ? "Year" : "Seat"}
+                      <span>₹{planElem?.price}/*</span>
+                      {planElem?.duration === "Year" ? "Year" : "Seat"}
                     </p>
                   </div>
                   <div className="col-6 desk_icon_box">
@@ -427,13 +437,10 @@ const PropertyPage = ({ workSpace }) => {
                 return (
                   <div className="col-md-4 col-6 main_amenity_box" key={i}>
                     <div className="main_amenity_icon">
-                      <img
-                        src={amenity.amenityImg}
-                        alt={amenity.amenity?.name}
-                      />
+                      <img src={amenity?.amenityImg} alt={amenity?.name} />
                     </div>
                     <div>
-                      <p>{amenity.amenity?.name}</p>
+                      <p>{amenity?.name}</p>
                     </div>
                   </div>
                 );
@@ -674,7 +681,7 @@ const PropertyPage = ({ workSpace }) => {
           <p>
             ₹
             {
-              workSpace.plans.reduce((prev, current) => {
+              workSpace?.plans?.reduce((prev, current) => {
                 return current.price < prev.price ? current : prev;
               }).price
             }
