@@ -16,7 +16,7 @@ const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [workSpace, setWorkSpaces] = useState({});
-  const [pageLoading, setLoadingSpaces] = useState(false);
+  const [loadingSpace, setLoadingSpaces] = useState(false);
   const { slug } = useParams();
   const navigate = useNavigate();
   const openModal = () => {
@@ -256,9 +256,6 @@ const PropertyPage = () => {
       validation();
     }
   };
-  if (pageLoading) {
-    return "<h1>loading....</h1>";
-  }
 
   return (
     <>
@@ -304,7 +301,17 @@ const PropertyPage = () => {
                 workSpace?.name
               )}
             </h1>
-            <p>{workSpace?.location?.address}</p>
+
+            <p>
+              <span>
+                <img
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png"
+                  alt="location"
+                  className="img-fluid"
+                />
+              </span>
+              {workSpace?.location?.address}
+            </p>
           </div>
           <div className="col-md-3 price_section_box">
             <p>Starting From</p>
@@ -334,7 +341,7 @@ const PropertyPage = () => {
                   >
                     <img
                       src={image?.image}
-                      className="d-block w-100"
+                      className="d-block w-100 img-fluid property_page_img"
                       alt={`Image ${index + 1}`}
                     />
                   </div>
@@ -405,7 +412,9 @@ const PropertyPage = () => {
             <hr className="devider_line" />
             <div className="row about_property_section">
               <h3 className="property_h3">About this property</h3>
-              <p>{workSpace?.description}</p>
+              <div
+                dangerouslySetInnerHTML={{ __html: workSpace?.description }}
+              />
             </div>
             <hr className="devider_line" />
             {plans?.map((planElem, i) => {

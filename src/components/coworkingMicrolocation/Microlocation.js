@@ -23,8 +23,6 @@ function Microlocation() {
   let microlocation = lastElem2.charAt(0).toUpperCase() + lastElem2.slice(1);
   let microName = microlocation.split("-").join(" ");
 
-  // console.log(lastElem2);
-
   const [loadingMicrolocations, setLoadingMicrolocations] = useState(true);
   const [loadingSpaces, setLoadingSpaces] = useState(true);
 
@@ -33,7 +31,6 @@ function Microlocation() {
     return word.charAt(0).toUpperCase() + word.slice(1);
   });
   const microNameApi = capitalizedWords.join(" ");
-  // console.log(microlocationId);
 
   const [workSpaces, setWorkSpaces] = useState([]);
   const [totalCount, setTotalCount] = useState("");
@@ -75,8 +72,6 @@ function Microlocation() {
 
   const extractedWorkspaces = workSpaces?.slice(0, 12);
   const extractedWorkspaces2 = workSpaces?.slice(12);
-
-  // console.log(extractedWorkspaces);
 
   return (
     <div style={{ marginTop: "100px" }}>
