@@ -40,12 +40,15 @@ export const getMicrolocationByCity = async (
   }
 };
 
-export const getWorkSpaceData = async (setWorkspaces) => {
+export const getWorkSpaceData = async (setWorkspaces, setPageLoading) => {
   try {
+    setPageLoading(true);
     const { data } = await axios.get(`${baseUrl}/api/workSpace`);
     setWorkspaces(data);
+    setPageLoading(false);
   } catch (err) {
     console.log(err);
+    setPageLoading(false);
   }
 };
 
@@ -84,5 +87,14 @@ export const getWorkSpaceByCity = async (
   } catch (err) {
     console.log(err);
     setLoadingSpaces(false);
+  }
+};
+
+export const getSeo = async (setSeo, path) => {
+  try {
+    const { data } = await axios.get(`${baseUrl}/api/seo/seos-data/${path}`);
+    setSeo(data);
+  } catch (error) {
+    console.log(error);
   }
 };

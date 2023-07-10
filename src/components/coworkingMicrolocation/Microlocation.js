@@ -272,7 +272,7 @@ function Microlocation() {
         previousLinkClassName={"page-link page_link"}
         nextClassName={"page-item page_item"}
         nextLinkClassName={"page-link page_link"}
-        forcePage={current_page}
+        // forcePage={current_page}
         activeClassName={"active"}
       ></ReactPaginate>
       <div className="other_location_box">

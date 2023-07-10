@@ -16,8 +16,9 @@ import ThankuPage from "./components/thankuPage/ThankuPage";
 
 function App() {
   const [workSpaces, setWorkspaces] = useState([]);
+  const [pageLoading, setPageLoading] = useState(false);
   const handleFetchWorkSpaceData = async () => {
-    await getWorkSpaceData(setWorkspaces);
+    await getWorkSpaceData(setWorkspaces, setPageLoading);
   };
   useEffect(() => {
     handleFetchWorkSpaceData();
@@ -66,14 +67,18 @@ function App() {
           ]}
         />
         {/* <Route path="/property-page" element={[<Navbar />, <PropertyPage />]} /> */}
-        <Route path="*" element={<PageNotExist />} />
+        {/* <Route path="*" element={<PageNotExist />} /> */}
         {workSpaces.map((item, index) => (
           <Route
             key={index}
             path={`/coworking/${item.slug}`}
             element={[
               <Navbar key={16} />,
-              <PropertyPage key={17} workSpace={item} />,
+              <PropertyPage
+                key={17}
+                workSpace={item}
+                pageLoading={pageLoading}
+              />,
             ]}
           />
         ))}

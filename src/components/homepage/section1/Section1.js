@@ -3,6 +3,8 @@ import "./Section1.css";
 import Select from "react-select";
 import { CityContext } from "../../context/CityContext";
 import { NavLink, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Section1() {
   const { allCities, handleFetchCities } = useContext(CityContext);
@@ -29,10 +31,15 @@ function Section1() {
   const [selectedType, setSelectedType] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
 
+  const notify = () => toast.error("Please select all the required field");
   const searchHandler = () => {
-    const type = selectedType.value.split(" ").join("-").toLowerCase();
-    const city = selectedCity.value.split(" ").join("-").toLowerCase();
-    navigate(`/${type}/${city}`);
+    try {
+      const type = selectedType.value.split(" ").join("-").toLowerCase();
+      const city = selectedCity.value.split(" ").join("-").toLowerCase();
+      navigate(`/${type}/${city}`);
+    } catch (error) {
+      notify();
+    }
   };
 
   return (
@@ -71,6 +78,7 @@ function Section1() {
                       );
                     })}
                   </div>
+                  <ToastContainer position="top-center" />
                   <div className="content-box2">
                     <div className="home_dropdown">
                       <Select

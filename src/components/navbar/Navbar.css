@@ -32,6 +32,11 @@
 .megamenu-row {
   margin-bottom: 20px;
 }
+.mega_menu_items {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 20px;
+}
 .megamenu-row a {
   color: #444444;
   text-decoration: none;

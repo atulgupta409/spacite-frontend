@@ -114,6 +114,11 @@
   align-items: center;
   margin: 0 40px;
 }
+.city_page_title_box > h3 {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 40px;
+}
 .city_explore a {
   color: #d09cff;
   text-decoration: none;
@@ -121,8 +126,17 @@
 }
 .other_location_box {
   background: linear-gradient(90deg, #feeff9 0%, #eefbfe 100%);
-  padding-top: 100px;
+  padding: 100px 0;
 }
+.other_location_box h3 {
+  margin-bottom: 32px;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  color: #444444;
+}
+
 .other_location_box a {
   text-decoration: none;
   color: #444;
@@ -132,10 +146,37 @@
 .other_location_box .col-md-3 {
   padding-bottom: 11px;
 }
+.footer_content_main {
+  background: rgba(248, 244, 251, 0.3);
+  color: #7b7b7b;
+  padding: 70px 0;
+}
+.footer_title {
+  color: #444;
+  font-size: 20px;
+  font-weight: 600;
+}
+.footer_content h2 {
+  font-weight: 600;
+  font-size: 18px;
+  text-align: left;
+}
+.footer_content p {
+  font-size: 14px !important;
+  background-color: transparent !important;
+}
+.footer_content span {
+  font-size: 14px !important;
+  background-color: transparent !important;
+}
 
 @media only screen and (max-width: 768px) {
   .microlocation_tab {
     margin: 30px 10px;
+  }
+  .city_page_title_box h3 {
+    font-size: 20px;
+    line-height: 28px;
   }
   .microlocation_tab ul {
     white-space: nowrap;
@@ -192,5 +233,22 @@
   }
   .city_explore img {
     width: 8px;
+  }
+  .footer_title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .footer_content h2 {
+    font-weight: 600;
+    font-size: 16px;
+    text-align: left;
+  }
+  .footer_content p {
+    font-size: 12px !important;
+    background-color: transparent !important;
+  }
+  .footer_content span {
+    font-size: 12px !important;
+    background-color: transparent !important;
   }
 }

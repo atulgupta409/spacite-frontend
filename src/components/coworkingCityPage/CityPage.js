@@ -4,7 +4,13 @@ import "./Citypage.css";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import HomeContact from "../homepage/home-contact/HomeContact";
 import { CityContext } from "../context/CityContext";
-import { getWorkSpaceByCity, getMicrolocationByCity } from "../service/Service";
+import { Helmet } from "react-helmet";
+
+import {
+  getWorkSpaceByCity,
+  getMicrolocationByCity,
+  getSeo,
+} from "../service/Service";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SpaceSkeleton from "../spaceSkeleton/SpaceSkeleton";
@@ -35,15 +41,26 @@ function CityPage() {
   const handleFetchWorkspacesByCity = async () => {
     await getWorkSpaceByCity(setCityWorkspaces, cityName, setLoadingSpaces);
   };
+
+  const [seo, setSeo] = useState([]);
+  const handleFetchSeo = async () => {
+    await getSeo(setSeo, lastElem);
+  };
+
   useEffect(() => {
     handleFetchMicrolocations();
     handleFetchWorkspacesByCity();
+    handleFetchSeo();
   }, [cityName]);
   let topMicrolocations = microlocations.slice(0, 6);
-  // console.log(cityworkSpaces);
 
   return (
     <div className="city_page_main" style={{ marginTop: "100px" }}>
+      <Helmet>
+        <title>{seo?.title}</title>
+        <meta name="description" content={seo?.description} />
+        <meta name="keywords" content={seo?.keywords} />
+      </Helmet>
       <nav aria-label="breadcrumb" style={{ paddingLeft: "20px" }}>
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -122,7 +139,7 @@ function CityPage() {
               return (
                 <React.Fragment key={i}>
                   <div className="city_page_title_box">
-                    <h2>{microlocation.name}</h2>
+                    <h3>{microlocation.name}</h3>
                     <div className="city_explore">
                       <Link
                         to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
@@ -158,8 +175,16 @@ function CityPage() {
                             <div className="property-card" key={j}>
                               <div className="property_img">
                                 <img
-                                  src={workImage}
-                                  alt=""
+                                  src={
+                                    workspace.images.length > 0
+                                      ? workspace.images[0].image
+                                      : workImage
+                                  }
+                                  alt={
+                                    workspace.images.length > 0
+                                      ? workspace.images[0].alt
+                                      : "workImage"
+                                  }
                                   className="propery_card_img"
                                 />
                               </div>
@@ -205,7 +230,7 @@ function CityPage() {
               return (
                 <React.Fragment key={i}>
                   <div className="city_page_title_box">
-                    <h2>{microlocation?.name}</h2>
+                    <h3>{microlocation?.name}</h3>
                     <div className="city_explore">
                       <Link
                         to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
@@ -241,8 +266,16 @@ function CityPage() {
                             <div className="property-card" key={j}>
                               <div className="property_img">
                                 <img
-                                  src={workImage}
-                                  alt=""
+                                  src={
+                                    workspace.images.length > 0
+                                      ? workspace.images[0].image
+                                      : workImage
+                                  }
+                                  alt={
+                                    workspace.images.length > 0
+                                      ? workspace.images[0].alt
+                                      : "workImage"
+                                  }
                                   className="propery_card_img"
                                 />
                               </div>
@@ -284,9 +317,9 @@ function CityPage() {
       )}
 
       <div className="other_location_box">
-        <h2>
+        <h3>
           Other <span style={{ color: "#d09cff" }}>Locations</span>
-        </h2>
+        </h3>
         <div className="container">
           <div className="row">
             {microlocations?.map((elem, i) => {
@@ -305,6 +338,15 @@ function CityPage() {
               );
             })}
           </div>
+        </div>
+      </div>
+      <div className="footer_content_main">
+        <div className="container">
+          <h3 className="footer_title">{seo?.footer_title}</h3>
+          <div
+            dangerouslySetInnerHTML={{ __html: seo?.footer_description }}
+            className="footer_content"
+          />
         </div>
       </div>
     </div>

@@ -13,6 +13,10 @@
   font-size: 14px;
 }
 
+.property_page_img {
+  border-radius: 20px;
+}
+
 .title_heading_property {
   text-align: left;
 }
@@ -209,6 +213,9 @@
     background-color: #fff;
     align-items: center;
     box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.1);
+  }
+  .property_page_img {
+    border-radius: 10px;
   }
   .footer_mob {
     margin-bottom: 63px;

@@ -49,11 +49,7 @@ function Navbar() {
                       <div className="row megamenu-row">
                         {allCities?.map((elem, i) => {
                           return (
-                            <div
-                              className="col-md-4"
-                              style={{ paddingBottom: "20px" }}
-                              key={i}
-                            >
+                            <div className="col-md-4 mega_menu_items" key={i}>
                               <img
                                 className="city-icon"
                                 src={elem.cityImg}
