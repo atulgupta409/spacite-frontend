@@ -29,6 +29,7 @@ export const getMicrolocationByCity = async (
   setLoadingMicrolocations
 ) => {
   try {
+    setLoadingMicrolocations(true);
     const { data } = await axios.get(
       `${baseUrl}/api/micro-location/micro-locations/${cityName}`
     );
@@ -36,7 +37,6 @@ export const getMicrolocationByCity = async (
     setLoadingMicrolocations(false);
   } catch (error) {
     console.log(error);
-    setLoadingMicrolocations(false);
   }
 };
 
@@ -61,6 +61,7 @@ export const getWorkSpaceByMicrolocation = async (
   setLoadingSpaces
 ) => {
   try {
+    setLoadingSpaces(true);
     const { data } = await axios.get(
       `${baseUrl}/api/workspace-details/${microlocationName}?page=${current_page}&limit=${item_per_page}`
     );
@@ -71,7 +72,6 @@ export const getWorkSpaceByMicrolocation = async (
     // console.log(totalCount);
   } catch (err) {
     console.log(err);
-    setLoadingSpaces(false);
   }
 };
 
@@ -81,12 +81,28 @@ export const getWorkSpaceByCity = async (
   setLoadingSpaces
 ) => {
   try {
+    setLoadingSpaces(true);
     const { data } = await axios.get(`${baseUrl}/api/coworking/${cityName}`);
     setCityWorkspaces(data);
     setLoadingSpaces(false);
   } catch (err) {
     console.log(err);
+  }
+};
+export const getWorkSpaceBySlug = async (
+  setWorkspaces,
+  slug,
+  setLoadingSpaces
+) => {
+  try {
+    setLoadingSpaces(true);
+    const { data } = await axios.get(
+      `${baseUrl}/api/coworking-details-slug/${slug}`
+    );
+    setWorkspaces(data[0]);
     setLoadingSpaces(false);
+  } catch (err) {
+    console.log(err);
   }
 };
 

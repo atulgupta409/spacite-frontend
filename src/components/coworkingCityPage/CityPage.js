@@ -171,6 +171,7 @@ function CityPage() {
                             to={`/coworking/${workspace?.slug}`}
                             className="space_link"
                             key={j}
+                            target="_blank"
                           >
                             <div className="property-card" key={j}>
                               <div className="property_img">

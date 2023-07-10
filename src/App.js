@@ -67,21 +67,13 @@ function App() {
           ]}
         />
         {/* <Route path="/property-page" element={[<Navbar />, <PropertyPage />]} /> */}
-        {/* <Route path="*" element={<PageNotExist />} /> */}
-        {workSpaces.map((item, index) => (
-          <Route
-            key={index}
-            path={`/coworking/${item.slug}`}
-            element={[
-              <Navbar key={16} />,
-              <PropertyPage
-                key={17}
-                workSpace={item}
-                pageLoading={pageLoading}
-              />,
-            ]}
-          />
-        ))}
+        <Route path="*" element={<PageNotExist />} />
+
+        <Route
+          path={`/coworking/:slug`}
+          element={[<Navbar key={16} />, <PropertyPage key={17} />]}
+        />
+
         <Route
           path="/thank-you"
           element={[
