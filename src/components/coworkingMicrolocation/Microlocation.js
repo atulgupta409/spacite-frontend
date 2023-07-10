@@ -163,6 +163,7 @@ function Microlocation() {
                   <Link
                     to={`/coworking/${workspace?.slug}`}
                     className="row space_link"
+                    target="_blank"
                   >
                     <div className="col-6 col-md-12 property_img">
                       <img
