@@ -3,25 +3,113 @@ import "./Contact.css";
 import { IoMdCall } from "react-icons/io";
 import { AiOutlineMail } from "react-icons/ai";
 import Select from "react-select";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import baseUrl from "../../environment/api-config";
 
 function Contact() {
-  const seatOptions = [
+  const navigate = useNavigate();
+  const optionsOfficeType = [
+    { value: "dedicated desk", label: "Dedicated Desk" },
+    { value: "private cabin", label: "Private Cabin" },
+    { value: "office suite", label: "Office Suite" },
+    { value: "custom buildout", label: "Custom Buildout" },
+  ];
+  const optionSeats = [
     { value: "1-10", label: "1-10" },
     { value: "11-20", label: "11-20" },
     { value: "21-50", label: "21-50" },
     { value: "51-100", label: "51-100" },
     { value: "100+", label: "100+" },
   ];
-  const deskTypeOptions = [
-    { value: "Hot Desk", label: "Hot Desk" },
-    { value: "Dedicated Desk", label: "Dedicated Desk" },
-    { value: "Private Cabin", label: "Private Cabin" },
-    { value: "Virtual Office", label: "Virtual Office" },
-  ];
 
-  const [selectedSeatOption, setSeatOption] = useState(null);
+  // const [selectedOption, setSelectedOption] = useState(null);
+  const [officeType, setOfficeType] = useState("");
+  const [noSeats, setNoSeats] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    query: "",
+  });
+  const [loading, setLoading] = useState(false);
 
-  const [selectedDeskOption, setDeskOption] = useState(null);
+  const inputChangeHandler = (e) => {
+    let { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const selectChangeHandlerOffice = (officeType, noSeats, moveIn) => {
+    setOfficeType(officeType?.value);
+  };
+  // console.log(officeType);
+  const selectChangeHandlerSeats = (noSeats) => {
+    setNoSeats(noSeats?.value);
+  };
+
+  const phonePattern = /^\d{10}$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const validation = () => {
+    if (user.name.trim() === "") {
+      setNameError("Name is required");
+    } else {
+      setNameError("");
+    }
+
+    if (!emailPattern.test(user.email)) {
+      setEmailError("Invalid email format");
+    } else {
+      setEmailError("");
+    }
+
+    if (!phonePattern.test(user.phone)) {
+      setPhoneError("Invalid phone number");
+    } else {
+      setPhoneError("");
+    }
+  };
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    if (
+      user.name.trim() !== "" &&
+      emailPattern.test(user.email) &&
+      phonePattern.test(user.phone)
+    ) {
+      setUser({ name: "", email: "", phone: "", query: "" });
+      setNoSeats(null);
+      setOfficeType("");
+      validation();
+      setLoading(true);
+      try {
+        await axios.post(
+          `${baseUrl}/sendmail`,
+          {
+            name: user.name,
+            email: user.email,
+            phone: user.phone,
+            office_type: officeType,
+            no_of_seats: noSeats,
+            query: user.query,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        setLoading(false);
+        navigate("/thank-you");
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      validation();
+    }
+  };
 
   return (
     <>
@@ -56,17 +144,17 @@ function Contact() {
               <div className="form_col">
                 <h3>Send your request</h3>
                 <div className="contact_page_form">
-                  <form
-                    method="post"
-                    action="mail-handler/contact-mail-handler.php"
-                  >
+                  <form onSubmit={sendEmail}>
                     <div className="row">
                       <div className="col-12 mb-2">
                         <input
                           type="text"
                           name="name"
                           className="form-control"
-                          placeholder="Name"
+                          placeholder="Name*"
+                          value={user.name}
+                          onChange={inputChangeHandler}
+                          onBlur={validation}
                           required
                         />
                       </div>
@@ -75,7 +163,10 @@ function Contact() {
                           type="text"
                           name="email"
                           className="form-control"
-                          placeholder="E-Mail Id"
+                          placeholder="E-Mail Id*"
+                          value={user.email}
+                          onChange={inputChangeHandler}
+                          onBlur={validation}
                           required
                         />
                       </div>
@@ -84,31 +175,47 @@ function Contact() {
                           type="text"
                           name="phone"
                           className="form-control"
-                          placeholder="Phone No."
+                          placeholder="Phone No.*"
+                          value={user.phone}
+                          onChange={inputChangeHandler}
+                          onBlur={validation}
                           required
                         />
                       </div>
                       <div className="col-6 mb-2">
                         <Select
-                          defaultValue={selectedDeskOption}
-                          onChange={setDeskOption}
-                          options={deskTypeOptions}
-                          placeholder="Desk Type"
+                          value={optionsOfficeType.find(
+                            (option) => option.value === officeType
+                          )}
+                          onChange={selectChangeHandlerOffice}
+                          options={optionsOfficeType}
+                          placeholder="Office Type"
+                          inputProps={{
+                            name: "Office type",
+                          }}
                         />
                       </div>
                       <div className="col-6 mb-2">
                         <Select
-                          defaultValue={selectedSeatOption}
-                          onChange={setSeatOption}
-                          options={seatOptions}
-                          placeholder="No. Of Seats"
+                          value={optionSeats.find(
+                            (option) => option.value === noSeats
+                          )}
+                          onChange={selectChangeHandlerSeats}
+                          options={optionSeats}
+                          placeholder="No. of Seats"
+                          inputProps={{
+                            name: "No. of seats",
+                          }}
                         />
                       </div>
                       <div className="col-12 mb-2">
                         <textarea
                           className="form-control"
-                          name="message"
-                          placeholder="Your Query"
+                          name="query"
+                          placeholder="Your Query*"
+                          value={user.query}
+                          onChange={inputChangeHandler}
+                          required
                         ></textarea>
                       </div>
                       <div className="col-12 form_btn text-center">

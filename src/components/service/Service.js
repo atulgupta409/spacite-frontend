@@ -48,6 +48,7 @@ export const getWorkSpaceData = async (setWorkspaces, setPageLoading) => {
     setPageLoading(false);
   } catch (err) {
     console.log(err);
+    setPageLoading(false);
   }
 };
 
@@ -102,5 +103,14 @@ export const getWorkSpaceBySlug = async (
     setLoadingSpaces(false);
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const getSeo = async (setSeo, path) => {
+  try {
+    const { data } = await axios.get(`${baseUrl}/api/seo/seos-data/${path}`);
+    setSeo(data);
+  } catch (error) {
+    console.log(error);
   }
 };
