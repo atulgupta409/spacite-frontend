@@ -13,6 +13,7 @@ import { RxCross2 } from "react-icons/rx";
 import { getWorkSpaceBySlug } from "../service/Service";
 import { Helmet } from "react-helmet";
 import baseUrl from "../../environment/api-config";
+import { getNearSpaces } from "../service/Service";
 
 const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
@@ -37,9 +38,17 @@ const PropertyPage = () => {
   const handleFetchWorkspacesBySlug = async () => {
     await getWorkSpaceBySlug(setWorkSpaces, slug, setLoadingSpaces);
   };
+
+  const [nearSpace, setNearSpace] = useState([]);
+  const getNearSpacesHandler = async () => {
+    await getNearSpaces(setNearSpace, slug);
+  };
+
   useEffect(() => {
     handleFetchWorkspacesBySlug();
+    getNearSpacesHandler();
   }, [slug]);
+  // console.log(nearSpace.slice(0, 10));
 
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
@@ -146,6 +155,7 @@ const PropertyPage = () => {
 
   const [amenities, setAmenities] = useState([]);
   const { amenties } = workSpace;
+  // console.log(workSpace);
 
   useEffect(() => {
     const mainAmenities = amenties?.map((amenity, i) => ({
@@ -615,91 +625,45 @@ const PropertyPage = () => {
         </h2>
         <div className="top_space_row">
           <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-            <div className="property-card">
-              <div className="property_img">
-                <img src={top_gurgaon} alt="" className="propery_card_img" />
-              </div>
-              <div className="card-body space_card">
-                <p className="card-title">Accesswork Sohna Road</p>
-                <div className="location_box">
-                  <img src={location_icon} alt="location-icon" />
-                  <p>JMD Megapolis, Gurgaon</p>
+            {nearSpace?.map((space, i) => {
+              return (
+                <div className="property-card" key={i}>
+                  <div className="property_img">
+                    <img
+                      src={
+                        space?.images.length > 0
+                          ? space?.images[0]?.image
+                          : top_gurgaon
+                      }
+                      alt={
+                        space?.images.length > 0
+                          ? space?.images[0]?.alt
+                          : "workImage"
+                      }
+                      className="propery_card_img"
+                    />
+                  </div>
+                  <div className="card-body space_card">
+                    <p className="card-title">{space?.name}</p>
+                    <div className="location_box">
+                      <img src={location_icon} alt="location-icon" />
+                      <p>{space?.location?.address}</p>
+                    </div>
+                    <div className="price_box">
+                      <p className="price">
+                        ₹
+                        {
+                          space?.plans?.reduce((prev, current) => {
+                            return current.price < prev.price ? current : prev;
+                          }).price
+                        }
+                        /*<span>Month</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="price_box">
-                  <p className="price">
-                    ₹9,000/*<span>month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="property-card">
-              <div className="property_img">
-                <img src={top_gurgaon} alt="" className="propery_card_img" />
-              </div>
-              <div className="card-body space_card">
-                <p className="card-title">Accesswork Sohna Road</p>
-                <div className="location_box">
-                  <img src={location_icon} alt="location-icon" />
-                  <p>JMD Megapolis, Gurgaon</p>
-                </div>
-                <div className="price_box">
-                  <p className="price">
-                    ₹9,000/*<span>month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="property-card">
-              <div className="property_img">
-                <img src={top_gurgaon} alt="" className="propery_card_img" />
-              </div>
-              <div className="card-body space_card">
-                <p className="card-title">Accesswork Sohna Road</p>
-                <div className="location_box">
-                  <img src={location_icon} alt="location-icon" />
-                  <p>JMD Megapolis, Gurgaon</p>
-                </div>
-                <div className="price_box">
-                  <p className="price">
-                    ₹9,000/*<span>month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="property-card">
-              <div className="property_img">
-                <img src={top_gurgaon} alt="" className="propery_card_img" />
-              </div>
-              <div className="card-body space_card">
-                <p className="card-title">Accesswork Sohna Road</p>
-                <div className="location_box">
-                  <img src={location_icon} alt="location-icon" />
-                  <p>JMD Megapolis, Gurgaon</p>
-                </div>
-                <div className="price_box">
-                  <p className="price">
-                    ₹9,000/*<span>month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="property-card">
-              <div className="property_img">
-                <img src={top_gurgaon} alt="" className="propery_card_img" />
-              </div>
-              <div className="card-body space_card">
-                <p className="card-title">Accesswork Sohna Road</p>
-                <div className="location_box">
-                  <img src={location_icon} alt="location-icon" />
-                  <p>JMD Megapolis, Gurgaon</p>
-                </div>
-                <div className="price_box">
-                  <p className="price">
-                    ₹9,000/*<span>month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </Carousel>
         </div>
       </div>

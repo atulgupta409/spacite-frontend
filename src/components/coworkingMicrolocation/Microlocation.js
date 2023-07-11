@@ -79,6 +79,7 @@ function Microlocation() {
 
   const extractedWorkspaces = workSpaces?.slice(0, 12);
   const extractedWorkspaces2 = workSpaces?.slice(12);
+  console.log(workSpaces);
 
   return (
     <div style={{ marginTop: "100px" }}>

@@ -114,3 +114,12 @@ export const getSeo = async (setSeo, path) => {
     console.log(error);
   }
 };
+
+export const getNearSpaces = async (setNearSpace, slug) => {
+  try {
+    const { data } = await axios.get(`${baseUrl}/api/workspaces/slug/${slug}`);
+    setNearSpace(data.nearbyWorkspaces.slice(0, 10));
+  } catch (error) {
+    console.log(error);
+  }
+};
