@@ -11,6 +11,8 @@ import axios from "axios";
 import Modal from "react-modal";
 import { RxCross2 } from "react-icons/rx";
 import { getWorkSpaceBySlug } from "../service/Service";
+import { Helmet } from "react-helmet";
+import { getSeo } from "../service/Service";
 
 const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
@@ -38,6 +40,16 @@ const PropertyPage = () => {
   useEffect(() => {
     handleFetchWorkspacesBySlug();
   }, [slug]);
+
+  const [seo, setSeo] = useState([]);
+  const handleFetchSeo = async () => {
+    await getSeo(setSeo, lastElem);
+  };
+
+  useEffect(() => {
+    handleFetchSeo();
+  }, [lastElem]);
+
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
     { value: "private cabin", label: "Private Cabin" },
@@ -259,6 +271,11 @@ const PropertyPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{seo?.title}</title>
+        <meta name="description" content={seo?.description} />
+        <meta name="keywords" content={seo?.keywords} />
+      </Helmet>
       <nav
         aria-label="breadcrumb"
         style={{ paddingLeft: "20px", marginTop: "100px" }}

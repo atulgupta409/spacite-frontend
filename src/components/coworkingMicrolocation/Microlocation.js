@@ -13,6 +13,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SpaceSkeleton from "../spaceSkeleton/SpaceSkeleton";
 import workImage from "../media/coworking_img/top-gurgaon.png";
+import { getSeo } from "../service/Service";
 
 function Microlocation() {
   const location = useLocation();
@@ -66,8 +67,14 @@ function Microlocation() {
     handleFetchMicrolocations();
   }, [cityName]);
 
+  const [seo, setSeo] = useState([]);
+  const handleFetchSeo = async () => {
+    await getSeo(setSeo, lastElem2);
+  };
+
   useEffect(() => {
     handleFetchWorkSpaces(current_page);
+    handleFetchSeo();
   }, [microNameApi]);
 
   const extractedWorkspaces = workSpaces?.slice(0, 12);
@@ -292,6 +299,15 @@ function Microlocation() {
               );
             })}
           </div>
+        </div>
+      </div>
+      <div className="footer_content_main">
+        <div className="container">
+          <h3 className="footer_title">{seo?.footer_title}</h3>
+          <div
+            dangerouslySetInnerHTML={{ __html: seo?.footer_description }}
+            className="footer_content"
+          />
         </div>
       </div>
     </div>
