@@ -142,6 +142,7 @@
 
 .contact_btn {
   padding: 8px 23px;
+  border-radius: 10px;
 }
 .sticky_form {
   position: -webkit-sticky;
@@ -303,6 +304,10 @@
     margin-bottom: 10px;
   }
   .property_page_img {
+    border-radius: 10px;
+  }
+  .contact_btn {
+    padding: 8px 12px;
     border-radius: 10px;
   }
 }

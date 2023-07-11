@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, NavLink } from "react-router-dom";
-import { CityContext } from "../context/CityContext";
 import "./Microlocation.css";
 import HomeContact from "../homepage/home-contact/HomeContact";
 import {
@@ -14,6 +13,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import SpaceSkeleton from "../spaceSkeleton/SpaceSkeleton";
 import workImage from "../media/coworking_img/top-gurgaon.png";
 import { getSeo } from "../service/Service";
+import { Helmet } from "react-helmet";
 
 function Microlocation() {
   const location = useLocation();
@@ -82,6 +82,21 @@ function Microlocation() {
 
   return (
     <div style={{ marginTop: "100px" }}>
+      <Helmet>
+        <title>{seo?.title}</title>
+        <meta name="description" content={seo?.description} />
+        <meta name="keywords" content={seo?.keywords} />
+        {/* <script type="application/ld+json">
+          {JSON.stringify(seo?.script)}
+        </script> */}
+        <meta property="og:title" content={seo?.open_graph?.title} />
+        <meta
+          property="og:description"
+          content={seo?.open_graph?.description}
+        />
+        <meta name="twitter:title" content={seo?.twitter?.title} />
+        <meta name="twitter:description" content={seo?.twitter?.description} />
+      </Helmet>
       <nav aria-label="breadcrumb" style={{ paddingLeft: "20px" }}>
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -169,9 +184,16 @@ function Microlocation() {
                   >
                     <div className="col-6 col-md-12 property_img">
                       <img
-                        // src={workspace?.images[0]?.image}
-                        src={workImage}
-                        alt=""
+                        src={
+                          workspace?.images?.length > 0
+                            ? workspace?.images[0].image
+                            : workImage
+                        }
+                        alt={
+                          workspace?.images?.length > 0
+                            ? workspace?.images[0].alt
+                            : "workImage"
+                        }
                         className="propery_card_img"
                       />
                     </div>
@@ -219,9 +241,16 @@ function Microlocation() {
                   >
                     <div className="col-6 col-md-12 property_img">
                       <img
-                        // src={workspace?.images[0]?.image}
-                        src={workImage}
-                        alt=""
+                        src={
+                          workspace?.images?.length > 0
+                            ? workspace?.images[0].image
+                            : workImage
+                        }
+                        alt={
+                          workspace?.images?.length > 0
+                            ? workspace?.images[0].alt
+                            : "workImage"
+                        }
                         className="propery_card_img"
                       />
                     </div>
