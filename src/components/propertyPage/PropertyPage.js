@@ -12,7 +12,7 @@ import Modal from "react-modal";
 import { RxCross2 } from "react-icons/rx";
 import { getWorkSpaceBySlug } from "../service/Service";
 import { Helmet } from "react-helmet";
-import { getSeo } from "../service/Service";
+import baseUrl from "../../environment/api-config";
 
 const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
@@ -40,15 +40,6 @@ const PropertyPage = () => {
   useEffect(() => {
     handleFetchWorkspacesBySlug();
   }, [slug]);
-
-  const [seo, setSeo] = useState([]);
-  const handleFetchSeo = async () => {
-    await getSeo(setSeo, lastElem);
-  };
-
-  useEffect(() => {
-    handleFetchSeo();
-  }, [lastElem]);
 
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
@@ -244,7 +235,7 @@ const PropertyPage = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:5000/sendmail",
+          `${baseUrl}/sendmail`,
           {
             name: user.name,
             email: user.email,
@@ -268,13 +259,27 @@ const PropertyPage = () => {
       validation();
     }
   };
-
+  const { seo } = workSpace;
   return (
     <>
       <Helmet>
         <title>{seo?.title}</title>
         <meta name="description" content={seo?.description} />
         <meta name="keywords" content={seo?.keywords} />
+        <meta property="og:title" content={seo?.open_graph?.title} />
+        <meta
+          property="og:description"
+          content={seo?.open_graph?.description}
+        />
+        <meta name="twitter:title" content={seo?.twitter?.title} />
+        <meta name="twitter:description" content={seo?.twitter?.description} />
+        <meta property="og:image" content={workSpace?.images[0]?.image} />
+        <meta property="og:image:alt" content={workSpace?.images[0]?.alt} />
+        <meta property="twitter:image" content={workSpace?.images[0]?.image} />
+        <meta
+          property="twitter:image:alt"
+          content={workSpace?.images[0]?.alt}
+        />
       </Helmet>
       <nav
         aria-label="breadcrumb"
