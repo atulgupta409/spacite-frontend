@@ -273,13 +273,13 @@ const PropertyPage = () => {
         />
         <meta name="twitter:title" content={seo?.twitter?.title} />
         <meta name="twitter:description" content={seo?.twitter?.description} />
-        <meta property="og:image" content={workSpace?.images[0]?.image} />
+        {/* <meta property="og:image" content={workSpace?.images[0]?.image} />
         <meta property="og:image:alt" content={workSpace?.images[0]?.alt} />
-        <meta property="twitter:image" content={workSpace?.images[0]?.image} />
-        <meta
+        <meta property="twitter:image" content={workSpace?.images[0]?.image} /> */}
+        {/* <meta
           property="twitter:image:alt"
           content={workSpace?.images[0]?.alt}
-        />
+        /> */}
       </Helmet>
       <nav
         aria-label="breadcrumb"
