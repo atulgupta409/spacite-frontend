@@ -68,7 +68,7 @@ function Navbar() {
                   </div>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="">
                     Virtual Office
                   </a>
                 </li>

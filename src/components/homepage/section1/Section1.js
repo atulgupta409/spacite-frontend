@@ -16,7 +16,7 @@ function Section1() {
 
   const optionsLookingFor = [
     { value: "Coworking Space", label: "Coworking Space" },
-    { value: "Virtual Office", label: "Virtual Office" },
+    // { value: "Virtual Office", label: "Virtual Office" },
   ];
   const optionsCity = [
     { value: "Pune", label: "Pune" },

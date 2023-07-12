@@ -44,7 +44,7 @@ function CityPage() {
 
   const [seo, setSeo] = useState([]);
   const handleFetchSeo = async () => {
-    await getSeo(setSeo, lastElem);
+    await getSeo(setSeo, "coworking-space-" + lastElem);
   };
 
   useEffect(() => {
@@ -153,7 +153,14 @@ function CityPage() {
               return (
                 <React.Fragment key={i}>
                   <div className="city_page_title_box">
-                    <h3>{microlocation.name}</h3>
+                    <Link
+                      to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
+                        .toLowerCase()
+                        .split(" ")
+                        .join("-")}`}
+                    >
+                      <h3>{microlocation.name}</h3>
+                    </Link>
                     <div className="city_explore">
                       <Link
                         to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
@@ -187,8 +194,8 @@ function CityPage() {
                             key={j}
                             target="_blank"
                           >
-                            <div className="property-card" key={j}>
-                              <div className="property_img">
+                            <div className="property_card">
+                              <div className="img_box">
                                 <img
                                   src={
                                     workspace.images.length > 0
@@ -200,22 +207,22 @@ function CityPage() {
                                       ? workspace.images[0].alt
                                       : "workImage"
                                   }
-                                  className="propery_card_img"
+                                  className="img-fluid"
                                 />
                               </div>
-                              <div className="card-body space_card">
-                                <p className="card-title">{workspace?.name}</p>
+                              <div className="card_body">
+                                <p className="card-title">
+                                  {workspace?.name?.length > 22
+                                    ? workspace?.name?.substring(0, 22) + "..."
+                                    : workspace?.name}
+                                </p>
                                 <div className="location_box">
-                                  <img
-                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png"
-                                    alt="location-icon"
-                                  />
-                                  <p>{microlocation?.name + " " + cityName}</p>
+                                  <p>{microlocation?.name + ", " + cityName}</p>
                                 </div>
                                 <p className="price_from">Starting from</p>
                                 <div className="price_box">
                                   <p className="price">
-                                    ₹
+                                    ₹{" "}
                                     {
                                       workspace?.plans?.reduce(
                                         (prev, current) =>
@@ -223,7 +230,7 @@ function CityPage() {
                                             ? current
                                             : prev
                                       ).price
-                                    }
+                                    }{" "}
                                     /*<span>Month</span>
                                   </p>
                                 </div>
@@ -237,6 +244,7 @@ function CityPage() {
               );
             })}
           </div>
+
           <div className="contact_wrapper">
             <HomeContact />
           </div>
@@ -278,8 +286,8 @@ function CityPage() {
                             className="space_link"
                             key={j}
                           >
-                            <div className="property-card" key={j}>
-                              <div className="property_img">
+                            <div className="property_card">
+                              <div className="img_box">
                                 <img
                                   src={
                                     workspace.images.length > 0
@@ -291,22 +299,22 @@ function CityPage() {
                                       ? workspace.images[0].alt
                                       : "workImage"
                                   }
-                                  className="propery_card_img"
+                                  className="img-fluid"
                                 />
                               </div>
-                              <div className="card-body space_card">
-                                <p className="card-title">{workspace?.name}</p>
+                              <div className="card_body">
+                                <p className="card-title">
+                                  {workspace?.name?.length > 22
+                                    ? workspace?.name?.substring(0, 22) + "..."
+                                    : workspace?.name}
+                                </p>
                                 <div className="location_box">
-                                  <img
-                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png"
-                                    alt="location-icon"
-                                  />
-                                  <p>{microlocation?.name + " " + cityName}</p>
+                                  <p>{microlocation?.name + ", " + cityName}</p>
                                 </div>
                                 <p className="price_from">Starting from</p>
                                 <div className="price_box">
                                   <p className="price">
-                                    ₹
+                                    ₹{" "}
                                     {
                                       workspace?.plans?.reduce(
                                         (prev, current) =>
@@ -314,7 +322,7 @@ function CityPage() {
                                             ? current
                                             : prev
                                       ).price
-                                    }
+                                    }{" "}
                                     /*<span>Month</span>
                                   </p>
                                 </div>
@@ -339,7 +347,7 @@ function CityPage() {
           <div className="row">
             {microlocations?.map((elem, i) => {
               return (
-                <div className="col-6 col-md-3" key={i}>
+                <div className="col-6 col-md-4" key={i}>
                   <NavLink
                     to={`/coworking-space/${cityName.toLowerCase()}/${elem.name
                       .toLowerCase()
@@ -347,6 +355,7 @@ function CityPage() {
                       .join("-")}`}
                   >
                     {/* <span className="mob_hide">Coworking space in</span>{" "} */}
+                    <span className="mob_hide">Coworking space in</span>{" "}
                     {elem.name}
                   </NavLink>
                 </div>

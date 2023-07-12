@@ -42,6 +42,17 @@
   content: "";
   background-image: none;
 }
+.image-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.image-container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
 
 @media only screen and (max-width: 768px) {
   .section_heading_brands {
