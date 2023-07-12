@@ -627,8 +627,8 @@ const PropertyPage = () => {
           <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
             {nearSpace?.map((space, i) => {
               return (
-                <div className="property-card" key={i}>
-                  <div className="property_img">
+                <div className="property_card" key={i}>
+                  <div className="img_box">
                     <img
                       src={
                         space?.images.length > 0
@@ -640,23 +640,27 @@ const PropertyPage = () => {
                           ? space?.images[0]?.alt
                           : "workImage"
                       }
-                      className="propery_card_img"
+                      className="img-fluid"
                     />
                   </div>
-                  <div className="card-body space_card">
-                    <p className="card-title">{space?.name}</p>
+                  <div className="card_body">
+                    <p className="card-title">
+                      {space?.name?.length > 22
+                        ? space?.name?.substring(0, 22) + "..."
+                        : space?.name}
+                    </p>
                     <div className="location_box">
-                      <img src={location_icon} alt="location-icon" />
                       <p>{space?.location?.address}</p>
                     </div>
+                    <p className="price_from">Starting from</p>
                     <div className="price_box">
                       <p className="price">
-                        ₹
+                        ₹{" "}
                         {
                           space?.plans?.reduce((prev, current) => {
                             return current.price < prev.price ? current : prev;
                           }).price
-                        }
+                        }{" "}
                         /*<span>Month</span>
                       </p>
                     </div>

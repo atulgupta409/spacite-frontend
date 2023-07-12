@@ -177,7 +177,10 @@ function Microlocation() {
           <div className="container">
             <div className="row top_space_row">
               {extractedWorkspaces?.map((workspace, i) => (
-                <div className="col-12 col-sm-6 col-lg-3 micro_card_box">
+                <div
+                  className="col-12 col-sm-6 col-lg-3 micro_card_box"
+                  key={i}
+                >
                   <Link
                     to={`/coworking/${workspace?.slug}`}
                     className="space_link"
@@ -238,7 +241,10 @@ function Microlocation() {
           <div className="container">
             <div className="row top_space_row">
               {extractedWorkspaces2?.map((workspace, i) => (
-                <div className="col-12 col-sm-6 col-lg-3 micro_card_box">
+                <div
+                  className="col-12 col-sm-6 col-lg-3 micro_card_box"
+                  key={i}
+                >
                   <Link
                     to={`/coworking/${workspace?.slug}`}
                     className="space_link"
