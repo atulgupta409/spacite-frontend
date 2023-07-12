@@ -22,112 +22,65 @@ function PopularCoworking({ city }) {
               </h2>
               <div className="top_space_row">
                 <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-                  <div className="property-card">
-                    <div className="property_img">
+                  <div className="property_card">
+                    <div className="img_box">
                       <img
                         src={top_gurgaon}
-                        alt=""
-                        className="propery_card_img"
+                        alt="workImage"
+                        className="img-fluid"
                       />
                     </div>
-                    <div className="card-body space_card">
+                    <div className="card_body">
                       <p className="card-title">Accesswork Sohna Road</p>
                       <div className="location_box">
-                        <img src={location_icon} alt="location-icon" />
-                        <p>JMD Megapolis, Gurgaon</p>
+                        <p>JMD Megapolis, Gurugram</p>
                       </div>
-                      {/* <p className="price_from">Starting from</p> */}
+                      <p className="price_from">Starting from</p>
                       <div className="price_box">
                         <p className="price">
-                          ₹9,000/*<span>month</span>
+                          ₹ 9000 /*<span>Month</span>
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="property-card">
-                    <div className="property_img">
+                  <div className="property_card">
+                    <div className="img_box">
                       <img
                         src={top_gurgaon}
-                        alt=""
-                        className="propery_card_img"
+                        alt="workImage"
+                        className="img-fluid"
                       />
                     </div>
-                    <div className="card-body space_card">
+                    <div className="card_body">
                       <p className="card-title">Accesswork Sohna Road</p>
                       <div className="location_box">
-                        <img src={location_icon} alt="location-icon" />
-                        <p>JMD Megapolis, Gurgaon</p>
+                        <p>JMD Megapolis, Gurugram</p>
                       </div>
-                      {/* <p className="price_from">Starting from</p> */}
+                      <p className="price_from">Starting from</p>
                       <div className="price_box">
                         <p className="price">
-                          ₹9,000/*<span>month</span>
+                          ₹ 9000 /*<span>Month</span>
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="property-card">
-                    <div className="property_img">
+                  <div className="property_card">
+                    <div className="img_box">
                       <img
                         src={top_gurgaon}
-                        alt=""
-                        className="propery_card_img"
+                        alt="workImage"
+                        className="img-fluid"
                       />
                     </div>
-                    <div className="card-body space_card">
+                    <div className="card_body">
                       <p className="card-title">Accesswork Sohna Road</p>
                       <div className="location_box">
-                        <img src={location_icon} alt="location-icon" />
-                        <p>JMD Megapolis, Gurgaon</p>
+                        <p>JMD Megapolis, Gurugram</p>
                       </div>
-                      {/* <p className="price_from">Starting from</p> */}
+                      <p className="price_from">Starting from</p>
                       <div className="price_box">
                         <p className="price">
-                          ₹9,000/*<span>month</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="property-card">
-                    <div className="property_img">
-                      <img
-                        src={top_gurgaon}
-                        alt=""
-                        className="propery_card_img"
-                      />
-                    </div>
-                    <div className="card-body space_card">
-                      <p className="card-title">Accesswork Sohna Road</p>
-                      <div className="location_box">
-                        <img src={location_icon} alt="location-icon" />
-                        <p>JMD Megapolis, Gurgaon</p>
-                      </div>
-                      {/* <p className="price_from">Starting from</p> */}
-                      <div className="price_box">
-                        <p className="price">
-                          ₹9,000/*<span>month</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="property-card">
-                    <div className="property_img">
-                      <img
-                        src={top_gurgaon}
-                        alt=""
-                        className="propery_card_img"
-                      />
-                    </div>
-                    <div className="card-body space_card">
-                      <p className="card-title">Accesswork Sohna Road</p>
-                      <div className="location_box">
-                        <img src={location_icon} alt="location-icon" />
-                        <p>JMD Megapolis, Gurgaon</p>
-                      </div>
-                      {/* <p className="price_from">Starting from</p> */}
-                      <div className="price_box">
-                        <p className="price">
-                          ₹9,000/*<span>month</span>
+                          ₹ 9000 /*<span>Month</span>
                         </p>
                       </div>
                     </div>

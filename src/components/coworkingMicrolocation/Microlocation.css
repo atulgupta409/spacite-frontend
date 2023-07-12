@@ -31,6 +31,9 @@
 .mb_5 {
   margin-bottom: 60px;
 }
+.micro_card_box {
+  margin-bottom: 60px;
+}
 @media only screen and (max-width: 768px) {
   .card_body_mob {
     display: flex;
@@ -45,5 +48,18 @@
   }
   .card_title {
     line-height: 18px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .micro_card_box {
+    padding-right: 0;
+    margin-bottom: 0;
+  }
+  .propery_card {
+    margin-bottom: 30px;
+  }
+  .img_box_micro {
+    border-radius: 20px 0 0 20px;
   }
 }

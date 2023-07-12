@@ -123,3 +123,12 @@ export const getNearSpaces = async (setNearSpace, slug) => {
     console.log(error);
   }
 };
+
+export const getBrands = async (setBrands) => {
+  try {
+    const { data } = await axios.get(`${baseUrl}/api/brands/all-brands`);
+    setBrands(data);
+  } catch (error) {
+    console.log(error);
+  }
+};

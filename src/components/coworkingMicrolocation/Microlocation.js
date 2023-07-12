@@ -177,53 +177,56 @@ function Microlocation() {
           <div className="container">
             <div className="row top_space_row">
               {extractedWorkspaces?.map((workspace, i) => (
-                <div className="col-md-6 col-lg-3 property-card mb_5" key={i}>
+                <div className="col-12 col-sm-6 col-lg-3 micro_card_box">
                   <Link
                     to={`/coworking/${workspace?.slug}`}
-                    className="row space_link"
+                    className="space_link"
                     target="_blank"
                   >
-                    <div className="col-6 col-md-12 property_img">
-                      <img
-                        src={
-                          workspace?.images?.length > 0
-                            ? workspace?.images[0].image
-                            : workImage
-                        }
-                        alt={
-                          workspace?.images?.length > 0
-                            ? workspace?.images[0].alt
-                            : "workImage"
-                        }
-                        className="propery_card_img"
-                      />
-                    </div>
-                    <div className="col-6 col-md-12 card-body space_card card_body_mob">
-                      <p className="card-title card_title">{workspace.name}</p>
-                      <div className="location_box">
+                    <div className="row property_card">
+                      <div className="col-6 col-sm-12 img_box img_box_micro">
                         <img
-                          src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png"
-                          alt="location-icon"
-                        />
-                        <p>
-                          {workspace?.location.address.length > 20
-                            ? workspace?.location.address.slice(0, 20) + "..."
-                            : workspace?.location.address}
-                        </p>
-                      </div>
-                      <p className="price_from">Starting from</p>
-                      <div className="price_box">
-                        <p className="price">
-                          ₹
-                          {
-                            workspace?.plans.reduce((prev, current) => {
-                              return current.price < prev.price
-                                ? current
-                                : prev;
-                            }).price
+                          src={
+                            workspace?.images?.length > 0
+                              ? workspace?.images[0]?.image
+                              : workImage
                           }
-                          /*<span>month</span>
+                          alt={
+                            workspace?.images?.length > 0
+                              ? workspace?.images[0]?.alt
+                              : "workImage"
+                          }
+                          className="img-fluid"
+                        />
+                      </div>
+                      <div className="card_body col-6 col-sm-12">
+                        <p className="card-title">
+                          {workspace?.name?.length > 22
+                            ? workspace?.name?.substring(0, 22) + "..."
+                            : workspace?.name}
                         </p>
+                        <div className="location_box">
+                          <p>
+                            {workspace?.location?.address?.length > 20
+                              ? workspace?.location?.address?.slice(0, 20) +
+                                "..."
+                              : workspace?.location?.address}
+                          </p>
+                        </div>
+                        <p className="price_from">Starting from</p>
+                        <div className="price_box">
+                          <p className="price">
+                            ₹{" "}
+                            {
+                              workspace?.plans.reduce((prev, current) => {
+                                return current.price < prev.price
+                                  ? current
+                                  : prev;
+                              }).price
+                            }{" "}
+                            /*<span>Month</span>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </Link>
@@ -235,52 +238,56 @@ function Microlocation() {
           <div className="container">
             <div className="row top_space_row">
               {extractedWorkspaces2?.map((workspace, i) => (
-                <div className="col-md-6 col-lg-3 property-card mb_5" key={i}>
+                <div className="col-12 col-sm-6 col-lg-3 micro_card_box">
                   <Link
                     to={`/coworking/${workspace?.slug}`}
-                    className="row space_link"
+                    className="space_link"
+                    target="_blank"
                   >
-                    <div className="col-6 col-md-12 property_img">
-                      <img
-                        src={
-                          workspace?.images?.length > 0
-                            ? workspace?.images[0].image
-                            : workImage
-                        }
-                        alt={
-                          workspace?.images?.length > 0
-                            ? workspace?.images[0].alt
-                            : "workImage"
-                        }
-                        className="propery_card_img"
-                      />
-                    </div>
-                    <div className="col-6 col-md-12 card-body space_card card_body_mob">
-                      <p className="card-title card_title">{workspace.name}</p>
-                      <div className="location_box">
+                    <div className="row property_card">
+                      <div className="col-6 col-sm-12 img_box img_box_micro">
                         <img
-                          src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png"
-                          alt="location-icon"
-                        />
-                        <p>
-                          {workspace?.location.address.length > 20
-                            ? workspace?.location.address.slice(0, 20) + "..."
-                            : workspace?.location.address}
-                        </p>
-                      </div>
-                      <p className="price_from">Starting from</p>
-                      <div className="price_box">
-                        <p className="price">
-                          ₹
-                          {
-                            workspace?.plans.reduce((prev, current) => {
-                              return current.price < prev.price
-                                ? current
-                                : prev;
-                            }).price
+                          src={
+                            workspace?.images?.length > 0
+                              ? workspace?.images[0]?.image
+                              : workImage
                           }
-                          /*<span>month</span>
+                          alt={
+                            workspace?.images?.length > 0
+                              ? workspace?.images[0]?.alt
+                              : "workImage"
+                          }
+                          className="img-fluid"
+                        />
+                      </div>
+                      <div className="card_body col-6 col-sm-12">
+                        <p className="card-title">
+                          {workspace?.name?.length > 22
+                            ? workspace?.name?.substring(0, 22) + "..."
+                            : workspace?.name}
                         </p>
+                        <div className="location_box">
+                          <p>
+                            {workspace?.location?.address?.length > 20
+                              ? workspace?.location?.address?.slice(0, 20) +
+                                "..."
+                              : workspace?.location?.address}
+                          </p>
+                        </div>
+                        <p className="price_from">Starting from</p>
+                        <div className="price_box">
+                          <p className="price">
+                            ₹{" "}
+                            {
+                              workspace?.plans.reduce((prev, current) => {
+                                return current.price < prev.price
+                                  ? current
+                                  : prev;
+                              }).price
+                            }{" "}
+                            /*<span>Month</span>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </Link>
