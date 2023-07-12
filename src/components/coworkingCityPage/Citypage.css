@@ -168,6 +168,10 @@
   color: #444;
   text-decoration: none;
 }
+.ebYIDQ {
+  margin: 0 10px;
+  width: 285px !important;
+}
 
 @media only screen and (max-width: 768px) {
   .microlocation_tab {
@@ -254,6 +258,9 @@
 @media only screen and (max-width: 576px) {
   .img_box {
     height: 147px;
+  }
+  .img_box img {
+    border-radius: 20px 0 0 20px;
   }
   .property_card {
     margin-bottom: 30px;
