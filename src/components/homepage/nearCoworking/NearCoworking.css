@@ -4,6 +4,10 @@
 .p_60 {
   padding: 60px 0;
 }
+.near_coworking a {
+  text-decoration: none;
+  color: #444;
+}
 
 @media only screen and (max-width: 768px) {
   .mob_section {

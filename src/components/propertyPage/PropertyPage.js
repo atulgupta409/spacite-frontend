@@ -11,7 +11,7 @@ import axios from "axios";
 import Modal from "react-modal";
 import { RxCross2 } from "react-icons/rx";
 import { getWorkSpaceBySlug } from "../service/Service";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import baseUrl from "../../environment/api-config";
 import { getNearSpaces } from "../service/Service";
 
@@ -285,8 +285,8 @@ const PropertyPage = () => {
         <meta name="twitter:description" content={seo?.twitter?.description} />
         {/* <meta property="og:image" content={workSpace?.images[0]?.image} />
         <meta property="og:image:alt" content={workSpace?.images[0]?.alt} />
-        <meta property="twitter:image" content={workSpace?.images[0]?.image} /> */}
-        {/* <meta
+        <meta property="twitter:image" content={workSpace?.images[0]?.image} />
+        <meta
           property="twitter:image:alt"
           content={workSpace?.images[0]?.alt}
         /> */}
@@ -624,51 +624,64 @@ const PropertyPage = () => {
           <span className="city_span"> Spaces</span>
         </h2>
         <div className="top_space_row">
-          <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-            {nearSpace?.map((space, i) => {
-              return (
-                <div className="property_card" key={i}>
-                  <div className="img_box">
-                    <img
-                      src={
-                        space?.images.length > 0
-                          ? space?.images[0]?.image
-                          : top_gurgaon
-                      }
-                      alt={
-                        space?.images.length > 0
-                          ? space?.images[0]?.alt
-                          : "workImage"
-                      }
-                      className="img-fluid"
-                    />
-                  </div>
-                  <div className="card_body">
-                    <p className="card-title">
-                      {space?.name?.length > 22
-                        ? space?.name?.substring(0, 22) + "..."
-                        : space?.name}
-                    </p>
-                    <div className="location_box">
-                      <p>{space?.location?.address}</p>
+          {nearSpace?.length > 0 ? (
+            <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
+              {nearSpace?.slice(0, 10)?.map((space, i) => {
+                return (
+                  <Link
+                    to={`/coworking/${space?.slug}`}
+                    className="space_link"
+                    target="_blank"
+                    key={i}
+                  >
+                    <div className="property_card">
+                      <div className="img_box">
+                        <img
+                          src={
+                            space?.images.length > 0
+                              ? space?.images[0]?.image
+                              : top_gurgaon
+                          }
+                          alt={
+                            space?.images.length > 0
+                              ? space?.images[0]?.alt
+                              : "workImage"
+                          }
+                          className="img-fluid"
+                        />
+                      </div>
+                      <div className="card_body">
+                        <p className="card-title">
+                          {space?.name?.length > 22
+                            ? space?.name?.substring(0, 22) + "..."
+                            : space?.name}
+                        </p>
+                        <div className="location_box">
+                          <p>{space?.location?.address}</p>
+                        </div>
+                        <p className="price_from">Starting from</p>
+                        <div className="price_box">
+                          <p className="price">
+                            ₹{" "}
+                            {
+                              space?.plans?.reduce((prev, current) => {
+                                return current.price < prev.price
+                                  ? current
+                                  : prev;
+                              }).price
+                            }{" "}
+                            /*<span>Month</span>
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <p className="price_from">Starting from</p>
-                    <div className="price_box">
-                      <p className="price">
-                        ₹{" "}
-                        {
-                          space?.plans?.reduce((prev, current) => {
-                            return current.price < prev.price ? current : prev;
-                          }).price
-                        }{" "}
-                        /*<span>Month</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </Carousel>
+                  </Link>
+                );
+              })}
+            </Carousel>
+          ) : (
+            <div>No Similar Spaces.</div>
+          )}
         </div>
       </div>
       <div className="footer_mob">
