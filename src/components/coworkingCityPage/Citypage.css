@@ -64,6 +64,7 @@
   height: 213px;
   overflow: hidden;
   padding: 0;
+  width: 285px;
 }
 .property_card .img_box img {
   border-radius: 20px 20px 0 0;

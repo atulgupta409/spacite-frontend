@@ -67,9 +67,23 @@ function Microlocation() {
     handleFetchMicrolocations();
   }, [cityName]);
 
-  const [seo, setSeo] = useState([]);
+  const [defaultSeo, setDefaultSeo] = useState({
+    title: "Spacite - find best coworking spaces",
+    description: "Spacite - find best coworking spaces",
+    keywords: "Default Keywords",
+    open_graph: {
+      title: "Spacite - find best coworking spaces",
+      description: "Spacite - find best coworking spaces",
+    },
+    twitter: {
+      title: "Spacite - find best coworking spaces",
+      description: "Spacite - find best coworking spaces",
+    },
+  });
+
+  const [seo, setSeo] = useState(defaultSeo);
   const handleFetchSeo = async () => {
-    await getSeo(setSeo, lastElem2);
+    await getSeo(setSeo, lastElem2, defaultSeo);
   };
 
   useEffect(() => {
@@ -79,7 +93,7 @@ function Microlocation() {
 
   const extractedWorkspaces = workSpaces?.slice(0, 12);
   const extractedWorkspaces2 = workSpaces?.slice(12);
-  console.log(workSpaces);
+  // console.log(workSpaces);
 
   return (
     <div style={{ marginTop: "100px" }}>
@@ -176,65 +190,74 @@ function Microlocation() {
         <>
           <div className="container">
             <div className="row top_space_row">
-              {extractedWorkspaces?.map((workspace, i) => (
-                <div
-                  className="col-12 col-sm-6 col-lg-3 micro_card_box"
-                  key={i}
-                >
-                  <Link
-                    to={`/coworking/${workspace?.slug}`}
-                    className="space_link"
-                    target="_blank"
+              {extractedWorkspaces?.length > 0 ? (
+                extractedWorkspaces?.map((workspace, i) => (
+                  <div
+                    className="col-12 col-sm-6 col-lg-3 micro_card_box"
+                    key={i}
                   >
-                    <div className="row property_card">
-                      <div className="col-6 col-sm-12 img_box img_box_micro">
-                        <img
-                          src={
-                            workspace?.images?.length > 0
-                              ? workspace?.images[0]?.image
-                              : workImage
-                          }
-                          alt={
-                            workspace?.images?.length > 0
-                              ? workspace?.images[0]?.alt
-                              : "workImage"
-                          }
-                          className="img-fluid"
-                        />
-                      </div>
-                      <div className="card_body col-6 col-sm-12">
-                        <p className="card-title">
-                          {workspace?.name?.length > 22
-                            ? workspace?.name?.substring(0, 22) + "..."
-                            : workspace?.name}
-                        </p>
-                        <div className="location_box">
-                          <p>
-                            {workspace?.location?.address?.length > 20
-                              ? workspace?.location?.address?.slice(0, 20) +
-                                "..."
-                              : workspace?.location?.address}
-                          </p>
+                    <Link
+                      to={`/coworking/${workspace?.slug}`}
+                      className="space_link"
+                      target="_blank"
+                    >
+                      <div className="row property_card">
+                        <div className="col-6 col-sm-12 img_box2 img_box_micro">
+                          <img
+                            src={
+                              workspace?.images?.length > 0
+                                ? workspace?.images[0]?.image
+                                : workImage
+                            }
+                            alt={
+                              workspace?.images?.length > 0
+                                ? workspace?.images[0]?.alt
+                                : "workImage"
+                            }
+                            className="img-fluid"
+                          />
                         </div>
-                        <p className="price_from">Starting from</p>
-                        <div className="price_box">
-                          <p className="price">
-                            ₹{" "}
-                            {
-                              workspace?.plans.reduce((prev, current) => {
-                                return current.price < prev.price
-                                  ? current
-                                  : prev;
-                              }).price
-                            }{" "}
-                            /*<span>Month</span>
+                        <div className="card_body col-6 col-sm-12">
+                          <p className="card-title">
+                            {workspace?.name?.length > 22
+                              ? workspace?.name?.substring(0, 22) + "..."
+                              : workspace?.name}
                           </p>
+                          <div className="location_box">
+                            <p>
+                              {workspace?.location?.address?.length > 20
+                                ? workspace?.location?.address?.slice(0, 20) +
+                                  "..."
+                                : workspace?.location?.address}
+                            </p>
+                          </div>
+                          <p className="price_from">Starting from</p>
+                          <div className="price_box">
+                            <p className="price">
+                              ₹{" "}
+                              {
+                                workspace?.plans.reduce((prev, current) => {
+                                  return current.price < prev.price
+                                    ? current
+                                    : prev;
+                                }).price
+                              }{" "}
+                              /*<span>Month</span>
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
+                ))
+              ) : (
+                <div
+                  className="col-12 text-center"
+                  style={{ fontSize: "20px", color: "#444", fontWeight: "600" }}
+                >
+                  No Spaces Available In {microName}
                 </div>
-              ))}
+              )}
             </div>
           </div>
           <HomeContact />
@@ -344,15 +367,19 @@ function Microlocation() {
           </div>
         </div>
       </div>
-      <div className="footer_content_main">
-        <div className="container">
-          <h3 className="footer_title">{seo?.footer_title}</h3>
-          <div
-            dangerouslySetInnerHTML={{ __html: seo?.footer_description }}
-            className="footer_content"
-          />
+      {seo !== defaultSeo ? (
+        <div className="footer_content_main">
+          <div className="container">
+            <h3 className="footer_title">{seo?.footer_title}</h3>
+            <div
+              dangerouslySetInnerHTML={{ __html: seo?.footer_description }}
+              className="footer_content"
+            />
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

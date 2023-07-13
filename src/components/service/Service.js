@@ -37,6 +37,7 @@ export const getMicrolocationByCity = async (
     setLoadingMicrolocations(false);
   } catch (error) {
     console.log(error);
+    setLoadingMicrolocations(false);
   }
 };
 
@@ -106,12 +107,13 @@ export const getWorkSpaceBySlug = async (
   }
 };
 
-export const getSeo = async (setSeo, path) => {
+export const getSeo = async (setSeo, path, defaultSeo) => {
   try {
     const { data } = await axios.get(`${baseUrl}/api/seo/seos-data/${path}`);
     setSeo(data);
   } catch (error) {
     console.log(error);
+    setSeo(defaultSeo);
   }
 };
 

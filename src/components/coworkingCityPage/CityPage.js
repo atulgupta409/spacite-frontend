@@ -5,6 +5,7 @@ import Carousel from "@itseasy21/react-elastic-carousel";
 import HomeContact from "../homepage/home-contact/HomeContact";
 import { CityContext } from "../context/CityContext";
 import { Helmet } from "react-helmet";
+import ErrorBoundary from "./ErrorBoundry";
 
 import {
   getWorkSpaceByCity,
@@ -31,20 +32,55 @@ function CityPage() {
   const [microlocations, setMicrolocations] = useState([]);
 
   const handleFetchMicrolocations = async () => {
-    await getMicrolocationByCity(
-      cityName,
-      setMicrolocations,
-      setLoadingMicrolocations
-    );
+    try {
+      await getMicrolocationByCity(
+        cityName,
+        setMicrolocations,
+        setLoadingMicrolocations
+      );
+    } catch (error) {
+      console.error(error);
+      setLoadingMicrolocations(false);
+      throw new Error(error);
+    }
   };
 
   const handleFetchWorkspacesByCity = async () => {
-    await getWorkSpaceByCity(setCityWorkspaces, cityName, setLoadingSpaces);
+    try {
+      await getWorkSpaceByCity(setCityWorkspaces, cityName, setLoadingSpaces);
+    } catch (error) {
+      console.error(error);
+      setLoadingSpaces(false);
+    }
   };
 
-  const [seo, setSeo] = useState([]);
+  const [defaultSeo, setDefaultSeo] = useState({
+    title: "Spacite - find best coworking spaces",
+    description: "Spacite - find best coworking spaces",
+    keywords: "Default Keywords",
+    open_graph: {
+      title: "Spacite - find best coworking spaces",
+      description: "Spacite - find best coworking spaces",
+    },
+    twitter: {
+      title: "Spacite - find best coworking spaces",
+      description: "Spacite - find best coworking spaces",
+    },
+  });
+
+  const [seo, setSeo] = useState(defaultSeo);
+
   const handleFetchSeo = async () => {
-    await getSeo(setSeo, "coworking-space-" + lastElem);
+    try {
+      const response = await getSeo(
+        setSeo,
+        "coworking-space-" + lastElem,
+        defaultSeo
+      );
+    } catch (error) {
+      console.error(error);
+      setSeo(defaultSeo);
+    }
   };
 
   useEffect(() => {
@@ -53,6 +89,7 @@ function CityPage() {
     handleFetchSeo();
   }, [cityName]);
   let topMicrolocations = microlocations.slice(0, 6);
+  // console.log(seo);
 
   return (
     <div className="city_page_main" style={{ marginTop: "100px" }}>
@@ -75,6 +112,7 @@ function CityPage() {
           content={workSpaces?.images[0]?.alt}
         /> */}
       </Helmet>
+
       <nav aria-label="breadcrumb" style={{ paddingLeft: "20px" }}>
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -364,15 +402,19 @@ function CityPage() {
           </div>
         </div>
       </div>
-      <div className="footer_content_main">
-        <div className="container">
-          <h3 className="footer_title">{seo?.footer_title}</h3>
-          <div
-            dangerouslySetInnerHTML={{ __html: seo?.footer_description }}
-            className="footer_content"
-          />
+      {seo !== defaultSeo ? (
+        <div className="footer_content_main">
+          <div className="container">
+            <h3 className="footer_title">{seo?.footer_title}</h3>
+            <div
+              dangerouslySetInnerHTML={{ __html: seo?.footer_description }}
+              className="footer_content"
+            />
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

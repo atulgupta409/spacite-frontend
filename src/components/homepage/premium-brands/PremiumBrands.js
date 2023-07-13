@@ -42,7 +42,7 @@ function PremiumBrands() {
               ?.filter((brand) => brand?.should_show_on_home == true)
               .map((item, i) => (
                 <div className="card premium_card" key={i}>
-                  <div class="image-container">
+                  <div className="image-container">
                     <img
                       src={item?.featureImage}
                       className="img-fluid card-img-top"
