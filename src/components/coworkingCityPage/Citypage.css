@@ -45,13 +45,13 @@
 .space_card {
   text-align: center;
 }
-.WgpPQ {
+/* .WgpPQ {
   width: 285px !important;
-  padding: 0px;
+  padding: 0px; 
   margin: 0 10px;
-}
+} */
 .property_card {
-  width: 100%;
+  width: 277px;
   border-radius: 20px;
   background: #fff;
   box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.1);
@@ -64,7 +64,7 @@
   height: 213px;
   overflow: hidden;
   padding: 0;
-  width: 285px;
+  /* width: 285px; */
 }
 .property_card .img_box img {
   border-radius: 20px 20px 0 0;
@@ -169,10 +169,10 @@
   color: #444;
   text-decoration: none;
 }
-.ebYIDQ {
+/* .ebYIDQ {
   margin: 0 10px;
   width: 285px !important;
-}
+} */
 
 @media only screen and (max-width: 768px) {
   .microlocation_tab {
@@ -259,12 +259,15 @@
 @media only screen and (max-width: 576px) {
   .img_box {
     height: 147px;
+    width: 100%;
   }
   .img_box img {
     border-radius: 20px 0 0 20px;
+    width: 100%;
   }
   .property_card {
     margin-bottom: 30px;
+    width: 95%;
   }
   .city_page_title_box {
     margin: 30px 20px 0;

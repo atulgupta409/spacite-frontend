@@ -657,7 +657,12 @@ const PropertyPage = () => {
                             : space?.name}
                         </p>
                         <div className="location_box">
-                          <p>{space?.location?.address}</p>
+                          <p>
+                            {space?.location?.address?.length > 26
+                              ? space?.location?.address?.substring(0, 24) +
+                                "..."
+                              : space?.location?.address}
+                          </p>
                         </div>
                         <p className="price_from">Starting from</p>
                         <div className="price_box">
