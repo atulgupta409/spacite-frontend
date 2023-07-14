@@ -201,7 +201,7 @@ function Microlocation() {
                       className="space_link"
                       target="_blank"
                     >
-                      <div className="row property_card">
+                      <div className="row property_card property_card_mob">
                         <div className="col-6 col-sm-12 img_box2 img_box_micro">
                           <img
                             src={
@@ -273,7 +273,7 @@ function Microlocation() {
                     className="space_link"
                     target="_blank"
                   >
-                    <div className="row property_card">
+                    <div className="row property_card property_card_mob">
                       <div className="col-6 col-sm-12 img_box img_box_micro">
                         <img
                           src={
