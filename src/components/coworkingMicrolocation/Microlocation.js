@@ -24,6 +24,8 @@ function Microlocation() {
   let microlocation = lastElem2.charAt(0).toUpperCase() + lastElem2.slice(1);
   let microName = microlocation.split("-").join(" ");
 
+  const currentUrl = new URL(location.pathname, window.location.origin);
+
   const [loadingMicrolocations, setLoadingMicrolocations] = useState(true);
   const [loadingSpaces, setLoadingSpaces] = useState(true);
 
@@ -111,15 +113,14 @@ function Microlocation() {
         />
         <meta name="twitter:title" content={seo?.twitter?.title} />
         <meta name="twitter:description" content={seo?.twitter?.description} />
+        <link rel="canonical" href={currentUrl.href} />
+        <meta name="robots" content={seo?.robots} />
       </Helmet>
       <nav aria-label="breadcrumb" style={{ paddingLeft: "20px" }}>
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
             <Link to="/">Home</Link>
           </li>
-          {/* <li className="breadcrumb-item">
-            <Link to="/">Coworking Space</Link>
-          </li> */}
           <li className="breadcrumb-item active" aria-current="page">
             <Link to={`/coworking-space/${cityName.toLowerCase()}`}>
               {cityName}

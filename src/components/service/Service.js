@@ -134,3 +134,12 @@ export const getBrands = async (setBrands) => {
     console.log(error);
   }
 };
+
+export const getClients = async (setClients) => {
+  try {
+    const { data } = await axios.get(`${baseUrl}/api/client/our-client`);
+    setClients(data);
+  } catch (error) {
+    console.log(error);
+  }
+};

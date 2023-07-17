@@ -39,6 +39,9 @@ const PropertyPage = () => {
     await getWorkSpaceBySlug(setWorkSpaces, slug, setLoadingSpaces);
   };
 
+  const currentUrl = new URL(location.pathname, window.location.origin);
+  console.log(currentUrl);
+
   const [nearSpace, setNearSpace] = useState([]);
   const getNearSpacesHandler = async () => {
     await getNearSpaces(setNearSpace, slug);
@@ -270,6 +273,7 @@ const PropertyPage = () => {
     }
   };
   const { seo } = workSpace;
+  console.log(workSpace);
   return (
     <>
       <Helmet>
@@ -283,6 +287,8 @@ const PropertyPage = () => {
         />
         <meta name="twitter:title" content={seo?.twitter?.title} />
         <meta name="twitter:description" content={seo?.twitter?.description} />
+        <link rel="canonical" href={currentUrl.href} />
+        <meta name="robots" content={seo?.robots} />
         {/* <meta property="og:image" content={workSpace?.images[0]?.image} />
         <meta property="og:image:alt" content={workSpace?.images[0]?.alt} />
         <meta property="twitter:image" content={workSpace?.images[0]?.image} />
