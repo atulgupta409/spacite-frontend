@@ -40,7 +40,7 @@ const PropertyPage = () => {
   };
 
   const currentUrl = new URL(location.pathname, window.location.origin);
-  console.log(currentUrl);
+  // console.log(currentUrl);
 
   const [nearSpace, setNearSpace] = useState([]);
   const getNearSpacesHandler = async () => {
@@ -273,7 +273,6 @@ const PropertyPage = () => {
     }
   };
   const { seo } = workSpace;
-  console.log(workSpace);
   return (
     <>
       <Helmet>
@@ -355,11 +354,11 @@ const PropertyPage = () => {
             <p>Starting From</p>
             <p className="price_section_property">
               ₹
-              {
-                workSpace?.plans?.reduce((prev, current) => {
+              {workSpace?.plans
+                ?.reduce((prev, current) => {
                   return current.price < prev.price ? current : prev;
-                }).price
-              }
+                })
+                .price?.toLocaleString()}
               /*<span>Month</span>
             </p>
           </div>
@@ -458,16 +457,18 @@ const PropertyPage = () => {
             {plans?.map((planElem, i) => {
               return (
                 <div className="row category_section_property" key={i}>
-                  <div className="col-6">
+                  <div className="col-8">
                     <h4>{planElem?.category?.name}</h4>
                     <p className="mob_hide">{planElem?.description}</p>
                     <p className="facility_name">Starting From</p>
                     <p className="facility_name">
-                      <span>₹{planElem?.price}/*</span>
-                      {planElem?.duration === "Year" ? "Year" : "Seat"}
+                      <span>₹{planElem?.price?.toLocaleString()}/*</span>
+                      <span>
+                        {planElem?.duration === "Year" ? "Year" : "Seat"}
+                      </span>
                     </p>
                   </div>
-                  <div className="col-6 desk_icon_box">
+                  <div className="col-4 desk_icon_box">
                     <img src={planElem?.planImg} alt="desk" />
                     <div className="explore_box">
                       <p>Enquire</p>
@@ -479,7 +480,7 @@ const PropertyPage = () => {
             })}
             <hr className="devider_line" />
             <div className="row offers_section_property">
-              <h3 className="property_h3">What this Space Offers</h3>
+              <h3 className="property_h3">Amenities</h3>
               {amenities?.map((amenity, i) => {
                 return (
                   <div className="col-md-4 col-6 main_amenity_box" key={i}>
@@ -626,8 +627,8 @@ const PropertyPage = () => {
       </div>
       <div className="container">
         <h2 className="text_left">
-          Similar
-          <span className="city_span"> Spaces</span>
+          Near by coworking spaces in
+          <span className="city_span"> {workSpace?.location?.city?.name}</span>
         </h2>
         <div className="top_space_row">
           {nearSpace?.length > 0 ? (
@@ -674,13 +675,13 @@ const PropertyPage = () => {
                         <div className="price_box">
                           <p className="price">
                             ₹{" "}
-                            {
-                              space?.plans?.reduce((prev, current) => {
+                            {space?.plans
+                              ?.reduce((prev, current) => {
                                 return current.price < prev.price
                                   ? current
                                   : prev;
-                              }).price
-                            }{" "}
+                              })
+                              .price?.toLocaleString()}{" "}
                             /*<span>Month</span>
                           </p>
                         </div>
@@ -703,11 +704,11 @@ const PropertyPage = () => {
           <p>Starting from</p>
           <p>
             ₹
-            {
-              workSpace?.plans?.reduce((prev, current) => {
+            {workSpace?.plans
+              ?.reduce((prev, current) => {
                 return current.price < prev.price ? current : prev;
-              }).price
-            }
+              })
+              .price.toLocaleString()}
             /*<span>Month</span>
           </p>
         </div>

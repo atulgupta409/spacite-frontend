@@ -139,9 +139,9 @@
   font-size: 16px;
   line-height: 40px;
 }
-.other_location_box .col-md-3 {
+/* .other_location_box .col-md-3 {
   padding-bottom: 11px;
-}
+} */
 .footer_content_main {
   background: rgba(248, 244, 251, 0.3);
   color: #7b7b7b;
@@ -214,7 +214,11 @@
     height: 0;
   }
   .other_location_box {
-    padding-top: 40px;
+    padding: 40px 0;
+  }
+  .other_location_box h3 {
+    font-size: 20px;
+    line-height: 26px;
   }
   .other_location_box a {
     font-size: 15px;

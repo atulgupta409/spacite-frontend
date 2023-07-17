@@ -3,7 +3,7 @@ import "./Faq.css";
 
 function Faq() {
   return (
-    <div style={{ marginTop: "120px" }}>
+    <div className="faq_main">
       <div className="container">
         <h3 className="sub_heading_faq">
           <span>You've</span> Got Questions?
