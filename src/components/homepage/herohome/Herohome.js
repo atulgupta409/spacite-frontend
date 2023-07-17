@@ -13,8 +13,12 @@ import SpaceExpert from "../spaceExpert/SpaceExpert";
 import PopularCoworking from "../popularCoworking/PopularCoworking";
 import { Helmet } from "react-helmet";
 import { getSeo } from "../../service/Service";
+import { useLocation } from "react-router-dom";
 
 function Herohome() {
+  const location = useLocation();
+  const currentUrl = new URL(location.pathname, window.location.origin);
+
   const [defaultSeo, setDefaultSeo] = useState({
     title: "Spacite - find best coworking spaces",
     description: "Spacite - find best coworking spaces",
@@ -57,6 +61,8 @@ function Herohome() {
         />
         <meta name="twitter:title" content={seo?.twitter?.title} />
         <meta name="twitter:description" content={seo?.twitter?.description} />
+        <link rel="canonical" href={currentUrl.href} />
+        <meta name="robots" content={seo?.robots} />
         {/* <meta property="og:image" content={workSpaces?.images[0]?.image} />
         <meta property="og:image:alt" content={workSpaces?.images[0]?.alt} />
         <meta property="twitter:image" content={workSpaces?.images[0]?.image} />

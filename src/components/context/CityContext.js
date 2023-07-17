@@ -87,6 +87,15 @@ export const CityProvider = ({ children }) => {
     { width: 1500, itemsToShow: 4 },
   ];
 
+  const breakPointsClients = [
+    { width: 1, itemsToShow: 3 },
+    { width: 500, itemsToShow: 3 },
+    { width: 768, itemsToShow: 4 },
+    { width: 992, itemsToShow: 5 },
+    { width: 1200, itemsToShow: 6 },
+    { width: 1500, itemsToShow: 6 },
+  ];
+
   // Provide the cities data and handleFetchCities function to consuming components
   useEffect(() => {
     const mainCities = cities?.map((city, i) => ({
@@ -103,6 +112,7 @@ export const CityProvider = ({ children }) => {
     handleFetchCities,
     Myarrow,
     breakPoints,
+    breakPointsClients,
   };
 
   return (

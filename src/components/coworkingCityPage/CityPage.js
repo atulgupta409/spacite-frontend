@@ -22,6 +22,7 @@ function CityPage() {
   let pathArray = location.pathname.split("/");
   let lastElem = pathArray[pathArray.length - 1];
   let cityName = lastElem.charAt(0).toUpperCase() + lastElem.slice(1);
+  const currentUrl = new URL(location.pathname, window.location.origin);
 
   // console.log(lastElem.split(" ").join("-"));
   const [loadingMicrolocations, setLoadingMicrolocations] = useState(true);
@@ -104,6 +105,8 @@ function CityPage() {
         />
         <meta name="twitter:title" content={seo?.twitter?.title} />
         <meta name="twitter:description" content={seo?.twitter?.description} />
+        <link rel="canonical" href={currentUrl.href} />
+        <meta name="robots" content={seo?.robots} />
         {/* <meta property="og:image" content={workSpaces?.images[0]?.image} />
         <meta property="og:image:alt" content={workSpaces?.images[0]?.alt} />
         <meta property="twitter:image" content={workSpaces?.images[0]?.image} />

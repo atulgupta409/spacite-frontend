@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Carousel from "@itseasy21/react-elastic-carousel";
-import premiumBrand from "../../media/premium_brand.png";
 import "./PremiumBrands.css";
-import brand_logo from "../../media/brand_logo.png";
 import { CityContext } from "../../context/CityContext";
 import { getBrands } from "../../service/Service";
-import { useState, useEffect } from "react";
 
 function PremiumBrands() {
   const { breakPoints, Myarrow } = useContext(CityContext);
