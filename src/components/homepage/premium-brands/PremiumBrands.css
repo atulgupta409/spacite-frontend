@@ -62,4 +62,7 @@
   .sub_heading span {
     font-size: 14px;
   }
+  .premium_card {
+    height: 287px;
+  }
 }

@@ -18,7 +18,7 @@ function TopCitiesMob() {
           <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
             {allCities?.map((city, i) => {
               return (
-                <Link key={i}>
+                <Link key={i} to={`/coworking-space/${city?.city?.name}`}>
                   <div className="property_card">
                     <div className="img_box">
                       <img

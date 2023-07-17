@@ -13,7 +13,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import SpaceSkeleton from "../spaceSkeleton/SpaceSkeleton";
 import workImage from "../media/coworking_img/top-gurgaon.png";
 import { getSeo } from "../service/Service";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 function Microlocation() {
   const location = useLocation();
@@ -186,6 +186,10 @@ function Microlocation() {
           <SpaceSkeleton />
           <SpaceSkeleton />
           <SpaceSkeleton />
+          <SpaceSkeleton />
+          <SpaceSkeleton />
+          <SpaceSkeleton />
+          <SpaceSkeleton />
         </div>
       ) : (
         <>
@@ -236,13 +240,13 @@ function Microlocation() {
                           <div className="price_box">
                             <p className="price">
                               ₹{" "}
-                              {
-                                workspace?.plans.reduce((prev, current) => {
+                              {workspace?.plans
+                                .reduce((prev, current) => {
                                   return current.price < prev.price
                                     ? current
                                     : prev;
-                                }).price
-                              }{" "}
+                                })
+                                .price?.toLocaleString()}{" "}
                               /*<span>Month</span>
                             </p>
                           </div>
@@ -308,13 +312,13 @@ function Microlocation() {
                         <div className="price_box">
                           <p className="price">
                             ₹{" "}
-                            {
-                              workspace?.plans.reduce((prev, current) => {
+                            {workspace?.plans
+                              .reduce((prev, current) => {
                                 return current.price < prev.price
                                   ? current
                                   : prev;
-                              }).price
-                            }{" "}
+                              })
+                              .price?.toLocaleString()}{" "}
                             /*<span>Month</span>
                           </p>
                         </div>
@@ -346,20 +350,22 @@ function Microlocation() {
         activeClassName={"active"}
       ></ReactPaginate>
       <div className="other_location_box">
-        <h2>
-          Other <span style={{ color: "#d09cff" }}>Locations</span>
-        </h2>
+        <h3>
+          Other coworking locations in{" "}
+          <span style={{ color: "#d09cff" }}>{cityName}</span>
+        </h3>
         <div className="container">
           <div className="row">
             {microlocations?.map((elem, i) => {
               return (
-                <div className="col-6 col-md-3" key={i}>
+                <div className="col-6 col-md-4" key={i}>
                   <NavLink
                     to={`/coworking-space/${cityName.toLowerCase()}/${elem.name
                       .toLowerCase()
                       .split(" ")
                       .join("-")}`}
                   >
+                    <span className="mob_hide">Coworking space in</span>{" "}
                     {elem.name}
                   </NavLink>
                 </div>

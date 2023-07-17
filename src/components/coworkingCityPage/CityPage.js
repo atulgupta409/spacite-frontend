@@ -4,7 +4,7 @@ import "./Citypage.css";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import HomeContact from "../homepage/home-contact/HomeContact";
 import { CityContext } from "../context/CityContext";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import ErrorBoundary from "./ErrorBoundry";
 
 import {
@@ -264,14 +264,13 @@ function CityPage() {
                                 <div className="price_box">
                                   <p className="price">
                                     ₹{" "}
-                                    {
-                                      workspace?.plans?.reduce(
-                                        (prev, current) =>
-                                          current.price < prev.price
-                                            ? current
-                                            : prev
-                                      ).price
-                                    }{" "}
+                                    {workspace?.plans
+                                      ?.reduce((prev, current) =>
+                                        current.price < prev.price
+                                          ? current
+                                          : prev
+                                      )
+                                      .price?.toLocaleString()}{" "}
                                     /*<span>Month</span>
                                   </p>
                                 </div>
@@ -356,14 +355,13 @@ function CityPage() {
                                 <div className="price_box">
                                   <p className="price">
                                     ₹{" "}
-                                    {
-                                      workspace?.plans?.reduce(
-                                        (prev, current) =>
-                                          current.price < prev.price
-                                            ? current
-                                            : prev
-                                      ).price
-                                    }{" "}
+                                    {workspace?.plans
+                                      ?.reduce((prev, current) =>
+                                        current.price < prev.price
+                                          ? current
+                                          : prev
+                                      )
+                                      .price?.toLocaleString()}{" "}
                                     /*<span>Month</span>
                                   </p>
                                 </div>
@@ -382,7 +380,8 @@ function CityPage() {
 
       <div className="other_location_box">
         <h3>
-          Other <span style={{ color: "#d09cff" }}>Locations</span>
+          Other coworking locations in{" "}
+          <span style={{ color: "#d09cff" }}>{cityName}</span>
         </h3>
         <div className="container">
           <div className="row">
