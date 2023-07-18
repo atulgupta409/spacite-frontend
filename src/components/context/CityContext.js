@@ -73,7 +73,7 @@ export const CityProvider = ({ children }) => {
     const pointer = type === consts.PREV ? LeftArrow : RightArrow;
     return (
       <button onClick={onClick} disabled={isEdge} className="carousel_arrow">
-        <img src={pointer} alt="arrow" />
+        <img src={pointer} alt="arrow" className="img-fluid" />
       </button>
     );
   }

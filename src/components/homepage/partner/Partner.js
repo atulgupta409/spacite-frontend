@@ -14,7 +14,7 @@ function Partner() {
   useEffect(() => {
     handleFetchClients();
   }, []);
-  console.log(clients);
+  // console.log(clients);
 
   return (
     <>

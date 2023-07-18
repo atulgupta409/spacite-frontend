@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CityContext } from "../../context/CityContext";
 import HomeContact from "../home-contact/HomeContact";
 import top_gurgaon from "../../media/coworking_img/top-gurgaon.png";
@@ -7,9 +7,6 @@ import { Link } from "react-router-dom";
 
 function PopularCoworking({ city }) {
   const { cities, breakPoints, Myarrow } = useContext(CityContext);
-
-  const location_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png";
 
   return (
     <div>

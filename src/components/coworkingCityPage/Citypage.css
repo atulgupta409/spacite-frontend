@@ -45,20 +45,18 @@
 .space_card {
   text-align: center;
 }
-/* .WgpPQ {
-  width: 285px !important;
-  padding: 0px; 
-  margin: 0 10px;
-} */
 .property_card {
-  width: 277px;
+  width: 300px;
   border-radius: 20px;
   background: #fff;
   box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
 }
 .property_card .card_body {
-  padding: 14px;
+  padding: 8px 14px;
+}
+.jNKBoY {
+  margin: 0 !important;
 }
 .img_box {
   height: 213px;
@@ -80,20 +78,20 @@
   font-weight: 500;
 }
 .price_from {
-  font-size: 14px;
-  line-height: 31px;
+  font-size: 13px;
+  line-height: 24px;
   color: #d09cff;
   margin-bottom: 0;
   font-weight: 500;
 }
 .price {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   margin-bottom: 0;
 }
 .price span {
   color: #d09cff;
-  font-size: 14px;
+  font-size: 13px;
 }
 .explore_box p {
   display: inline-block;
@@ -107,7 +105,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 80px 40px 0;
+  margin: 80px 119px 0;
+}
+.city_top_row {
+  margin: 30px 73px;
 }
 .city_page_title_box > h3 {
   font-weight: 600;
@@ -173,10 +174,69 @@
   margin: 0 10px;
   width: 285px !important;
 } */
+.card_button_link {
+  background: #f8f1ff;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 20px 20px;
+}
+.card_button_link > div {
+  width: 50%;
+  text-align: center;
+}
+.card_button_link div:nth-child(1) {
+  border-right: 1px solid rgba(68, 68, 68, 0.2);
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  cursor: pointer;
+}
+.card_button_link > div > a {
+  text-decoration: none;
+  color: #444;
+  font-size: 14px;
+  font-weight: 500;
+}
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+.close_icon_box {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+.close_icon_box button {
+  border: none;
+  background-color: transparent;
+  font-size: 25px;
+  color: #444;
+}
+.ReactModal__Content {
+  position: absolute;
+  /* inset: 52px !important; */
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 10px !important;
+  outline: none;
+  padding: 0 20px;
+  width: 413px;
+  margin: 100px auto;
+}
+.card_amenities {
+  display: flex;
+  margin: 8px 0;
+}
+.card_amenities div {
+  width: 28px;
+  padding: 0 10px 0 0;
+}
 
 @media only screen and (max-width: 768px) {
   .microlocation_tab {
-    margin: 30px 10px;
+    margin: 30px 0px;
   }
   .city_page_title_box h3 {
     font-size: 20px;
@@ -258,6 +318,12 @@
     font-size: 12px !important;
     background-color: transparent !important;
   }
+  .city_top_row {
+    margin: 30px 48px;
+  }
+  .city_page_title_box {
+    margin: 30px 48px 0;
+  }
 }
 
 @media only screen and (max-width: 576px) {
@@ -271,12 +337,15 @@
   }
   .property_card {
     margin-bottom: 30px;
-    width: 223px;
+    width: 236px;
   }
   .city_page_title_box {
     margin: 30px 20px 0;
   }
-  /* .WgpPQ {
-    margin: 0;
-  } */
+  .ReactModal__Content {
+    width: 90%;
+  }
+  .city_top_row {
+    margin: 20px 0 0 0;
+  }
 }

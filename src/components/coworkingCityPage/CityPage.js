@@ -16,6 +16,8 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SpaceSkeleton from "../spaceSkeleton/SpaceSkeleton";
 import workImage from "../media/coworking_img/top-gurgaon.png";
+import ContactFormModal from "../modal-form/ContactFormModal";
+import Modal from "react-modal";
 
 function CityPage() {
   const location = useLocation();
@@ -23,6 +25,15 @@ function CityPage() {
   let lastElem = pathArray[pathArray.length - 1];
   let cityName = lastElem.charAt(0).toUpperCase() + lastElem.slice(1);
   const currentUrl = new URL(location.pathname, window.location.origin);
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   // console.log(lastElem.split(" ").join("-"));
   const [loadingMicrolocations, setLoadingMicrolocations] = useState(true);
@@ -116,27 +127,29 @@ function CityPage() {
         /> */}
       </Helmet>
 
-      <nav aria-label="breadcrumb" style={{ paddingLeft: "20px" }}>
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="breadcrumb-item">
-            <Link>Coworking Space</Link>
-          </li>
-          <li
-            style={{
-              color: "#d09cff",
-              fontWeight: "500",
-            }}
-            className="breadcrumb-item active"
-            aria-current="page"
-          >
-            {cityName}
-          </li>
-        </ol>
-      </nav>
-      <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} />
+      <div className="container">
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="breadcrumb-item">
+              <Link>Coworking Space</Link>
+            </li>
+            <li
+              style={{
+                color: "#d09cff",
+                fontWeight: "500",
+              }}
+              className="breadcrumb-item active"
+              aria-current="page"
+            >
+              {cityName}
+            </li>
+          </ol>
+        </nav>
+        <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} />
+      </div>
       <div className="container">
         <div className="d-flex align-items-center city_heading">
           <img
@@ -189,10 +202,10 @@ function CityPage() {
         </div>
       ) : (
         <>
-          <div className="container">
+          <div>
             {topMicrolocations?.slice(0, 3).map((microlocation, i) => {
               return (
-                <React.Fragment key={i}>
+                <div key={i}>
                   <div className="city_page_title_box">
                     <Link
                       to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
@@ -218,8 +231,7 @@ function CityPage() {
                       </Link>
                     </div>
                   </div>
-
-                  <div className="top_space_row">
+                  <div className="top_space_row city_top_row">
                     <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
                       {cityworkSpaces
                         ?.filter(
@@ -229,71 +241,133 @@ function CityPage() {
                         )
                         .slice(0, 10)
                         .map((workspace, j) => (
-                          <Link
-                            to={`/coworking/${workspace?.slug}`}
-                            className="space_link"
-                            key={j}
-                            target="_blank"
-                          >
-                            <div className="property_card">
-                              <div className="img_box">
-                                <img
-                                  src={
-                                    workspace.images.length > 0
-                                      ? workspace.images[0].image
-                                      : workImage
-                                  }
-                                  alt={
-                                    workspace.images.length > 0
-                                      ? workspace.images[0].alt
-                                      : "workImage"
-                                  }
-                                  className="img-fluid"
-                                />
+                          <div className="property_card" key={j}>
+                            <div className="img_box">
+                              <img
+                                src={
+                                  workspace.images.length > 0
+                                    ? workspace.images[0].image
+                                    : workImage
+                                }
+                                alt={
+                                  workspace.images.length > 0
+                                    ? workspace.images[0].alt
+                                    : "workImage"
+                                }
+                                className="img-fluid"
+                              />
+                            </div>
+                            <div className="card_body">
+                              <p className="card-title">
+                                {workspace?.name?.length > 22
+                                  ? workspace?.name?.substring(0, 20) + "..."
+                                  : workspace?.name}
+                              </p>
+                              <div className="location_box">
+                                <p>{microlocation?.name + ", " + cityName}</p>
                               </div>
-                              <div className="card_body">
-                                <p className="card-title">
-                                  {workspace?.name?.length > 22
-                                    ? workspace?.name?.substring(0, 22) + "..."
-                                    : workspace?.name}
+                              <div className="card_amenities">
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png"
+                                    alt="wifi"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png"
+                                    alt="dedicated desk"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361881320.png"
+                                    alt="meeting rooms"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361932524.png"
+                                    alt="printer"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361894820.png"
+                                    alt="pantry"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png"
+                                    alt="parking"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                              </div>
+                              <p className="price_from">Starting</p>
+                              <div className="price_box">
+                                <p className="price">
+                                  ₹{" "}
+                                  {workspace?.plans
+                                    ?.reduce((prev, current) =>
+                                      current.price < prev.price
+                                        ? current
+                                        : prev
+                                    )
+                                    .price?.toLocaleString()}{" "}
+                                  /*<span>Month</span>
                                 </p>
-                                <div className="location_box">
-                                  <p>{microlocation?.name + ", " + cityName}</p>
-                                </div>
-                                <p className="price_from">Starting from</p>
-                                <div className="price_box">
-                                  <p className="price">
-                                    ₹{" "}
-                                    {workspace?.plans
-                                      ?.reduce((prev, current) =>
-                                        current.price < prev.price
-                                          ? current
-                                          : prev
-                                      )
-                                      .price?.toLocaleString()}{" "}
-                                    /*<span>Month</span>
-                                  </p>
-                                </div>
                               </div>
                             </div>
-                          </Link>
+                            <div className="card_button_link">
+                              <div onClick={openModal}>Enquire Now</div>
+                              <div>
+                                <Link
+                                  to={`/coworking/${workspace?.slug}`}
+                                  target="_blank"
+                                >
+                                  Explore Now
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
                         ))}
                     </Carousel>
                   </div>
-                </React.Fragment>
+                </div>
               );
             })}
           </div>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={() => setModalIsOpen(false)}
+            contentLabel="Example Modal"
+          >
+            <ContactFormModal closeModal={closeModal} />
+          </Modal>
 
           <div className="contact_wrapper">
             <HomeContact />
           </div>
-          <div className="container">
+          <div>
             {topMicrolocations?.slice(3, 6).map((microlocation, i) => {
               return (
-                <React.Fragment key={i}>
+                <div key={i}>
                   <div className="city_page_title_box">
-                    <h3>{microlocation?.name}</h3>
+                    <Link
+                      to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
+                        .toLowerCase()
+                        .split(" ")
+                        .join("-")}`}
+                    >
+                      <h3>{microlocation.name}</h3>
+                    </Link>
                     <div className="city_explore">
                       <Link
                         to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
@@ -310,8 +384,7 @@ function CityPage() {
                       </Link>
                     </div>
                   </div>
-
-                  <div className="top_space_row">
+                  <div className="top_space_row city_top_row">
                     <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
                       {cityworkSpaces
                         ?.filter(
@@ -321,57 +394,106 @@ function CityPage() {
                         )
                         .slice(0, 10)
                         .map((workspace, j) => (
-                          <Link
-                            to={`/coworking/${workspace?.slug}`}
-                            className="space_link"
-                            key={j}
-                          >
-                            <div className="property_card">
-                              <div className="img_box">
-                                <img
-                                  src={
-                                    workspace.images.length > 0
-                                      ? workspace.images[0].image
-                                      : workImage
-                                  }
-                                  alt={
-                                    workspace.images.length > 0
-                                      ? workspace.images[0].alt
-                                      : "workImage"
-                                  }
-                                  className="img-fluid"
-                                />
+                          <div className="property_card" key={j}>
+                            <div className="img_box">
+                              <img
+                                src={
+                                  workspace.images.length > 0
+                                    ? workspace.images[0].image
+                                    : workImage
+                                }
+                                alt={
+                                  workspace.images.length > 0
+                                    ? workspace.images[0].alt
+                                    : "workImage"
+                                }
+                                className="img-fluid"
+                              />
+                            </div>
+                            <div className="card_body">
+                              <p className="card-title">
+                                {workspace?.name?.length > 22
+                                  ? workspace?.name?.substring(0, 20) + "..."
+                                  : workspace?.name}
+                              </p>
+                              <div className="location_box">
+                                <p>{microlocation?.name + ", " + cityName}</p>
                               </div>
-                              <div className="card_body">
-                                <p className="card-title">
-                                  {workspace?.name?.length > 22
-                                    ? workspace?.name?.substring(0, 22) + "..."
-                                    : workspace?.name}
+                              <div className="card_amenities">
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png"
+                                    alt="wifi"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png"
+                                    alt="dedicated desk"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361881320.png"
+                                    alt="meeting rooms"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361932524.png"
+                                    alt="printer"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361894820.png"
+                                    alt="pantry"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                                <div>
+                                  <img
+                                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png"
+                                    alt="parking"
+                                    className="img-fluid"
+                                  />
+                                </div>
+                              </div>
+                              <p className="price_from">Starting</p>
+                              <div className="price_box">
+                                <p className="price">
+                                  ₹{" "}
+                                  {workspace?.plans
+                                    ?.reduce((prev, current) =>
+                                      current.price < prev.price
+                                        ? current
+                                        : prev
+                                    )
+                                    .price?.toLocaleString()}{" "}
+                                  /*<span>Month</span>
                                 </p>
-                                <div className="location_box">
-                                  <p>{microlocation?.name + ", " + cityName}</p>
-                                </div>
-                                <p className="price_from">Starting from</p>
-                                <div className="price_box">
-                                  <p className="price">
-                                    ₹{" "}
-                                    {workspace?.plans
-                                      ?.reduce((prev, current) =>
-                                        current.price < prev.price
-                                          ? current
-                                          : prev
-                                      )
-                                      .price?.toLocaleString()}{" "}
-                                    /*<span>Month</span>
-                                  </p>
-                                </div>
                               </div>
                             </div>
-                          </Link>
+                            <div className="card_button_link">
+                              <div onClick={openModal}>Enquire Now</div>
+                              <div>
+                                <Link
+                                  to={`/coworking/${workspace?.slug}`}
+                                  target="_blank"
+                                >
+                                  Explore Now
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
                         ))}
                     </Carousel>
                   </div>
-                </React.Fragment>
+                </div>
               );
             })}
           </div>
