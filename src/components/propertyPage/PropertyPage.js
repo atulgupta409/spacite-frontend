@@ -273,6 +273,7 @@ const PropertyPage = () => {
     }
   };
   const { seo } = workSpace;
+  console.log(workSpace);
   return (
     <>
       <Helmet>
@@ -296,30 +297,29 @@ const PropertyPage = () => {
           content={workSpace?.images[0]?.alt}
         /> */}
       </Helmet>
-      <nav
-        aria-label="breadcrumb"
-        style={{ paddingLeft: "20px", marginTop: "100px" }}
-      >
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="breadcrumb-item">
-            <Link>Coworking Space</Link>
-          </li>
-          <li
-            style={{
-              color: "#d09cff",
-              fontWeight: "500",
-            }}
-            className="breadcrumb-item active"
-            aria-current="page"
-          >
-            {cityName}
-          </li>
-        </ol>
-      </nav>
-      <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} />
+      <div className="container">
+        <nav aria-label="breadcrumb" style={{ marginTop: "100px" }}>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="breadcrumb-item">
+              <Link>Coworking Space</Link>
+            </li>
+            <li
+              style={{
+                color: "#d09cff",
+                fontWeight: "500",
+              }}
+              className="breadcrumb-item active"
+              aria-current="page"
+            >
+              {cityName}
+            </li>
+          </ol>
+        </nav>
+        <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} />
+      </div>
       <div className="container">
         <div className="row title_section_property">
           <div className="col-md-6">
