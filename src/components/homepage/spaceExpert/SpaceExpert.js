@@ -25,7 +25,7 @@ function SpaceExpert() {
             </div>
             <div className="contact_us">
               <p>Email Us:</p>
-              <a href="mailto:robi@spacite.com">robi@spacite.com</a>
+              <a href="mailto:thespacite@gmail.com">thespacite@gmail.com</a>
             </div>
           </div>
         </div>

@@ -23,38 +23,52 @@ function Partner() {
           <h2>
             Our Brands <span className="top_city_span">Partners</span>
           </h2>
-          <div className="row desk_hide" style={{ marginTop: "30px" }}>
-            <Carousel breakPoints={breakPointsClients} renderArrow={Myarrow}>
-              {clients?.map((client, i) => {
-                return (
-                  <div className="client_box" key={i}>
-                    <img
-                      src={client?.logo_url}
-                      alt={client?.name}
-                      className="img-fluid"
-                    />
-                  </div>
-                );
-              })}
-            </Carousel>
+          <div
+            className="desk_hide micro_location_properties"
+            style={{ marginTop: "30px" }}
+          >
+            <div className="row">
+              <div className="col-md-12">
+                <Carousel
+                  breakPoints={breakPointsClients}
+                  renderArrow={Myarrow}
+                >
+                  {clients?.map((client, i) => {
+                    return (
+                      <div className="client_box" key={i}>
+                        <img
+                          src={client?.logo_url}
+                          alt={client?.name}
+                          className="img-fluid"
+                        />
+                      </div>
+                    );
+                  })}
+                </Carousel>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div className="container mob_hide">
-        <div className="row">
-          <Carousel breakPoints={breakPointsClients} renderArrow={Myarrow}>
-            {clients?.map((client, i) => {
-              return (
-                <div className="client_box" key={i}>
-                  <img
-                    src={client?.logo_url}
-                    alt={client?.name}
-                    className="img-fluid"
-                  />
-                </div>
-              );
-            })}
-          </Carousel>
+        <div className="micro_location_properties">
+          <div className="row">
+            <div className="col-md-12">
+              <Carousel breakPoints={breakPointsClients} renderArrow={Myarrow}>
+                {clients?.map((client, i) => {
+                  return (
+                    <div className="client_box" key={i}>
+                      <img
+                        src={client?.logo_url}
+                        alt={client?.name}
+                        className="img-fluid"
+                      />
+                    </div>
+                  );
+                })}
+              </Carousel>
+            </div>
+          </div>
         </div>
       </div>
     </>

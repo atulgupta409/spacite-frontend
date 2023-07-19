@@ -14,6 +14,8 @@ import { getWorkSpaceBySlug } from "../service/Service";
 import { Helmet } from "react-helmet-async";
 import baseUrl from "../../environment/api-config";
 import { getNearSpaces } from "../service/Service";
+import ContactFormModal from "../modal-form/ContactFormModal";
+import RequestCallBtn from "../request-call-button/RequestCallBtn";
 
 const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
@@ -351,7 +353,7 @@ const PropertyPage = () => {
             </p>
           </div>
           <div className="col-md-3 price_section_box">
-            <p>Starting From</p>
+            <p>Starting</p>
             <p className="price_section_property">
               ₹
               {workSpace?.plans
@@ -359,7 +361,7 @@ const PropertyPage = () => {
                   return current.price < prev.price ? current : prev;
                 })
                 .price?.toLocaleString()}
-              /*<span>Month</span>
+              /*<span>month</span>
             </p>
           </div>
         </div>
@@ -460,7 +462,7 @@ const PropertyPage = () => {
                   <div className="col-8">
                     <h4>{planElem?.category?.name}</h4>
                     <p className="mob_hide">{planElem?.description}</p>
-                    <p className="facility_name">Starting From</p>
+                    <p className="facility_name">Starting</p>
                     <p className="facility_name">
                       <span>₹{planElem?.price?.toLocaleString()}/*</span>
                       <span>
@@ -611,11 +613,7 @@ const PropertyPage = () => {
                 <h3 className="property_h3 text-align-center">
                   Got questions or want to talk to someone?
                 </h3>
-                <a href="tel: +919999108078">
-                  <button className="globalBtn contact_btn">
-                    +91 9999 10 8078
-                  </button>
-                </a>
+                <RequestCallBtn />
               </div>
             </div>
           </div>
@@ -625,75 +623,129 @@ const PropertyPage = () => {
       <div className="desk_hide">
         <SpaceExpert />
       </div>
-      <div className="container">
-        <h2 className="text_left">
-          Near by coworking spaces in
-          <span className="city_span"> {workSpace?.location?.city?.name}</span>
+      <div className="container mb-5">
+        <h2 className="text_left mb-5">
+          Similar coworking spaces in
+          <span className="city_span">
+            {" "}
+            {workSpace?.location?.micro_location?.name}
+          </span>
         </h2>
-        <div className="top_space_row">
-          {nearSpace?.length > 0 ? (
-            <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-              {nearSpace?.slice(0, 10)?.map((space, i) => {
-                return (
-                  <Link
-                    to={`/coworking/${space?.slug}`}
-                    className="space_link"
-                    target="_blank"
-                    key={i}
-                  >
-                    <div className="property_card">
-                      <div className="img_box">
-                        <img
-                          src={
-                            space?.images.length > 0
-                              ? space?.images[0]?.image
-                              : top_gurgaon
-                          }
-                          alt={
-                            space?.images.length > 0
-                              ? space?.images[0]?.alt
-                              : "workImage"
-                          }
-                          className="img-fluid"
-                        />
-                      </div>
-                      <div className="card_body">
-                        <p className="card-title">
-                          {space?.name?.length > 22
-                            ? space?.name?.substring(0, 22) + "..."
-                            : space?.name}
-                        </p>
-                        <div className="location_box">
-                          <p>
-                            {space?.location?.address?.length > 26
-                              ? space?.location?.address?.substring(0, 24) +
-                                "..."
-                              : space?.location?.address}
-                          </p>
+        <div className="micro_location_properties">
+          <div className="row">
+            <div className="col-md-12">
+              {nearSpace?.length > 0 ? (
+                <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
+                  {nearSpace?.slice(0, 10)?.map((space, i) => {
+                    return (
+                      <div className="carousel-items" key={i}>
+                        <div className="property_card">
+                          <div className="img_box">
+                            <img
+                              src={
+                                space.images.length > 0
+                                  ? space.images[0].image
+                                  : top_gurgaon
+                              }
+                              alt={
+                                space.images.length > 0
+                                  ? space.images[0].alt
+                                  : "workImage"
+                              }
+                              className="img-fluid"
+                            />
+                          </div>
+                          <div className="card_body">
+                            <p className="card-title">
+                              {space?.name?.length > 22
+                                ? space?.name?.substring(0, 20) + "..."
+                                : space?.name}
+                            </p>
+                            <div className="location_box">
+                              <p>
+                                {space?.location?.micro_location?.name +
+                                  ", " +
+                                  space?.location?.city?.name}
+                              </p>
+                            </div>
+                            <div className="card_amenities">
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png"
+                                  alt="wifi"
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png"
+                                  alt="dedicated desk"
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361881320.png"
+                                  alt="meeting rooms"
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361932524.png"
+                                  alt="printer"
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361894820.png"
+                                  alt="pantry"
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png"
+                                  alt="parking"
+                                  className="img-fluid"
+                                />
+                              </div>
+                            </div>
+                            <p className="price_from">Starting</p>
+                            <div className="price_box">
+                              <p className="price">
+                                ₹{" "}
+                                {space?.plans
+                                  ?.reduce((prev, current) =>
+                                    current.price < prev.price ? current : prev
+                                  )
+                                  .price?.toLocaleString()}{" "}
+                                /*<span>month</span>
+                              </p>
+                            </div>
+                          </div>
+                          <div className="card_button_link">
+                            <div onClick={openModal}>Enquire Now</div>
+                            <div>
+                              <Link
+                                to={`/coworking/${space?.slug}`}
+                                target="_blank"
+                              >
+                                Explore Now
+                              </Link>
+                            </div>
+                          </div>
                         </div>
-                        <p className="price_from">Starting from</p>
-                        <div className="price_box">
-                          <p className="price">
-                            ₹{" "}
-                            {space?.plans
-                              ?.reduce((prev, current) => {
-                                return current.price < prev.price
-                                  ? current
-                                  : prev;
-                              })
-                              .price?.toLocaleString()}{" "}
-                            /*<span>Month</span>
-                          </p>
-                        </div>
                       </div>
-                    </div>
-                  </Link>
-                );
-              })}
-            </Carousel>
-          ) : (
-            <div>No Similar Spaces.</div>
-          )}
+                    );
+                  })}
+                </Carousel>
+              ) : (
+                <div>No Similar Spaces.</div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
       <div className="footer_mob">
@@ -701,7 +753,7 @@ const PropertyPage = () => {
       </div>
       <div className="desk_hide fixed_div">
         <div className="starting_price">
-          <p>Starting from</p>
+          <p>Starting</p>
           <p>
             ₹
             {workSpace?.plans
@@ -709,7 +761,7 @@ const PropertyPage = () => {
                 return current.price < prev.price ? current : prev;
               })
               .price.toLocaleString()}
-            /*<span>Month</span>
+            /*<span>month</span>
           </p>
         </div>
         <button

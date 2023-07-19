@@ -13,34 +13,36 @@ function SpaceSkeleton() {
           <Skeleton className="wave-effect" />
         </div>
       </div>
-      <div className="top_space_row">
-        <div className="col-12 col-sm-6 col-lg-3 micro_card_box">
-          <div className="row property_card property_card_mob">
-            <div className="col-6 col-sm-12 img_box2 img_box_micro">
-              <Skeleton
-                className="wave-effect"
-                height={400}
-                width={400}
-                borderRadius={20}
-              />
-            </div>
-            <div className="card_body col-6 col-sm-12">
-              <p className="card-title">
-                <Skeleton className="wave-effect" />
-              </p>
-              <div className="location_box">
-                <p>
-                  <Skeleton className="wave-effect" />
-                </p>
+      <div className="micro_location_properties">
+        <div className="col-12">
+          <div className="carousel-items">
+            <div className="row property_card property_card_mob">
+              <div className="col-6 col-sm-12 img_box2 img_box_micro">
+                <Skeleton
+                  className="wave-effect"
+                  height={400}
+                  width={400}
+                  borderRadius={20}
+                />
               </div>
-
-              <p className="price_from">
-                <Skeleton className="wave-effect" />
-              </p>
-              <div className="price_box">
-                <p className="price">
+              <div className="card_body col-6 col-sm-12">
+                <p className="card-title">
                   <Skeleton className="wave-effect" />
                 </p>
+                <div className="location_box">
+                  <p>
+                    <Skeleton className="wave-effect" />
+                  </p>
+                </div>
+
+                <p className="price_from">
+                  <Skeleton className="wave-effect" />
+                </p>
+                <div className="price_box">
+                  <p className="price">
+                    <Skeleton className="wave-effect" />
+                  </p>
+                </div>
               </div>
             </div>
           </div>
