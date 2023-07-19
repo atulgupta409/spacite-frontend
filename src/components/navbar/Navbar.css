@@ -10,6 +10,17 @@
 .navbar {
   width: 100vw;
 }
+.callBack_btn_nav {
+  border: 2px solid #d09cff;
+  background-color: #fff;
+  color: #d09cff;
+  padding: 10px 14px;
+  transition: all 0.3s ease-in-out;
+}
+.callBack_btn_nav:hover {
+  background-color: #d09cff;
+  color: #fff;
+}
 .navbar .megamenu {
   padding: 1rem;
   width: 509px;

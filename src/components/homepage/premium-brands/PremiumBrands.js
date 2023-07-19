@@ -33,28 +33,32 @@ function PremiumBrands() {
         <div className="section_heading_brands">
           <h2>Coworking Spaces, Virtual Offices and More</h2>
         </div>
-        <div className="top_space_row">
-          <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-            {brands
-              ?.filter((brand) => brand?.should_show_on_home == true)
-              .map((item, i) => (
-                <div className="card premium_card" key={i}>
-                  <div className="image-container">
-                    <img
-                      src={item?.featureImage}
-                      className="img-fluid card-img-top"
-                      alt={item?.name}
-                    />
-                  </div>
-                  <div className="card-body">
-                    <p className="brand_name">{item?.name}</p>
-                  </div>
-                  <div className="brand_logo">
-                    <img src={item?.image} alt="brand-logo" width="100%" />
-                  </div>
-                </div>
-              ))}
-          </Carousel>
+        <div className="micro_location_properties">
+          <div className="row">
+            <div className="col-md-12">
+              <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
+                {brands
+                  ?.filter((brand) => brand?.should_show_on_home == true)
+                  .map((item, i) => (
+                    <div className="card premium_card" key={i}>
+                      <div className="image-container">
+                        <img
+                          src={item?.featureImage}
+                          className="img-fluid card-img-top"
+                          alt={item?.name}
+                        />
+                      </div>
+                      <div className="card-body">
+                        <p className="brand_name">{item?.name}</p>
+                      </div>
+                      <div className="brand_logo">
+                        <img src={item?.image} alt="brand-logo" width="100%" />
+                      </div>
+                    </div>
+                  ))}
+              </Carousel>
+            </div>
+          </div>
         </div>
       </div>
     </div>

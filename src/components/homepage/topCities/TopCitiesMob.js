@@ -14,34 +14,40 @@ function TopCitiesMob() {
         <h2>
           Top Coworking <span className="top_city_span">Cities</span>
         </h2>
-        <div className="top_space_row near_coworking">
-          <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-            {allCities?.map((city, i) => {
-              return (
-                <Link key={i} to={`/coworking-space/${city?.city?.name}`}>
-                  <div className="property_card">
-                    <div className="img_box">
-                      <img
-                        src={city?.cityFeatureImg}
-                        alt={city?.city?.name}
-                        className="img-fluid"
-                      />
+        <div className="micro_location_properties near_coworking">
+          <div className="row mb-5">
+            <div className="col-md-12">
+              <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
+                {allCities?.map((city, i) => {
+                  return (
+                    <div className="carousel-items w-100">
+                      <Link key={i} to={`/coworking-space/${city?.city?.name}`}>
+                        <div className="property_card">
+                          <div className="img_box">
+                            <img
+                              src={city?.cityFeatureImg}
+                              alt={city?.city?.name}
+                              className="img-fluid"
+                            />
+                          </div>
+                          <div className="card_body">
+                            <div className="location_box">
+                              <p>{city?.city?.name}</p>
+                            </div>
+                            <div className="price_box">
+                              <p className="price">
+                                ₹ 9000 /*<span>Month</span>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
                     </div>
-                    <div className="card_body">
-                      <div className="location_box">
-                        <p>{city?.city?.name}</p>
-                      </div>
-                      <div className="price_box">
-                        <p className="price">
-                          ₹ 9000 /*<span>Month</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </Carousel>
+                  );
+                })}
+              </Carousel>
+            </div>
+          </div>
         </div>
       </div>
     </div>

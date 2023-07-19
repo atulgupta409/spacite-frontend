@@ -152,6 +152,7 @@ h2 {
   border: none;
   background: transparent;
   width: 23px;
+  position: absolute;
 }
 .dropdown-item.active,
 .dropdown-item:active {

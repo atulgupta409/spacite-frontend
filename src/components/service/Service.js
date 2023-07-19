@@ -31,7 +31,7 @@ export const getMicrolocationByCity = async (
   try {
     setLoadingMicrolocations(true);
     const { data } = await axios.get(
-      `${baseUrl}/api/micro-location/micro-locations/${cityName}`
+      `${baseUrl}/api/micro-location/priority/${cityName}`
     );
     setMicrolocations(data);
     setLoadingMicrolocations(false);
