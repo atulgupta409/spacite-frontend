@@ -3,7 +3,7 @@ import "./HomeContact.css";
 import Select from "react-select";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import baseUrl from "../../../environment/api-config";
 
 function HomeContact() {
@@ -108,6 +108,7 @@ function HomeContact() {
           }
         );
         setLoading(false);
+        handleSheet();
         navigate("/thank-you");
       } catch (error) {
         console.error(error);
@@ -117,6 +118,33 @@ function HomeContact() {
     }
   };
 
+  const handleSheet = async () => {
+    try {
+      const response = await fetch(
+        "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=Sheet1",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify([
+            [
+              user.name,
+              user.email,
+              user.phone,
+              officeType,
+              noSeats,
+              moveIn,
+              new Date().toLocaleString(),
+            ],
+          ]),
+        }
+      );
+      await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="main_banner2 home_contact_main">
       <div className="container">
