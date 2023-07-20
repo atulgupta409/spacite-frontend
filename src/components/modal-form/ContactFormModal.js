@@ -114,11 +114,11 @@ function ContactFormModal({ closeModal }) {
   return (
     <div>
       <div className="close_icon_box">
+        <h3 className="req_box">Request Call Back</h3>
         <button>
           <RxCross2 className="close_icon" onClick={closeModal} />
         </button>
       </div>
-
       <form onSubmit={sendEmail}>
         <div className="row">
           <div className="col-md-12 mb-4">
