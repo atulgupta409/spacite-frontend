@@ -169,8 +169,7 @@ function Microlocation() {
                   >
                     <div className="col-6 col-md-12 property_img">
                       <img
-                        // src={workspace?.images[0]?.image}
-                        src={workImage}
+                        src={workspace?.images[0]?.image || workImage}
                         alt=""
                         className="propery_card_img"
                       />

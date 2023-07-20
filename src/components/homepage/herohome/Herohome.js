@@ -11,10 +11,15 @@ import NearCoworking from "../nearCoworking/NearCoworking";
 import TopCitiesMob from "../topCities/TopCitiesMob";
 import SpaceExpert from "../spaceExpert/SpaceExpert";
 import PopularCoworking from "../popularCoworking/PopularCoworking";
-
+import { Helmet } from "react-helmet";
 function Herohome() {
   return (
     <div>
+      <Helmet>
+        <title>Spacite</title>
+        {/* <meta name="description" content={seo?.description} />
+        <meta name="keywords" content={seo?.keywords} /> */}
+      </Helmet>
       <Section1 />
       <NearCoworking />
       <Section2 />
