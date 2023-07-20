@@ -212,9 +212,6 @@
   border-radius: 20px;
   height: 500px;
 }
-.explore_box p {
-  cursor: pointer !important;
-}
 @media only screen and (max-width: 768px) {
   .fixed_div {
     position: fixed;
@@ -297,20 +294,20 @@
   .ReactModal__Content {
     inset: 13px !important;
   }
-  .close_icon_box {
+  /* .close_icon_box {
     text-align: right;
-  }
+  } */
   .close_icon_box button {
     border: none;
     background-color: #fff;
     font-size: 28px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
   .close_icon {
     border: none;
     background-color: #fff;
     font-size: 28px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
   .property_page_img {
     border-radius: 10px;

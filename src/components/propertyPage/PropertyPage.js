@@ -776,6 +776,7 @@ const PropertyPage = () => {
           contentLabel="Example Modal"
         >
           <div className="close_icon_box">
+            <h3 className="req_box">Request Call Back</h3>
             <button>
               <RxCross2 className="close_icon" onClick={closeModal} />
             </button>
