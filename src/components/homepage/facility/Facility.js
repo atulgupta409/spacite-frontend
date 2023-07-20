@@ -11,7 +11,7 @@ function Facility() {
         <div className="row facility_box">
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png"
               alt="wifi"
             />
             <p className="facility_name">High speed wifi</p>
@@ -21,8 +21,8 @@ function Facility() {
           </div>
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361858729.png"
-              alt="wifi"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760878265.png"
+              alt="comfy"
             />
             <p className="facility_name">Comfy workstation</p>
             <p className="facility_description">
@@ -32,8 +32,8 @@ function Facility() {
           </div>
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361881320.png"
-              alt="wifi"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png"
+              alt="meeting"
             />
             <p className="facility_name">Meeting rooms</p>
             <p className="facility_description">
@@ -45,8 +45,8 @@ function Facility() {
         <div className="row facility_box">
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361932524.png"
-              alt="wifi"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png"
+              alt="printer"
             />
             <p className="facility_name">Printer</p>
             <p className="facility_description">
@@ -55,8 +55,8 @@ function Facility() {
           </div>
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361894820.png"
-              alt="wifi"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760917850.png"
+              alt="pantry"
             />
             <p className="facility_name">Pantry</p>
             <p className="facility_description">
@@ -66,8 +66,8 @@ function Facility() {
           </div>
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png"
-              alt="wifi"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png"
+              alt="parking"
             />
             <p className="facility_name">Parking</p>
             <p className="facility_description">

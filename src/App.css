@@ -215,4 +215,7 @@ h2 {
   .sub_heading {
     line-height: 14px !important;
   }
+  .contact_wrapper {
+    margin-bottom: 30px;
+  }
 }

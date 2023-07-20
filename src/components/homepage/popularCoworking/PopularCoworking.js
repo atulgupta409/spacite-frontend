@@ -24,7 +24,7 @@ function PopularCoworking({ city }) {
       <div className="container">
         {cities?.map((elem, i) => {
           return (
-            <div style={{ marginTop: "60px" }} key={i}>
+            <div style={{ marginTop: "30px", marginBottom: "30px" }} key={i}>
               <h2>
                 Popular Coworking in{" "}
                 <span className="top_city_span">{elem.name}</span>

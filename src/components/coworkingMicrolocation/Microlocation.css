@@ -65,7 +65,7 @@
 @media only screen and (max-width: 576px) {
   .micro_card_box {
     padding-right: 0;
-    margin-bottom: 0;
+    margin-bottom: 30px;
   }
   .img_box2 {
     height: 147px;
@@ -78,5 +78,8 @@
   }
   .property_card_mob {
     width: 100% !important;
+  }
+  .img_box_micro {
+    width: 100%;
   }
 }
