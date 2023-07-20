@@ -43,7 +43,7 @@
   background-image: none;
 }
 .image-container {
-  width: 100%;
+  width: 305px;
   height: 100%;
   overflow: hidden;
 }
@@ -64,5 +64,11 @@
   }
   .premium_card {
     height: 287px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .image-container {
+    width: 236px;
   }
 }

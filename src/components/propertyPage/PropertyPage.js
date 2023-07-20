@@ -82,7 +82,7 @@ const PropertyPage = () => {
     {
       id: 1,
       name: "Virtual Office",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626834011.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760840756.png",
       description: "Book and experience the un-conventional work culture.",
     },
     {
@@ -94,13 +94,13 @@ const PropertyPage = () => {
     {
       id: 3,
       name: "Dedicated Desk",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png",
       description: "A fixed desk in a shared coworking space.",
     },
     {
       id: 4,
       name: "Private Cabin",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626825661.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760830806.png",
       description: "Private office space dedicated to you and your team.",
     },
   ];
@@ -109,52 +109,52 @@ const PropertyPage = () => {
     {
       id: 1,
       name: "Air Conditioning",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362238486.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760860210.png",
     },
     {
       id: 2,
       name: "Coffee and Tea",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362247987.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760869708.png",
     },
     {
       id: 3,
       name: "Reception",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362269832.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760939797.png",
     },
     {
       id: 4,
       name: "Housekeeping",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362257976.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760899276.png",
     },
     {
       id: 5,
       name: "Dedicated Desk",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png",
     },
     {
       id: 6,
       name: "Private Cabin",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626825661.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760830806.png",
     },
     {
       id: 7,
       name: "High-Speed Wifi",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png",
     },
     {
       id: 8,
       name: "Meeting Rooms",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361881320.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png",
     },
     {
       id: 9,
       name: "Comfy Workstation",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361858729.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760878265.png",
     },
     {
       id: 10,
       name: "Parking",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png",
     },
   ];
 
@@ -169,16 +169,14 @@ const PropertyPage = () => {
     }));
     setAmenities(mainAmenities);
   }, [amenties]);
-  const location_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png";
   const explore_icon =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624307161.png";
   const wifi_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png";
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png";
   const parking_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png";
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png";
   const printer_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361932524.png";
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png";
 
   useEffect(() => {
     const mainPriceCategory = workSpace?.plans?.map((plan, i) => ({
@@ -671,42 +669,42 @@ const PropertyPage = () => {
                             <div className="card_amenities">
                               <div>
                                 <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png"
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png"
                                   alt="wifi"
                                   className="img-fluid"
                                 />
                               </div>
                               <div>
                                 <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png"
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png"
                                   alt="dedicated desk"
                                   className="img-fluid"
                                 />
                               </div>
                               <div>
                                 <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361881320.png"
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png"
                                   alt="meeting rooms"
                                   className="img-fluid"
                                 />
                               </div>
                               <div>
                                 <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361932524.png"
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png"
                                   alt="printer"
                                   className="img-fluid"
                                 />
                               </div>
                               <div>
                                 <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361894820.png"
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760917850.png"
                                   alt="pantry"
                                   className="img-fluid"
                                 />
                               </div>
                               <div>
                                 <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png"
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png"
                                   alt="parking"
                                   className="img-fluid"
                                 />

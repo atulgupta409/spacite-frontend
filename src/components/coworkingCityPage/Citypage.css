@@ -58,11 +58,14 @@
 .jNKBoY {
   margin: 0 !important;
 }
+.rec-item-wrapper {
+  width: auto !important;
+}
 .img_box {
   height: 213px;
   overflow: hidden;
   padding: 0;
-  width: 100%;
+  width: 304px;
 }
 .property_card .img_box img {
   border-radius: 20px 20px 0 0;
@@ -343,7 +346,7 @@
 @media only screen and (max-width: 576px) {
   .img_box {
     height: 147px;
-    width: 100%;
+    width: 236px;
   }
   .img_box img {
     border-radius: 20px 0 0 20px;

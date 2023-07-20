@@ -243,118 +243,139 @@ function CityPage() {
                             renderArrow={Myarrow}
                             breakPoints={breakPoints}
                           >
-                            {cityworkSpaces
-                              ?.filter(
-                                (workspace) =>
-                                  workspace?.location?.micro_location?.name ===
-                                  microlocation?.name
-                              )
-                              .slice(0, 10)
-                              .map((workspace, j) => (
-                                <div className="carousel-items" key={j}>
-                                  <div className="property_card">
-                                    <div className="img_box">
-                                      <img
-                                        src={
-                                          workspace.images.length > 0
-                                            ? workspace.images[0].image
-                                            : workImage
-                                        }
-                                        alt={
-                                          workspace.images.length > 0
-                                            ? workspace.images[0].alt
-                                            : "workImage"
-                                        }
-                                        className="img-fluid"
-                                      />
-                                    </div>
-                                    <div className="card_body">
-                                      <p className="card-title">
-                                        {workspace?.name?.length > 22
-                                          ? workspace?.name?.substring(0, 20) +
-                                            "..."
-                                          : workspace?.name}
-                                      </p>
-                                      <div className="location_box">
-                                        <p>
-                                          {microlocation?.name +
-                                            ", " +
-                                            cityName}
+                            {cityworkSpaces?.filter(
+                              (workspace) =>
+                                workspace?.location?.micro_location?.name ===
+                                microlocation?.name
+                            )?.length !== 0 ? (
+                              cityworkSpaces
+                                ?.filter(
+                                  (workspace) =>
+                                    workspace?.location?.micro_location
+                                      ?.name === microlocation?.name
+                                )
+                                .slice(0, 10)
+                                .map((workspace, j) => (
+                                  <div className="carousel-items" key={j}>
+                                    <div className="property_card">
+                                      <div className="img_box">
+                                        <img
+                                          src={
+                                            workspace.images.length > 0
+                                              ? workspace.images[0].image
+                                              : workImage
+                                          }
+                                          alt={
+                                            workspace.images.length > 0
+                                              ? workspace.images[0].alt
+                                              : "workImage"
+                                          }
+                                          className="img-fluid"
+                                        />
+                                      </div>
+                                      <div className="card_body">
+                                        <p className="card-title">
+                                          {workspace?.name?.length > 22
+                                            ? workspace?.name?.substring(
+                                                0,
+                                                20
+                                              ) + "..."
+                                            : workspace?.name}
                                         </p>
+                                        <div className="location_box">
+                                          <p>
+                                            {microlocation?.name +
+                                              ", " +
+                                              cityName}
+                                          </p>
+                                        </div>
+                                        <div className="card_amenities">
+                                          <div>
+                                            <img
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png"
+                                              alt="wifi"
+                                              className="img-fluid"
+                                            />
+                                          </div>
+                                          <div>
+                                            <img
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png"
+                                              alt="dedicated desk"
+                                              className="img-fluid"
+                                            />
+                                          </div>
+                                          <div>
+                                            <img
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png"
+                                              alt="meeting rooms"
+                                              className="img-fluid"
+                                            />
+                                          </div>
+                                          <div>
+                                            <img
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png"
+                                              alt="printer"
+                                              className="img-fluid"
+                                            />
+                                          </div>
+                                          <div>
+                                            <img
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760917850.png"
+                                              alt="pantry"
+                                              className="img-fluid"
+                                            />
+                                          </div>
+                                          <div>
+                                            <img
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png"
+                                              alt="parking"
+                                              className="img-fluid"
+                                            />
+                                          </div>
+                                        </div>
+                                        <p className="price_from">Starting</p>
+                                        <div className="price_box">
+                                          <p className="price">
+                                            ₹{" "}
+                                            {workspace?.plans
+                                              ?.reduce((prev, current) =>
+                                                current.price < prev.price
+                                                  ? current
+                                                  : prev
+                                              )
+                                              .price?.toLocaleString()}{" "}
+                                            /*<span>month</span>
+                                          </p>
+                                        </div>
                                       </div>
-                                      <div className="card_amenities">
-                                        <div>
-                                          <img
-                                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png"
-                                            alt="wifi"
-                                            className="img-fluid"
-                                          />
+                                      <div className="card_button_link">
+                                        <div onClick={openModal}>
+                                          Enquire Now
                                         </div>
                                         <div>
-                                          <img
-                                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png"
-                                            alt="dedicated desk"
-                                            className="img-fluid"
-                                          />
+                                          <Link
+                                            to={`/coworking/${workspace?.slug}`}
+                                            target="_blank"
+                                          >
+                                            Explore Now
+                                          </Link>
                                         </div>
-                                        <div>
-                                          <img
-                                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361881320.png"
-                                            alt="meeting rooms"
-                                            className="img-fluid"
-                                          />
-                                        </div>
-                                        <div>
-                                          <img
-                                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361932524.png"
-                                            alt="printer"
-                                            className="img-fluid"
-                                          />
-                                        </div>
-                                        <div>
-                                          <img
-                                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361894820.png"
-                                            alt="pantry"
-                                            className="img-fluid"
-                                          />
-                                        </div>
-                                        <div>
-                                          <img
-                                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png"
-                                            alt="parking"
-                                            className="img-fluid"
-                                          />
-                                        </div>
-                                      </div>
-                                      <p className="price_from">Starting</p>
-                                      <div className="price_box">
-                                        <p className="price">
-                                          ₹{" "}
-                                          {workspace?.plans
-                                            ?.reduce((prev, current) =>
-                                              current.price < prev.price
-                                                ? current
-                                                : prev
-                                            )
-                                            .price?.toLocaleString()}{" "}
-                                          /*<span>month</span>
-                                        </p>
-                                      </div>
-                                    </div>
-                                    <div className="card_button_link">
-                                      <div onClick={openModal}>Enquire Now</div>
-                                      <div>
-                                        <Link
-                                          to={`/coworking/${workspace?.slug}`}
-                                          target="_blank"
-                                        >
-                                          Explore Now
-                                        </Link>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
-                              ))}
+                                ))
+                            ) : (
+                              <div
+                                className="col-12 text-center w-100"
+                                style={{
+                                  fontSize: "20px",
+                                  color: "#444",
+                                  fontWeight: "600",
+                                }}
+                              >
+                                No Spaces Available In {microlocation?.name}
+                              </div>
+                            )}
                           </Carousel>
                         </div>
                       </div>
@@ -465,42 +486,42 @@ function CityPage() {
                                         <div className="card_amenities">
                                           <div>
                                             <img
-                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png"
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png"
                                               alt="wifi"
                                               className="img-fluid"
                                             />
                                           </div>
                                           <div>
                                             <img
-                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png"
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png"
                                               alt="dedicated desk"
                                               className="img-fluid"
                                             />
                                           </div>
                                           <div>
                                             <img
-                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361881320.png"
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png"
                                               alt="meeting rooms"
                                               className="img-fluid"
                                             />
                                           </div>
                                           <div>
                                             <img
-                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361932524.png"
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png"
                                               alt="printer"
                                               className="img-fluid"
                                             />
                                           </div>
                                           <div>
                                             <img
-                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361894820.png"
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760917850.png"
                                               alt="pantry"
                                               className="img-fluid"
                                             />
                                           </div>
                                           <div>
                                             <img
-                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png"
+                                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png"
                                               alt="parking"
                                               className="img-fluid"
                                             />
@@ -539,7 +560,7 @@ function CityPage() {
                                 ))
                             ) : (
                               <div
-                                className="col-12 text-center"
+                                className="col-12 text-center w-100"
                                 style={{
                                   fontSize: "20px",
                                   color: "#444",

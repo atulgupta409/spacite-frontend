@@ -12,9 +12,17 @@
 .clients_box {
   width: 95%;
 }
+.client_box {
+  width: 189px;
+}
 @media only screen and (max-width: 768px) {
   .main_banner_partner {
     background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688621422812.png");
     height: 26vh;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .client_box {
+    width: 106px;
   }
 }
