@@ -22,7 +22,7 @@ function Section2() {
         <div className="row mb-5">
           <div className="col-4 find_space">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361770470.png"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760639766.png"
               alt="spaces"
             />
             <p>
@@ -31,7 +31,7 @@ function Section2() {
           </div>
           <div className="col-4 find_space">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361800856.png"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760667515.png"
               alt="cities"
             />
             <p>
@@ -41,7 +41,7 @@ function Section2() {
           </div>
           <div className="col-4 find_space">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361785577.png"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760654196.png"
               alt="country"
             />
             <p>

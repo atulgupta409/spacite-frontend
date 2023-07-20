@@ -31,12 +31,13 @@ export const getMicrolocationByCity = async (
   try {
     setLoadingMicrolocations(true);
     const { data } = await axios.get(
-      `${baseUrl}/api/micro-location/micro-locations/${cityName}`
+      `${baseUrl}/api/micro-location/priority/${cityName}`
     );
     setMicrolocations(data);
     setLoadingMicrolocations(false);
   } catch (error) {
     console.log(error);
+    setLoadingMicrolocations(false);
   }
 };
 
@@ -106,10 +107,38 @@ export const getWorkSpaceBySlug = async (
   }
 };
 
-export const getSeo = async (setSeo, path) => {
+export const getSeo = async (setSeo, path, defaultSeo) => {
   try {
     const { data } = await axios.get(`${baseUrl}/api/seo/seos-data/${path}`);
     setSeo(data);
+  } catch (error) {
+    console.log(error);
+    setSeo(defaultSeo);
+  }
+};
+
+export const getNearSpaces = async (setNearSpace, slug) => {
+  try {
+    const { data } = await axios.get(`${baseUrl}/api/workspaces/slug/${slug}`);
+    setNearSpace(data.nearbyWorkspaces.slice(0, 10));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getBrands = async (setBrands) => {
+  try {
+    const { data } = await axios.get(`${baseUrl}/api/brands/all-brands`);
+    setBrands(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getClients = async (setClients) => {
+  try {
+    const { data } = await axios.get(`${baseUrl}/api/client/our-client`);
+    setClients(data);
   } catch (error) {
     console.log(error);
   }

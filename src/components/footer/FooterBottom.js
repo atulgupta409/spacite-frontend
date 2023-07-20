@@ -35,7 +35,8 @@ function FooterBottom() {
                 return (
                   <li className="footer_list_item" key={i}>
                     <Link to={`/coworking-space/${city.name.toLowerCase()}`}>
-                      Coworking space in {city.name}
+                      <span className="mob_hide">Coworking space in</span>{" "}
+                      {city.name}
                     </Link>
                   </li>
                 );
@@ -55,8 +56,9 @@ function FooterBottom() {
               {cities?.map((city, i) => {
                 return (
                   <li className="footer_list_item" key={i}>
-                    <Link to={`/virtual-office/${city.name.toLowerCase()}`}>
-                      Virtual office in {city.name}
+                    <Link>
+                      <span className="mob_hide">Virtual office in</span>{" "}
+                      {city.name}
                     </Link>
                   </li>
                 );
@@ -80,6 +82,12 @@ function FooterBottom() {
               </li>
               <li className="footer_list_item">
                 <Link to="/contact">Contact Us</Link>
+              </li>
+              <li className="footer_list_item">
+                <Link>Privacy Policy</Link>
+              </li>
+              <li className="footer_list_item">
+                <Link>Terms & Conditions</Link>
               </li>
             </ul>
           </div>

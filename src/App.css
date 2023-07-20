@@ -2,7 +2,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
 }
 h1 {
   font-size: 40px;
@@ -133,6 +133,7 @@ h2 {
   font-weight: 600;
   font-size: 18px;
   line-height: 27px;
+  margin-bottom: 0;
 }
 /* scrollbar button */
 .eVXyLj,
@@ -150,6 +151,8 @@ h2 {
   align-self: center;
   border: none;
   background: transparent;
+  width: 23px;
+  position: absolute;
 }
 .dropdown-item.active,
 .dropdown-item:active {
@@ -201,7 +204,7 @@ h2 {
   }
   .card-title {
     font-size: 15px;
-    line-height: 12px;
+    line-height: 17px;
   }
   .top_space_row {
     margin: 20px 0;
@@ -211,5 +214,8 @@ h2 {
   }
   .sub_heading {
     line-height: 14px !important;
+  }
+  .contact_wrapper {
+    margin-bottom: 30px;
   }
 }

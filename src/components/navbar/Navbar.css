@@ -1,12 +1,25 @@
 .nav-main {
   box-shadow: 0px 4px 12px -5px rgba(0, 0, 0, 0.25);
-  /* height: 70px; */
   display: flex;
   position: fixed;
   width: 100vw;
   z-index: 999;
   background-color: #fff;
   top: 0;
+}
+.navbar {
+  width: 100vw;
+}
+.callBack_btn_nav {
+  border: 2px solid #d09cff;
+  background-color: #fff;
+  color: #d09cff;
+  padding: 10px 14px;
+  transition: all 0.3s ease-in-out;
+}
+.callBack_btn_nav:hover {
+  background-color: #d09cff;
+  color: #fff;
 }
 .navbar .megamenu {
   padding: 1rem;
@@ -31,6 +44,10 @@
 }
 .megamenu-row {
   margin-bottom: 20px;
+}
+.pl_0 {
+  padding-left: 0;
+  padding-right: 0;
 }
 .mega_menu_items {
   display: flex;
@@ -66,6 +83,10 @@
   }
   .megamenu-row div {
     width: 45%;
+  }
+  .pl_0 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 @media only screen and (max-width: 476px) {

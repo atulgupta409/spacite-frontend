@@ -11,8 +11,11 @@ import axios from "axios";
 import Modal from "react-modal";
 import { RxCross2 } from "react-icons/rx";
 import { getWorkSpaceBySlug } from "../service/Service";
-import { Helmet } from "react-helmet";
-import { getSeo } from "../service/Service";
+import { Helmet } from "react-helmet-async";
+import baseUrl from "../../environment/api-config";
+import { getNearSpaces } from "../service/Service";
+import ContactFormModal from "../modal-form/ContactFormModal";
+import RequestCallBtn from "../request-call-button/RequestCallBtn";
 
 const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
@@ -37,18 +40,20 @@ const PropertyPage = () => {
   const handleFetchWorkspacesBySlug = async () => {
     await getWorkSpaceBySlug(setWorkSpaces, slug, setLoadingSpaces);
   };
-  useEffect(() => {
-    handleFetchWorkspacesBySlug();
-  }, [slug]);
 
-  const [seo, setSeo] = useState([]);
-  const handleFetchSeo = async () => {
-    await getSeo(setSeo, lastElem);
+  const currentUrl = new URL(location.pathname, window.location.origin);
+  // console.log(currentUrl);
+
+  const [nearSpace, setNearSpace] = useState([]);
+  const getNearSpacesHandler = async () => {
+    await getNearSpaces(setNearSpace, slug);
   };
 
   useEffect(() => {
-    handleFetchSeo();
-  }, [lastElem]);
+    handleFetchWorkspacesBySlug();
+    getNearSpacesHandler();
+  }, [slug]);
+  // console.log(nearSpace.slice(0, 10));
 
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
@@ -77,7 +82,7 @@ const PropertyPage = () => {
     {
       id: 1,
       name: "Virtual Office",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626834011.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760840756.png",
       description: "Book and experience the un-conventional work culture.",
     },
     {
@@ -89,13 +94,13 @@ const PropertyPage = () => {
     {
       id: 3,
       name: "Dedicated Desk",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png",
       description: "A fixed desk in a shared coworking space.",
     },
     {
       id: 4,
       name: "Private Cabin",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626825661.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760830806.png",
       description: "Private office space dedicated to you and your team.",
     },
   ];
@@ -104,57 +109,58 @@ const PropertyPage = () => {
     {
       id: 1,
       name: "Air Conditioning",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362238486.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760860210.png",
     },
     {
       id: 2,
       name: "Coffee and Tea",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362247987.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760869708.png",
     },
     {
       id: 3,
       name: "Reception",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362269832.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760939797.png",
     },
     {
       id: 4,
       name: "Housekeeping",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688362257976.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760899276.png",
     },
     {
       id: 5,
       name: "Dedicated Desk",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626817843.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png",
     },
     {
       id: 6,
       name: "Private Cabin",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626825661.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760830806.png",
     },
     {
       id: 7,
       name: "High-Speed Wifi",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png",
     },
     {
       id: 8,
       name: "Meeting Rooms",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361881320.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png",
     },
     {
       id: 9,
       name: "Comfy Workstation",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361858729.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760878265.png",
     },
     {
       id: 10,
       name: "Parking",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png",
     },
   ];
 
   const [amenities, setAmenities] = useState([]);
   const { amenties } = workSpace;
+  // console.log(workSpace);
 
   useEffect(() => {
     const mainAmenities = amenties?.map((amenity, i) => ({
@@ -163,16 +169,14 @@ const PropertyPage = () => {
     }));
     setAmenities(mainAmenities);
   }, [amenties]);
-  const location_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png";
   const explore_icon =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624307161.png";
   const wifi_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361871283.png";
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png";
   const parking_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361905753.png";
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png";
   const printer_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688361932524.png";
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png";
 
   useEffect(() => {
     const mainPriceCategory = workSpace?.plans?.map((plan, i) => ({
@@ -244,7 +248,7 @@ const PropertyPage = () => {
       setLoading(true);
       try {
         const response = await axios.post(
-          "http://localhost:5000/sendmail",
+          `${baseUrl}/sendmail`,
           {
             name: user.name,
             email: user.email,
@@ -268,38 +272,54 @@ const PropertyPage = () => {
       validation();
     }
   };
-
+  const { seo } = workSpace;
+  console.log(workSpace);
   return (
     <>
       <Helmet>
         <title>{seo?.title}</title>
         <meta name="description" content={seo?.description} />
         <meta name="keywords" content={seo?.keywords} />
+        <meta property="og:title" content={seo?.open_graph?.title} />
+        <meta
+          property="og:description"
+          content={seo?.open_graph?.description}
+        />
+        <meta name="twitter:title" content={seo?.twitter?.title} />
+        <meta name="twitter:description" content={seo?.twitter?.description} />
+        <link rel="canonical" href={currentUrl.href} />
+        <meta name="robots" content={seo?.robots} />
+        {/* <meta property="og:image" content={workSpace?.images[0]?.image} />
+        <meta property="og:image:alt" content={workSpace?.images[0]?.alt} />
+        <meta property="twitter:image" content={workSpace?.images[0]?.image} />
+        <meta
+          property="twitter:image:alt"
+          content={workSpace?.images[0]?.alt}
+        /> */}
       </Helmet>
-      <nav
-        aria-label="breadcrumb"
-        style={{ paddingLeft: "20px", marginTop: "100px" }}
-      >
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="breadcrumb-item">
-            <Link>Coworking Space</Link>
-          </li>
-          <li
-            style={{
-              color: "#d09cff",
-              fontWeight: "500",
-            }}
-            className="breadcrumb-item active"
-            aria-current="page"
-          >
-            {cityName}
-          </li>
-        </ol>
-      </nav>
-      <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} />
+      <div className="container">
+        <nav aria-label="breadcrumb" style={{ marginTop: "100px" }}>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="breadcrumb-item">
+              <Link>Coworking Space</Link>
+            </li>
+            <li
+              style={{
+                color: "#d09cff",
+                fontWeight: "500",
+              }}
+              className="breadcrumb-item active"
+              aria-current="page"
+            >
+              {cityName}
+            </li>
+          </ol>
+        </nav>
+        <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} />
+      </div>
       <div className="container">
         <div className="row title_section_property">
           <div className="col-md-6">
@@ -331,15 +351,15 @@ const PropertyPage = () => {
             </p>
           </div>
           <div className="col-md-3 price_section_box">
-            <p>Starting From</p>
+            <p>Starting</p>
             <p className="price_section_property">
               ₹
-              {
-                workSpace?.plans?.reduce((prev, current) => {
+              {workSpace?.plans
+                ?.reduce((prev, current) => {
                   return current.price < prev.price ? current : prev;
-                }).price
-              }
-              /*<span>Month</span>
+                })
+                .price?.toLocaleString()}
+              /*<span>month</span>
             </p>
           </div>
         </div>
@@ -437,16 +457,18 @@ const PropertyPage = () => {
             {plans?.map((planElem, i) => {
               return (
                 <div className="row category_section_property" key={i}>
-                  <div className="col-6">
+                  <div className="col-8">
                     <h4>{planElem?.category?.name}</h4>
                     <p className="mob_hide">{planElem?.description}</p>
-                    <p className="facility_name">Starting From</p>
+                    <p className="facility_name">Starting</p>
                     <p className="facility_name">
-                      <span>₹{planElem?.price}/*</span>
-                      {planElem?.duration === "Year" ? "Year" : "Seat"}
+                      <span>₹{planElem?.price?.toLocaleString()}/*</span>
+                      <span>
+                        {planElem?.duration === "Year" ? "Year" : "Seat"}
+                      </span>
                     </p>
                   </div>
-                  <div className="col-6 desk_icon_box">
+                  <div className="col-4 desk_icon_box">
                     <img src={planElem?.planImg} alt="desk" />
                     <div className="explore_box">
                       <p>Enquire</p>
@@ -458,7 +480,7 @@ const PropertyPage = () => {
             })}
             <hr className="devider_line" />
             <div className="row offers_section_property">
-              <h3 className="property_h3">What this Space Offers</h3>
+              <h3 className="property_h3">Amenities</h3>
               {amenities?.map((amenity, i) => {
                 return (
                   <div className="col-md-4 col-6 main_amenity_box" key={i}>
@@ -589,11 +611,7 @@ const PropertyPage = () => {
                 <h3 className="property_h3 text-align-center">
                   Got questions or want to talk to someone?
                 </h3>
-                <a href="tel: +919999108078">
-                  <button className="globalBtn contact_btn">
-                    +91 9999 10 8078
-                  </button>
-                </a>
+                <RequestCallBtn />
               </div>
             </div>
           </div>
@@ -603,99 +621,129 @@ const PropertyPage = () => {
       <div className="desk_hide">
         <SpaceExpert />
       </div>
-      <div className="container">
-        <h2 className="text_left">
-          Similar
-          <span className="city_span"> Spaces</span>
+      <div className="container mb-5">
+        <h2 className="text_left mb-5">
+          Similar coworking spaces in
+          <span className="city_span">
+            {" "}
+            {workSpace?.location?.micro_location?.name}
+          </span>
         </h2>
-        <div className="top_space_row">
-          <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-            <div className="property-card">
-              <div className="property_img">
-                <img src={top_gurgaon} alt="" className="propery_card_img" />
-              </div>
-              <div className="card-body space_card">
-                <p className="card-title">Accesswork Sohna Road</p>
-                <div className="location_box">
-                  <img src={location_icon} alt="location-icon" />
-                  <p>JMD Megapolis, Gurgaon</p>
-                </div>
-                <div className="price_box">
-                  <p className="price">
-                    ₹9,000/*<span>month</span>
-                  </p>
-                </div>
-              </div>
+        <div className="micro_location_properties">
+          <div className="row">
+            <div className="col-md-12">
+              {nearSpace?.length > 0 ? (
+                <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
+                  {nearSpace?.slice(0, 10)?.map((space, i) => {
+                    return (
+                      <div className="carousel-items" key={i}>
+                        <div className="property_card">
+                          <div className="img_box">
+                            <img
+                              src={
+                                space.images.length > 0
+                                  ? space.images[0].image
+                                  : top_gurgaon
+                              }
+                              alt={
+                                space.images.length > 0
+                                  ? space.images[0].alt
+                                  : "workImage"
+                              }
+                              className="img-fluid"
+                            />
+                          </div>
+                          <div className="card_body">
+                            <p className="card-title">
+                              {space?.name?.length > 22
+                                ? space?.name?.substring(0, 20) + "..."
+                                : space?.name}
+                            </p>
+                            <div className="location_box">
+                              <p>
+                                {space?.location?.micro_location?.name +
+                                  ", " +
+                                  space?.location?.city?.name}
+                              </p>
+                            </div>
+                            <div className="card_amenities">
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png"
+                                  alt="wifi"
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png"
+                                  alt="dedicated desk"
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png"
+                                  alt="meeting rooms"
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png"
+                                  alt="printer"
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760917850.png"
+                                  alt="pantry"
+                                  className="img-fluid"
+                                />
+                              </div>
+                              <div>
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png"
+                                  alt="parking"
+                                  className="img-fluid"
+                                />
+                              </div>
+                            </div>
+                            <p className="price_from">Starting</p>
+                            <div className="price_box">
+                              <p className="price">
+                                ₹{" "}
+                                {space?.plans
+                                  ?.reduce((prev, current) =>
+                                    current.price < prev.price ? current : prev
+                                  )
+                                  .price?.toLocaleString()}{" "}
+                                /*<span>month</span>
+                              </p>
+                            </div>
+                          </div>
+                          <div className="card_button_link">
+                            <div onClick={openModal}>Enquire Now</div>
+                            <div>
+                              <Link
+                                to={`/coworking/${space?.slug}`}
+                                target="_blank"
+                              >
+                                Explore Now
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </Carousel>
+              ) : (
+                <div>No Similar Spaces.</div>
+              )}
             </div>
-            <div className="property-card">
-              <div className="property_img">
-                <img src={top_gurgaon} alt="" className="propery_card_img" />
-              </div>
-              <div className="card-body space_card">
-                <p className="card-title">Accesswork Sohna Road</p>
-                <div className="location_box">
-                  <img src={location_icon} alt="location-icon" />
-                  <p>JMD Megapolis, Gurgaon</p>
-                </div>
-                <div className="price_box">
-                  <p className="price">
-                    ₹9,000/*<span>month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="property-card">
-              <div className="property_img">
-                <img src={top_gurgaon} alt="" className="propery_card_img" />
-              </div>
-              <div className="card-body space_card">
-                <p className="card-title">Accesswork Sohna Road</p>
-                <div className="location_box">
-                  <img src={location_icon} alt="location-icon" />
-                  <p>JMD Megapolis, Gurgaon</p>
-                </div>
-                <div className="price_box">
-                  <p className="price">
-                    ₹9,000/*<span>month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="property-card">
-              <div className="property_img">
-                <img src={top_gurgaon} alt="" className="propery_card_img" />
-              </div>
-              <div className="card-body space_card">
-                <p className="card-title">Accesswork Sohna Road</p>
-                <div className="location_box">
-                  <img src={location_icon} alt="location-icon" />
-                  <p>JMD Megapolis, Gurgaon</p>
-                </div>
-                <div className="price_box">
-                  <p className="price">
-                    ₹9,000/*<span>month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="property-card">
-              <div className="property_img">
-                <img src={top_gurgaon} alt="" className="propery_card_img" />
-              </div>
-              <div className="card-body space_card">
-                <p className="card-title">Accesswork Sohna Road</p>
-                <div className="location_box">
-                  <img src={location_icon} alt="location-icon" />
-                  <p>JMD Megapolis, Gurgaon</p>
-                </div>
-                <div className="price_box">
-                  <p className="price">
-                    ₹9,000/*<span>month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Carousel>
+          </div>
         </div>
       </div>
       <div className="footer_mob">
@@ -703,15 +751,15 @@ const PropertyPage = () => {
       </div>
       <div className="desk_hide fixed_div">
         <div className="starting_price">
-          <p>Starting from</p>
+          <p>Starting</p>
           <p>
             ₹
-            {
-              workSpace?.plans?.reduce((prev, current) => {
+            {workSpace?.plans
+              ?.reduce((prev, current) => {
                 return current.price < prev.price ? current : prev;
-              }).price
-            }
-            /*<span>Month</span>
+              })
+              .price.toLocaleString()}
+            /*<span>month</span>
           </p>
         </div>
         <button

@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { CityContext } from "../context/CityContext";
+import ContactFormModal from "../modal-form/ContactFormModal";
+import Modal from "react-modal";
+import RequestCallBtn from "../request-call-button/RequestCallBtn";
 
 function Navbar() {
   const { allCities, handleFetchCities } = useContext(CityContext);
@@ -11,11 +14,20 @@ function Navbar() {
     handleFetchCities();
   }, []);
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
-    <div className="nav-main">
-      <div className="container">
+    <>
+      <div className="nav-main">
         <nav className="navbar navbar-expand-lg">
-          <div className="container-fluid">
+          <div className="container pl_0">
             <NavLink className="navbar-brand" to="/">
               <img
                 src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688623571085.png"
@@ -68,22 +80,23 @@ function Navbar() {
                   </div>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="">
                     Virtual Office
                   </a>
                 </li>
               </ul>
               <ul className="navbar-nav">
                 <li className="nav-item dropdown">
-                  <a
-                    className="nav-link  dropdown-toggle"
-                    href="#"
-                    data-bs-toggle="dropdown"
-                  >
-                    Knowledge
-                  </a>
-                  <ul className="dropdown-menu dropdown-menu-end">
-                    {/* <li>
+                  <RequestCallBtn />
+                  {/* <a
+                  className="nav-link  dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  Knowledge
+                </a>
+                <ul className="dropdown-menu dropdown-menu-end">
+                  <li>
                       <a className="dropdown-item" href="#">
                         Enterprise Solutions
                       </a>
@@ -97,25 +110,32 @@ function Navbar() {
                       <a className="dropdown-item" href="#">
                         Franchise
                       </a>
-                    </li> */}
-                    <li>
-                      <NavLink className="dropdown-item" to="/about">
-                        About Us
-                      </NavLink>
                     </li>
-                    <li>
-                      <NavLink className="dropdown-item" to="/contact">
-                        Contact Us
-                      </NavLink>
-                    </li>
-                  </ul>
+                  <li>
+                    <NavLink className="dropdown-item" to="/about">
+                      About Us
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="dropdown-item" to="/contact">
+                      Contact Us
+                    </NavLink>
+                  </li>
+                </ul> */}
                 </li>
               </ul>
             </div>
           </div>
         </nav>
       </div>
-    </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        contentLabel="Example Modal"
+      >
+        <ContactFormModal closeModal={closeModal} />
+      </Modal>
+    </>
   );
 }
 

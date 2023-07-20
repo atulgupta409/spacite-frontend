@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import Microlocation from "./components/coworkingMicrolocation/Microlocation";
 import FooterBottom from "./components/footer/FooterBottom";
 import ThankuPage from "./components/thankuPage/ThankuPage";
+import ErrorBoundary from "./components/coworkingCityPage/ErrorBoundry";
 
 function App() {
   const [workSpaces, setWorkspaces] = useState([]);
@@ -50,13 +51,27 @@ function App() {
             <FooterBottom key={9} />,
           ]}
         />
-        <Route
+        {/* <Route
           path="coworking-space/:cityName"
           element={[
             <Navbar key={10} />,
-            <CityPage key={11} />,
+            <ErrorBoundary>
+              <CityPage key={11} />
+            </ErrorBoundary>,
             <Footer key={12} />,
           ]}
+        /> */}
+        <Route
+          path="coworking-space/:cityName"
+          element={
+            <>
+              <Navbar key={10} />
+              {/* <ErrorBoundary key={11}> */}
+              <CityPage />
+              {/* </ErrorBoundary> */}
+              <Footer key={12} />
+            </>
+          }
         />
         <Route
           path="coworking-space/:id/:id2"

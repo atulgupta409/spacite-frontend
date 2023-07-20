@@ -10,7 +10,7 @@ function Loader() {
         width="80"
         ariaLabel="blocks-loading"
         wrapperStyle={{}}
-        wrapperClass="blocks-wrapper"
+        wrapperClassName="blocks-wrapper"
         colors={["#d09cff", "#d09cff", "#d09cff", "#d09cff", "#d09cff"]}
       />
     </div>
