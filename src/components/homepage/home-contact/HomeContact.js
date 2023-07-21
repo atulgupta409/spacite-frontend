@@ -29,7 +29,6 @@ function HomeContact() {
     { value: "after 4 month", label: "After 4 Month" },
   ];
 
-  // const [selectedOption, setSelectedOption] = useState(null);
   const [officeType, setOfficeType] = useState("");
   const [noSeats, setNoSeats] = useState("");
   const [moveIn, setMoveIn] = useState("");
@@ -47,7 +46,6 @@ function HomeContact() {
   const selectChangeHandlerOffice = (officeType, noSeats, moveIn) => {
     setOfficeType(officeType?.value);
   };
-  // console.log(officeType);
   const selectChangeHandlerSeats = (noSeats) => {
     setNoSeats(noSeats?.value);
   };
@@ -145,6 +143,7 @@ function HomeContact() {
       console.log(error);
     }
   };
+
   return (
     <div className="main_banner2 home_contact_main">
       <div className="container">
