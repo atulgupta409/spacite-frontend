@@ -143,3 +143,24 @@ export const getClients = async (setClients) => {
     console.log(error);
   }
 };
+
+export const getPopularWorkspaceByCity = async (cities, setPopularSpaces) => {
+  try {
+    let res = [];
+    cities.forEach(async (city) => {
+      const { data } = await axios.get(
+        `${baseUrl}/api/popular-workspace/${city.name}`
+      );
+      // console.log(data, "abcd");
+
+      res.push(data);
+      if (cities.length === res.length && cities.length > 0) {
+        console.log(res, "xyz");
+        // return res;
+        setPopularSpaces(res);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
