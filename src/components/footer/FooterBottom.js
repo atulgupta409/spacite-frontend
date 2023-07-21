@@ -67,6 +67,10 @@ function FooterBottom() {
             <Link to="/contact" className="desk_hide mb-0 contact_mob">
               Contact Us
             </Link>
+            <div className="footer_phone mob_hide">
+              <p style={{ marginBottom: "0" }}>Email :</p>
+              <a href="mailto: thespacite@gmail.com">thespacite@gmail.com</a>
+            </div>
           </div>
           <div className="col-md-3 mob_hide">
             <h4 className="footer_h4">Knowledge Center</h4>

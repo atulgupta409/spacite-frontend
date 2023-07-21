@@ -36,6 +36,7 @@ function ContactFormModal({ closeModal }) {
   const [phoneError, setPhoneError] = useState("");
   const [user, setUser] = useState({ name: "", email: "", phone: "" });
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
@@ -52,19 +53,22 @@ function ContactFormModal({ closeModal }) {
   };
   const phonePattern = /^\d{10}$/;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const validation = () => {
+  const validationName = () => {
     if (user.name.trim() === "") {
       setNameError("Name is required");
     } else {
       setNameError("");
     }
-
+  };
+  const validationEmail = () => {
     if (!emailPattern.test(user.email)) {
       setEmailError("Invalid email format");
     } else {
       setEmailError("");
     }
+  };
 
+  const validationPhone = () => {
     if (!phonePattern.test(user.phone)) {
       setPhoneError("Invalid phone number");
     } else {
@@ -83,7 +87,9 @@ function ContactFormModal({ closeModal }) {
       setMoveIn("");
       setNoSeats(null);
       setOfficeType("");
-      validation();
+      validationName();
+      validationEmail();
+      validationPhone();
       setLoading(true);
       try {
         const response = await axios.post(
@@ -104,12 +110,15 @@ function ContactFormModal({ closeModal }) {
         );
         setLoading(false);
         handleSheet();
+        setSubmitted(true);
         navigate("/thank-you");
       } catch (error) {
         console.error(error);
       }
     } else {
-      validation();
+      validationName();
+      validationEmail();
+      validationPhone();
     }
   };
 
@@ -142,26 +151,28 @@ function ContactFormModal({ closeModal }) {
   };
 
   return (
-    <div>
-      <div className="close_icon_box">
-        <h3 className="req_box">Request Call Back</h3>
+    <div className="modal_form_main">
+      <div className="cross_icon">
         <button>
           <RxCross2 className="close_icon" onClick={closeModal} />
         </button>
+      </div>
+      <div className="close_icon_box">
+        <h3 className="req_box">Request Call Back</h3>
       </div>
       <form onSubmit={sendEmail}>
         <div className="row">
           <div className="col-md-12 mb-4">
             <input
               type="text"
-              className="form-control"
+              className="form-control modal_form_input"
               id="exampleInputtext"
               aria-describedby="emailHelp"
               placeholder="Name*"
               value={user.name}
               name="name"
               onChange={inputChangeHandler}
-              onBlur={validation}
+              onBlur={validationName}
             />
             {nameError && <p className="error_validate">{nameError}</p>}
           </div>
@@ -169,11 +180,11 @@ function ContactFormModal({ closeModal }) {
             <input
               type="email"
               placeholder="Email"
-              className="form-control"
+              className="form-control modal_form_input"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               onChange={inputChangeHandler}
-              onBlur={validation}
+              onBlur={validationEmail}
               name="email"
               value={user.email}
             />
@@ -183,13 +194,13 @@ function ContactFormModal({ closeModal }) {
             <input
               type="text"
               placeholder="Phone"
-              className="form-control"
+              className="form-control modal_form_input"
               id="exampleInputEmail1"
               name="phone"
               value={user.phone}
               aria-describedby="emailHelp"
               onChange={inputChangeHandler}
-              onBlur={validation}
+              onBlur={validationPhone}
             />
             {phoneError && <p className="error_validate">{phoneError}</p>}
           </div>
@@ -255,6 +266,18 @@ function ContactFormModal({ closeModal }) {
           </div>
         </div>
       </form>
+      <div className="form_spacite_logo">
+        <img
+          src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688623571085.png"
+          alt="logo"
+          className="img-fluid"
+        />
+      </div>
+      <div className="popup_form_footer">
+        <div className="popup_cowork">Coworking Space</div>
+        <div className="dot"></div>
+        <div className="popup_cowork">Virtual Office</div>
+      </div>
     </div>
   );
 }

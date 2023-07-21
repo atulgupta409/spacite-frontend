@@ -58,21 +58,27 @@ function PopularCoworking() {
                             return (
                               <div className="carousel-items" key={k}>
                                 <div className="property_card">
-                                  <div className="img_box">
-                                    <img
-                                      src={
-                                        mySpace?.images[0]?.length > 0
-                                          ? mySpace?.images[0]?.image
-                                          : top_gurgaon
-                                      }
-                                      alt={
-                                        mySpace?.images[0]?.length > 0
-                                          ? mySpace?.images[0]?.alt
-                                          : "workimage"
-                                      }
-                                      className="img-fluid"
-                                    />
-                                  </div>
+                                  <Link
+                                    to={`/coworking/${mySpace?.slug}`}
+                                    target="_blank"
+                                    style={{ padding: "0" }}
+                                  >
+                                    <div className="img_box">
+                                      <img
+                                        src={
+                                          mySpace?.images?.length > 0
+                                            ? mySpace?.images[0]?.image
+                                            : top_gurgaon
+                                        }
+                                        alt={
+                                          mySpace?.images?.length > 0
+                                            ? mySpace?.images[0]?.alt
+                                            : "workimage"
+                                        }
+                                        className="img-fluid"
+                                      />
+                                    </div>
+                                  </Link>
                                   <div className="card_body">
                                     <p className="card-title">
                                       {mySpace?.name?.length > 20

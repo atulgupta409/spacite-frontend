@@ -103,11 +103,40 @@ function Contact() {
         );
         setLoading(false);
         navigate("/thank-you");
+        handleSheet();
       } catch (error) {
         console.error(error);
       }
     } else {
       validation();
+    }
+  };
+
+  const handleSheet = async () => {
+    try {
+      const response = await fetch(
+        "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=Sheet1",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify([
+            [
+              user.name,
+              user.email,
+              user.phone,
+              officeType,
+              noSeats,
+              user.query,
+              new Date().toLocaleString(),
+            ],
+          ]),
+        }
+      );
+      await response.json();
+    } catch (error) {
+      console.log(error);
     }
   };
 

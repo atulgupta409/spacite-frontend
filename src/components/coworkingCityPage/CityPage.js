@@ -100,6 +100,10 @@ function CityPage() {
     handleFetchWorkspacesByCity();
     handleFetchSeo();
   }, [cityName]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   let topMicrolocations = microlocations.slice(0, 6);
   // console.log(seo);
 
@@ -258,21 +262,27 @@ function CityPage() {
                                 .map((workspace, j) => (
                                   <div className="carousel-items" key={j}>
                                     <div className="property_card">
-                                      <div className="img_box">
-                                        <img
-                                          src={
-                                            workspace.images.length > 0
-                                              ? workspace.images[0].image
-                                              : workImage
-                                          }
-                                          alt={
-                                            workspace.images.length > 0
-                                              ? workspace.images[0].alt
-                                              : "workImage"
-                                          }
-                                          className="img-fluid"
-                                        />
-                                      </div>
+                                      <Link
+                                        to={`/coworking/${workspace?.slug}`}
+                                        target="_blank"
+                                        style={{ padding: "0" }}
+                                      >
+                                        <div className="img_box">
+                                          <img
+                                            src={
+                                              workspace.images.length > 0
+                                                ? workspace.images[0].image
+                                                : workImage
+                                            }
+                                            alt={
+                                              workspace.images.length > 0
+                                                ? workspace.images[0].alt
+                                                : "workImage"
+                                            }
+                                            className="img-fluid"
+                                          />
+                                        </div>
+                                      </Link>
                                       <div className="card_body">
                                         <p className="card-title">
                                           {workspace?.name?.length > 22
@@ -452,21 +462,27 @@ function CityPage() {
                                 .map((workspace, j) => (
                                   <div className="carousel-items" key={j}>
                                     <div className="property_card">
-                                      <div className="img_box">
-                                        <img
-                                          src={
-                                            workspace.images.length > 0
-                                              ? workspace.images[0].image
-                                              : workImage
-                                          }
-                                          alt={
-                                            workspace.images.length > 0
-                                              ? workspace.images[0].alt
-                                              : "workImage"
-                                          }
-                                          className="img-fluid"
-                                        />
-                                      </div>
+                                      <Link
+                                        to={`/coworking/${workspace?.slug}`}
+                                        target="_blank"
+                                        style={{ padding: "0" }}
+                                      >
+                                        <div className="img_box">
+                                          <img
+                                            src={
+                                              workspace.images.length > 0
+                                                ? workspace.images[0].image
+                                                : workImage
+                                            }
+                                            alt={
+                                              workspace.images.length > 0
+                                                ? workspace.images[0].alt
+                                                : "workImage"
+                                            }
+                                            className="img-fluid"
+                                          />
+                                        </div>
+                                      </Link>
                                       <div className="card_body">
                                         <p className="card-title">
                                           {workspace?.name?.length > 22
