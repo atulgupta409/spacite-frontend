@@ -37,7 +37,7 @@ function Herohome() {
 
   const handleFetchSeo = async () => {
     try {
-      const response = await getSeo(setSeo, "", defaultSeo);
+      const response = await getSeo(setSeo, "home", defaultSeo);
     } catch (error) {
       console.error(error);
       setSeo(defaultSeo);

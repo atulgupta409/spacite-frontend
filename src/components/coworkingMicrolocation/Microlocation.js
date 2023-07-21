@@ -104,6 +104,10 @@ function Microlocation() {
     handleFetchSeo();
   }, [microNameApi]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   const extractedWorkspaces = workSpaces?.slice(0, 12);
   const extractedWorkspaces2 = workSpaces?.slice(12);
   // console.log(workSpaces);
@@ -216,21 +220,27 @@ function Microlocation() {
                     key={i}
                   >
                     <div className="row property_card property_card_mob">
-                      <div className="col-6 col-sm-12 img_box img_box_micro">
-                        <img
-                          src={
-                            workspace?.images?.length > 0
-                              ? workspace?.images[0]?.image
-                              : workImage
-                          }
-                          alt={
-                            workspace?.images?.length > 0
-                              ? workspace?.images[0]?.alt
-                              : "workImage"
-                          }
-                          className="img-fluid"
-                        />
-                      </div>
+                      <Link
+                        to={`/coworking/${workspace?.slug}`}
+                        target="_blank"
+                        style={{ padding: "0" }}
+                      >
+                        <div className="col-6 col-sm-12 img_box img_box_micro">
+                          <img
+                            src={
+                              workspace?.images?.length > 0
+                                ? workspace?.images[0]?.image
+                                : workImage
+                            }
+                            alt={
+                              workspace?.images?.length > 0
+                                ? workspace?.images[0]?.alt
+                                : "workImage"
+                            }
+                            className="img-fluid"
+                          />
+                        </div>
+                      </Link>
                       <div className="card_body col-6 col-sm-12">
                         <p className="card-title">
                           {workspace?.name?.length > 22
@@ -337,21 +347,27 @@ function Microlocation() {
                   key={i}
                 >
                   <div className="row property_card property_card_mob">
-                    <div className="col-6 col-sm-12 img_box img_box_micro">
-                      <img
-                        src={
-                          workspace?.images?.length > 0
-                            ? workspace?.images[0]?.image
-                            : workImage
-                        }
-                        alt={
-                          workspace?.images?.length > 0
-                            ? workspace?.images[0]?.alt
-                            : "workImage"
-                        }
-                        className="img-fluid"
-                      />
-                    </div>
+                    <Link
+                      to={`/coworking/${workspace?.slug}`}
+                      target="_blank"
+                      style={{ padding: "0" }}
+                    >
+                      <div className="col-6 col-sm-12 img_box img_box_micro">
+                        <img
+                          src={
+                            workspace?.images?.length > 0
+                              ? workspace?.images[0]?.image
+                              : workImage
+                          }
+                          alt={
+                            workspace?.images?.length > 0
+                              ? workspace?.images[0]?.alt
+                              : "workImage"
+                          }
+                          className="img-fluid"
+                        />
+                      </div>
+                    </Link>
                     <div className="card_body col-6 col-sm-12">
                       <p className="card-title">
                         {workspace?.name?.length > 22

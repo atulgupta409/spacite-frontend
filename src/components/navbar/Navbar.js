@@ -86,7 +86,7 @@ function Navbar() {
                 </li>
               </ul>
               <ul className="navbar-nav">
-                <li className="nav-item dropdown">
+                <li className="nav-item dropdown mob_hide">
                   <RequestCallBtn />
                   {/* <a
                   className="nav-link  dropdown-toggle"
@@ -132,6 +132,7 @@ function Navbar() {
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         contentLabel="Example Modal"
+        className="centered-modal"
       >
         <ContactFormModal closeModal={closeModal} />
       </Modal>
