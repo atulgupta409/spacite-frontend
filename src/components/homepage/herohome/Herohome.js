@@ -11,7 +11,7 @@ import NearCoworking from "../nearCoworking/NearCoworking";
 import TopCitiesMob from "../topCities/TopCitiesMob";
 import SpaceExpert from "../spaceExpert/SpaceExpert";
 import PopularCoworking from "../popularCoworking/PopularCoworking";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { getSeo } from "../../service/Service";
 import { useLocation } from "react-router-dom";
 

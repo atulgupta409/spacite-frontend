@@ -209,8 +209,8 @@ function CityPage() {
           <div>
             {topMicrolocations?.slice(0, 3).map((microlocation, i) => {
               return (
-                <div className="top_micro_properties">
-                  <div className="container" key={i}>
+                <div className="top_micro_properties" key={i}>
+                  <div className="container">
                     <div className="row">
                       <div className="col-md-12">
                         <div className="city_page_title_box">
@@ -409,8 +409,8 @@ function CityPage() {
           <div>
             {topMicrolocations?.slice(3, 6).map((microlocation, i) => {
               return (
-                <div className="top_micro_properties">
-                  <div className="container" key={i}>
+                <div className="top_micro_properties" key={i}>
+                  <div className="container">
                     <div className="row">
                       <div className="col-md-12">
                         <div className="city_page_title_box">

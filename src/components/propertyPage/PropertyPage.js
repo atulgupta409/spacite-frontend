@@ -59,7 +59,7 @@ const PropertyPage = () => {
     { value: "dedicated desk", label: "Dedicated Desk" },
     { value: "private cabin", label: "Private Cabin" },
     { value: "office suite", label: "Office Suite" },
-    { value: "custom buildout", label: "Custom Buildout" },
+    // { value: "custom buildout", label: "Custom Buildout" },
   ];
   const optionSeats = [
     { value: "1-10", label: "1-10" },
@@ -368,7 +368,6 @@ const PropertyPage = () => {
                 workSpace?.name
               )}
             </h1>
-
             <p>
               <span>
                 <img
@@ -400,7 +399,7 @@ const PropertyPage = () => {
               className="carousel slide"
               data-bs-ride="carousel"
             >
-              <div className="carousel-inner">
+              <div className="carousel-inner carousel_inner">
                 {workSpace?.images?.map((image, index) => (
                   <div
                     key={index}
@@ -481,6 +480,7 @@ const PropertyPage = () => {
               <h3 className="property_h3">About this property</h3>
               <div
                 dangerouslySetInnerHTML={{ __html: workSpace?.description }}
+                className="about_property_text"
               />
             </div>
             <hr className="devider_line" />
@@ -494,7 +494,7 @@ const PropertyPage = () => {
                     <p className="facility_name">
                       <span>₹{planElem?.price?.toLocaleString()}/*</span>
                       <span>
-                        {planElem?.duration === "Year" ? "Year" : "Seat"}
+                        {planElem?.duration === "year" ? "Year" : "Seat"}
                       </span>
                     </p>
                   </div>
@@ -668,21 +668,27 @@ const PropertyPage = () => {
                     return (
                       <div className="carousel-items" key={i}>
                         <div className="property_card">
-                          <div className="img_box">
-                            <img
-                              src={
-                                space.images.length > 0
-                                  ? space.images[0].image
-                                  : top_gurgaon
-                              }
-                              alt={
-                                space.images.length > 0
-                                  ? space.images[0].alt
-                                  : "workImage"
-                              }
-                              className="img-fluid"
-                            />
-                          </div>
+                          <Link
+                            to={`/coworking/${space?.slug}`}
+                            target="_blank"
+                            style={{ padding: "0" }}
+                          >
+                            <div className="img_box">
+                              <img
+                                src={
+                                  space.images.length > 0
+                                    ? space.images[0].image
+                                    : top_gurgaon
+                                }
+                                alt={
+                                  space.images.length > 0
+                                    ? space.images[0].alt
+                                    : "workImage"
+                                }
+                                className="img-fluid"
+                              />
+                            </div>
+                          </Link>
                           <div className="card_body">
                             <p className="card-title">
                               {space?.name?.length > 22
