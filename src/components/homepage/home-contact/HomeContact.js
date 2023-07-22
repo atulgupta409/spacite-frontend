@@ -55,19 +55,22 @@ function HomeContact() {
 
   const phonePattern = /^\d{10}$/;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const validation = () => {
+  const validationName = () => {
     if (user.name.trim() === "") {
       setNameError("Name is required");
     } else {
       setNameError("");
     }
-
+  };
+  const validationEmail = () => {
     if (!emailPattern.test(user.email)) {
       setEmailError("Invalid email format");
     } else {
       setEmailError("");
     }
+  };
 
+  const validationPhone = () => {
     if (!phonePattern.test(user.phone)) {
       setPhoneError("Invalid phone number");
     } else {
@@ -86,7 +89,9 @@ function HomeContact() {
       setMoveIn("");
       setNoSeats(null);
       setOfficeType("");
-      validation();
+      validationName();
+      validationEmail();
+      validationPhone();
       setLoading(true);
       try {
         await axios.post(
@@ -112,7 +117,9 @@ function HomeContact() {
         console.error(error);
       }
     } else {
-      validation();
+      validationName();
+      validationEmail();
+      validationPhone();
     }
   };
 
@@ -191,7 +198,7 @@ function HomeContact() {
                       value={user.name}
                       name="name"
                       onChange={inputChangeHandler}
-                      onBlur={validation}
+                      onBlur={validationName}
                     />
                     {nameError && <p className="error_validate">{nameError}</p>}
                   </div>
@@ -205,7 +212,7 @@ function HomeContact() {
                       value={user.email}
                       aria-describedby="emailHelp"
                       onChange={inputChangeHandler}
-                      onBlur={validation}
+                      onBlur={validationEmail}
                     />
                     {emailError && (
                       <p className="error_validate">{emailError}</p>
@@ -221,7 +228,7 @@ function HomeContact() {
                       value={user.phone}
                       aria-describedby="emailHelp"
                       onChange={inputChangeHandler}
-                      onBlur={validation}
+                      onBlur={validationPhone}
                     />
                     {phoneError && (
                       <p className="error_validate">{phoneError}</p>
