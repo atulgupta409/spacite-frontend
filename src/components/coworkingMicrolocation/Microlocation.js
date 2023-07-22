@@ -241,7 +241,7 @@ function Microlocation() {
                           />
                         </div>
                       </Link>
-                      <div className="card_body col-6 col-sm-12">
+                      <div className="card_body col-12">
                         <p className="card-title">
                           {workspace?.name?.length > 22
                             ? workspace?.name?.substring(0, 20) + "..."
@@ -249,8 +249,8 @@ function Microlocation() {
                         </p>
                         <div className="location_box">
                           <p>
-                            {workspace?.location?.address?.length > 20
-                              ? workspace?.location?.address?.slice(0, 20) +
+                            {workspace?.location?.address?.length > 30
+                              ? workspace?.location?.address?.slice(0, 28) +
                                 "..."
                               : workspace?.location?.address}
                           </p>
@@ -368,7 +368,7 @@ function Microlocation() {
                         />
                       </div>
                     </Link>
-                    <div className="card_body col-6 col-sm-12">
+                    <div className="card_body col-12">
                       <p className="card-title">
                         {workspace?.name?.length > 22
                           ? workspace?.name?.substring(0, 20) + "..."
@@ -376,8 +376,8 @@ function Microlocation() {
                       </p>
                       <div className="location_box">
                         <p>
-                          {workspace?.location?.address?.length > 20
-                            ? workspace?.location?.address?.slice(0, 20) + "..."
+                          {workspace?.location?.address?.length > 30
+                            ? workspace?.location?.address?.slice(0, 28) + "..."
                             : workspace?.location?.address}
                         </p>
                       </div>

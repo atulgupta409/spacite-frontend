@@ -212,6 +212,19 @@
   border-radius: 20px;
   height: 500px;
 }
+.carousel_inner {
+  border-radius: 20px;
+}
+.about_property_text p {
+  font-size: 14px !important;
+  color: #444 !important;
+  font-weight: 500;
+}
+.about_property_text p span {
+  font-size: 14px !important;
+  color: #444 !important;
+  font-weight: 500;
+}
 @media only screen and (max-width: 768px) {
   .fixed_div {
     position: fixed;
@@ -310,6 +323,9 @@
   .property_page_img {
     border-radius: 10px;
     height: auto;
+  }
+  .carousel_inner {
+    border-radius: 10px;
   }
   .contact_btn {
     padding: 8px 12px;

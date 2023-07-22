@@ -70,7 +70,6 @@ export const getWorkSpaceByMicrolocation = async (
     setWorkspaces(coworkingSpaces);
     setTotalCount(totalCount);
     setLoadingSpaces(false);
-    // console.log(totalCount);
   } catch (err) {
     console.log(err);
   }
@@ -151,12 +150,9 @@ export const getPopularWorkspaceByCity = async (cities, setPopularSpaces) => {
       const { data } = await axios.get(
         `${baseUrl}/api/popular-workspace/${city.name}`
       );
-      // console.log(data, "abcd");
 
       res.push(data);
       if (cities.length === res.length && cities.length > 0) {
-        console.log(res, "xyz");
-        // return res;
         setPopularSpaces(res);
       }
     });

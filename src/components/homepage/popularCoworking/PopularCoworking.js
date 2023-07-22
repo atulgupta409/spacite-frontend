@@ -33,7 +33,7 @@ function PopularCoworking() {
       handleFetchPopularSpaces(cities);
     }
   }, [cities]);
-  console.log(popularSpaces);
+  // console.log(popularSpaces);
 
   return (
     <div>

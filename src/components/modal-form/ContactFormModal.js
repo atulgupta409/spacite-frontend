@@ -12,7 +12,7 @@ function ContactFormModal({ closeModal }) {
     { value: "dedicated desk", label: "Dedicated Desk" },
     { value: "private cabin", label: "Private Cabin" },
     { value: "office suite", label: "Office Suite" },
-    { value: "custom buildout", label: "Custom Buildout" },
+    // { value: "custom buildout", label: "Custom Buildout" },
   ];
   const optionSeats = [
     { value: "1-10", label: "1-10" },
