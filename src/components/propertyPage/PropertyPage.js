@@ -9,7 +9,6 @@ import top_gurgaon from "../media/coworking_img/top-gurgaon.png";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import axios from "axios";
 import Modal from "react-modal";
-import { RxCross2 } from "react-icons/rx";
 import { getWorkSpaceBySlug } from "../service/Service";
 import { Helmet } from "react-helmet-async";
 import baseUrl from "../../environment/api-config";
@@ -54,6 +53,9 @@ const PropertyPage = () => {
     getNearSpacesHandler();
   }, [slug]);
   // console.log(nearSpace.slice(0, 10));
+
+  const workImage =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
 
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CityContext } from "../../context/CityContext";
 import HomeContact from "../home-contact/HomeContact";
-import top_gurgaon from "../../media/coworking_img/top-gurgaon.png";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import { Link } from "react-router-dom";
 import ContactFormModal from "../../modal-form/ContactFormModal";
@@ -10,6 +9,8 @@ import { getPopularWorkspaceByCity } from "../../service/Service";
 
 function PopularCoworking() {
   const { cities, breakPoints, Myarrow } = useContext(CityContext);
+  const workImage =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
@@ -68,7 +69,7 @@ function PopularCoworking() {
                                         src={
                                           mySpace?.images?.length > 0
                                             ? mySpace?.images[0]?.image
-                                            : top_gurgaon
+                                            : workImage
                                         }
                                         alt={
                                           mySpace?.images?.length > 0

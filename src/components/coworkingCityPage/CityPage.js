@@ -15,7 +15,6 @@ import {
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SpaceSkeleton from "../spaceSkeleton/SpaceSkeleton";
-import workImage from "../media/coworking_img/top-gurgaon.png";
 import ContactFormModal from "../modal-form/ContactFormModal";
 import Modal from "react-modal";
 
@@ -105,6 +104,8 @@ function CityPage() {
     window.scrollTo(0, 0);
   }, [location]);
   let topMicrolocations = microlocations.slice(0, 6);
+  const workImage =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
   // console.log(seo);
 
   return (
@@ -207,8 +208,12 @@ function CityPage() {
       ) : (
         <>
           <div>
-            {topMicrolocations?.slice(0, 3).map((microlocation, i) => {
-              return (
+            {topMicrolocations?.slice(0, 3)?.map((microlocation, i) => {
+              return cityworkSpaces?.filter(
+                (workspace) =>
+                  workspace?.location?.micro_location?.name ===
+                  microlocation?.name
+              )?.length !== 0 ? (
                 <div className="top_micro_properties" key={i}>
                   <div className="container">
                     <div className="row">
@@ -392,6 +397,8 @@ function CityPage() {
                     </div>
                   </div>
                 </div>
+              ) : (
+                ""
               );
             })}
           </div>
@@ -407,8 +414,12 @@ function CityPage() {
             <HomeContact />
           </div>
           <div>
-            {topMicrolocations?.slice(3, 6).map((microlocation, i) => {
-              return (
+            {topMicrolocations?.slice(3, 6)?.map((microlocation, i) => {
+              return cityworkSpaces?.filter(
+                (workspace) =>
+                  workspace?.location?.micro_location?.name ===
+                  microlocation?.name
+              )?.length !== 0 ? (
                 <div className="top_micro_properties" key={i}>
                   <div className="container">
                     <div className="row">
@@ -592,6 +603,8 @@ function CityPage() {
                     </div>
                   </div>
                 </div>
+              ) : (
+                ""
               );
             })}
           </div>

@@ -80,9 +80,7 @@ function Navbar() {
                   </div>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="">
-                    Virtual Office
-                  </a>
+                  <NavLink className="nav-link">Virtual Office</NavLink>
                 </li>
               </ul>
               <ul className="navbar-nav">
