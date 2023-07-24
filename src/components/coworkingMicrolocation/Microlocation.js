@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, NavLink } from "react-router-dom";
 import "./Microlocation.css";
 import HomeContact from "../homepage/home-contact/HomeContact";
@@ -11,10 +11,13 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SpaceSkeleton from "../spaceSkeleton/SpaceSkeleton";
-import { getSeo } from "../service/Service";
 import { Helmet } from "react-helmet-async";
 import ContactFormModal from "../modal-form/ContactFormModal";
 import Modal from "react-modal";
+import { useContext } from "react";
+import { CityContext } from "../context/CityContext";
+import FooterTop from "../footer/FooterTop";
+import Card from "../card/Card";
 
 function Microlocation() {
   const location = useLocation();
@@ -38,6 +41,12 @@ function Microlocation() {
 
   const [loadingMicrolocations, setLoadingMicrolocations] = useState(true);
   const [loadingSpaces, setLoadingSpaces] = useState(true);
+
+  const { setPath, seo } = useContext(CityContext);
+  const pathName = `coworking-space-${lastElem}-${lastElem2}`;
+  useEffect(() => {
+    setPath(pathName);
+  }, [pathName]);
 
   const words = lastElem2.split("-");
   const capitalizedWords = words.map(function (word) {
@@ -71,7 +80,8 @@ function Microlocation() {
       item_per_page,
       current_page,
       setTotalCount,
-      setLoadingSpaces
+      setLoadingSpaces,
+      lastElem
     );
   };
 
@@ -79,32 +89,8 @@ function Microlocation() {
     handleFetchMicrolocations();
   }, [cityName]);
 
-  const [defaultSeo, setDefaultSeo] = useState({
-    title: "Spacite - find best coworking spaces",
-    description: "Spacite - find best coworking spaces",
-    keywords: "Default Keywords",
-    open_graph: {
-      title: "Spacite - find best coworking spaces",
-      description: "Spacite - find best coworking spaces",
-    },
-    twitter: {
-      title: "Spacite - find best coworking spaces",
-      description: "Spacite - find best coworking spaces",
-    },
-  });
-
-  const [seo, setSeo] = useState(defaultSeo);
-  const handleFetchSeo = async () => {
-    await getSeo(
-      setSeo,
-      `coworking-space-${lastElem}-${lastElem2}`,
-      defaultSeo
-    );
-  };
-
   useEffect(() => {
     handleFetchWorkSpaces(current_page);
-    handleFetchSeo();
   }, [microNameApi]);
 
   useEffect(() => {
@@ -115,8 +101,6 @@ function Microlocation() {
   const extractedWorkspaces2 = workSpaces?.slice(12);
   const workImage =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
-  // console.log(workSpaces);
-  // console.log(seo);
   const pageTitleArr = seo?.page_title?.split(" ");
   const pageTitleFirst = pageTitleArr
     ?.slice(0, pageTitleArr.length - 1)
@@ -188,7 +172,7 @@ function Microlocation() {
               className="page_main_title"
               style={{ marginLeft: "10px", textAlign: "left" }}
             >
-              Coworking Space in
+              Coworking Space in{" "}
               <span style={{ color: "#d09cff" }}>{microName}</span>
             </h1>
           )}
@@ -350,6 +334,32 @@ function Microlocation() {
                         </div>
                       </div>
                     </div>
+                    {/* <Card
+                      cardClass={"row property_card property_card_mob"}
+                      slug={`/coworking/${workspace?.slug}`}
+                      spaceImage={
+                        workspace.images.length > 0
+                          ? workspace.images[0].image
+                          : workImage
+                      }
+                      spaceAlt={
+                        workspace.images.length > 0
+                          ? workspace.images[0].alt
+                          : "workImage"
+                      }
+                      spaceName={
+                        workspace?.name?.length > 22
+                          ? workspace?.name?.substring(0, 20) + "..."
+                          : workspace?.name
+                      }
+                      microlocation={microlocation?.name}
+                      cityName={cityName}
+                      plans={workspace?.plans
+                        ?.reduce((prev, current) =>
+                          current.price < prev.price ? current : prev
+                        )
+                        .price?.toLocaleString()}
+                    /> */}
                   </div>
                 ))
               ) : (
@@ -533,19 +543,7 @@ function Microlocation() {
           </div>
         </div>
       </div>
-      {seo !== defaultSeo ? (
-        <div className="footer_content_main">
-          <div className="container">
-            <h3 className="footer_title">{seo?.footer_title}</h3>
-            <div
-              dangerouslySetInnerHTML={{ __html: seo?.footer_description }}
-              className="footer_content"
-            />
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
+      <FooterTop pathName={pathName} />
     </div>
   );
 }

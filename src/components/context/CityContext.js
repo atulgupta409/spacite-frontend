@@ -73,15 +73,22 @@ export const CityProvider = ({ children }) => {
     },
   });
   const [seo, setSeo] = useState(defaultSeo);
+  const [path, setPath] = useState("home");
 
-  const handleFetchSeo = async (path) => {
+  const handleFetchSeo = async () => {
     try {
-      const response = await getSeo(setSeo, path, defaultSeo);
+      await getSeo(setSeo, path, defaultSeo);
     } catch (error) {
       console.error(error);
       setSeo(defaultSeo);
     }
   };
+
+  useEffect(() => {
+    handleFetchSeo();
+  }, [path]);
+
+  // console.log(path);
 
   const [cities, setCities] = useState([]);
   const [allCities, setAllCities] = useState([]);
@@ -145,6 +152,8 @@ export const CityProvider = ({ children }) => {
     Myarrow,
     breakPoints,
     breakPointsClients,
+    setPath,
+    seo,
   };
 
   return (

@@ -59,12 +59,13 @@ export const getWorkSpaceByMicrolocation = async (
   item_per_page,
   current_page,
   setTotalCount,
-  setLoadingSpaces
+  setLoadingSpaces,
+  cityName
 ) => {
   try {
     setLoadingSpaces(true);
     const { data } = await axios.get(
-      `${baseUrl}/api/workspace-details/${microlocationName}?page=${current_page}&limit=${item_per_page}`
+      `${baseUrl}/api/workspace-details/${cityName}/${microlocationName}?page=${current_page}&limit=${item_per_page}`
     );
     const { totalCount, coworkingSpaces } = data;
     setWorkspaces(coworkingSpaces);
@@ -111,7 +112,7 @@ export const getSeo = async (setSeo, path, defaultSeo) => {
     const { data } = await axios.get(`${baseUrl}/api/seo/seos-data/${path}`);
     setSeo(data);
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     setSeo(defaultSeo);
   }
 };

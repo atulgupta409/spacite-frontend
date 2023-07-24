@@ -5,7 +5,6 @@ import FooterBottom from "./FooterBottom";
 function Footer() {
   return (
     <div>
-      <FooterTop />
       <FooterBottom />
     </div>
   );

@@ -7,12 +7,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Section1() {
-  const { allCities, handleFetchCities } = useContext(CityContext);
+  const { allCities } = useContext(CityContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    handleFetchCities();
-  }, []);
+  // useEffect(() => {
+  //   console.log(handleFetchCities());
+  // }, []);
 
   const optionsLookingFor = [
     { value: "Coworking Space", label: "Coworking Space" },
