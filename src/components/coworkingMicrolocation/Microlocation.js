@@ -11,7 +11,6 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SpaceSkeleton from "../spaceSkeleton/SpaceSkeleton";
-import workImage from "../media/coworking_img/top-gurgaon.png";
 import { getSeo } from "../service/Service";
 import { Helmet } from "react-helmet-async";
 import ContactFormModal from "../modal-form/ContactFormModal";
@@ -96,7 +95,11 @@ function Microlocation() {
 
   const [seo, setSeo] = useState(defaultSeo);
   const handleFetchSeo = async () => {
-    await getSeo(setSeo, lastElem2, defaultSeo);
+    await getSeo(
+      setSeo,
+      `coworking-space-${lastElem}-${lastElem2}`,
+      defaultSeo
+    );
   };
 
   useEffect(() => {
@@ -110,8 +113,17 @@ function Microlocation() {
 
   const extractedWorkspaces = workSpaces?.slice(0, 12);
   const extractedWorkspaces2 = workSpaces?.slice(12);
+  const workImage =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
   // console.log(workSpaces);
   // console.log(seo);
+  const pageTitleArr = seo?.page_title?.split(" ");
+  const pageTitleFirst = pageTitleArr
+    ?.slice(0, pageTitleArr.length - 1)
+    .join(" ");
+  const pageTitleSecond = pageTitleArr
+    ?.slice(pageTitleArr.length - 1)
+    .join(" ");
 
   return (
     <div style={{ marginTop: "100px" }}>
@@ -163,10 +175,23 @@ function Microlocation() {
             src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688621027741.png"
             alt="robot"
           />
-          <h1 className="page_main_title" style={{ marginLeft: "10px" }}>
-            Coworking Space in{" "}
-            <span style={{ color: "#d09cff" }}>{microName}</span>
-          </h1>
+          {seo?.page_title ? (
+            <h1
+              className="page_main_title"
+              style={{ marginLeft: "10px", textAlign: "left" }}
+            >
+              {pageTitleFirst}
+              <span style={{ color: "#d09cff" }}> {pageTitleSecond}</span>
+            </h1>
+          ) : (
+            <h1
+              className="page_main_title"
+              style={{ marginLeft: "10px", textAlign: "left" }}
+            >
+              Coworking Space in
+              <span style={{ color: "#d09cff" }}>{microName}</span>
+            </h1>
+          )}
         </div>
         <div className="microlocation_tab">
           {loadingMicrolocations ? (
@@ -249,10 +274,9 @@ function Microlocation() {
                         </p>
                         <div className="location_box">
                           <p>
-                            {workspace?.location?.address?.length > 30
-                              ? workspace?.location?.address?.slice(0, 28) +
-                                "..."
-                              : workspace?.location?.address}
+                            {workspace?.location?.micro_location?.name +
+                              ", " +
+                              workspace?.location?.city?.name}
                           </p>
                         </div>
                         <div className="card_amenities">
@@ -376,9 +400,9 @@ function Microlocation() {
                       </p>
                       <div className="location_box">
                         <p>
-                          {workspace?.location?.address?.length > 30
-                            ? workspace?.location?.address?.slice(0, 28) + "..."
-                            : workspace?.location?.address}
+                          {workspace?.location?.micro_location?.name +
+                            ", " +
+                            workspace?.location?.city?.name}
                         </p>
                       </div>
                       <div className="card_amenities">

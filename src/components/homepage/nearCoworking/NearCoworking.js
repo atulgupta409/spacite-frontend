@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import top_gurgaon from "../../media/coworking_img/top-gurgaon.png";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import "./NearCoworking.css";
 import { CityContext } from "../../context/CityContext";
@@ -9,6 +8,8 @@ import Modal from "react-modal";
 
 function NearCoworking() {
   const { breakPoints, Myarrow } = useContext(CityContext);
+  const workImage =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
@@ -33,7 +34,7 @@ function NearCoworking() {
                   <div className="property_card">
                     <div className="img_box">
                       <img
-                        src={top_gurgaon}
+                        src={workImage}
                         alt="workImage"
                         className="img-fluid"
                       />
@@ -111,7 +112,7 @@ function NearCoworking() {
                   <div className="property_card">
                     <div className="img_box">
                       <img
-                        src={top_gurgaon}
+                        src={workImage}
                         alt="workImage"
                         className="img-fluid"
                       />
