@@ -1,12 +1,18 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./ThankuPage.css";
 
 function ThankuPage() {
+  const location = useLocation();
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <div className="container thanku_main">
       <div className="row">
