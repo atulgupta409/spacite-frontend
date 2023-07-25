@@ -59,18 +59,18 @@ export const getWorkSpaceByMicrolocation = async (
   item_per_page,
   current_page,
   setTotalCount,
-  setLoadingSpaces
+  setLoadingSpaces,
+  cityName
 ) => {
   try {
     setLoadingSpaces(true);
     const { data } = await axios.get(
-      `${baseUrl}/api/workspace-details/${microlocationName}?page=${current_page}&limit=${item_per_page}`
+      `${baseUrl}/api/workspace-details/${cityName}/${microlocationName}?page=${current_page}&limit=${item_per_page}`
     );
     const { totalCount, coworkingSpaces } = data;
     setWorkspaces(coworkingSpaces);
     setTotalCount(totalCount);
     setLoadingSpaces(false);
-    // console.log(totalCount);
   } catch (err) {
     console.log(err);
   }
@@ -112,7 +112,7 @@ export const getSeo = async (setSeo, path, defaultSeo) => {
     const { data } = await axios.get(`${baseUrl}/api/seo/seos-data/${path}`);
     setSeo(data);
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     setSeo(defaultSeo);
   }
 };
@@ -139,6 +139,24 @@ export const getClients = async (setClients) => {
   try {
     const { data } = await axios.get(`${baseUrl}/api/client/our-client`);
     setClients(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPopularWorkspaceByCity = async (cities, setPopularSpaces) => {
+  try {
+    let res = [];
+    cities.forEach(async (city) => {
+      const { data } = await axios.get(
+        `${baseUrl}/api/popular-workspace/${city.name}`
+      );
+
+      res.push(data);
+      if (cities.length === res.length && cities.length > 0) {
+        setPopularSpaces(res);
+      }
+    });
   } catch (error) {
     console.log(error);
   }

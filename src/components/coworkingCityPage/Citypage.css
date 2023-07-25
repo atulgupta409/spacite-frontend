@@ -65,7 +65,10 @@
   height: 213px;
   overflow: hidden;
   padding: 0;
-  width: 304px;
+  width: 303px;
+}
+.vVpzq {
+  margin: 0 !important;
 }
 .property_card .img_box img {
   border-radius: 20px 20px 0 0;
@@ -194,29 +197,32 @@
 }
 .ReactModal__Overlay {
   background-color: rgba(0, 0, 0, 0.75) !important;
+  z-index: 998;
 }
 .close_icon_box {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-bottom: 20px;
+  align-items: center;
 }
-.close_icon_box button {
+.cross_icon button {
   border: none;
   background-color: transparent;
-  font-size: 25px;
-  color: #444;
+  font-size: 21px;
+  color: rgba(68, 68, 68, 0.6);
+  padding: 0;
 }
 .ReactModal__Content {
   position: absolute;
-  /* inset: 52px !important; */
-  border: 1px solid rgb(204, 204, 204);
-  background: rgb(255, 255, 255);
+  padding: 0 !important;
+  border: none !important;
   overflow: auto;
-  border-radius: 10px !important;
   outline: none;
-  padding: 0 20px;
-  width: 413px;
-  margin: 100px auto;
+  background: transparent !important;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .card_amenities {
   display: flex;
@@ -230,7 +236,7 @@
   position: relative;
 }
 .carousel-items {
-  margin: 0px 10px;
+  margin: 0 21px 0 0;
   /* width: 100%; */
 }
 .top_micro_properties {
@@ -247,7 +253,7 @@
   z-index: 9;
 }
 .next_carousel {
-  right: -25px;
+  right: -15px;
   z-index: 9;
 }
 
@@ -360,7 +366,7 @@
     margin: 30px 20px 0;
   } */
   .ReactModal__Content {
-    width: 90%;
+    width: 95%;
   }
   .city_top_row {
     margin: 20px 0 0 0;

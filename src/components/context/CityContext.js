@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import { getCity } from "../service/Service";
 import Carousel, { consts } from "@itseasy21/react-elastic-carousel";
+import { getSeo } from "../service/Service";
 
 // Create the CityContext
 export const CityContext = createContext();
@@ -57,6 +58,37 @@ export const CityProvider = ({ children }) => {
         "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115469731.png",
     },
   ];
+
+  const [defaultSeo, setDefaultSeo] = useState({
+    title: "Spacite - find best coworking spaces",
+    description: "Spacite - find best coworking spaces",
+    keywords: "Default Keywords",
+    open_graph: {
+      title: "Spacite - find best coworking spaces",
+      description: "Spacite - find best coworking spaces",
+    },
+    twitter: {
+      title: "Spacite - find best coworking spaces",
+      description: "Spacite - find best coworking spaces",
+    },
+  });
+  const [seo, setSeo] = useState(defaultSeo);
+  const [path, setPath] = useState("home");
+
+  const handleFetchSeo = async () => {
+    try {
+      await getSeo(setSeo, path, defaultSeo);
+    } catch (error) {
+      console.error(error);
+      setSeo(defaultSeo);
+    }
+  };
+
+  useEffect(() => {
+    handleFetchSeo();
+  }, [path]);
+
+  // console.log(path);
 
   const [cities, setCities] = useState([]);
   const [allCities, setAllCities] = useState([]);
@@ -120,6 +152,8 @@ export const CityProvider = ({ children }) => {
     Myarrow,
     breakPoints,
     breakPointsClients,
+    setPath,
+    seo,
   };
 
   return (

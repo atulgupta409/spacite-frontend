@@ -9,7 +9,6 @@ import top_gurgaon from "../media/coworking_img/top-gurgaon.png";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import axios from "axios";
 import Modal from "react-modal";
-import { RxCross2 } from "react-icons/rx";
 import { getWorkSpaceBySlug } from "../service/Service";
 import { Helmet } from "react-helmet-async";
 import baseUrl from "../../environment/api-config";
@@ -55,11 +54,14 @@ const PropertyPage = () => {
   }, [slug]);
   // console.log(nearSpace.slice(0, 10));
 
+  const workImage =
+    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
+
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
     { value: "private cabin", label: "Private Cabin" },
     { value: "office suite", label: "Office Suite" },
-    { value: "custom buildout", label: "Custom Buildout" },
+    // { value: "custom buildout", label: "Custom Buildout" },
   ];
   const optionSeats = [
     { value: "1-10", label: "1-10" },
@@ -264,6 +266,7 @@ const PropertyPage = () => {
           }
         );
         setLoading(false);
+        handleSheet();
         navigate("/thank-you");
       } catch (error) {
         console.error(error);
@@ -272,8 +275,37 @@ const PropertyPage = () => {
       validation();
     }
   };
+
+  const handleSheet = async () => {
+    try {
+      const response = await fetch(
+        "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=Sheet1",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify([
+            [
+              user.name,
+              user.email,
+              user.phone,
+              officeType,
+              noSeats,
+              moveIn,
+              new Date().toLocaleString(),
+            ],
+          ]),
+        }
+      );
+      await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const { seo } = workSpace;
-  console.log(workSpace);
+
   return (
     <>
       <Helmet>
@@ -338,7 +370,6 @@ const PropertyPage = () => {
                 workSpace?.name
               )}
             </h1>
-
             <p>
               <span>
                 <img
@@ -370,7 +401,7 @@ const PropertyPage = () => {
               className="carousel slide"
               data-bs-ride="carousel"
             >
-              <div className="carousel-inner">
+              <div className="carousel-inner carousel_inner">
                 {workSpace?.images?.map((image, index) => (
                   <div
                     key={index}
@@ -451,6 +482,7 @@ const PropertyPage = () => {
               <h3 className="property_h3">About this property</h3>
               <div
                 dangerouslySetInnerHTML={{ __html: workSpace?.description }}
+                className="about_property_text"
               />
             </div>
             <hr className="devider_line" />
@@ -464,7 +496,7 @@ const PropertyPage = () => {
                     <p className="facility_name">
                       <span>₹{planElem?.price?.toLocaleString()}/*</span>
                       <span>
-                        {planElem?.duration === "Year" ? "Year" : "Seat"}
+                        {planElem?.duration === "year" ? "Year" : "Seat"}
                       </span>
                     </p>
                   </div>
@@ -638,21 +670,27 @@ const PropertyPage = () => {
                     return (
                       <div className="carousel-items" key={i}>
                         <div className="property_card">
-                          <div className="img_box">
-                            <img
-                              src={
-                                space.images.length > 0
-                                  ? space.images[0].image
-                                  : top_gurgaon
-                              }
-                              alt={
-                                space.images.length > 0
-                                  ? space.images[0].alt
-                                  : "workImage"
-                              }
-                              className="img-fluid"
-                            />
-                          </div>
+                          <Link
+                            to={`/coworking/${space?.slug}`}
+                            target="_blank"
+                            style={{ padding: "0" }}
+                          >
+                            <div className="img_box">
+                              <img
+                                src={
+                                  space.images.length > 0
+                                    ? space.images[0].image
+                                    : top_gurgaon
+                                }
+                                alt={
+                                  space.images.length > 0
+                                    ? space.images[0].alt
+                                    : "workImage"
+                                }
+                                className="img-fluid"
+                              />
+                            </div>
+                          </Link>
                           <div className="card_body">
                             <p className="card-title">
                               {space?.name?.length > 22
@@ -775,120 +813,7 @@ const PropertyPage = () => {
           onRequestClose={() => setModalIsOpen(false)}
           contentLabel="Example Modal"
         >
-          <div className="close_icon_box">
-            <button>
-              <RxCross2 className="close_icon" onClick={closeModal} />
-            </button>
-          </div>
-
-          <form onSubmit={sendEmail}>
-            <div className="row">
-              <div className="col-md-12 mb-4">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="exampleInputtext"
-                  aria-describedby="emailHelp"
-                  placeholder="Name*"
-                  value={user.name}
-                  name="name"
-                  onChange={inputChangeHandler}
-                  onBlur={validation}
-                />
-                {nameError && <p className="error_validate">{nameError}</p>}
-              </div>
-              <div className="col-md-12 mb-4">
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  onChange={inputChangeHandler}
-                  onBlur={validation}
-                  name="email"
-                  value={user.email}
-                />
-                {emailError && <p className="error_validate">{emailError}</p>}
-              </div>
-              <div className="col-md-12 mb-4">
-                <input
-                  type="text"
-                  placeholder="Phone"
-                  className="form-control"
-                  id="exampleInputEmail1"
-                  name="phone"
-                  value={user.phone}
-                  aria-describedby="emailHelp"
-                  onChange={inputChangeHandler}
-                  onBlur={validation}
-                />
-                {phoneError && <p className="error_validate">{phoneError}</p>}
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6 mb-4">
-                <div className="select_option_property">
-                  <Select
-                    value={optionsOfficeType.find(
-                      (option) => option.value === officeType
-                    )}
-                    onChange={selectChangeHandlerOffice}
-                    options={optionsOfficeType}
-                    placeholder="Office Type"
-                    inputProps={{
-                      name: "Office type",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="col-md-6 mb-4">
-                <div className="select_option_property">
-                  <Select
-                    value={optionSeats.find(
-                      (option) => option.value === noSeats
-                    )}
-                    onChange={selectChangeHandlerSeats}
-                    options={optionSeats}
-                    placeholder="No. of Seats"
-                    inputProps={{
-                      name: "No. of seats",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-6">
-                <div className="select_option_property">
-                  <Select
-                    defaultValue={moveIn}
-                    onChange={selectChangeHandlerMove}
-                    options={optionsMoveIn}
-                    placeholder="Move In"
-                    inputProps={{
-                      name: "Move in",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="col-6">
-                <button
-                  type="submit"
-                  className="globalBtn w-100 contact_btn"
-                  data-bs-dismiss={
-                    user.name.trim() !== "" &&
-                    emailPattern.test(user.email) &&
-                    phonePattern.test(user.phone) &&
-                    loading &&
-                    "modal"
-                  }
-                >
-                  {loading ? "sending..." : "Find your space"}
-                </button>
-              </div>
-            </div>
-          </form>
+          <ContactFormModal closeModal={closeModal} />
         </Modal>
       </div>
     </>

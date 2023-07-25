@@ -80,13 +80,11 @@ function Navbar() {
                   </div>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="">
-                    Virtual Office
-                  </a>
+                  <NavLink className="nav-link">Virtual Office</NavLink>
                 </li>
               </ul>
               <ul className="navbar-nav">
-                <li className="nav-item dropdown">
+                <li className="nav-item dropdown mob_hide">
                   <RequestCallBtn />
                   {/* <a
                   className="nav-link  dropdown-toggle"
@@ -132,6 +130,7 @@ function Navbar() {
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         contentLabel="Example Modal"
+        className="centered-modal"
       >
         <ContactFormModal closeModal={closeModal} />
       </Modal>

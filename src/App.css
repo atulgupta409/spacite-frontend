@@ -167,6 +167,57 @@ h2 {
   font-weight: 500;
   margin-bottom: 0;
 }
+.req_box {
+  font-size: 20px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0 !important;
+}
+.cross_icon {
+  display: flex;
+  justify-content: flex-end;
+}
+.form_spacite_logo {
+  width: 120px;
+  margin: 30px auto 10px;
+}
+.popup_form_footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #444;
+}
+.popup_cowork {
+  width: 148px;
+  color: #444;
+  font-size: 16px;
+  font-weight: 600;
+}
+.modal_content {
+  width: 87%;
+  margin: auto;
+}
+.modal-body {
+  padding: 0px 20px 27px;
+}
+.modal_form_input {
+  border-radius: 10px;
+}
+.modal_form_main {
+  width: 418px;
+  background: linear-gradient(
+    90deg,
+    rgb(254, 239, 249) 0%,
+    rgb(238, 251, 254) 100%
+  );
+  border-radius: 10px;
+  padding: 6px 30px 30px;
+}
 @media only screen and (max-width: 768px) {
   .desk_hide {
     display: block;
@@ -217,5 +268,12 @@ h2 {
   }
   .contact_wrapper {
     margin-bottom: 30px;
+  }
+  .modal_form_main {
+    width: 98vw;
+  }
+  .popup_cowork {
+    width: 137px;
+    font-size: 15px;
   }
 }

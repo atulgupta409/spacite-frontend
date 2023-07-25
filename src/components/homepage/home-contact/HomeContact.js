@@ -29,7 +29,6 @@ function HomeContact() {
     { value: "after 4 month", label: "After 4 Month" },
   ];
 
-  // const [selectedOption, setSelectedOption] = useState(null);
   const [officeType, setOfficeType] = useState("");
   const [noSeats, setNoSeats] = useState("");
   const [moveIn, setMoveIn] = useState("");
@@ -47,7 +46,6 @@ function HomeContact() {
   const selectChangeHandlerOffice = (officeType, noSeats, moveIn) => {
     setOfficeType(officeType?.value);
   };
-  // console.log(officeType);
   const selectChangeHandlerSeats = (noSeats) => {
     setNoSeats(noSeats?.value);
   };
@@ -57,19 +55,22 @@ function HomeContact() {
 
   const phonePattern = /^\d{10}$/;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const validation = () => {
+  const validationName = () => {
     if (user.name.trim() === "") {
       setNameError("Name is required");
     } else {
       setNameError("");
     }
-
+  };
+  const validationEmail = () => {
     if (!emailPattern.test(user.email)) {
       setEmailError("Invalid email format");
     } else {
       setEmailError("");
     }
+  };
 
+  const validationPhone = () => {
     if (!phonePattern.test(user.phone)) {
       setPhoneError("Invalid phone number");
     } else {
@@ -88,7 +89,9 @@ function HomeContact() {
       setMoveIn("");
       setNoSeats(null);
       setOfficeType("");
-      validation();
+      validationName();
+      validationEmail();
+      validationPhone();
       setLoading(true);
       try {
         await axios.post(
@@ -114,7 +117,9 @@ function HomeContact() {
         console.error(error);
       }
     } else {
-      validation();
+      validationName();
+      validationEmail();
+      validationPhone();
     }
   };
 
@@ -145,6 +150,7 @@ function HomeContact() {
       console.log(error);
     }
   };
+
   return (
     <div className="main_banner2 home_contact_main">
       <div className="container">
@@ -192,7 +198,7 @@ function HomeContact() {
                       value={user.name}
                       name="name"
                       onChange={inputChangeHandler}
-                      onBlur={validation}
+                      onBlur={validationName}
                     />
                     {nameError && <p className="error_validate">{nameError}</p>}
                   </div>
@@ -206,7 +212,7 @@ function HomeContact() {
                       value={user.email}
                       aria-describedby="emailHelp"
                       onChange={inputChangeHandler}
-                      onBlur={validation}
+                      onBlur={validationEmail}
                     />
                     {emailError && (
                       <p className="error_validate">{emailError}</p>
@@ -222,7 +228,7 @@ function HomeContact() {
                       value={user.phone}
                       aria-describedby="emailHelp"
                       onChange={inputChangeHandler}
-                      onBlur={validation}
+                      onBlur={validationPhone}
                     />
                     {phoneError && (
                       <p className="error_validate">{phoneError}</p>
