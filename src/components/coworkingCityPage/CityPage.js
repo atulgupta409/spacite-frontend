@@ -5,7 +5,6 @@ import Carousel from "@itseasy21/react-elastic-carousel";
 import HomeContact from "../homepage/home-contact/HomeContact";
 import { CityContext } from "../context/CityContext";
 import { Helmet } from "react-helmet-async";
-import ErrorBoundary from "./ErrorBoundry";
 import { getWorkSpaceByCity, getMicrolocationByCity } from "../service/Service";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -62,6 +61,7 @@ function CityPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
   let topMicrolocations = microlocations.slice(0, 6);
   const workImage =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";

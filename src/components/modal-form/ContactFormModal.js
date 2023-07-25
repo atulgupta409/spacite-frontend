@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 function ContactFormModal({ closeModal, location }) {
   const navigate = useNavigate();
-  console.log(location);
 
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
