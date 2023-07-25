@@ -65,6 +65,7 @@ function Microlocation() {
       setLoadingMicrolocations
     );
   };
+
   const handleFetchWorkSpaces = async (current_page) => {
     await getWorkSpaceByMicrolocation(
       setWorkSpaces,
