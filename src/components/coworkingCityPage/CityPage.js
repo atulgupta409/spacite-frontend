@@ -125,6 +125,7 @@ function CityPage() {
             Coworking Space in <span className="top_city_span">{cityName}</span>
           </h1>
         </div>
+        <div className="page_description">{seo?.header_description}</div>
 
         {loadingMicrolocations ? (
           <div>
@@ -222,6 +223,7 @@ function CityPage() {
                                 <div className="carousel-items" key={j}>
                                   <Card
                                     cardClass={"property_card"}
+                                    imgBoxClass={"img_box"}
                                     slug={`/coworking/${workspace?.slug}`}
                                     spaceImage={
                                       workspace.images.length > 0
@@ -322,6 +324,7 @@ function CityPage() {
                                 <div className="carousel-items" key={j}>
                                   <Card
                                     cardClass={"property_card"}
+                                    imgBoxClass={"img_box"}
                                     slug={`/coworking/${workspace?.slug}`}
                                     spaceImage={
                                       workspace.images.length > 0

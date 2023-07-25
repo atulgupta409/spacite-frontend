@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { CityContext } from "../context/CityContext";
-import ContactFormModal from "../modal-form/ContactFormModal";
-import Modal from "react-modal";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
 
 function Navbar() {
@@ -13,15 +11,6 @@ function Navbar() {
   useEffect(() => {
     handleFetchCities();
   }, []);
-
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
 
   return (
     <>
@@ -85,7 +74,7 @@ function Navbar() {
               </ul>
               <ul className="navbar-nav">
                 <li className="nav-item dropdown mob_hide">
-                  <RequestCallBtn />
+                  <RequestCallBtn location={"spacite.com"} />
                   {/* <a
                   className="nav-link  dropdown-toggle"
                   href="#"
@@ -126,14 +115,6 @@ function Navbar() {
           </div>
         </nav>
       </div>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        contentLabel="Example Modal"
-        className="centered-modal"
-      >
-        <ContactFormModal closeModal={closeModal} />
-      </Modal>
     </>
   );
 }

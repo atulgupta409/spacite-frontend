@@ -12,7 +12,6 @@ function HomeContact() {
     { value: "dedicated desk", label: "Dedicated Desk" },
     { value: "private cabin", label: "Private Cabin" },
     { value: "office suite", label: "Office Suite" },
-    { value: "custom buildout", label: "Custom Buildout" },
   ];
   const optionSeats = [
     { value: "1-10", label: "1-10" },
@@ -78,6 +77,7 @@ function HomeContact() {
     }
   };
 
+  const location = window.location.href;
   const sendEmail = async (e) => {
     e.preventDefault();
     if (
@@ -103,6 +103,7 @@ function HomeContact() {
             office_type: officeType,
             no_of_seats: noSeats,
             move_in: moveIn,
+            location,
           },
           {
             headers: {
@@ -140,6 +141,7 @@ function HomeContact() {
               officeType,
               noSeats,
               moveIn,
+              location,
               new Date().toLocaleString(),
             ],
           ]),
