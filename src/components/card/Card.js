@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ContactFormModal from "../modal-form/ContactFormModal";
 import Modal from "react-modal";
+import baseUrl from "../../environment/api-config";
 
 function Card({
   slug,
@@ -12,6 +13,7 @@ function Card({
   cityName,
   plans,
   cardClass,
+  imgBoxClass,
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
@@ -25,7 +27,7 @@ function Card({
     <>
       <div className={cardClass}>
         <Link to={slug} target="_blank" style={{ padding: "0" }}>
-          <div className="img_box">
+          <div className={imgBoxClass}>
             <img src={spaceImage} alt={spaceAlt} className="img-fluid" />
           </div>
         </Link>
@@ -102,8 +104,12 @@ function Card({
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         contentLabel="Example Modal"
+        ariaHideApp={false}
       >
-        <ContactFormModal closeModal={closeModal} />
+        <ContactFormModal
+          closeModal={closeModal}
+          location={`spacite.com${slug}`}
+        />
       </Modal>
     </>
   );

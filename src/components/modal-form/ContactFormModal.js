@@ -5,14 +5,14 @@ import baseUrl from "../../environment/api-config";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 
-function ContactFormModal({ closeModal }) {
+function ContactFormModal({ closeModal, location }) {
   const navigate = useNavigate();
+  console.log(location);
 
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
     { value: "private cabin", label: "Private Cabin" },
     { value: "office suite", label: "Office Suite" },
-    // { value: "custom buildout", label: "Custom Buildout" },
   ];
   const optionSeats = [
     { value: "1-10", label: "1-10" },
@@ -36,7 +36,6 @@ function ContactFormModal({ closeModal }) {
   const [phoneError, setPhoneError] = useState("");
   const [user, setUser] = useState({ name: "", email: "", phone: "" });
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
@@ -101,6 +100,7 @@ function ContactFormModal({ closeModal }) {
             office_type: officeType,
             no_of_seats: noSeats,
             move_in: moveIn,
+            location: location,
           },
           {
             headers: {
@@ -110,7 +110,6 @@ function ContactFormModal({ closeModal }) {
         );
         setLoading(false);
         handleSheet();
-        setSubmitted(true);
         navigate("/thank-you");
       } catch (error) {
         console.error(error);
@@ -139,6 +138,7 @@ function ContactFormModal({ closeModal }) {
               officeType,
               noSeats,
               moveIn,
+              location,
               new Date().toLocaleString(),
             ],
           ]),

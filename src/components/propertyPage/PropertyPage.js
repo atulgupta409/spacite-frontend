@@ -258,6 +258,7 @@ const PropertyPage = () => {
             office_type: officeType,
             no_of_seats: noSeats,
             move_in: moveIn,
+            location: window.location.href,
           },
           {
             headers: {
@@ -293,6 +294,7 @@ const PropertyPage = () => {
               officeType,
               noSeats,
               moveIn,
+              location,
               new Date().toLocaleString(),
             ],
           ]),
@@ -643,7 +645,7 @@ const PropertyPage = () => {
                 <h3 className="property_h3 text-align-center">
                   Got questions or want to talk to someone?
                 </h3>
-                <RequestCallBtn />
+                <RequestCallBtn location={window.location.href} />
               </div>
             </div>
           </div>
