@@ -44,9 +44,14 @@ function CityPage() {
     }
   };
 
-  const handleFetchWorkspacesByCity = async () => {
+  const handleFetchWorkspacesByCity = async (microlocations) => {
     try {
-      await getWorkSpaceByCity(setCityWorkspaces, cityName, setLoadingSpaces);
+      await getWorkSpaceByCity(
+        setCityWorkspaces,
+        cityName,
+        setLoadingSpaces,
+        microlocations
+      );
     } catch (error) {
       console.error(error);
       setLoadingSpaces(false);
@@ -55,14 +60,20 @@ function CityPage() {
 
   useEffect(() => {
     handleFetchMicrolocations();
-    handleFetchWorkspacesByCity();
   }, [cityName]);
+
+  let topMicrolocations = microlocations.slice(0, 6);
+
+  useEffect(() => {
+    if (topMicrolocations?.length > 0) {
+      handleFetchWorkspacesByCity(topMicrolocations);
+    }
+  }, [microlocations]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
-  let topMicrolocations = microlocations.slice(0, 6);
   const workImage =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
   // console.log(seo);
@@ -169,98 +180,106 @@ function CityPage() {
         <>
           <div>
             {topMicrolocations?.slice(0, 3)?.map((microlocation, i) => {
-              return cityworkSpaces?.filter(
-                (workspace) =>
-                  workspace?.location?.micro_location?.name ===
-                  microlocation?.name
-              )?.length !== 0 ? (
-                <div className="top_micro_properties" key={i}>
-                  <div className="container">
-                    <div className="row">
-                      <div className="col-md-12">
-                        <div className="city_page_title_box">
-                          <Link
-                            to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
-                              .toLowerCase()
-                              .split(" ")
-                              .join("-")}`}
-                          >
-                            <h3>{microlocation.name}</h3>
-                          </Link>
-                          <div className="city_explore">
+              return cityworkSpaces?.map((workspace) =>
+                workspace?.filter((space) => {
+                  return (
+                    space?.location?.micro_location?.name === microlocation.name
+                  );
+                }).length !== 0 ? (
+                  <div className="top_micro_properties" key={i}>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-md-12">
+                          <div className="city_page_title_box">
                             <Link
                               to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
                                 .toLowerCase()
                                 .split(" ")
                                 .join("-")}`}
                             >
-                              View All{" "}
-                              <img
-                                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624307161.png"
-                                style={{ marginBottom: "4px" }}
-                                alt="explore"
-                              />
+                              <h3>{microlocation.name}</h3>
                             </Link>
+                            <div className="city_explore">
+                              <Link
+                                to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
+                                  .toLowerCase()
+                                  .split(" ")
+                                  .join("-")}`}
+                              >
+                                View All{" "}
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624307161.png"
+                                  style={{ marginBottom: "4px" }}
+                                  alt="explore"
+                                />
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="micro_location_properties">
+                        <div className="row">
+                          <div className="col-md-12">
+                            <Carousel
+                              renderArrow={Myarrow}
+                              breakPoints={breakPoints}
+                            >
+                              {workspace
+                                ?.filter((space) => {
+                                  return (
+                                    space?.location?.micro_location?.name ===
+                                    microlocation.name
+                                  );
+                                })
+                                .slice(0, 10)
+                                .map((mySpace, k) => {
+                                  return (
+                                    <div className="carousel-items" key={k}>
+                                      <Card
+                                        cardClass={"property_card"}
+                                        imgBoxClass={"img_box"}
+                                        slug={`/coworking/${mySpace?.slug}`}
+                                        spaceImage={
+                                          mySpace.images.length > 0
+                                            ? mySpace.images[0].image
+                                            : workImage
+                                        }
+                                        spaceAlt={
+                                          mySpace.images.length > 0
+                                            ? mySpace.images[0].alt
+                                            : "workImage"
+                                        }
+                                        spaceName={
+                                          mySpace?.name?.length > 22
+                                            ? mySpace?.name?.substring(0, 20) +
+                                              "..."
+                                            : mySpace?.name
+                                        }
+                                        microlocation={
+                                          mySpace?.location?.micro_location
+                                            ?.name
+                                        }
+                                        cityName={mySpace?.location?.city?.name}
+                                        plans={mySpace?.plans
+                                          ?.reduce((prev, current) =>
+                                            current.price < prev.price
+                                              ? current
+                                              : prev
+                                          )
+                                          .price?.toLocaleString()}
+                                      />
+                                    </div>
+                                  );
+                                })}
+                            </Carousel>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="micro_location_properties">
-                      <div className="row">
-                        <div className="col-md-12">
-                          <Carousel
-                            renderArrow={Myarrow}
-                            breakPoints={breakPoints}
-                          >
-                            {cityworkSpaces
-                              ?.filter(
-                                (workspace) =>
-                                  workspace?.location?.micro_location?.name ===
-                                  microlocation?.name
-                              )
-                              .slice(0, 10)
-                              .map((workspace, j) => (
-                                <div className="carousel-items" key={j}>
-                                  <Card
-                                    cardClass={"property_card"}
-                                    imgBoxClass={"img_box"}
-                                    slug={`/coworking/${workspace?.slug}`}
-                                    spaceImage={
-                                      workspace.images.length > 0
-                                        ? workspace.images[0].image
-                                        : workImage
-                                    }
-                                    spaceAlt={
-                                      workspace.images.length > 0
-                                        ? workspace.images[0].alt
-                                        : "workImage"
-                                    }
-                                    spaceName={
-                                      workspace?.name?.length > 22
-                                        ? workspace?.name?.substring(0, 20) +
-                                          "..."
-                                        : workspace?.name
-                                    }
-                                    microlocation={microlocation?.name}
-                                    cityName={cityName}
-                                    plans={workspace?.plans
-                                      ?.reduce((prev, current) =>
-                                        current.price < prev.price
-                                          ? current
-                                          : prev
-                                      )
-                                      .price?.toLocaleString()}
-                                  />
-                                </div>
-                              ))}
-                          </Carousel>
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                </div>
-              ) : (
-                ""
+                ) : (
+                  ""
+                )
               );
             })}
           </div>
@@ -270,98 +289,106 @@ function CityPage() {
           </div>
           <div>
             {topMicrolocations?.slice(3, 6)?.map((microlocation, i) => {
-              return cityworkSpaces?.filter(
-                (workspace) =>
-                  workspace?.location?.micro_location?.name ===
-                  microlocation?.name
-              )?.length !== 0 ? (
-                <div className="top_micro_properties" key={i}>
-                  <div className="container">
-                    <div className="row">
-                      <div className="col-md-12">
-                        <div className="city_page_title_box">
-                          <Link
-                            to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
-                              .toLowerCase()
-                              .split(" ")
-                              .join("-")}`}
-                          >
-                            <h3>{microlocation.name}</h3>
-                          </Link>
-                          <div className="city_explore">
+              return cityworkSpaces?.map((workspace) =>
+                workspace?.filter((space) => {
+                  return (
+                    space?.location?.micro_location?.name === microlocation.name
+                  );
+                }).length !== 0 ? (
+                  <div className="top_micro_properties" key={i}>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-md-12">
+                          <div className="city_page_title_box">
                             <Link
                               to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
                                 .toLowerCase()
                                 .split(" ")
                                 .join("-")}`}
                             >
-                              View All{" "}
-                              <img
-                                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624307161.png"
-                                style={{ marginBottom: "4px" }}
-                                alt="explore"
-                              />
+                              <h3>{microlocation.name}</h3>
                             </Link>
+                            <div className="city_explore">
+                              <Link
+                                to={`/coworking-space/${cityName.toLowerCase()}/${microlocation.name
+                                  .toLowerCase()
+                                  .split(" ")
+                                  .join("-")}`}
+                              >
+                                View All{" "}
+                                <img
+                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624307161.png"
+                                  style={{ marginBottom: "4px" }}
+                                  alt="explore"
+                                />
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="micro_location_properties">
+                        <div className="row">
+                          <div className="col-md-12">
+                            <Carousel
+                              renderArrow={Myarrow}
+                              breakPoints={breakPoints}
+                            >
+                              {workspace
+                                ?.filter((space) => {
+                                  return (
+                                    space?.location?.micro_location?.name ===
+                                    microlocation.name
+                                  );
+                                })
+                                .slice(0, 10)
+                                .map((mySpace, k) => {
+                                  return (
+                                    <div className="carousel-items" key={k}>
+                                      <Card
+                                        cardClass={"property_card"}
+                                        imgBoxClass={"img_box"}
+                                        slug={`/coworking/${mySpace?.slug}`}
+                                        spaceImage={
+                                          mySpace.images.length > 0
+                                            ? mySpace.images[0].image
+                                            : workImage
+                                        }
+                                        spaceAlt={
+                                          mySpace.images.length > 0
+                                            ? mySpace.images[0].alt
+                                            : "workImage"
+                                        }
+                                        spaceName={
+                                          mySpace?.name?.length > 22
+                                            ? mySpace?.name?.substring(0, 20) +
+                                              "..."
+                                            : mySpace?.name
+                                        }
+                                        microlocation={
+                                          mySpace?.location?.micro_location
+                                            ?.name
+                                        }
+                                        cityName={mySpace?.location?.city?.name}
+                                        plans={mySpace?.plans
+                                          ?.reduce((prev, current) =>
+                                            current.price < prev.price
+                                              ? current
+                                              : prev
+                                          )
+                                          .price?.toLocaleString()}
+                                      />
+                                    </div>
+                                  );
+                                })}
+                            </Carousel>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="micro_location_properties">
-                      <div className="row">
-                        <div className="col-md-12">
-                          <Carousel
-                            renderArrow={Myarrow}
-                            breakPoints={breakPoints}
-                          >
-                            {cityworkSpaces
-                              ?.filter(
-                                (workspace) =>
-                                  workspace?.location?.micro_location?.name ===
-                                  microlocation?.name
-                              )
-                              .slice(0, 10)
-                              .map((workspace, j) => (
-                                <div className="carousel-items" key={j}>
-                                  <Card
-                                    cardClass={"property_card"}
-                                    imgBoxClass={"img_box"}
-                                    slug={`/coworking/${workspace?.slug}`}
-                                    spaceImage={
-                                      workspace.images.length > 0
-                                        ? workspace.images[0].image
-                                        : workImage
-                                    }
-                                    spaceAlt={
-                                      workspace.images.length > 0
-                                        ? workspace.images[0].alt
-                                        : "workImage"
-                                    }
-                                    spaceName={
-                                      workspace?.name?.length > 22
-                                        ? workspace?.name?.substring(0, 20) +
-                                          "..."
-                                        : workspace?.name
-                                    }
-                                    microlocation={microlocation?.name}
-                                    cityName={cityName}
-                                    plans={workspace?.plans
-                                      ?.reduce((prev, current) =>
-                                        current.price < prev.price
-                                          ? current
-                                          : prev
-                                      )
-                                      .price?.toLocaleString()}
-                                  />
-                                </div>
-                              ))}
-                          </Carousel>
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                </div>
-              ) : (
-                ""
+                ) : (
+                  ""
+                )
               );
             })}
           </div>
