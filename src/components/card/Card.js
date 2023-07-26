@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ContactFormModal from "../modal-form/ContactFormModal";
 import Modal from "react-modal";
-import baseUrl from "../../environment/api-config";
 
 function Card({
   slug,

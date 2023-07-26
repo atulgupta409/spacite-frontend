@@ -175,3 +175,21 @@ export const getWorkSpaceByCity = async (
     console.log(err);
   }
 };
+
+export const getNearCoworking = async (
+  setWorkspaces,
+  latitude,
+  longitude,
+  setLoadingSpaces
+) => {
+  try {
+    setLoadingSpaces(true);
+    const { data } = await axios.get(
+      `${baseUrl}/api/coworking_spaces/nearby?latitude=${latitude}&longitude=${longitude}`
+    );
+    setWorkspaces(data);
+    setLoadingSpaces(false);
+  } catch (error) {
+    console.log(error);
+  }
+};
