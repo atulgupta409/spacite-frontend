@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ContactFormModal from "../modal-form/ContactFormModal";
 import Modal from "react-modal";
 
-function RequestCallBtn() {
+function RequestCallBtn({ location }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
     setModalIsOpen(true);
@@ -21,8 +21,9 @@ function RequestCallBtn() {
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         contentLabel="Example Modal"
+        ariaHideApp={false}
       >
-        <ContactFormModal closeModal={closeModal} />
+        <ContactFormModal closeModal={closeModal} location={location} />
       </Modal>
     </>
   );

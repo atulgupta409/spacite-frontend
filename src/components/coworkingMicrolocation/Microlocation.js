@@ -12,8 +12,6 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SpaceSkeleton from "../spaceSkeleton/SpaceSkeleton";
 import { Helmet } from "react-helmet-async";
-import ContactFormModal from "../modal-form/ContactFormModal";
-import Modal from "react-modal";
 import { useContext } from "react";
 import { CityContext } from "../context/CityContext";
 import FooterTop from "../footer/FooterTop";
@@ -27,15 +25,6 @@ function Microlocation() {
   let lastElem2 = pathArray[pathArray.length - 1];
   let microlocation = lastElem2.charAt(0).toUpperCase() + lastElem2.slice(1);
   let microName = microlocation.split("-").join(" ");
-
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
 
   const currentUrl = new URL(location.pathname, window.location.origin);
 
@@ -229,114 +218,9 @@ function Microlocation() {
                     className="col-12 col-sm-6 col-lg-3 micro_card_box"
                     key={i}
                   >
-                    <div className="row property_card property_card_mob">
-                      <Link
-                        to={`/coworking/${workspace?.slug}`}
-                        target="_blank"
-                        style={{ padding: "0" }}
-                      >
-                        <div className="col-6 col-sm-12 img_box img_box_micro">
-                          <img
-                            src={
-                              workspace?.images?.length > 0
-                                ? workspace?.images[0]?.image
-                                : workImage
-                            }
-                            alt={
-                              workspace?.images?.length > 0
-                                ? workspace?.images[0]?.alt
-                                : "workImage"
-                            }
-                            className="img-fluid"
-                          />
-                        </div>
-                      </Link>
-                      <div className="card_body col-12">
-                        <p className="card-title">
-                          {workspace?.name?.length > 22
-                            ? workspace?.name?.substring(0, 20) + "..."
-                            : workspace?.name}
-                        </p>
-                        <div className="location_box">
-                          <p>
-                            {workspace?.location?.micro_location?.name +
-                              ", " +
-                              workspace?.location?.city?.name}
-                          </p>
-                        </div>
-                        <div className="card_amenities">
-                          <div>
-                            <img
-                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png"
-                              alt="wifi"
-                              className="img-fluid"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png"
-                              alt="dedicated desk"
-                              className="img-fluid"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png"
-                              alt="meeting rooms"
-                              className="img-fluid"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png"
-                              alt="printer"
-                              className="img-fluid"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760917850.png"
-                              alt="pantry"
-                              className="img-fluid"
-                            />
-                          </div>
-                          <div>
-                            <img
-                              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png"
-                              alt="parking"
-                              className="img-fluid"
-                            />
-                          </div>
-                        </div>
-                        <p className="price_from">Starting</p>
-                        <div className="price_box">
-                          <p className="price">
-                            ₹{" "}
-                            {workspace?.plans
-                              .reduce((prev, current) => {
-                                return current.price < prev.price
-                                  ? current
-                                  : prev;
-                              })
-                              .price?.toLocaleString()}{" "}
-                            /*<span>month</span>
-                          </p>
-                        </div>
-                      </div>
-                      <div className="card_button_link">
-                        <div onClick={openModal}>Enquire Now</div>
-                        <div>
-                          <Link
-                            to={`/coworking/${workspace?.slug}`}
-                            target="_blank"
-                          >
-                            Explore Now
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                    {/* <Card
+                    <Card
                       cardClass={"row property_card property_card_mob"}
+                      imgBoxClass={"col-6 col-sm-12 img_box img_box_micro"}
                       slug={`/coworking/${workspace?.slug}`}
                       spaceImage={
                         workspace.images.length > 0
@@ -353,14 +237,14 @@ function Microlocation() {
                           ? workspace?.name?.substring(0, 20) + "..."
                           : workspace?.name
                       }
-                      microlocation={microlocation?.name}
+                      microlocation={workspace?.location?.micro_location?.name}
                       cityName={cityName}
                       plans={workspace?.plans
                         ?.reduce((prev, current) =>
                           current.price < prev.price ? current : prev
                         )
                         .price?.toLocaleString()}
-                    /> */}
+                    />
                   </div>
                 ))
               ) : (
@@ -381,126 +265,39 @@ function Microlocation() {
                   className="col-12 col-sm-6 col-lg-3 micro_card_box"
                   key={i}
                 >
-                  <div className="row property_card property_card_mob">
-                    <Link
-                      to={`/coworking/${workspace?.slug}`}
-                      target="_blank"
-                      style={{ padding: "0" }}
-                    >
-                      <div className="col-6 col-sm-12 img_box img_box_micro">
-                        <img
-                          src={
-                            workspace?.images?.length > 0
-                              ? workspace?.images[0]?.image
-                              : workImage
-                          }
-                          alt={
-                            workspace?.images?.length > 0
-                              ? workspace?.images[0]?.alt
-                              : "workImage"
-                          }
-                          className="img-fluid"
-                        />
-                      </div>
-                    </Link>
-                    <div className="card_body col-12">
-                      <p className="card-title">
-                        {workspace?.name?.length > 22
-                          ? workspace?.name?.substring(0, 20) + "..."
-                          : workspace?.name}
-                      </p>
-                      <div className="location_box">
-                        <p>
-                          {workspace?.location?.micro_location?.name +
-                            ", " +
-                            workspace?.location?.city?.name}
-                        </p>
-                      </div>
-                      <div className="card_amenities">
-                        <div>
-                          <img
-                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png"
-                            alt="wifi"
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div>
-                          <img
-                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png"
-                            alt="dedicated desk"
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div>
-                          <img
-                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png"
-                            alt="meeting rooms"
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div>
-                          <img
-                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png"
-                            alt="printer"
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div>
-                          <img
-                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760917850.png"
-                            alt="pantry"
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div>
-                          <img
-                            src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png"
-                            alt="parking"
-                            className="img-fluid"
-                          />
-                        </div>
-                      </div>
-                      <p className="price_from">Starting</p>
-                      <div className="price_box">
-                        <p className="price">
-                          ₹{" "}
-                          {workspace?.plans
-                            .reduce((prev, current) => {
-                              return current.price < prev.price
-                                ? current
-                                : prev;
-                            })
-                            .price?.toLocaleString()}{" "}
-                          /*<span>month</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div className="card_button_link">
-                      <div onClick={openModal}>Enquire Now</div>
-                      <div>
-                        <Link
-                          to={`/coworking/${workspace?.slug}`}
-                          target="_blank"
-                        >
-                          Explore Now
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
+                  <Card
+                    cardClass={"row property_card property_card_mob"}
+                    imgBoxClass={"col-6 col-sm-12 img_box img_box_micro"}
+                    slug={`/coworking/${workspace?.slug}`}
+                    spaceImage={
+                      workspace.images.length > 0
+                        ? workspace.images[0].image
+                        : workImage
+                    }
+                    spaceAlt={
+                      workspace.images.length > 0
+                        ? workspace.images[0].alt
+                        : "workImage"
+                    }
+                    spaceName={
+                      workspace?.name?.length > 22
+                        ? workspace?.name?.substring(0, 20) + "..."
+                        : workspace?.name
+                    }
+                    microlocation={workspace?.location?.micro_location?.name}
+                    cityName={cityName}
+                    plans={workspace?.plans
+                      ?.reduce((prev, current) =>
+                        current.price < prev.price ? current : prev
+                      )
+                      .price?.toLocaleString()}
+                  />
                 </div>
               ))}
             </div>
           </div>
         </>
       )}
-
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        contentLabel="Example Modal"
-      >
-        <ContactFormModal closeModal={closeModal} />
-      </Modal>
 
       <ReactPaginate
         previousLabel={<MdKeyboardArrowLeft className="pagination_icon" />}
@@ -516,7 +313,6 @@ function Microlocation() {
         previousLinkClassName={"page-link page_link"}
         nextClassName={"page-item page_item"}
         nextLinkClassName={"page-link page_link"}
-        // forcePage={current_page}
         activeClassName={"active"}
       ></ReactPaginate>
       <div className="other_location_box">

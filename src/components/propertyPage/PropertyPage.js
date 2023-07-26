@@ -15,6 +15,7 @@ import baseUrl from "../../environment/api-config";
 import { getNearSpaces } from "../service/Service";
 import ContactFormModal from "../modal-form/ContactFormModal";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
+import Card from "../card/Card";
 
 const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
@@ -258,6 +259,7 @@ const PropertyPage = () => {
             office_type: officeType,
             no_of_seats: noSeats,
             move_in: moveIn,
+            location: window.location.href,
           },
           {
             headers: {
@@ -293,6 +295,7 @@ const PropertyPage = () => {
               officeType,
               noSeats,
               moveIn,
+              location,
               new Date().toLocaleString(),
             ],
           ]),
@@ -302,6 +305,13 @@ const PropertyPage = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const [shake, setShake] = useState(false);
+
+  const animate = () => {
+    setShake(true);
+    setTimeout(() => setShake(false), 500);
   };
 
   const { seo } = workSpace;
@@ -346,7 +356,7 @@ const PropertyPage = () => {
               className="breadcrumb-item active"
               aria-current="page"
             >
-              {cityName}
+              {workSpace?.name}
             </li>
           </ol>
         </nav>
@@ -502,8 +512,8 @@ const PropertyPage = () => {
                   </div>
                   <div className="col-4 desk_icon_box">
                     <img src={planElem?.planImg} alt="desk" />
-                    <div className="explore_box">
-                      <p>Enquire</p>
+                    <div className="explore_box mob_hide">
+                      <p onClick={animate}>Enquire</p>
                       <img src={explore_icon} alt="explore" />
                     </div>
                   </div>
@@ -529,7 +539,13 @@ const PropertyPage = () => {
           </div>
           <div className="col-lg-4 mob_hide">
             <div className="sticky_form">
-              <div className="contact_form_box_property contact_form">
+              <div
+                className={
+                  shake
+                    ? "shake contact_form_box_property contact_form"
+                    : "contact_form_box_property contact_form"
+                }
+              >
                 <h4>Enquire Now</h4>
                 <form onSubmit={sendEmail}>
                   <div className="row">
@@ -643,7 +659,7 @@ const PropertyPage = () => {
                 <h3 className="property_h3 text-align-center">
                   Got questions or want to talk to someone?
                 </h3>
-                <RequestCallBtn />
+                <RequestCallBtn location={window.location.href} />
               </div>
             </div>
           </div>
@@ -666,10 +682,10 @@ const PropertyPage = () => {
             <div className="col-md-12">
               {nearSpace?.length > 0 ? (
                 <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-                  {nearSpace?.slice(0, 10)?.map((space, i) => {
+                  {nearSpace?.slice(0, 10)?.map((workspace, i) => {
                     return (
                       <div className="carousel-items" key={i}>
-                        <div className="property_card">
+                        {/* <div className="property_card">
                           <Link
                             to={`/coworking/${space?.slug}`}
                             target="_blank"
@@ -772,7 +788,36 @@ const PropertyPage = () => {
                               </Link>
                             </div>
                           </div>
-                        </div>
+                        </div> */}
+                        <Card
+                          cardClass={"property_card"}
+                          imgBoxClass={"img_box"}
+                          slug={`/coworking/${workspace?.slug}`}
+                          spaceImage={
+                            workspace.images.length > 0
+                              ? workspace.images[0].image
+                              : workImage
+                          }
+                          spaceAlt={
+                            workspace.images.length > 0
+                              ? workspace.images[0].alt
+                              : "workImage"
+                          }
+                          spaceName={
+                            workspace?.name?.length > 22
+                              ? workspace?.name?.substring(0, 20) + "..."
+                              : workspace?.name
+                          }
+                          microlocation={
+                            workspace?.location?.micro_location?.name
+                          }
+                          cityName={workspace?.location?.city?.name}
+                          plans={workspace?.plans
+                            ?.reduce((prev, current) =>
+                              current.price < prev.price ? current : prev
+                            )
+                            .price?.toLocaleString()}
+                        />
                       </div>
                     );
                   })}
@@ -812,8 +857,12 @@ const PropertyPage = () => {
           isOpen={modalIsOpen}
           onRequestClose={() => setModalIsOpen(false)}
           contentLabel="Example Modal"
+          ariaHideApp={false}
         >
-          <ContactFormModal closeModal={closeModal} />
+          <ContactFormModal
+            closeModal={closeModal}
+            location={window.location.href}
+          />
         </Modal>
       </div>
     </>

@@ -5,7 +5,6 @@ import Carousel from "@itseasy21/react-elastic-carousel";
 import HomeContact from "../homepage/home-contact/HomeContact";
 import { CityContext } from "../context/CityContext";
 import { Helmet } from "react-helmet-async";
-import ErrorBoundary from "./ErrorBoundry";
 import { getWorkSpaceByCity, getMicrolocationByCity } from "../service/Service";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -62,6 +61,7 @@ function CityPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
   let topMicrolocations = microlocations.slice(0, 6);
   const workImage =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
@@ -125,6 +125,7 @@ function CityPage() {
             Coworking Space in <span className="top_city_span">{cityName}</span>
           </h1>
         </div>
+        <div className="page_description">{seo?.header_description}</div>
 
         {loadingMicrolocations ? (
           <div>
@@ -222,6 +223,7 @@ function CityPage() {
                                 <div className="carousel-items" key={j}>
                                   <Card
                                     cardClass={"property_card"}
+                                    imgBoxClass={"img_box"}
                                     slug={`/coworking/${workspace?.slug}`}
                                     spaceImage={
                                       workspace.images.length > 0
@@ -322,6 +324,7 @@ function CityPage() {
                                 <div className="carousel-items" key={j}>
                                   <Card
                                     cardClass={"property_card"}
+                                    imgBoxClass={"img_box"}
                                     slug={`/coworking/${workspace?.slug}`}
                                     spaceImage={
                                       workspace.images.length > 0

@@ -256,6 +256,12 @@
   right: -15px;
   z-index: 9;
 }
+.page_description {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  margin-top: 30px;
+}
 
 @media only screen and (max-width: 768px) {
   .microlocation_tab {
