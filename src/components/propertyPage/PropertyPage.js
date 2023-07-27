@@ -16,6 +16,7 @@ import { getNearSpaces } from "../service/Service";
 import ContactFormModal from "../modal-form/ContactFormModal";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import Card from "../card/Card";
+import ImageCarousel from "../carousel/ImageCarousel";
 
 const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
@@ -314,7 +315,7 @@ const PropertyPage = () => {
     setTimeout(() => setShake(false), 500);
   };
 
-  const { seo } = workSpace;
+  const { seo, images } = workSpace;
 
   return (
     <>
@@ -406,7 +407,7 @@ const PropertyPage = () => {
         </div>
         <div className="row mb_30">
           <div className="col-lg-8">
-            <div
+            {/* <div
               id="carouselExampleControls"
               className="carousel slide"
               data-bs-ride="carousel"
@@ -449,7 +450,8 @@ const PropertyPage = () => {
                 ></span>
                 <span className="visually-hidden">Next</span>
               </button>
-            </div>
+            </div> */}
+            <ImageCarousel images={images} />
             <div className="row amenity_section_property">
               <div className="col-md-4">
                 <img className="property_icon" src={wifi_icon} alt="wifi" />
