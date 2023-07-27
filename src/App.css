@@ -283,6 +283,7 @@ h2 {
 
 .carousel-inner {
   position: relative;
+  border-radius: 20px;
 }
 
 .carousel-item {

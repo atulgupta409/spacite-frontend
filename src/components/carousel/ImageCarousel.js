@@ -1,51 +1,46 @@
 import React from "react";
-import Slider from "react-slick";
 
 const ImageCarousel = ({ images }) => {
   return (
     <div className="image-carousel">
       <div
         id="carouselExampleControls"
-        className="carousel slide"
+        class="carousel slide"
+        data-bs-interval="false"
+        data-bs-touch="true"
         data-bs-ride="carousel"
       >
-        <div className="carousel-inner carousel_inner">
+        <div class="carousel-inner">
           {images?.map((image, index) => (
             <div
               key={index}
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
+              class={`carousel-item ${index === 0 ? "active" : ""}`}
             >
               <img
                 src={image?.image}
-                className="d-block w-100 img-fluid property_page_img"
+                class="d-block w-100 img-fluid property_page_img"
                 alt={`Image ${index + 1}`}
               />
             </div>
           ))}
         </div>
         <button
-          className="carousel-control-prev"
+          class="carousel-control-prev"
           type="button"
           data-bs-target="#carouselExampleControls"
           data-bs-slide="prev"
         >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
         </button>
         <button
-          className="carousel-control-next"
+          class="carousel-control-next"
           type="button"
           data-bs-target="#carouselExampleControls"
           data-bs-slide="next"
         >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
         </button>
       </div>
     </div>
