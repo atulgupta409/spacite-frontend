@@ -407,50 +407,6 @@ const PropertyPage = () => {
         </div>
         <div className="row mb_30">
           <div className="col-lg-8">
-            {/* <div
-              id="carouselExampleControls"
-              className="carousel slide"
-              data-bs-ride="carousel"
-            >
-              <div className="carousel-inner carousel_inner">
-                {workSpace?.images?.map((image, index) => (
-                  <div
-                    key={index}
-                    className={`carousel-item ${index === 0 ? "active" : ""}`}
-                  >
-                    <img
-                      src={image?.image}
-                      className="d-block w-100 img-fluid property_page_img"
-                      alt={`Image ${index + 1}`}
-                    />
-                  </div>
-                ))}
-              </div>
-              <button
-                className="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button
-                className="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="visually-hidden">Next</span>
-              </button>
-            </div> */}
             <ImageCarousel images={images} />
             <div className="row amenity_section_property">
               <div className="col-md-4">
