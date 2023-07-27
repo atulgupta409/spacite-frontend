@@ -76,10 +76,8 @@ function NearCoworking() {
                               ? mySpace?.name?.substring(0, 20) + "..."
                               : mySpace?.name
                           }
-                          microlocation={
-                            mySpace?.location?.micro_location?.name
-                          }
-                          cityName={mySpace?.location?.city?.name}
+                          microlocation={mySpace?.location?.micro_location}
+                          cityName={mySpace?.location?.city}
                           plans={mySpace?.plans
                             ?.reduce((prev, current) =>
                               current.price < prev.price ? current : prev

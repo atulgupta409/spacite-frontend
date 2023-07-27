@@ -193,3 +193,20 @@ export const getNearCoworking = async (
     console.log(error);
   }
 };
+
+export const getWorkSpaceForCityPage = async (setWorkspaces, cityNames) => {
+  try {
+    let res = [];
+    cityNames?.forEach(async (cityName) => {
+      const { data } = await axios.get(
+        `${baseUrl}/api/coworking/${cityName?.city?.name}`
+      );
+      res.push(data);
+      if (cityNames.length === res.length && cityNames.length > 0) {
+        setWorkspaces(res);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
