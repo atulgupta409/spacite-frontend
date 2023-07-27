@@ -76,20 +76,6 @@ export const getWorkSpaceByMicrolocation = async (
   }
 };
 
-export const getWorkSpaceByCity = async (
-  setCityWorkspaces,
-  cityName,
-  setLoadingSpaces
-) => {
-  try {
-    setLoadingSpaces(true);
-    const { data } = await axios.get(`${baseUrl}/api/coworking/${cityName}`);
-    setCityWorkspaces(data);
-    setLoadingSpaces(false);
-  } catch (err) {
-    console.log(err);
-  }
-};
 export const getWorkSpaceBySlug = async (
   setWorkspaces,
   slug,
@@ -155,6 +141,69 @@ export const getPopularWorkspaceByCity = async (cities, setPopularSpaces) => {
       res.push(data);
       if (cities.length === res.length && cities.length > 0) {
         setPopularSpaces(res);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getWorkSpaceByCity = async (
+  setCityWorkspaces,
+  cityName,
+  setLoadingSpaces,
+  topMicrolocations
+) => {
+  try {
+    let res = [];
+    setLoadingSpaces(true);
+    topMicrolocations?.forEach(async (location) => {
+      const { data } = await axios.get(
+        `${baseUrl}/api/priority-city-workspace/${cityName}/${location.name}`
+      );
+      res.push(data);
+      if (
+        topMicrolocations.length === res.length &&
+        topMicrolocations.length > 0
+      ) {
+        setCityWorkspaces(res);
+      }
+    });
+
+    setLoadingSpaces(false);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getNearCoworking = async (
+  setWorkspaces,
+  latitude,
+  longitude,
+  setLoadingSpaces
+) => {
+  try {
+    setLoadingSpaces(true);
+    const { data } = await axios.get(
+      `${baseUrl}/api/coworking_spaces/nearby?latitude=${latitude}&longitude=${longitude}`
+    );
+    setWorkspaces(data);
+    setLoadingSpaces(false);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getWorkSpaceForCityPage = async (setWorkspaces, cityNames) => {
+  try {
+    let res = [];
+    cityNames?.forEach(async (cityName) => {
+      const { data } = await axios.get(
+        `${baseUrl}/api/coworking/${cityName?.city?.name}`
+      );
+      res.push(data);
+      if (cityNames.length === res.length && cityNames.length > 0) {
+        setWorkspaces(res);
       }
     });
   } catch (error) {

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ContactFormModal from "../modal-form/ContactFormModal";
 import Modal from "react-modal";
-import baseUrl from "../../environment/api-config";
 
 function Card({
   slug,
@@ -23,6 +22,7 @@ function Card({
   const closeModal = () => {
     setModalIsOpen(false);
   };
+  const address = microlocation + ", " + cityName;
   return (
     <>
       <div className={cardClass}>
@@ -38,7 +38,11 @@ function Card({
               : spaceName}
           </p>
           <div className="location_box">
-            <p>{microlocation + ", " + cityName}</p>
+            <p>
+              {address?.length > 26
+                ? address.substring(0, 26) + "..."
+                : address}
+            </p>
           </div>
           <div className="card_amenities">
             <div>
