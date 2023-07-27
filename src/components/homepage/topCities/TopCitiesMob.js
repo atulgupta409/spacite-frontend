@@ -14,7 +14,7 @@ function TopCitiesMob() {
 
   useEffect(() => {
     handleFetchWorkspaces(allCities);
-  }, []);
+  }, [allCities]);
 
   function findLowestPricesWithCity(workspaces) {
     const result = [];
@@ -40,6 +40,7 @@ function TopCitiesMob() {
   }
 
   const lowestPricesWithCity = findLowestPricesWithCity(workspaces);
+  // console.log(lowestPricesWithCity);
 
   return (
     <div>
