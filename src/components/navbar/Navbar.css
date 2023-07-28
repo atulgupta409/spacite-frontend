@@ -17,6 +17,9 @@
   padding: 10px 14px;
   transition: all 0.3s ease-in-out;
 }
+.navbar-brand img {
+  width: 150px;
+}
 .callBack_btn_nav:hover {
   background-color: #d09cff;
   color: #fff;
@@ -87,6 +90,9 @@
   .pl_0 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+  }
+  .navbar-brand img {
+    width: 100px;
   }
 }
 @media only screen and (max-width: 476px) {

@@ -9,6 +9,9 @@
 .robot {
   width: 80px;
 }
+.city_page_main_box {
+  margin-top: 100px;
+}
 .microlocation_tab {
   box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -50,7 +53,8 @@
   border-radius: 20px;
   background: #fff;
   box-shadow: 0px 0px 10px -1px rgba(0, 0, 0, 0.1);
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
+  margin-top: 6px;
 }
 .property_card .card_body {
   padding: 8px 14px;
@@ -253,7 +257,7 @@
   z-index: 9;
 }
 .next_carousel {
-  right: -15px;
+  right: -7px;
   z-index: 9;
 }
 .page_description {
@@ -304,10 +308,17 @@
   }
   .other_location_box {
     padding: 40px 0;
+    margin-top: 30px;
   }
   .other_location_box h3 {
     font-size: 20px;
     line-height: 26px;
+    padding: 0 11px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  .city_page_main_box {
+    margin-top: 68px;
   }
   .other_location_box a {
     font-size: 15px;
@@ -368,13 +379,29 @@
     /* margin-bottom: 30px; */
     width: 100%;
   }
-  /* .city_page_title_box {
-    margin: 30px 20px 0;
-  } */
+  .top_micro_properties .city_page_title_box h3 {
+    font-size: 20px;
+  }
+  .other_location_box a {
+    font-size: 12px;
+    line-height: 27px;
+  }
   .ReactModal__Content {
     width: 95%;
   }
   .city_top_row {
     margin: 20px 0 0 0;
+  }
+  .card_amenities {
+    display: none;
+  }
+  .card_button_link > div > a {
+    font-size: 12px;
+  }
+  .footer_content_main {
+    padding: 35px 0;
+  }
+  .card_button_link div:nth-child(1) {
+    font-size: 12px;
   }
 }

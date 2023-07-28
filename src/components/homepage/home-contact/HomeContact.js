@@ -3,7 +3,7 @@ import "./HomeContact.css";
 import Select from "react-select";
 import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import baseUrl from "../../../environment/api-config";
 
 function HomeContact() {
@@ -156,23 +156,6 @@ function HomeContact() {
   return (
     <div className="main_banner2 home_contact_main">
       <div className="container">
-        <div className="row">
-          <div className="col-4 desk_hide">
-            <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688621027741.png"
-              alt="contact"
-              className="img-fluid"
-            />
-          </div>
-          <div className="col-8 desk_hide">
-            <div className="d_flex_mob">
-              <h2>
-                Let RoBi find your perfect office at{" "}
-                <span className="top_city_span">Spacite</span>
-              </h2>
-            </div>
-          </div>
-        </div>
         <h2 className="mob_hide">
           Let RoBi find your perfect office at{" "}
           <span className="top_city_span">Spacite</span>
@@ -187,7 +170,24 @@ function HomeContact() {
           </div>
           <div className="col-md-6">
             <div className="contact_form_box">
-              <h4>Please Share Your Details With RoBi</h4>
+              <h4 className="mob_hide">Please Share Your Details With RoBi</h4>
+              <div className="row mb-3">
+                <div className="col-3 desk_hide d-flex align-items-center p-0">
+                  <img
+                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688621027741.png"
+                    alt="contact"
+                    className="img-fluid desk_hide"
+                  />
+                </div>
+                <div className="col-9 desk_hide p-0">
+                  <div className="d_flex_mob">
+                    <h2>
+                      Let RoBi find your perfect office at{" "}
+                      <span className="top_city_span">Spacite</span>
+                    </h2>
+                  </div>
+                </div>
+              </div>
               <form onSubmit={sendEmail}>
                 <div className="row">
                   <div className="col-md-12 mb-4">

@@ -4,11 +4,7 @@ import { Link } from "react-router-dom";
 import { CityContext } from "../context/CityContext";
 
 function FooterBottom() {
-  const { cities, handleFetchCities } = useContext(CityContext);
-
-  useEffect(() => {
-    handleFetchCities();
-  }, []);
+  const { cities } = useContext(CityContext);
 
   let curYear = new Date().getFullYear();
 

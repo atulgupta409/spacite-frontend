@@ -72,7 +72,7 @@ function Herohome() {
         /> */}
       </Helmet>
       <Section1 />
-      <NearCoworking />
+      {/* <NearCoworking /> */}
       <Section2 />
       <div className="desk_hide">
         <Facility />

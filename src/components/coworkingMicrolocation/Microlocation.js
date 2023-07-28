@@ -99,7 +99,7 @@ function Microlocation() {
     .join(" ");
 
   return (
-    <div style={{ marginTop: "100px" }}>
+    <div className="city_page_main_box">
       <Helmet>
         <title>{seo?.title}</title>
         <meta name="description" content={seo?.description} />
@@ -119,7 +119,7 @@ function Microlocation() {
       </Helmet>
       <div className="container">
         <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
+          <ol className="breadcrumb mob_hide">
             <li className="breadcrumb-item">
               <Link to="/">Home</Link>
             </li>
@@ -139,7 +139,7 @@ function Microlocation() {
             </li>
           </ol>
         </nav>
-        <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} />
+        <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} className="mob_hide" />
       </div>
       <div className="container">
         <div className="d-flex align-items-center city_heading">
@@ -232,12 +232,25 @@ function Microlocation() {
                           : "workImage"
                       }
                       spaceName={
-                        workspace?.name?.length > 22
+                        window.innerWidth > 576 && workspace?.name?.length > 22
                           ? workspace?.name?.substring(0, 20) + "..."
                           : workspace?.name
                       }
-                      microlocation={workspace?.location?.micro_location?.name}
-                      cityName={cityName}
+                      address={
+                        (
+                          workspace?.location?.micro_location?.name +
+                          " " +
+                          cityName
+                        )?.length > 26 && window.innerWidth > 576
+                          ? (
+                              workspace?.location?.micro_location?.name +
+                              " " +
+                              cityName
+                            )?.substring(0, 26) + "..."
+                          : workspace?.location?.micro_location?.name +
+                            " " +
+                            cityName
+                      }
                       plans={workspace?.plans
                         ?.reduce((prev, current) =>
                           current.price < prev.price ? current : prev
@@ -283,8 +296,21 @@ function Microlocation() {
                         ? workspace?.name?.substring(0, 20) + "..."
                         : workspace?.name
                     }
-                    microlocation={workspace?.location?.micro_location?.name}
-                    cityName={cityName}
+                    address={
+                      (
+                        workspace?.location?.micro_location?.name +
+                        " " +
+                        cityName
+                      )?.length > 26 && window.innerWidth > 576
+                        ? (
+                            workspace?.location?.micro_location?.name +
+                            " " +
+                            cityName
+                          )?.substring(0, 26) + "..."
+                        : workspace?.location?.micro_location?.name +
+                          " " +
+                          cityName
+                    }
                     plans={workspace?.plans
                       ?.reduce((prev, current) =>
                         current.price < prev.price ? current : prev
@@ -305,7 +331,7 @@ function Microlocation() {
         pageCount={totalPage}
         marginPagesDisplayed={2}
         onPageChange={handlePageClick}
-        containerClassName={"pagination justify-content-center"}
+        containerClassName={"pagination justify-content-center pagination_box"}
         pageClassName={"page-item page_item"}
         pageLinkClassName={"page-link page_link"}
         previousClassName={"page-item page_item"}

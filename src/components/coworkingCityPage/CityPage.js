@@ -79,7 +79,7 @@ function CityPage() {
   // console.log(seo);
 
   return (
-    <div className="city_page_main" style={{ marginTop: "100px" }}>
+    <div className="city_page_main city_page_main_box">
       <Helmet>
         <title>{seo?.title}</title>
         <meta name="description" content={seo?.description} />
@@ -104,7 +104,7 @@ function CityPage() {
 
       <div className="container">
         <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
+          <ol className="breadcrumb mob_hide">
             <li className="breadcrumb-item">
               <Link to="/">Home</Link>
             </li>
@@ -123,7 +123,7 @@ function CityPage() {
             </li>
           </ol>
         </nav>
-        <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} />
+        <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} className="mob_hide" />
       </div>
       <div className="container">
         <div className="d-flex align-items-center city_heading">
@@ -197,7 +197,12 @@ function CityPage() {
                                 .split(" ")
                                 .join("-")}`}
                             >
-                              <h3>{microlocation.name}</h3>
+                              <h3>
+                                {cityName === "Noida" &&
+                                microlocation.name.includes("Sector")
+                                  ? "Noida" + " " + microlocation?.name
+                                  : microlocation?.name}
+                              </h3>
                             </Link>
                             <div className="city_explore">
                               <Link
@@ -255,16 +260,31 @@ function CityPage() {
                                               "..."
                                             : mySpace?.name
                                         }
-                                        microlocation={
-                                          mySpace?.location?.micro_location
-                                            ?.name
+                                        address={
+                                          (
+                                            mySpace?.location?.micro_location
+                                              ?.name +
+                                            " " +
+                                            mySpace?.location?.city?.name
+                                          )?.length > 26
+                                            ? (
+                                                mySpace?.location
+                                                  ?.micro_location?.name +
+                                                " " +
+                                                mySpace?.location?.city?.name
+                                              )?.substring(0, 26) + "..."
+                                            : mySpace?.location?.micro_location
+                                                ?.name +
+                                              " " +
+                                              mySpace?.location?.city?.name
                                         }
-                                        cityName={mySpace?.location?.city?.name}
                                         plans={mySpace?.plans
-                                          ?.reduce((prev, current) =>
-                                            current.price < prev.price
-                                              ? current
-                                              : prev
+                                          ?.reduce(
+                                            (prev, current) =>
+                                              current?.price < prev?.price
+                                                ? current
+                                                : prev,
+                                            { price: Infinity }
                                           )
                                           .price?.toLocaleString()}
                                       />
@@ -306,7 +326,12 @@ function CityPage() {
                                 .split(" ")
                                 .join("-")}`}
                             >
-                              <h3>{microlocation.name}</h3>
+                              <h3>
+                                {cityName === "Noida" &&
+                                microlocation.name.includes("Sector")
+                                  ? "Noida" + " " + microlocation?.name
+                                  : microlocation?.name}
+                              </h3>
                             </Link>
                             <div className="city_explore">
                               <Link
@@ -364,16 +389,31 @@ function CityPage() {
                                               "..."
                                             : mySpace?.name
                                         }
-                                        microlocation={
-                                          mySpace?.location?.micro_location
-                                            ?.name
+                                        address={
+                                          (
+                                            mySpace?.location?.micro_location
+                                              ?.name +
+                                            " " +
+                                            mySpace?.location?.city?.name
+                                          )?.length > 26
+                                            ? (
+                                                mySpace?.location
+                                                  ?.micro_location?.name +
+                                                " " +
+                                                mySpace?.location?.city?.name
+                                              )?.substring(0, 26) + "..."
+                                            : mySpace?.location?.micro_location
+                                                ?.name +
+                                              " " +
+                                              mySpace?.location?.city?.name
                                         }
-                                        cityName={mySpace?.location?.city?.name}
                                         plans={mySpace?.plans
-                                          ?.reduce((prev, current) =>
-                                            current.price < prev.price
-                                              ? current
-                                              : prev
+                                          ?.reduce(
+                                            (prev, current) =>
+                                              current?.price < prev?.price
+                                                ? current
+                                                : prev,
+                                            { price: Infinity }
                                           )
                                           .price?.toLocaleString()}
                                       />

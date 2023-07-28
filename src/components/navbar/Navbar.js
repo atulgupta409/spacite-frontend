@@ -4,13 +4,10 @@ import "./Navbar.css";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { CityContext } from "../context/CityContext";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
+import PopupBtn from "../virtual-office/PopupBtn";
 
 function Navbar() {
-  const { allCities, handleFetchCities } = useContext(CityContext);
-
-  useEffect(() => {
-    handleFetchCities();
-  }, []);
+  const { allCities } = useContext(CityContext);
 
   return (
     <>
@@ -21,7 +18,6 @@ function Navbar() {
               <img
                 src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688623571085.png"
                 alt="specite-logo"
-                width="150px"
               />
             </NavLink>
             <button
@@ -32,6 +28,7 @@ function Navbar() {
               aria-controls="main_nav"
               aria-expanded="false"
               aria-label="Toggle navigation"
+              style={{ color: "#444", padding: "0" }}
             >
               <AiOutlineMenuUnfold />
             </button>
@@ -53,13 +50,13 @@ function Navbar() {
                             <div className="col-md-4 mega_menu_items" key={i}>
                               <img
                                 className="city-icon"
-                                src={elem.cityImg}
-                                alt={elem.city.name}
+                                src={elem?.img}
+                                alt={elem?.name}
                               />
                               <NavLink
-                                to={`/coworking-space/${elem.city.name.toLowerCase()}`}
+                                to={`/coworking-space/${elem.name.toLowerCase()}`}
                               >
-                                {elem.city.name}
+                                {elem?.name}
                               </NavLink>
                             </div>
                           );
@@ -69,7 +66,7 @@ function Navbar() {
                   </div>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link">Virtual Office</NavLink>
+                  <PopupBtn />
                 </li>
               </ul>
               <ul className="navbar-nav">
