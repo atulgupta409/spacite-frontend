@@ -278,6 +278,10 @@ const PropertyPage = () => {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   const handleSheet = async () => {
     try {
       const response = await fetch(
