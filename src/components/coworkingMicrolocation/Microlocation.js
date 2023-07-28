@@ -253,8 +253,10 @@ function Microlocation() {
                             cityName
                       }
                       plans={workspace?.plans
-                        ?.reduce((prev, current) =>
-                          current.price < prev.price ? current : prev
+                        ?.reduce(
+                          (prev, current) =>
+                            current.price < prev.price ? current : prev,
+                          { price: Infinity }
                         )
                         .price?.toLocaleString()}
                     />
@@ -313,8 +315,10 @@ function Microlocation() {
                           cityName
                     }
                     plans={workspace?.plans
-                      ?.reduce((prev, current) =>
-                        current.price < prev.price ? current : prev
+                      ?.reduce(
+                        (prev, current) =>
+                          current.price < prev.price ? current : prev,
+                        { price: Infinity }
                       )
                       .price?.toLocaleString()}
                   />

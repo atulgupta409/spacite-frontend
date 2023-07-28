@@ -68,10 +68,12 @@ function PopularCoworking() {
                                   }
                                   cityName={mySpace?.location?.city?.name}
                                   plans={mySpace?.plans
-                                    ?.reduce((prev, current) =>
-                                      current.price < prev.price
-                                        ? current
-                                        : prev
+                                    ?.reduce(
+                                      (prev, current) =>
+                                        current.price < prev.price
+                                          ? current
+                                          : prev,
+                                      { price: Infinity }
                                     )
                                     .price?.toLocaleString()}
                                 />

@@ -401,7 +401,10 @@ const PropertyPage = () => {
               ₹
               {workSpace?.plans
                 ?.reduce((prev, current) => {
-                  return current.price < prev.price ? current : prev;
+                  return (
+                    current.price < prev.price ? current : prev,
+                    { price: Infinity }
+                  );
                 })
                 .price?.toLocaleString()}
               /*<span>month</span>
@@ -670,8 +673,10 @@ const PropertyPage = () => {
                           }
                           cityName={workspace?.location?.city?.name}
                           plans={workspace?.plans
-                            ?.reduce((prev, current) =>
-                              current.price < prev.price ? current : prev
+                            ?.reduce(
+                              (prev, current) =>
+                                current.price < prev.price ? current : prev,
+                              { price: Infinity }
                             )
                             .price?.toLocaleString()}
                         />
@@ -696,7 +701,10 @@ const PropertyPage = () => {
             ₹
             {workSpace?.plans
               ?.reduce((prev, current) => {
-                return current.price < prev.price ? current : prev;
+                return (
+                  current.price < prev.price ? current : prev,
+                  { price: Infinity }
+                );
               })
               .price.toLocaleString()}
             /*<span>month</span>
