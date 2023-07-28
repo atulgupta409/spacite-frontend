@@ -11,42 +11,42 @@ export const CityProvider = ({ children }) => {
     {
       id: 1,
       name: "Gurugram",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689759658351.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546502492.png",
       featureImg:
         "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115439780.png",
     },
     {
       id: 2,
       name: "Mumbai",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689759687835.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546528936.png",
       featureImg:
         "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115449838.png",
     },
     {
       id: 3,
       name: "Bangalore",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689759647343.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546467957.png",
       featureImg:
         "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115481557.png",
     },
     {
       id: 4,
       name: "Pune",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689759707585.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546552914.png",
       featureImg:
         "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115398091.png",
     },
     {
       id: 5,
       name: "Hyderabad",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689759675068.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546515882.png",
       featureImg:
         "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115459637.png",
     },
     {
       id: 6,
       name: "Noida",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689759698530.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546538196.png",
       featureImg:
         "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115417240.png",
     },

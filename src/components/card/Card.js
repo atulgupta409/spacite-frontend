@@ -38,42 +38,42 @@ function Card({
           <div className="card_amenities">
             <div className="mob_hide">
               <img
-                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png"
+                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546657692.png"
                 alt="wifi"
                 className="img-fluid"
               />
             </div>
             <div className="mob_hide">
               <img
-                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png"
+                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690547110239.png"
                 alt="dedicated desk"
                 className="img-fluid"
               />
             </div>
             <div className="mob_hide">
               <img
-                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png"
+                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546700575.png"
                 alt="meeting rooms"
                 className="img-fluid"
               />
             </div>
             <div className="mob_hide">
               <img
-                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png"
+                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546722342.png"
                 alt="printer"
                 className="img-fluid"
               />
             </div>
             <div className="mob_hide">
               <img
-                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760917850.png"
+                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546739691.png"
                 alt="pantry"
                 className="img-fluid"
               />
             </div>
             <div className="mob_hide">
               <img
-                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png"
+                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546750951.png"
                 alt="parking"
                 className="img-fluid"
               />
