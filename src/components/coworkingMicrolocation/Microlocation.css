@@ -48,6 +48,9 @@
 .img_box_micro {
   width: 100%;
 }
+.pagination_box {
+  margin-bottom: 55px;
+}
 @media only screen and (max-width: 768px) {
   .card_body_mob {
     display: flex;
@@ -69,6 +72,7 @@
   .micro_card_box {
     padding-right: 0;
     margin-bottom: 30px;
+    padding-left: 22px;
   }
   .img_box2 {
     height: 147px;

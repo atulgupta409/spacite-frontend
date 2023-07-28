@@ -67,11 +67,11 @@ function Section1() {
                       return (
                         <div key={i}>
                           <NavLink
-                            to={`/coworking-space/${elem.city.name.toLowerCase()}`}
+                            to={`/coworking-space/${elem?.name.toLowerCase()}`}
                           >
                             <div className="city_item">
-                              <img src={elem?.cityImg} alt={elem.city.name} />
-                              <p>{elem?.city.name}</p>
+                              <img src={elem?.img} alt={elem?.name} />
+                              <p>{elem?.name}</p>
                             </div>
                           </NavLink>
                         </div>

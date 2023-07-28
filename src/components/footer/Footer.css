@@ -53,4 +53,10 @@
     font-weight: 500;
     text-decoration: none;
   }
+  .footer_logo img {
+    width: 100px;
+  }
+  .footer_h4 {
+    font-size: 16px;
+  }
 }

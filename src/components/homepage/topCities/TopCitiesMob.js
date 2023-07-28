@@ -45,48 +45,48 @@ function TopCitiesMob() {
   return (
     <div>
       <div className="container">
-        <h2>
+        <h2 className="mb-4">
           Top Coworking <span className="top_city_span">Cities</span>
         </h2>
         <div className="micro_location_properties near_coworking">
           <div className="row mb-5">
-            <div className="col-md-12">
-              <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
-                {allCities?.map((city) => {
-                  return lowestPricesWithCity
-                    ?.filter(
-                      (workspace) => workspace?.city === city?.city?.name
-                    )
-                    ?.map((myspace, j) => (
-                      <div className="carousel-items w-100" key={j}>
-                        <Link
-                          to={`/coworking-space/${city?.city?.name.toLowerCase()}`}
+            {allCities?.map((city) => {
+              return lowestPricesWithCity
+                ?.filter((workspace) => workspace?.city === city?.name)
+                ?.map((myspace, j) => (
+                  <div className="mb-4 col-6" key={j}>
+                    <Link to={`/coworking-space/${city?.name.toLowerCase()}`}>
+                      <div className="property_card">
+                        <div
+                          style={{
+                            overflow: "hidden",
+                            padding: "0",
+                            height: "147px",
+                            width: "auto",
+                          }}
+                          className="img_box"
                         >
-                          <div className="property_card">
-                            <div className="img_box">
-                              <img
-                                src={city?.cityFeatureImg}
-                                alt={city?.city?.name}
-                                className="img-fluid"
-                              />
-                            </div>
-                            <div className="card_body">
-                              <div className="location_box">
-                                <p>{city?.city?.name}</p>
-                              </div>
-                              <div className="price_box">
-                                <p className="price">
-                                  ₹ {myspace?.lowestPrice} /*<span>Month</span>
-                                </p>
-                              </div>
-                            </div>
+                          <img
+                            src={city?.featureImg}
+                            alt={city?.name}
+                            className="img-fluid"
+                          />
+                        </div>
+                        <div className="card_body">
+                          <div className="location_box">
+                            <p>{city?.name}</p>
                           </div>
-                        </Link>
+                          {/* <div className="price_box">
+                            <p className="price">
+                              ₹ {myspace?.lowestPrice} /*<span>Month</span>
+                            </p>
+                          </div> */}
+                        </div>
                       </div>
-                    ));
-                })}
-              </Carousel>
-            </div>
+                    </Link>
+                  </div>
+                ));
+            })}
           </div>
         </div>
       </div>

@@ -236,14 +236,15 @@ h2 {
     text-align: left;
   }
   h2 {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 28px;
   }
   .main_banner {
     padding-top: 0px;
     height: auto;
-    padding: 114px 0;
+    padding: 82px 0;
     width: 100vw;
+    margin-top: 55px;
   }
   .main_banner2 {
     padding-top: 20px;

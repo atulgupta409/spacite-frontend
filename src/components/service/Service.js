@@ -1,27 +1,26 @@
 import axios from "axios";
 import baseUrl from "../../environment/api-config";
 
-export const getCity = async (setCities) => {
-  const selectedCities = [
-    "Noida",
-    "Gurugram",
-    "Hyderabad",
-    "Mumbai",
-    "Pune",
-    "Bangalore",
-    "Ahmedabad",
-  ];
+// export const getCity = async (setCities) => {
+//   const selectedCities = [
+//     "Gurugram",
+//     "Mumbai",
+//     "Bangalore",
+//     "Pune",
+//     "Hyderabad",
+//     "Noida",
+//   ];
 
-  try {
-    const { data } = await axios.get(`${baseUrl}/api/cities`);
-    const filteredCities = data?.filter((cityObj) =>
-      selectedCities.includes(cityObj.name)
-    );
-    setCities(filteredCities);
-  } catch (err) {
-    console.log(err);
-  }
-};
+//   try {
+//     const { data } = await axios.get(`${baseUrl}/api/cities`);
+//     const filteredCities = data?.filter((cityObj) =>
+//       selectedCities.includes(cityObj.name)
+//     );
+//     setCities(filteredCities);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 export const getMicrolocationByCity = async (
   cityName,
@@ -199,7 +198,7 @@ export const getWorkSpaceForCityPage = async (setWorkspaces, cityNames) => {
     let res = [];
     cityNames?.forEach(async (cityName) => {
       const { data } = await axios.get(
-        `${baseUrl}/api/coworking/${cityName?.city?.name}`
+        `${baseUrl}/api/coworking/${cityName?.name}`
       );
       res.push(data);
       if (cityNames.length === res.length && cityNames.length > 0) {

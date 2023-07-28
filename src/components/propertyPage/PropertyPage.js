@@ -5,7 +5,6 @@ import Select from "react-select";
 import Footer from "../footer/Footer";
 import SpaceExpert from "../homepage/spaceExpert/SpaceExpert";
 import { CityContext } from "../context/CityContext";
-import top_gurgaon from "../media/coworking_img/top-gurgaon.png";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import axios from "axios";
 import Modal from "react-modal";
@@ -341,7 +340,11 @@ const PropertyPage = () => {
         /> */}
       </Helmet>
       <div className="container">
-        <nav aria-label="breadcrumb" style={{ marginTop: "100px" }}>
+        <nav
+          aria-label="breadcrumb"
+          className="mob_hide"
+          style={{ marginTop: "100px" }}
+        >
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
               <Link to="/">Home</Link>
@@ -361,11 +364,11 @@ const PropertyPage = () => {
             </li>
           </ol>
         </nav>
-        <hr style={{ color: "rgba(68, 68, 68, 0.1)" }} />
+        <hr style={{ color: "rgba(68, 68, 68, 0.3)" }} className="mob_hide" />
       </div>
-      <div className="container">
+      <div className="container container_padding">
         <div className="row title_section_property">
-          <div className="col-md-6">
+          <div className="col-md-9">
             <h1 className="title_heading_property">
               {workSpace?.name?.split(" ").length > 1 ? (
                 <span>
@@ -470,7 +473,7 @@ const PropertyPage = () => {
                   </div>
                   <div className="col-4 desk_icon_box">
                     <img src={planElem?.planImg} alt="desk" />
-                    <div className="explore_box mob_hide">
+                    <div className="explore_box">
                       <p onClick={animate}>Enquire</p>
                       <img src={explore_icon} alt="explore" />
                     </div>
@@ -627,7 +630,7 @@ const PropertyPage = () => {
       <div className="desk_hide">
         <SpaceExpert />
       </div>
-      <div className="container mb-5">
+      <div className="container mb-5 container_padding">
         <h2 className="text_left mb-5">
           Similar coworking spaces in
           <span className="city_span">
@@ -643,110 +646,6 @@ const PropertyPage = () => {
                   {nearSpace?.slice(0, 10)?.map((workspace, i) => {
                     return (
                       <div className="carousel-items" key={i}>
-                        {/* <div className="property_card">
-                          <Link
-                            to={`/coworking/${space?.slug}`}
-                            target="_blank"
-                            style={{ padding: "0" }}
-                          >
-                            <div className="img_box">
-                              <img
-                                src={
-                                  space.images.length > 0
-                                    ? space.images[0].image
-                                    : top_gurgaon
-                                }
-                                alt={
-                                  space.images.length > 0
-                                    ? space.images[0].alt
-                                    : "workImage"
-                                }
-                                className="img-fluid"
-                              />
-                            </div>
-                          </Link>
-                          <div className="card_body">
-                            <p className="card-title">
-                              {space?.name?.length > 22
-                                ? space?.name?.substring(0, 20) + "..."
-                                : space?.name}
-                            </p>
-                            <div className="location_box">
-                              <p>
-                                {space?.location?.micro_location?.name +
-                                  ", " +
-                                  space?.location?.city?.name}
-                              </p>
-                            </div>
-                            <div className="card_amenities">
-                              <div>
-                                <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png"
-                                  alt="wifi"
-                                  className="img-fluid"
-                                />
-                              </div>
-                              <div>
-                                <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760820901.png"
-                                  alt="dedicated desk"
-                                  className="img-fluid"
-                                />
-                              </div>
-                              <div>
-                                <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png"
-                                  alt="meeting rooms"
-                                  className="img-fluid"
-                                />
-                              </div>
-                              <div>
-                                <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png"
-                                  alt="printer"
-                                  className="img-fluid"
-                                />
-                              </div>
-                              <div>
-                                <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760917850.png"
-                                  alt="pantry"
-                                  className="img-fluid"
-                                />
-                              </div>
-                              <div>
-                                <img
-                                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png"
-                                  alt="parking"
-                                  className="img-fluid"
-                                />
-                              </div>
-                            </div>
-                            <p className="price_from">Starting</p>
-                            <div className="price_box">
-                              <p className="price">
-                                ₹{" "}
-                                {space?.plans
-                                  ?.reduce((prev, current) =>
-                                    current.price < prev.price ? current : prev
-                                  )
-                                  .price?.toLocaleString()}{" "}
-                                /*<span>month</span>
-                              </p>
-                            </div>
-                          </div>
-                          <div className="card_button_link">
-                            <div onClick={openModal}>Enquire Now</div>
-                            <div>
-                              <Link
-                                to={`/coworking/${space?.slug}`}
-                                target="_blank"
-                              >
-                                Explore Now
-                              </Link>
-                            </div>
-                          </div>
-                        </div> */}
                         <Card
                           cardClass={"property_card"}
                           imgBoxClass={"img_box"}
@@ -805,10 +704,10 @@ const PropertyPage = () => {
         </div>
         <button
           onClick={openModal}
-          className="fix_btn globalBtn"
-          style={{ width: "110px" }}
+          className={shake ? "shake fix_btn globalBtn" : "fix_btn globalBtn"}
+          style={{ width: "125px" }}
         >
-          Enquire
+          Enquire Now
         </button>
 
         <Modal

@@ -28,7 +28,7 @@ function PopularCoworking() {
         {cities?.map((elem, i) => {
           return (
             <div style={{ marginTop: "30px", marginBottom: "30px" }} key={i}>
-              <h2>
+              <h2 className="mb-4">
                 Popular Coworking in{" "}
                 <span className="top_city_span">{elem.name}</span>
               </h2>
