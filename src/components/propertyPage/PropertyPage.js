@@ -384,7 +384,7 @@ const PropertyPage = () => {
                 workSpace?.name
               )}
             </h1>
-            <p>
+            <p style={{ color: "#959191" }}>
               <span>
                 <img
                   src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624416819.png"
@@ -401,10 +401,7 @@ const PropertyPage = () => {
               ₹
               {workSpace?.plans
                 ?.reduce((prev, current) => {
-                  return (
-                    current.price < prev.price ? current : prev,
-                    { price: Infinity }
-                  );
+                  return current.price < prev.price ? current : prev;
                 })
                 .price?.toLocaleString()}
               /*<span>month</span>
@@ -701,10 +698,7 @@ const PropertyPage = () => {
             ₹
             {workSpace?.plans
               ?.reduce((prev, current) => {
-                return (
-                  current.price < prev.price ? current : prev,
-                  { price: Infinity }
-                );
+                return current.price < prev.price ? current : prev;
               })
               .price.toLocaleString()}
             /*<span>month</span>
