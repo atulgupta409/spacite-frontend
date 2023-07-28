@@ -15,10 +15,25 @@
 .client_box {
   width: 189px;
 }
+/* .react-multiple-carousel__arrow--right {
+  right: -18px !important;
+}
+.react-multiple-carousel__arrow {
+  background: transparent !important;
+}
+.react-multiple-carousel__arrow::before {
+  color: #d09cff !important;
+}
+.react-multiple-carousel__arrow--left {
+  left: -15px !important;
+}
+.react-multiple-carousel__arrow:hover {
+  background: transparent;
+} */
 @media only screen and (max-width: 768px) {
   .main_banner_partner {
     background-image: url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688621422812.png");
-    height: 26vh;
+    height: 26%;
   }
 }
 @media only screen and (max-width: 576px) {

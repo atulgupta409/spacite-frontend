@@ -35,7 +35,7 @@ function PremiumBrands() {
         </div>
         <div className="micro_location_properties">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12" style={{ width: "99%" }}>
               <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
                 {brands
                   ?.filter((brand) => brand?.should_show_on_home == true)
