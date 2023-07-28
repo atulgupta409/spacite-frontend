@@ -11,7 +11,7 @@ function Facility() {
         <div className="row facility_box">
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760889968.png"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546657692.png"
               alt="wifi"
             />
             <p className="facility_name">High speed wifi</p>
@@ -21,7 +21,7 @@ function Facility() {
           </div>
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760878265.png"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546687448.png"
               alt="comfy"
             />
             <p className="facility_name">Comfy workstation</p>
@@ -32,7 +32,7 @@ function Facility() {
           </div>
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760910065.png"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546700575.png"
               alt="meeting"
             />
             <p className="facility_name">Meeting rooms</p>
@@ -45,7 +45,7 @@ function Facility() {
         <div className="row facility_box">
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760932785.png"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546722342.png"
               alt="printer"
             />
             <p className="facility_name">Printer</p>
@@ -55,7 +55,7 @@ function Facility() {
           </div>
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760917850.png"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546739691.png"
               alt="pantry"
             />
             <p className="facility_name">Pantry</p>
@@ -66,7 +66,7 @@ function Facility() {
           </div>
           <div className="col-4">
             <img
-              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1689760925417.png"
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546750951.png"
               alt="parking"
             />
             <p className="facility_name">Parking</p>
