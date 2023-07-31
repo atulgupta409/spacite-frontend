@@ -63,10 +63,26 @@ function PopularCoworking() {
                                       ? mySpace?.name?.substring(0, 20) + "..."
                                       : mySpace?.name
                                   }
+                                  address={
+                                    (
+                                      mySpace?.location?.micro_location?.name +
+                                      mySpace?.location?.city?.name
+                                    )?.length > 26
+                                      ? (
+                                          mySpace?.location?.micro_location
+                                            ?.name +
+                                          ", " +
+                                          mySpace?.location?.city?.name
+                                        ).substring(0, 26) + "..."
+                                      : mySpace?.location?.micro_location
+                                          ?.name +
+                                        ", " +
+                                        mySpace?.location?.city?.name
+                                  }
+                                  cityName={mySpace?.location?.city?.name}
                                   microlocation={
                                     mySpace?.location?.micro_location?.name
                                   }
-                                  cityName={mySpace?.location?.city?.name}
                                   plans={mySpace?.plans
                                     ?.reduce(
                                       (prev, current) =>

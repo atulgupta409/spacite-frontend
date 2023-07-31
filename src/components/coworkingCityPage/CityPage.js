@@ -76,7 +76,7 @@ function CityPage() {
 
   const workImage =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
-  // console.log(seo);
+  console.log(seo);
 
   return (
     <div className="city_page_main city_page_main_box">
@@ -100,6 +100,7 @@ function CityPage() {
           property="twitter:image:alt"
           content={workSpaces?.images[0]?.alt}
         /> */}
+        <script type="application/ld+json">{seo?.script}</script>
       </Helmet>
 
       <div className="container">
@@ -264,20 +265,22 @@ function CityPage() {
                                           (
                                             mySpace?.location?.micro_location
                                               ?.name +
-                                            " " +
+                                            ", " +
                                             mySpace?.location?.city?.name
                                           )?.length > 26
                                             ? (
                                                 mySpace?.location
                                                   ?.micro_location?.name +
-                                                " " +
+                                                ", " +
                                                 mySpace?.location?.city?.name
                                               )?.substring(0, 26) + "..."
                                             : mySpace?.location?.micro_location
                                                 ?.name +
-                                              " " +
+                                              ", " +
                                               mySpace?.location?.city?.name
                                         }
+                                        cityName={mySpace?.location?.city?.name}
+                                        microlocation={microlocation?.name}
                                         plans={mySpace?.plans
                                           ?.reduce(
                                             (prev, current) =>
@@ -393,20 +396,22 @@ function CityPage() {
                                           (
                                             mySpace?.location?.micro_location
                                               ?.name +
-                                            " " +
+                                            ", " +
                                             mySpace?.location?.city?.name
                                           )?.length > 26
                                             ? (
                                                 mySpace?.location
                                                   ?.micro_location?.name +
-                                                " " +
+                                                ", " +
                                                 mySpace?.location?.city?.name
                                               )?.substring(0, 26) + "..."
                                             : mySpace?.location?.micro_location
                                                 ?.name +
-                                              " " +
+                                              ", " +
                                               mySpace?.location?.city?.name
                                         }
+                                        cityName={mySpace?.location?.city?.name}
+                                        microlocation={microlocation?.name}
                                         plans={mySpace?.plans
                                           ?.reduce(
                                             (prev, current) =>

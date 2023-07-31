@@ -66,7 +66,7 @@ function Navbar() {
                   </div>
                 </li>
                 <li className="nav-item">
-                  <PopupBtn />
+                  <PopupBtn location={"spacite.com"} />
                 </li>
               </ul>
               <ul className="navbar-nav">

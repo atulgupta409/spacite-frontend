@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import Carousel from "@itseasy21/react-elastic-carousel";
 import { CityContext } from "../../context/CityContext";
 import { Link } from "react-router-dom";
 import { getWorkSpaceForCityPage } from "../../service/Service";
 
 function TopCitiesMob() {
-  const { breakPoints, Myarrow, allCities } = useContext(CityContext);
+  const { allCities } = useContext(CityContext);
   const [workspaces, setWorkspaces] = useState([]);
 
   const handleFetchWorkspaces = async (cityNames) => {
@@ -74,7 +73,7 @@ function TopCitiesMob() {
                         </div>
                         <div className="card_body">
                           <div className="location_box">
-                            <p>{city?.name}</p>
+                            <p className="text-center">{city?.name}</p>
                           </div>
                           {/* <div className="price_box">
                             <p className="price">

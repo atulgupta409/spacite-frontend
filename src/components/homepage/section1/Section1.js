@@ -24,7 +24,6 @@ function Section1() {
     { value: "Gurugram", label: "Gurugram" },
     { value: "Mumbai", label: "Mumbai" },
     { value: "Hyderabad", label: "Hyderabad" },
-    { value: "Ahmedabad", label: "Ahmedabad" },
     { value: "Bangalore", label: "Bangalore" },
   ];
 

@@ -12,6 +12,8 @@ function Card({
   plans,
   cardClass,
   imgBoxClass,
+  cityName,
+  microlocation,
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
@@ -102,6 +104,8 @@ function Card({
         <ContactFormModal
           closeModal={closeModal}
           location={`spacite.com${slug}`}
+          cityName={cityName}
+          microlocation={microlocation}
         />
       </Modal>
     </>

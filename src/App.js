@@ -14,6 +14,7 @@ import Microlocation from "./components/coworkingMicrolocation/Microlocation";
 import FooterBottom from "./components/footer/FooterBottom";
 import ThankuPage from "./components/thankuPage/ThankuPage";
 import ErrorBoundary from "./components/coworkingCityPage/ErrorBoundry";
+import PrivacyPolicy from "./components/privacy-policy/PrivacyPolicy";
 
 function App() {
   const [workSpaces, setWorkspaces] = useState([]);
@@ -95,6 +96,14 @@ function App() {
             <Navbar key={18} />,
             <ThankuPage key={19} />,
             <Footer key={20} />,
+          ]}
+        />
+        <Route
+          path="/privacy-policy"
+          element={[
+            <Navbar key={21} />,
+            <PrivacyPolicy key={22} />,
+            <Footer key={23} />,
           ]}
         />
       </Routes>

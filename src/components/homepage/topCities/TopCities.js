@@ -21,6 +21,7 @@ function TopCities() {
                     src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115398091.png"
                     className="img-fluid"
                     alt="pune"
+                    style={{ width: "90%" }}
                   />
                   <div className="top_city_overlay">
                     <p>Pune</p>
@@ -31,9 +32,10 @@ function TopCities() {
               <div className="col-lg-6 city_img_box">
                 <NavLink to="/coworking-space/noida">
                   <img
-                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115417240.png"
+                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690797453434.jpg"
                     alt="noida"
                     className="img-fluid"
+                    style={{ width: "90%" }}
                   />
                   <div className="top_city_overlay">
                     <p>Noida</p>
@@ -44,9 +46,10 @@ function TopCities() {
               <div className="col-lg-12 city_img_box">
                 <NavLink to="/coworking-space/gurugram">
                   <img
-                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115439780.png"
+                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690797442284.jpg"
                     alt="gurgaon"
                     className="img-fluid"
+                    style={{ width: "94.3%" }}
                   />
                   <div className="top_city_overlay" style={{ width: "94.3%" }}>
                     <p>Gurugram</p>
@@ -61,6 +64,7 @@ function TopCities() {
                 src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115449838.png"
                 alt="mumbai"
                 className="img-fluid"
+                style={{ width: "94.3%" }}
               />
               <div className="top_city_overlay" style={{ width: "94.3%" }}>
                 <p>mumbai</p>
@@ -72,9 +76,10 @@ function TopCities() {
               <div className="col-lg-6 city_img_box">
                 <NavLink to="/coworking-space/hyderabad">
                   <img
-                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115459637.png"
+                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690796061086.jpg"
                     alt="hyderabad"
                     className="img-fluid"
+                    style={{ width: "90%" }}
                   />
                   <div className="top_city_overlay">
                     <p>Hyderabad</p>
@@ -87,6 +92,7 @@ function TopCities() {
                     src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115469731.png"
                     alt="ahmedabad"
                     className="img-fluid"
+                    style={{ width: "90%" }}
                   />
                   <div className="top_city_overlay">
                     <p>Ahmedabad</p>
@@ -99,6 +105,7 @@ function TopCities() {
                     src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115481557.png"
                     alt="banglore"
                     className="img-fluid"
+                    style={{ width: "94.3%" }}
                   />
                   <div className="top_city_overlay" style={{ width: "94.3%" }}>
                     <p>Bangalore</p>

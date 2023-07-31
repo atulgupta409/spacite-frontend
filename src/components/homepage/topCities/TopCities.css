@@ -26,10 +26,14 @@
 .city_img_box {
   position: relative;
   margin-bottom: 20px;
+  padding: 0;
+  overflow: hidden;
 }
 .city_img_box img {
-  width: 100%;
   border-radius: 20px;
+  object-fit: cover;
+  /* width: 100%; */
+  height: 100%;
 }
 .top_city_overlay {
   position: absolute;

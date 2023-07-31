@@ -84,10 +84,7 @@ function FooterBottom() {
                 <Link to="/contact">Contact Us</Link>
               </li>
               <li className="footer_list_item">
-                <Link>Privacy Policy</Link>
-              </li>
-              <li className="footer_list_item">
-                <Link>Terms & Conditions</Link>
+                <Link to="/privacy-policy">Privacy Policy</Link>
               </li>
             </ul>
           </div>
