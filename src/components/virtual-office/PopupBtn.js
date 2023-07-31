@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ContactFormModal from "../modal-form/ContactFormModal";
 import Modal from "react-modal";
 import { NavLink } from "react-router-dom";
+import FormModal from "./FormModal";
 
 function PopupBtn({ location }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -12,6 +12,7 @@ function PopupBtn({ location }) {
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
   return (
     <>
       <NavLink className="nav-link" onClick={openModal}>
@@ -23,7 +24,7 @@ function PopupBtn({ location }) {
         contentLabel="Example Modal"
         ariaHideApp={false}
       >
-        <ContactFormModal closeModal={closeModal} location={location} />
+        <FormModal closeModal={closeModal} location={location} />
       </Modal>
     </>
   );

@@ -13,7 +13,7 @@ export const CityProvider = ({ children }) => {
       name: "Gurugram",
       img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546502492.png",
       featureImg:
-        "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115439780.png",
+        "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690797442284.jpg",
     },
     {
       id: 2,
@@ -41,14 +41,14 @@ export const CityProvider = ({ children }) => {
       name: "Hyderabad",
       img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546515882.png",
       featureImg:
-        "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115459637.png",
+        "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690796061086.jpg",
     },
     {
       id: 6,
       name: "Noida",
       img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546538196.png",
       featureImg:
-        "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115417240.png",
+        "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690797453434.jpg",
     },
   ];
 

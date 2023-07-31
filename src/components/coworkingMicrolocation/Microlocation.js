@@ -105,9 +105,7 @@ function Microlocation() {
         <title>{seo?.title}</title>
         <meta name="description" content={seo?.description} />
         <meta name="keywords" content={seo?.keywords} />
-        {/* <script type="application/ld+json">
-          {JSON.stringify(seo?.script)}
-        </script> */}
+        <script type="application/ld+json">{seo?.script}</script>
         <meta property="og:title" content={seo?.open_graph?.title} />
         <meta
           property="og:description"
@@ -240,18 +238,20 @@ function Microlocation() {
                       address={
                         (
                           workspace?.location?.micro_location?.name +
-                          " " +
+                          ", " +
                           cityName
                         )?.length > 26 && window.innerWidth > 576
                           ? (
                               workspace?.location?.micro_location?.name +
-                              " " +
+                              ", " +
                               cityName
                             )?.substring(0, 26) + "..."
                           : workspace?.location?.micro_location?.name +
-                            " " +
+                            ", " +
                             cityName
                       }
+                      cityName={cityName}
+                      microlocation={workspace?.location?.micro_location?.name}
                       plans={workspace?.plans
                         ?.reduce(
                           (prev, current) =>
@@ -302,18 +302,20 @@ function Microlocation() {
                     address={
                       (
                         workspace?.location?.micro_location?.name +
-                        " " +
+                        ", " +
                         cityName
                       )?.length > 26 && window.innerWidth > 576
                         ? (
                             workspace?.location?.micro_location?.name +
-                            " " +
+                            ", " +
                             cityName
                           )?.substring(0, 26) + "..."
                         : workspace?.location?.micro_location?.name +
-                          " " +
+                          ", " +
                           cityName
                     }
+                    cityName={cityName}
+                    microlocation={workspace?.location?.micro_location?.name}
                     plans={workspace?.plans
                       ?.reduce(
                         (prev, current) =>

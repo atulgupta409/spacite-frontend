@@ -14,6 +14,7 @@ import PopularCoworking from "../popularCoworking/PopularCoworking";
 import { Helmet } from "react-helmet-async";
 import { getSeo } from "../../service/Service";
 import { useLocation } from "react-router-dom";
+import FooterTop from "../../footer/FooterTop";
 
 function Herohome() {
   const location = useLocation();
@@ -37,7 +38,7 @@ function Herohome() {
 
   const handleFetchSeo = async () => {
     try {
-      const response = await getSeo(setSeo, "home", defaultSeo);
+      await getSeo(setSeo, "home", defaultSeo);
     } catch (error) {
       console.error(error);
       setSeo(defaultSeo);
@@ -65,6 +66,10 @@ function Herohome() {
     handleFetchSeo();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <div>
       <Helmet>
@@ -87,6 +92,7 @@ function Herohome() {
           property="twitter:image:alt"
           content={workSpaces?.images[0]?.alt}
         /> */}
+        <script type="application/ld+json">{seo?.script}</script>
       </Helmet>
       <Section1 />
       {/* <NearCoworking /> */}
@@ -109,6 +115,7 @@ function Herohome() {
       <PremiumBrands />
       <Partner />
       <Faq />
+      <FooterTop pathName={"home"} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import baseUrl from "../../environment/api-config";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 
-function ContactFormModal({ closeModal, location }) {
+function ContactFormModal({ closeModal, location, cityName, microlocation }) {
   const navigate = useNavigate();
 
   const optionsOfficeType = [
@@ -100,6 +100,8 @@ function ContactFormModal({ closeModal, location }) {
             no_of_seats: noSeats,
             move_in: moveIn,
             location: location,
+            city: cityName,
+            microlocation: microlocation,
           },
           {
             headers: {
@@ -123,7 +125,7 @@ function ContactFormModal({ closeModal, location }) {
   const handleSheet = async () => {
     try {
       const response = await fetch(
-        "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=Sheet1",
+        "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=coworking",
         {
           method: "POST",
           headers: {
@@ -137,6 +139,8 @@ function ContactFormModal({ closeModal, location }) {
               officeType,
               noSeats,
               moveIn,
+              // cityName,
+              // microlocation,
               location,
               new Date().toLocaleString(),
             ],

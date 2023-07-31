@@ -240,7 +240,7 @@
   position: relative;
 }
 .carousel-items {
-  margin: 0 21px 0 0;
+  margin: 0 19px 0 2px;
   /* width: 100%; */
 }
 .top_micro_properties {
@@ -286,8 +286,9 @@
     margin-top: -25px;
   }
   .location_box p {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 20px;
+    font-weight: 500;
   }
   .price_from {
     font-size: 14px;

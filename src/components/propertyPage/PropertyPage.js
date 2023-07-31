@@ -91,7 +91,7 @@ const PropertyPage = () => {
     {
       id: 2,
       name: "Hot Desk",
-      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688626806995.png",
+      img: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690778227285.png",
       description: "Dynamic workspace for versatile professionals.",
     },
     {
@@ -204,7 +204,7 @@ const PropertyPage = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const selectChangeHandlerOffice = (officeType, noSeats, moveIn) => {
+  const selectChangeHandlerOffice = (officeType) => {
     setOfficeType(officeType?.value);
   };
   const selectChangeHandlerSeats = (noSeats) => {
@@ -216,19 +216,22 @@ const PropertyPage = () => {
 
   const phonePattern = /^\d{10}$/;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const validation = () => {
+  const validationName = () => {
     if (user.name.trim() === "") {
       setNameError("Name is required");
     } else {
       setNameError("");
     }
-
+  };
+  const validationEmail = () => {
     if (!emailPattern.test(user.email)) {
       setEmailError("Invalid email format");
     } else {
       setEmailError("");
     }
+  };
 
+  const validationPhone = () => {
     if (!phonePattern.test(user.phone)) {
       setPhoneError("Invalid phone number");
     } else {
@@ -247,10 +250,12 @@ const PropertyPage = () => {
       setMoveIn("");
       setNoSeats(null);
       setOfficeType("");
-      validation();
+      validationName();
+      validationEmail();
+      validationPhone();
       setLoading(true);
       try {
-        const response = await axios.post(
+        await axios.post(
           `${baseUrl}/sendmail`,
           {
             name: user.name,
@@ -259,6 +264,8 @@ const PropertyPage = () => {
             office_type: officeType,
             no_of_seats: noSeats,
             move_in: moveIn,
+            // city: workSpace?.location?.city?.name,
+            // microlocation: workSpace?.location?.micro_location?.name,
             location: window.location.href,
           },
           {
@@ -274,18 +281,16 @@ const PropertyPage = () => {
         console.error(error);
       }
     } else {
-      validation();
+      validationName();
+      validationEmail();
+      validationPhone();
     }
   };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
 
   const handleSheet = async () => {
     try {
       const response = await fetch(
-        "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=Sheet1",
+        "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=coworking",
         {
           method: "POST",
           headers: {
@@ -310,6 +315,10 @@ const PropertyPage = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   const [shake, setShake] = useState(false);
 
@@ -342,6 +351,7 @@ const PropertyPage = () => {
           property="twitter:image:alt"
           content={workSpace?.images[0]?.alt}
         /> */}
+        <script type="application/ld+json">{seo?.script}</script>
       </Helmet>
       <div className="container">
         <nav
@@ -462,28 +472,34 @@ const PropertyPage = () => {
             </div>
             <hr className="devider_line" />
             {plans?.map((planElem, i) => {
-              return (
-                <div className="row category_section_property" key={i}>
-                  <div className="col-8">
-                    <h4>{planElem?.category?.name}</h4>
-                    <p className="mob_hide">{planElem?.description}</p>
-                    <p className="facility_name">Starting</p>
-                    <p className="facility_name">
-                      <span>₹{planElem?.price?.toLocaleString()}/*</span>
-                      <span>
-                        {planElem?.duration === "year" ? "Year" : "Seat"}
-                      </span>
-                    </p>
-                  </div>
-                  <div className="col-4 desk_icon_box">
-                    <img src={planElem?.planImg} alt="desk" />
-                    <div className="explore_box">
-                      <p onClick={animate}>Enquire</p>
-                      <img src={explore_icon} alt="explore" />
+              return coworkingPlans
+                ?.filter((elem) => {
+                  return elem.name === planElem?.category?.name;
+                })
+                ?.map((plan, j) => {
+                  return (
+                    <div className="row category_section_property" key={j}>
+                      <div className="col-8">
+                        <h4>{plan?.name}</h4>
+                        <p className="mob_hide">{plan?.description}</p>
+                        <p className="facility_name">Starting</p>
+                        <p className="facility_name">
+                          <span>₹{planElem?.price?.toLocaleString()}/*</span>
+                          <span>
+                            {planElem?.duration === "year" ? "Year" : "Seat"}
+                          </span>
+                        </p>
+                      </div>
+                      <div className="col-4 desk_icon_box">
+                        <img src={plan?.img} alt="desk" />
+                        <div className="explore_box">
+                          <p onClick={animate}>Enquire</p>
+                          <img src={explore_icon} alt="explore" />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
+                  );
+                });
             })}
             <hr className="devider_line" />
             <div className="row offers_section_property">
@@ -524,7 +540,7 @@ const PropertyPage = () => {
                         value={user.name}
                         name="name"
                         onChange={inputChangeHandler}
-                        onBlur={validation}
+                        onBlur={validationName}
                       />
                       {nameError && (
                         <p className="error_validate">{nameError}</p>
@@ -538,7 +554,7 @@ const PropertyPage = () => {
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
                         onChange={inputChangeHandler}
-                        onBlur={validation}
+                        onBlur={validationEmail}
                         name="email"
                         value={user.email}
                       />
@@ -556,7 +572,7 @@ const PropertyPage = () => {
                         value={user.phone}
                         aria-describedby="emailHelp"
                         onChange={inputChangeHandler}
-                        onBlur={validation}
+                        onBlur={validationPhone}
                       />
                       {phoneError && (
                         <p className="error_validate">{phoneError}</p>
@@ -669,10 +685,20 @@ const PropertyPage = () => {
                               ? workspace?.name?.substring(0, 20) + "..."
                               : workspace?.name
                           }
-                          microlocation={
-                            workspace?.location?.micro_location?.name
+                          address={
+                            (
+                              workspace?.location?.micro_location?.name +
+                              workspace?.location?.city?.name
+                            )?.length > 26
+                              ? (
+                                  workspace?.location?.micro_location?.name +
+                                  ", " +
+                                  workspace?.location?.city?.name
+                                ).substring(0, 26) + "..."
+                              : workspace?.location?.micro_location?.name +
+                                ", " +
+                                workspace?.location?.city?.name
                           }
-                          cityName={workspace?.location?.city?.name}
                           plans={workspace?.plans
                             ?.reduce(
                               (prev, current) =>
@@ -725,6 +751,8 @@ const PropertyPage = () => {
           <ContactFormModal
             closeModal={closeModal}
             location={window.location.href}
+            cityName={workSpace?.location?.city?.name}
+            microlocation={workSpace?.location?.micro_location?.name}
           />
         </Modal>
       </div>
