@@ -68,7 +68,7 @@
 }
 .category_section_property div p {
   font-size: 14px;
-  cursor: pointer;
+  margin-bottom: 0;
 }
 .category_section_property div p > span:nth-child(1) {
   color: #d09cff;
@@ -203,11 +203,16 @@
 .desk_icon_box {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+.desk_icon_box2 {
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
 }
 .desk_icon_box img {
-  width: 70px;
+  width: 55px;
 }
 .property_h3 {
   font-size: 24px;
@@ -325,6 +330,7 @@
   .category_section_property {
     margin: 30px 4px 30px;
     border-radius: 10px;
+    padding: 16px 4px;
   }
   .category_section_property div p {
     margin-bottom: 0;
@@ -341,6 +347,12 @@
   .text_left {
     margin-top: 30px;
     margin-bottom: 30px !important;
+  }
+  .category_section_property h4 {
+    margin-bottom: 0;
+  }
+  .desk_icon_box2 {
+    justify-content: flex-end;
   }
   .mb_30 {
     margin-bottom: 30px;

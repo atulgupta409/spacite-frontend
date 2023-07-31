@@ -479,21 +479,32 @@ const PropertyPage = () => {
                 ?.map((plan, j) => {
                   return (
                     <div className="row category_section_property" key={j}>
-                      <div className="col-8">
+                      <div className="col-6 col-sm-8">
+                        <div className="desk_icon_box">
+                          <img src={plan?.img} alt="desk" />
+                        </div>
                         <h4>{plan?.name}</h4>
                         <p className="mob_hide">{plan?.description}</p>
-                        <p className="facility_name">Starting</p>
-                        <p className="facility_name">
-                          <span>₹{planElem?.price?.toLocaleString()}/*</span>
-                          <span>
-                            {planElem?.duration === "year" ? "Year" : "Seat"}
-                          </span>
-                        </p>
                       </div>
-                      <div className="col-4 desk_icon_box">
-                        <img src={plan?.img} alt="desk" />
-                        <div className="explore_box">
-                          <p onClick={animate}>Enquire</p>
+                      <div className="col-6 col-sm-4 desk_icon_box2 mb-0 align-items-end">
+                        <div className="d-flex flex-column align-items-end">
+                          <p className="facility_name">Starting</p>
+                          <p className="facility_name">
+                            <span>
+                              ₹ {planElem?.price?.toLocaleString()}/-{" "}
+                            </span>
+                            <span>
+                              {planElem?.duration === "year" ? "Year" : "Seat"}
+                            </span>
+                          </p>
+                        </div>
+
+                        <div
+                          className="explore_box mob_hide"
+                          onClick={animate}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <p>Enquire</p>
                           <img src={explore_icon} alt="explore" />
                         </div>
                       </div>
