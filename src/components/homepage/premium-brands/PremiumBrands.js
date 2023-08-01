@@ -15,7 +15,6 @@ function PremiumBrands() {
   useEffect(() => {
     handleFetchBrands();
   }, []);
-  // console.log(brands);
 
   return (
     <div

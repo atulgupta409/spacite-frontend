@@ -20,7 +20,7 @@ function SpaceExpert() {
           </div>
           <div className="col-12 contact_box">
             <div className="contact_us text-center mt-3">
-              <p>Write to RoBi:</p>
+              <p>Write to RoBi</p>
               <a href="mailto:thespacite@gmail.com">thespacite@gmail.com</a>
             </div>
           </div>

@@ -84,7 +84,7 @@ function Card({
           <p className="price_from">Starting</p>
           <div className="price_box">
             <p className="price">
-              ₹ {plans} /*<span>month</span>
+              ₹ {plans}/- <span>month</span>
             </p>
           </div>
         </div>

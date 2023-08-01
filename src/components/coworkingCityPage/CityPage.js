@@ -22,13 +22,13 @@ function CityPage() {
   const [loadingMicrolocations, setLoadingMicrolocations] = useState(true);
   const [loadingSpaces, setLoadingSpaces] = useState(true);
   const [cityworkSpaces, setCityWorkspaces] = useState([]);
+  const [microlocations, setMicrolocations] = useState([]);
 
   const { breakPoints, Myarrow, setPath, seo } = useContext(CityContext);
   let pathName = `coworking-space-${lastElem}`;
   useEffect(() => {
     setPath(pathName);
   }, [pathName]);
-  const [microlocations, setMicrolocations] = useState([]);
 
   const handleFetchMicrolocations = async () => {
     try {
@@ -38,9 +38,8 @@ function CityPage() {
         setLoadingMicrolocations
       );
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
       setLoadingMicrolocations(false);
-      throw new Error(error);
     }
   };
 
@@ -76,7 +75,6 @@ function CityPage() {
 
   const workImage =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
-  console.log(seo);
 
   return (
     <div className="city_page_main city_page_main_box">
@@ -172,6 +170,10 @@ function CityPage() {
 
       {loadingSpaces ? (
         <div className="container d-flex justify-content-between flex-wrap">
+          <SpaceSkeleton />
+          <SpaceSkeleton />
+          <SpaceSkeleton />
+          <SpaceSkeleton />
           <SpaceSkeleton />
           <SpaceSkeleton />
           <SpaceSkeleton />
@@ -306,7 +308,6 @@ function CityPage() {
               );
             })}
           </div>
-
           <div className="contact_wrapper">
             <HomeContact city={cityName} microlocation={""} />
           </div>
@@ -456,7 +457,6 @@ function CityPage() {
                       .split(" ")
                       .join("-")}`}
                   >
-                    {/* <span className="mob_hide">Coworking space in</span>{" "} */}
                     <span className="mob_hide">Coworking space in</span>{" "}
                     {elem.name}
                   </NavLink>

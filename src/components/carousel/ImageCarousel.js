@@ -24,33 +24,45 @@ const ImageCarousel = ({ images }) => {
             </div>
           ))}
         </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleControls"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleControls"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
+        <div className="carousel-indicators">
+          {images?.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide-to={index}
+              className={index === 0 ? "active" : ""}
+              aria-current={index === 0 ? "true" : "false"}
+              aria-label={`Slide ${index + 1}`}
+            ></button>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
 export default ImageCarousel;
+
+// import React from "react";
+// import Carousel from "react-bootstrap/Carousel";
+
+// const ImageCarousel = ({ images }) => {
+//   return (
+//     <div className="image-carousel">
+//            {" "}
+//       <Carousel fade>
+//                {" "}
+//         {images?.map((image) => (
+//           <Carousel.Item key={image._id}>
+//                         <img src={image.image} />         {" "}
+//           </Carousel.Item>
+//         ))}
+//              {" "}
+//       </Carousel>
+//          {" "}
+//     </div>
+//   );
+// };
+
+// export default ImageCarousel;

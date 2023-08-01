@@ -1,45 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { CityContext } from "../../context/CityContext";
 import { Link } from "react-router-dom";
-import { getWorkSpaceForCityPage } from "../../service/Service";
 
 function TopCitiesMob() {
   const { allCities } = useContext(CityContext);
-  const [workspaces, setWorkspaces] = useState([]);
-
-  const handleFetchWorkspaces = async (cityNames) => {
-    getWorkSpaceForCityPage(setWorkspaces, cityNames);
-  };
-
-  useEffect(() => {
-    handleFetchWorkspaces(allCities);
-  }, [allCities]);
-
-  function findLowestPricesWithCity(workspaces) {
-    const result = [];
-
-    workspaces?.forEach((arrayOfObjects) => {
-      let lowestPrice = Infinity;
-      let cityNameWithLowestPrice = "";
-
-      arrayOfObjects.forEach((object) => {
-        const plansArray = object.plans;
-        plansArray.forEach((plan) => {
-          if (plan.price < lowestPrice) {
-            lowestPrice = plan.price;
-            cityNameWithLowestPrice = object.location.city.name;
-          }
-        });
-      });
-
-      result.push({ city: cityNameWithLowestPrice, lowestPrice });
-    });
-
-    return result;
-  }
-
-  const lowestPricesWithCity = findLowestPricesWithCity(workspaces);
-  // console.log(lowestPricesWithCity);
 
   return (
     <div>
@@ -49,42 +13,38 @@ function TopCitiesMob() {
         </h2>
         <div className="micro_location_properties near_coworking">
           <div className="row mb-5">
-            {allCities?.map((city) => {
-              return lowestPricesWithCity
-                ?.filter((workspace) => workspace?.city === city?.name)
-                ?.map((myspace, j) => (
-                  <div className="mb-4 col-6" key={j}>
-                    <Link to={`/coworking-space/${city?.name.toLowerCase()}`}>
-                      <div className="property_card">
-                        <div
-                          style={{
-                            overflow: "hidden",
-                            padding: "0",
-                            height: "147px",
-                            width: "auto",
-                          }}
-                          className="img_box"
-                        >
-                          <img
-                            src={city?.featureImg}
-                            alt={city?.name}
-                            className="img-fluid"
-                          />
-                        </div>
-                        <div className="card_body">
-                          <div className="location_box">
-                            <p className="text-center">{city?.name}</p>
-                          </div>
-                          {/* <div className="price_box">
-                            <p className="price">
-                              ₹ {myspace?.lowestPrice} /*<span>Month</span>
-                            </p>
-                          </div> */}
+            {allCities?.map((city, i) => {
+              return (
+                <div className="mb-4 col-6" key={i}>
+                  <Link
+                    to={`/coworking-space/${city?.name.toLowerCase()}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <div className="property_card">
+                      <div
+                        style={{
+                          overflow: "hidden",
+                          padding: "0",
+                          height: "147px",
+                          width: "auto",
+                        }}
+                        className="img_box"
+                      >
+                        <img
+                          src={city?.featureImg}
+                          alt={city?.name}
+                          className="img-fluid"
+                        />
+                      </div>
+                      <div className="card_body">
+                        <div className="location_box">
+                          <p className="text-center">{city?.name}</p>
                         </div>
                       </div>
-                    </Link>
-                  </div>
-                ));
+                    </div>
+                  </Link>
+                </div>
+              );
             })}
           </div>
         </div>
