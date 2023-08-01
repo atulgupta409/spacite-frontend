@@ -308,7 +308,7 @@ function CityPage() {
           </div>
 
           <div className="contact_wrapper">
-            <HomeContact />
+            <HomeContact city={cityName} microlocation={""} />
           </div>
           <div>
             {topMicrolocations?.slice(3, 6)?.map((microlocation, i) => {

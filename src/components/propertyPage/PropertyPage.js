@@ -239,6 +239,7 @@ const PropertyPage = () => {
     }
   };
 
+  const locationPage = window.location.href;
   const sendEmail = async (e) => {
     e.preventDefault();
     if (
@@ -264,9 +265,9 @@ const PropertyPage = () => {
             office_type: officeType,
             no_of_seats: noSeats,
             move_in: moveIn,
-            // city: workSpace?.location?.city?.name,
-            // microlocation: workSpace?.location?.micro_location?.name,
-            location: window.location.href,
+            location: locationPage,
+            city: workSpace?.location?.city?.name,
+            microlocation: workSpace?.location?.micro_location?.name,
           },
           {
             headers: {
@@ -275,10 +276,10 @@ const PropertyPage = () => {
           }
         );
         setLoading(false);
-        handleSheet();
+        handleSheet2();
         navigate("/thank-you");
       } catch (error) {
-        console.error(error);
+        console.error(error.message);
       }
     } else {
       validationName();
@@ -287,7 +288,7 @@ const PropertyPage = () => {
     }
   };
 
-  const handleSheet = async () => {
+  const handleSheet2 = async () => {
     try {
       const response = await fetch(
         "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=coworking",
@@ -304,7 +305,9 @@ const PropertyPage = () => {
               officeType,
               noSeats,
               moveIn,
-              location,
+              workSpace?.location?.city?.name,
+              workSpace?.location?.micro_location?.name,
+              locationPage,
               new Date().toLocaleString(),
             ],
           ]),
