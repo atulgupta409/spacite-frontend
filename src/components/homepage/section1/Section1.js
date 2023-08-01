@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./Section1.css";
 import Select from "react-select";
 import { CityContext } from "../../context/CityContext";
@@ -9,10 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 function Section1() {
   const { allCities } = useContext(CityContext);
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   console.log(handleFetchCities());
-  // }, []);
 
   const optionsLookingFor = [
     { value: "Coworking Space", label: "Coworking Space" },

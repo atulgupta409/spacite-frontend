@@ -7,7 +7,6 @@ import HomeContact from "../home-contact/HomeContact";
 import PremiumBrands from "../premium-brands/PremiumBrands";
 import Partner from "../partner/Partner";
 import Faq from "../faq/Faq";
-import NearCoworking from "../nearCoworking/NearCoworking";
 import TopCitiesMob from "../topCities/TopCitiesMob";
 import SpaceExpert from "../spaceExpert/SpaceExpert";
 import PopularCoworking from "../popularCoworking/PopularCoworking";
@@ -44,24 +43,7 @@ function Herohome() {
       setSeo(defaultSeo);
     }
   };
-  // const [latitude, setLatitude] = useState(null);
-  // const [longitude, setLongitude] = useState(null);
 
-  // useEffect(() => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         setLatitude(position.coords.latitude);
-  //         setLongitude(position.coords.longitude);
-  //       },
-  //       (error) => {
-  //         console.error("Error getting geolocation:", error);
-  //       }
-  //     );
-  //   } else {
-  //     console.error("Geolocation is not supported by this browser.");
-  //   }
-  // }, []);
   useEffect(() => {
     handleFetchSeo();
   }, []);
@@ -95,7 +77,6 @@ function Herohome() {
         <script type="application/ld+json">{seo?.script}</script>
       </Helmet>
       <Section1 />
-      {/* <NearCoworking /> */}
       <Section2 />
       <div className="desk_hide">
         <Facility />

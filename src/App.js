@@ -8,8 +8,6 @@ import PageNotExist from "./components/pagenotexist/PageNotExist";
 import CityPage from "./components/coworkingCityPage/CityPage";
 import Footer from "./components/footer/Footer";
 import PropertyPage from "./components/propertyPage/PropertyPage";
-import { getWorkSpaceData } from "./components/service/Service";
-import { useEffect, useState } from "react";
 import Microlocation from "./components/coworkingMicrolocation/Microlocation";
 import FooterBottom from "./components/footer/FooterBottom";
 import ThankuPage from "./components/thankuPage/ThankuPage";
@@ -17,14 +15,6 @@ import ErrorBoundary from "./components/coworkingCityPage/ErrorBoundry";
 import PrivacyPolicy from "./components/privacy-policy/PrivacyPolicy";
 
 function App() {
-  const [workSpaces, setWorkspaces] = useState([]);
-  const [pageLoading, setPageLoading] = useState(false);
-  const handleFetchWorkSpaceData = async () => {
-    await getWorkSpaceData(setWorkspaces, setPageLoading);
-  };
-  useEffect(() => {
-    handleFetchWorkSpaceData();
-  }, []);
   return (
     <div>
       <Routes>
@@ -52,16 +42,6 @@ function App() {
             <FooterBottom key={9} />,
           ]}
         />
-        {/* <Route
-          path="coworking-space/:cityName"
-          element={[
-            <Navbar key={10} />,
-            <ErrorBoundary>
-              <CityPage key={11} />
-            </ErrorBoundary>,
-            <Footer key={12} />,
-          ]}
-        /> */}
         <Route
           path="coworking-space/:cityName"
           element={
@@ -82,7 +62,6 @@ function App() {
             <Footer key={15} />,
           ]}
         />
-        {/* <Route path="/property-page" element={[<Navbar />, <PropertyPage />]} /> */}
         <Route path="*" element={<PageNotExist />} />
 
         <Route

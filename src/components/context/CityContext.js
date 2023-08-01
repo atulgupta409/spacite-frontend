@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { getCity } from "../service/Service";
-import Carousel, { consts } from "@itseasy21/react-elastic-carousel";
+import { consts } from "@itseasy21/react-elastic-carousel";
 import { getSeo } from "../service/Service";
 
 // Create the CityContext
@@ -81,12 +80,6 @@ export const CityProvider = ({ children }) => {
     handleFetchSeo();
   }, [path]);
 
-  // console.log(path);
-
-  // const handleFetchCities = async () => {
-  //   await getCity(setCities);
-  // };
-
   function Myarrow({ type, onClick, isEdge }) {
     const LeftArrow =
       "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688625125290.png";
@@ -124,16 +117,6 @@ export const CityProvider = ({ children }) => {
     { width: 1200, itemsToShow: 6 },
     { width: 1500, itemsToShow: 6 },
   ];
-
-  // Provide the cities data and handleFetchCities function to consuming components
-  // useEffect(() => {
-  //   const mainCities = cities?.map((city, i) => ({
-  //     city,
-  //     cityImg: coworkingCities[i]?.img,
-  //     cityFeatureImg: coworkingCities[i]?.featureImg,
-  //   }));
-  //   setAllCities([...mainCities]);
-  // }, [cities]);
 
   const allCities = cities;
   const cityData = {

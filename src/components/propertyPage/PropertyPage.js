@@ -665,9 +665,9 @@ const PropertyPage = () => {
         <SpaceExpert />
       </div>
       <div className="container mb-5 container_padding">
-        <h2 className="text_left mb-5">
-          Similar coworking spaces in
-          <span className="city_span">
+        <h2 className="text_left mb-5 d_block">
+          Similar Coworking Spaces in
+          <span className="city_span d_block">
             {" "}
             {workSpace?.location?.micro_location?.name}
           </span>
@@ -735,7 +735,7 @@ const PropertyPage = () => {
       <div className="footer_mob">
         <Footer />
       </div>
-      <div className="desk_hide fixed_div">
+      {/* <div className="desk_hide fixed_div">
         <div className="starting_price">
           <p>Starting</p>
           <p>
@@ -751,7 +751,7 @@ const PropertyPage = () => {
         <button
           onClick={openModal}
           className={shake ? "shake fix_btn globalBtn" : "fix_btn globalBtn"}
-          style={{ width: "125px" }}
+          style={{ width: "144px" }}
         >
           Enquire Now
         </button>
@@ -769,7 +769,43 @@ const PropertyPage = () => {
             microlocation={workSpace?.location?.micro_location?.name}
           />
         </Modal>
-      </div>
+      </div> */}
+      <nav className="navbar fixed-bottom navbar-light bg-white desk_hide">
+        <div className="container-fluid" style={{ padding: "18px 20px" }}>
+          <div className="starting_price">
+            <p>Starting</p>
+            <p>
+              ₹{" "}
+              {workSpace?.plans
+                ?.reduce((prev, current) => {
+                  return current.price < prev.price ? current : prev;
+                })
+                .price.toLocaleString()}
+              /- <span>month</span>
+            </p>
+          </div>
+          <button
+            onClick={openModal}
+            className={shake ? "shake fix_btn globalBtn" : "fix_btn globalBtn"}
+            style={{ width: "144px" }}
+          >
+            Enquire Now
+          </button>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={() => setModalIsOpen(false)}
+            contentLabel="Example Modal"
+            ariaHideApp={false}
+          >
+            <ContactFormModal
+              closeModal={closeModal}
+              location={window.location.href}
+              cityName={workSpace?.location?.city?.name}
+              microlocation={workSpace?.location?.micro_location?.name}
+            />
+          </Modal>
+        </div>
+      </nav>
     </>
   );
 };
