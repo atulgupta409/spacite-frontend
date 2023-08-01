@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import baseUrl from "../../../environment/api-config";
 
-function HomeContact() {
+function HomeContact({ city, microlocation }) {
   const navigate = useNavigate();
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
@@ -42,7 +42,7 @@ function HomeContact() {
     setUser({ ...user, [name]: value });
   };
 
-  const selectChangeHandlerOffice = (officeType, noSeats, moveIn) => {
+  const selectChangeHandlerOffice = (officeType) => {
     setOfficeType(officeType?.value);
   };
   const selectChangeHandlerSeats = (noSeats) => {
@@ -141,6 +141,8 @@ function HomeContact() {
               officeType,
               noSeats,
               moveIn,
+              city,
+              microlocation,
               location,
               new Date().toLocaleString(),
             ],

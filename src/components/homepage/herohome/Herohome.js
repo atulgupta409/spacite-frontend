@@ -110,7 +110,7 @@ function Herohome() {
       </div>
       <div className="mob_hide">
         <Facility />
-        <HomeContact />
+        <HomeContact city={""} microlocation={""} />
       </div>
       <PremiumBrands />
       <Partner />

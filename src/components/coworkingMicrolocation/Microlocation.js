@@ -272,7 +272,7 @@ function Microlocation() {
               )}
             </div>
           </div>
-          <HomeContact />
+          <HomeContact city={cityName} microlocation={microName} />
           <div className="container">
             <div className="row top_space_row">
               {extractedWorkspaces2?.map((workspace, i) => (
