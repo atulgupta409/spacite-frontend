@@ -1,12 +1,26 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 import { CityContext } from "../context/CityContext";
+import Modal from "react-modal";
+import FormModal from "../virtual-office/FormModal";
 
 function FooterBottom() {
   const { cities } = useContext(CityContext);
 
   let curYear = new Date().getFullYear();
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = (e) => {
+    e.preventDefault();
+    setModalIsOpen(true);
+  };
+
+  const closeModal = (e) => {
+    e.preventDefault();
+    setModalIsOpen(false);
+  };
+  const location = "spacite.com"
 
   return (
     <div className="footer_bottom_main">
@@ -52,7 +66,7 @@ function FooterBottom() {
               {cities?.map((city, i) => {
                 return (
                   <li className="footer_list_item" key={i}>
-                    <Link>
+                    <Link onClick={openModal}>
                       <span className="mob_hide">Virtual office in</span>{" "}
                       {city.name}
                     </Link>
@@ -75,7 +89,7 @@ function FooterBottom() {
                 <Link>Coworking Space</Link>
               </li>
               <li className="footer_list_item">
-                <Link>Virtual Office</Link>
+                <Link onClick={openModal}>Virtual Office</Link>
               </li>
               <li className="footer_list_item">
                 <Link to="/about">About Us</Link>
@@ -97,6 +111,14 @@ function FooterBottom() {
           </p>
         </div>
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        contentLabel="Example Modal"
+        ariaHideApp={false}
+      >
+        <FormModal closeModal={closeModal} location={location} />
+      </Modal>
     </div>
   );
 }

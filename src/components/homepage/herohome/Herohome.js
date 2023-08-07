@@ -53,7 +53,7 @@ function Herohome() {
   }, [location]);
 
   return (
-    <div>
+    <>
       <Helmet>
         <title>{seo?.title}</title>
         <meta name="description" content={seo?.description} />
@@ -97,7 +97,7 @@ function Herohome() {
       <Partner />
       <Faq />
       <FooterTop pathName={"home"} />
-    </div>
+    </>
   );
 }
 
