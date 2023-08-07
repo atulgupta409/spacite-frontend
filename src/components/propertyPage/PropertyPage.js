@@ -16,6 +16,7 @@ import ContactFormModal from "../modal-form/ContactFormModal";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import Card from "../card/Card";
 import ImageCarousel from "../carousel/ImageCarousel";
+import { decode } from "html-entities";
 
 const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
@@ -150,20 +151,19 @@ const PropertyPage = () => {
       icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546700575.png",
     },
     {
-      id: 9,
-      name: "Comfy Workstation",
-      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546687448.png",
-    },
-    {
       id: 10,
       name: "Parking",
       icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546750951.png",
+    },
+    {
+      id: 9,
+      name: "Comfy Workstation",
+      icon: "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546687448.png",
     },
   ];
 
   const [amenities, setAmenities] = useState([]);
   const { amenties } = workSpace;
-  // console.log(workSpace);
 
   useEffect(() => {
     const mainAmenities = amenties?.map((amenity, i) => ({
@@ -331,7 +331,8 @@ const PropertyPage = () => {
   };
 
   const { seo, images } = workSpace;
-
+  const city = workSpace?.location?.city?.name;
+  const decodedDescription = decode(workSpace?.description);
   return (
     <>
       <Helmet>
@@ -367,7 +368,7 @@ const PropertyPage = () => {
               <Link to="/">Home</Link>
             </li>
             <li className="breadcrumb-item">
-              <Link>Coworking Space</Link>
+              <Link to={`/coworking-space/${city?.toLowerCase()}`}>{city}</Link>
             </li>
             <li
               style={{
@@ -468,11 +469,19 @@ const PropertyPage = () => {
             <hr className="devider_line" />
             <div className="row about_property_section">
               <h3 className="property_h3">About this property</h3>
-              <div
-                dangerouslySetInnerHTML={{ __html: workSpace?.description }}
-                className="about_property_text"
-              />
+              {decodedDescription.trim() === "<p>empty</p>" ? (
+                <div className="about_property_text">
+                  This is the best coworking space in{" "}
+                  {workSpace?.location?.micro_location?.name}
+                </div>
+              ) : (
+                <div
+                  dangerouslySetInnerHTML={{ __html: workSpace?.description }}
+                  className="about_property_text"
+                />
+              )}
             </div>
+
             <hr className="devider_line" />
             {plans?.map((planElem, i) => {
               return coworkingPlans

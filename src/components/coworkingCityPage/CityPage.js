@@ -98,6 +98,11 @@ function CityPage() {
           property="twitter:image:alt"
           content={workSpaces?.images[0]?.alt}
         /> */}
+        {/* {seo.script?.map((elem, i) => {
+          return (
+            <script type="application/ld+json" key={i}>{elem}</script>
+          )
+        })} */}
         <script type="application/ld+json">{seo?.script}</script>
       </Helmet>
 
