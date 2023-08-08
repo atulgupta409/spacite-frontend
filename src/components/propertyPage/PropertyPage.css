@@ -219,6 +219,15 @@
   font-weight: 600;
   margin-bottom: 20px;
 }
+.property_h4 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.breadcrumb-item {
+  font-size: 14px !important;
+}
 .property_h2 {
   text-align: left;
 }

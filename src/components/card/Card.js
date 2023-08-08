@@ -37,7 +37,7 @@ function Card({
           <div className="location_box">
             <p>{address}</p>
           </div>
-          <div className="card_amenities">
+          {/* <div className="card_amenities">
             <div className="mob_hide">
               <img
                 src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546657692.png"
@@ -80,7 +80,7 @@ function Card({
                 className="img-fluid"
               />
             </div>
-          </div>
+          </div> */}
           <p className="price_from">Starting</p>
           <div className="price_box">
             <p className="price">
