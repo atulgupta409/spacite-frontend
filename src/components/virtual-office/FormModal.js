@@ -163,7 +163,10 @@ function FormModal({ closeModal, location }) {
         </button>
       </div>
       <div className="close_icon_box">
-        <h3 className="req_box">Request Call Back</h3>
+        <h3 className="req_box">
+          I'm Interested in{" "}
+          <span style={{ color: "#d09cff" }}>Virtual Office</span>
+        </h3>
       </div>
       <form onSubmit={sendEmail}>
         <div className="row">

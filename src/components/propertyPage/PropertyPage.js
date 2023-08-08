@@ -467,22 +467,6 @@ const PropertyPage = () => {
               </div>
             </div>
             <hr className="devider_line" />
-            <div className="row about_property_section">
-              <h3 className="property_h3">About this property</h3>
-              {decodedDescription.trim() === "<p>empty</p>" ? (
-                <div className="about_property_text">
-                  This is the best coworking space in{" "}
-                  {workSpace?.location?.micro_location?.name}
-                </div>
-              ) : (
-                <div
-                  dangerouslySetInnerHTML={{ __html: workSpace?.description }}
-                  className="about_property_text"
-                />
-              )}
-            </div>
-
-            <hr className="devider_line" />
             {plans?.map((planElem, i) => {
               return coworkingPlans
                 ?.filter((elem) => {
@@ -539,6 +523,21 @@ const PropertyPage = () => {
                   </div>
                 );
               })}
+            </div>
+            <hr className="devider_line" />
+            <div className="row about_property_section">
+              <h3 className="property_h3">Coworking Space</h3>
+              {decodedDescription.trim() === "<p>empty</p>" ? (
+                <div className="about_property_text">
+                  This is the best coworking space in{" "}
+                  {workSpace?.location?.micro_location?.name}
+                </div>
+              ) : (
+                <div
+                  dangerouslySetInnerHTML={{ __html: workSpace?.description }}
+                  className="about_property_text"
+                />
+              )}
             </div>
           </div>
           <div className="col-lg-4 mob_hide">
@@ -660,9 +659,9 @@ const PropertyPage = () => {
                 </form>
               </div>
               <div className="contact_form_footer">
-                <h3 className="property_h3 text-align-center">
+                <h4 className="property_h4 text-align-center">
                   Got questions or want to talk to someone?
-                </h3>
+                </h4>
                 <RequestCallBtn location={window.location.href} />
               </div>
             </div>
