@@ -83,6 +83,18 @@ h2 {
   transition: 0.3s ease-in-out;
   background-color: #fff;
 }
+.thanku_img_box {
+  width: 205px;
+  margin: 0 auto 20px;
+}
+.thankutext h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #444;
+}
+.thankutext p {
+  font-size: 14px;
+}
 .space_link {
   color: #444;
   text-decoration: none;
