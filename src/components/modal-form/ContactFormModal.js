@@ -35,6 +35,7 @@ function ContactFormModal({ closeModal, location, cityName, microlocation }) {
   const [phoneError, setPhoneError] = useState("");
   const [user, setUser] = useState({ name: "", email: "", phone: "" });
   const [loading, setLoading] = useState(false);
+  const [showThanku, setShowThanku] = useState(false);
 
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
@@ -111,7 +112,8 @@ function ContactFormModal({ closeModal, location, cityName, microlocation }) {
         );
         setLoading(false);
         handleSheet();
-        navigate("/thank-you");
+        // navigate("/thank-you");
+        setShowThanku(true);
       } catch (error) {
         console.error(error);
       }
@@ -160,115 +162,139 @@ function ContactFormModal({ closeModal, location, cityName, microlocation }) {
           <RxCross2 className="close_icon" onClick={closeModal} />
         </button>
       </div>
-      <div className="close_icon_box">
-        <h3 className="req_box">Request Call Back</h3>
-      </div>
-      <form onSubmit={sendEmail}>
-        <div className="row">
-          <div className="col-md-12 mb-4">
-            <input
-              type="text"
-              className="form-control modal_form_input"
-              id="exampleInputtext"
-              aria-describedby="emailHelp"
-              placeholder="Name*"
-              value={user.name}
-              name="name"
-              onChange={inputChangeHandler}
-              onBlur={validationName}
+      {showThanku ? (
+        <>
+          <div className="thanku_img_box">
+            <img
+              src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1692276822410.png"
+              alt="thanku from spacite"
+              className="img-fluid"
             />
-            {nameError && <p className="error_validate">{nameError}</p>}
           </div>
-          <div className="col-md-12 mb-4">
-            <input
-              type="email"
-              placeholder="Email"
-              className="form-control modal_form_input"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              onChange={inputChangeHandler}
-              onBlur={validationEmail}
-              name="email"
-              value={user.email}
-            />
-            {emailError && <p className="error_validate">{emailError}</p>}
+          <div className="thankutext">
+            <h3>Thank you for submitting the Query.</h3>
+            <p>
+              We have recieved your request and will be sending an email from a
+              Spacite Space expert shortly.
+            </p>
           </div>
-          <div className="col-md-12 mb-4">
-            <input
-              type="text"
-              placeholder="Phone"
-              className="form-control modal_form_input"
-              id="exampleInputEmail1"
-              name="phone"
-              value={user.phone}
-              aria-describedby="emailHelp"
-              onChange={inputChangeHandler}
-              onBlur={validationPhone}
-            />
-            {phoneError && <p className="error_validate">{phoneError}</p>}
+        </>
+      ) : (
+        <>
+          <div className="close_icon_box">
+            <h3 className="req_box">Request Call Back</h3>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6 mb-4">
-            <div className="select_option_property">
-              <Select
-                value={optionsOfficeType.find(
-                  (option) => option.value === officeType
-                )}
-                onChange={selectChangeHandlerOffice}
-                options={optionsOfficeType}
-                placeholder="Office Type"
-                inputProps={{
-                  name: "Office type",
-                }}
-              />
+          <form onSubmit={sendEmail}>
+            <div className="row">
+              <div className="col-md-12 mb-4">
+                <input
+                  type="text"
+                  className="form-control modal_form_input"
+                  id="exampleInputtext"
+                  aria-describedby="emailHelp"
+                  placeholder="Name*"
+                  value={user.name}
+                  name="name"
+                  onChange={inputChangeHandler}
+                  onBlur={validationName}
+                />
+                {nameError && <p className="error_validate">{nameError}</p>}
+              </div>
+              <div className="col-md-12 mb-4">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="form-control modal_form_input"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  onChange={inputChangeHandler}
+                  onBlur={validationEmail}
+                  name="email"
+                  value={user.email}
+                />
+                {emailError && <p className="error_validate">{emailError}</p>}
+              </div>
+              <div className="col-md-12 mb-4">
+                <input
+                  type="text"
+                  placeholder="Phone"
+                  className="form-control modal_form_input"
+                  id="exampleInputEmail1"
+                  name="phone"
+                  value={user.phone}
+                  aria-describedby="emailHelp"
+                  onChange={inputChangeHandler}
+                  onBlur={validationPhone}
+                />
+                {phoneError && <p className="error_validate">{phoneError}</p>}
+              </div>
             </div>
-          </div>
-          <div className="col-md-6 mb-4">
-            <div className="select_option_property">
-              <Select
-                value={optionSeats.find((option) => option.value === noSeats)}
-                onChange={selectChangeHandlerSeats}
-                options={optionSeats}
-                placeholder="No. of Seats"
-                inputProps={{
-                  name: "No. of seats",
-                }}
-              />
+            <div className="row">
+              <div className="col-md-6 mb-4">
+                <div className="select_option_property">
+                  <Select
+                    value={optionsOfficeType.find(
+                      (option) => option.value === officeType
+                    )}
+                    onChange={selectChangeHandlerOffice}
+                    options={optionsOfficeType}
+                    placeholder="Office Type"
+                    inputProps={{
+                      name: "Office type",
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6 mb-4">
+                <div className="select_option_property">
+                  <Select
+                    value={optionSeats.find(
+                      (option) => option.value === noSeats
+                    )}
+                    onChange={selectChangeHandlerSeats}
+                    options={optionSeats}
+                    placeholder="No. of Seats"
+                    inputProps={{
+                      name: "No. of seats",
+                    }}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-6">
-            <div className="select_option_property">
-              <Select
-                defaultValue={moveIn}
-                onChange={selectChangeHandlerMove}
-                options={optionsMoveIn}
-                placeholder="Move In"
-                inputProps={{
-                  name: "Move in",
-                }}
-              />
+            <div className="row">
+              <div className="col-6">
+                <div className="select_option_property">
+                  <Select
+                    defaultValue={moveIn}
+                    onChange={selectChangeHandlerMove}
+                    options={optionsMoveIn}
+                    placeholder="Move In"
+                    inputProps={{
+                      name: "Move in",
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="col-6">
+                <button
+                  type="submit"
+                  className="globalBtn w-100 contact_btn"
+                  data-bs-dismiss={
+                    user.name.trim() !== "" &&
+                    emailPattern.test(user.email) &&
+                    phonePattern.test(user.phone) &&
+                    loading &&
+                    "modal"
+                  }
+                >
+                  {loading ? "sending..." : "Find your space"}
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="col-6">
-            <button
-              type="submit"
-              className="globalBtn w-100 contact_btn"
-              data-bs-dismiss={
-                user.name.trim() !== "" &&
-                emailPattern.test(user.email) &&
-                phonePattern.test(user.phone) &&
-                loading &&
-                "modal"
-              }
-            >
-              {loading ? "sending..." : "Find your space"}
-            </button>
-          </div>
-        </div>
-      </form>
+          </form>
+        </>
+      )}
+
       <div className="form_spacite_logo">
         <img
           src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688623571085.png"
