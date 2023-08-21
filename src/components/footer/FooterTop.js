@@ -16,7 +16,7 @@ function FooterTop({ pathName }) {
       {decodedDescription.trim() === "<p></p>/n" || seo?.footer_title ? (
         <div className="footer_content_main">
           <div className="container">
-            <h3 className="footer_title">{seo?.footer_title}</h3>
+            <h2 className="footer_title">{seo?.footer_title}</h2>
             <div
               dangerouslySetInnerHTML={{ __html: seo?.footer_description }}
               className="footer_content"
