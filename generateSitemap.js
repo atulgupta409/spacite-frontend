@@ -54,7 +54,7 @@ async function generateSitemap() {
     const sitemap = await streamToPromise(stream);
 
     // Save the sitemap to the root folder of the React project
-    fs.writeFileSync('./sitemap.xml', sitemap, 'utf-8');
+    fs.writeFileSync('./src/sitemap.xml', sitemap, 'utf-8');
 
     console.log('Sitemap generated and saved successfully.');
   } catch (error) {
