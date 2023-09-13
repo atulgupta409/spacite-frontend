@@ -22,6 +22,9 @@ async function generateSitemap() {
     const microlocationUrls = microlocationApiResponse.data.map(item => `https://spacite.com/coworking-space/${item.city.name.toLowerCase()}/${item.name.replace(/\s+/g, '-').toLowerCase()}`);
 
     // Create a sitemap as a plain text string
+    const date = new Date();
+    const isoString = date.toISOString()
+
     const sitemap = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
 xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
 xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -30,21 +33,21 @@ xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   ${workspaceUrls.map(url => `
     <url>
       <loc>${url}</loc>
-      <lastmod>${Date.now()}</lastmod>
+      <lastmod>${isoString}</lastmod>
       <priority>0.7</priority>
     </url>
   `).join('')}
   ${cityUrls.map(url => `
     <url>
       <loc>${url}</loc>
-      <lastmod>${Date.now()}</lastmod>
+      <lastmod>${isoString}</lastmod>
       <priority>0.6</priority>
     </url>
   `).join('')}
   ${microlocationUrls.map(url => `
     <url>
       <loc>${url}</loc>
-      <lastmod>${Date.now()}</lastmod>
+      <lastmod>${isoString}</lastmod>
       <priority>0.5</priority>
     </url>
   `).join('')}
