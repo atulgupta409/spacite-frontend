@@ -5,7 +5,7 @@ function Section2() {
   return (
     <div
       style={{
-        backgroundImage: `url(https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688620396063.png)`,
+        backgroundImage: `url(https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1695626012626.png)`,
       }}
       className="main_banner2 mob_hide"
     >
