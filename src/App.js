@@ -14,7 +14,9 @@ import ThankuPage from "./components/thankuPage/ThankuPage";
 import ErrorBoundary from "./components/coworkingCityPage/ErrorBoundry";
 import PrivacyPolicy from "./components/privacy-policy/PrivacyPolicy";
 
+
 function App() {
+ 
   return (
     <div>
       <Routes>

@@ -46,7 +46,7 @@ function TopCities() {
               <div className="col-lg-12 city_img_box">
                 <NavLink to="/coworking-space/gurugram">
                   <img
-                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690797442284.jpg"
+                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1695626547935.jpg"
                     alt="gurgaon"
                     className="img-fluid"
                     style={{ width: "94.3%" }}
@@ -61,7 +61,7 @@ function TopCities() {
           <div className="col-lg-4 city_img_box">
             <NavLink to="/coworking-space/mumbai">
               <img
-                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115449838.png"
+                src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1695626193848.png"
                 alt="mumbai"
                 className="img-fluid"
                 style={{ width: "94.3%" }}
@@ -76,7 +76,7 @@ function TopCities() {
               <div className="col-lg-6 city_img_box">
                 <NavLink to="/coworking-space/hyderabad">
                   <img
-                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690796061086.jpg"
+                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1695625901747.jpg"
                     alt="hyderabad"
                     className="img-fluid"
                     style={{ width: "90%" }}
@@ -102,7 +102,7 @@ function TopCities() {
               <div className="col-lg-12 city_img_box">
                 <NavLink to="/coworking-space/bangalore">
                   <img
-                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688115481557.png"
+                    src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1695626246395.png"
                     alt="banglore"
                     className="img-fluid"
                     style={{ width: "94.3%" }}
