@@ -8,7 +8,6 @@ function FooterTop({ pathName }) {
   useEffect(() => {
     setPath(pathName);
   }, [pathName]);
-  console.log(seo);
   const decodedDescription = decode(seo?.footer_description);
 
   return (
