@@ -52,7 +52,7 @@
   text-align: inherit;
 }
 .category_section_property {
-  margin: 30px 0px;
+  margin: 50px 0px;
   background: linear-gradient(
     90deg,
     rgba(248, 244, 251, 0.8) 0%,
@@ -195,7 +195,7 @@
 }
 .property_icon {
   margin-bottom: 10px;
-  width: 20%;
+  width: 18%;
 }
 .facility_name_property {
   margin-bottom: 9px;
@@ -265,7 +265,18 @@
 }
 .property_page_img {
   border-radius: 20px;
-  height: 500px;
+  height: 500px !important;
+}
+.leaflet-container {
+  width: 100%;
+  height: 440px;
+  border-radius: 20px;
+}
+.leaflet-top {
+  z-index: 990;
+}
+.leaflet-bottom {
+  opacity: 0;
 }
 .carousel_inner {
   border-radius: 20px;
@@ -295,6 +306,9 @@
 @media only screen and (max-width: 768px) {
   .d_block {
     display: block;
+  }
+  .leaflet-container {
+    height: 250px;
   }
   .fixed-bottom {
     box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.1);
@@ -394,7 +408,7 @@
   }
   .property_page_img {
     border-radius: 10px;
-    height: auto;
+    height: auto !important;
   }
   .carousel_inner {
     border-radius: 10px;
@@ -423,5 +437,8 @@
 @media only screen and (max-width: 400px) {
   .fixed_div {
     padding: 23px 20px;
+  }
+  .leaflet-container {
+    height: 250px;
   }
 }

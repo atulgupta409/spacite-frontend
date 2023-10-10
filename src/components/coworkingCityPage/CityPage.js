@@ -75,7 +75,7 @@ function CityPage() {
 
   const workImage =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
-    console.log(seo);
+  
 
     return (
       <div className="city_page_main city_page_main_box">

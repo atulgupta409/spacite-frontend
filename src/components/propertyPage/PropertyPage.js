@@ -17,6 +17,7 @@ import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import Card from "../card/Card";
 import ImageCarousel from "../carousel/ImageCarousel";
 import { decode } from "html-entities";
+import LeafletMap from "./LeafletMap";
 
 const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
@@ -44,7 +45,8 @@ const PropertyPage = () => {
 
   const currentUrl = new URL(location.pathname, window.location.origin);
   // console.log(currentUrl);
-
+  const dateTimeString = new Date().toLocaleString();
+ const [date, time] = dateTimeString.split(', ');
   const [nearSpace, setNearSpace] = useState([]);
   const getNearSpacesHandler = async () => {
     await getNearSpaces(setNearSpace, slug);
@@ -299,16 +301,17 @@ const PropertyPage = () => {
           },
           body: JSON.stringify([
             [
-              user.name,
-              user.email,
-              user.phone,
+              date,
+              time,
+              workSpace?.location?.city?.name,
+              workSpace?.location?.micro_location?.name,
               officeType,
               noSeats,
               moveIn,
-              workSpace?.location?.city?.name,
-              workSpace?.location?.micro_location?.name,
+              user.name,
+              user.email,
+              user.phone,
               locationPage,
-              new Date().toLocaleString(),
             ],
           ]),
         }
@@ -333,6 +336,7 @@ const PropertyPage = () => {
   const { seo, images } = workSpace;
   const city = workSpace?.location?.city?.name;
   const decodedDescription = decode(workSpace?.description);
+  const [longitude, latitude] = [workSpace?.location?.longitude, workSpace?.location?.latitude]
   return (
     <>
       <Helmet>
@@ -429,44 +433,6 @@ const PropertyPage = () => {
         <div className="row mb_30">
           <div className="col-lg-8">
             <ImageCarousel images={images} />
-            <div className="row amenity_section_property">
-              <div className="col-md-4">
-                <img className="property_icon" src={wifi_icon} alt="wifi" />
-                <div>
-                  <p className="facility_name facility_name_property">
-                    High Speed Wifi
-                  </p>
-                  <p>High-Speed Wifi for great connectivity</p>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <img
-                  className="property_icon"
-                  src={printer_icon}
-                  alt="printer"
-                />
-                <div>
-                  <p className="facility_name facility_name_property">
-                    Printer
-                  </p>
-                  <p>Printing and scanning facilities</p>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <img
-                  className="property_icon"
-                  src={parking_icon}
-                  alt="parking"
-                />
-                <div>
-                  <p className="facility_name facility_name_property">
-                    Parking
-                  </p>
-                  <p>Easy and convenient parking</p>
-                </div>
-              </div>
-            </div>
-            <hr className="devider_line" />
             {plans?.map((planElem, i) => {
               return coworkingPlans
                 ?.filter((elem) => {
@@ -508,8 +474,8 @@ const PropertyPage = () => {
                   );
                 });
             })}
-            <hr className="devider_line" />
-            <div className="row offers_section_property">
+             {/* <hr className="devider_line" /> */}
+             {/* <div className="row offers_section_property">
               <h3 className="property_h3">Amenities</h3>
               {amenities?.map((amenity, i) => {
                 return (
@@ -523,7 +489,173 @@ const PropertyPage = () => {
                   </div>
                 );
               })}
+            </div> */}
+             
+            <hr className="devider_line" />
+            <div className="mob_hide">
+            <div className="row amenity_section_property">
+              <div className="col-md-4">
+                <img className="property_icon" src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934976235.png" alt="wifi" />
+                <div>
+                  <p className="facility_name facility_name_property">
+                    High Speed Wifi
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <img
+                  className="property_icon"
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934924079.png"
+                  alt="printer"
+                />
+                <div>
+                  <p className="facility_name facility_name_property">
+                  Coffee & Bar
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <img
+                  className="property_icon"
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934956297.png"
+                  alt="parking"
+                />
+                <div>
+                  <p className="facility_name facility_name_property">
+                  Networking events
+                  </p>
+                </div>
+              </div>
             </div>
+            <div className="row amenity_section_property">
+              <div className="col-md-4">
+                <img className="property_icon" src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934936416.png" alt="wifi" />
+                <div>
+                  <p className="facility_name facility_name_property">
+                  Common areas
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <img
+                  className="property_icon"
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934966144.png"
+                  
+                  alt="printer"
+                />
+                <div>
+                  <p className="facility_name facility_name_property">
+                  Printing facilities
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <img
+                  className="property_icon"
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934946067.png"
+                  alt="parking"
+                />
+                <div>
+                  <p className="facility_name facility_name_property">
+                  Kitchen facility
+                  </p>
+                </div>
+              </div>
+            </div>
+            </div>
+          <div className="desk_hide">
+          <div className="row amenity_section_property">
+              <div className="col-6">
+                <img className="property_icon" src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934976235.png" alt="wifi" />
+                <div>
+                  <p className="facility_name facility_name_property">
+                    High Speed Wifi
+                  </p>
+                </div>
+              </div>
+              <div className="col-6">
+                <img
+                  className="property_icon"
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934924079.png"
+                  alt="printer"
+                />
+                <div>
+                  <p className="facility_name facility_name_property">
+                  Coffee & Bar
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="row amenity_section_property">
+            <div className="col-6">
+                <img
+                  className="property_icon"
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934956297.png"
+                  alt="parking"
+                />
+                <div>
+                  <p className="facility_name facility_name_property">
+                  Networking events
+                  </p>
+                </div>
+              </div>
+              <div className="col-6">
+                <img className="property_icon" src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934936416.png" alt="wifi" />
+                <div>
+                  <p className="facility_name facility_name_property">
+                  Common areas
+                  </p>
+                </div>
+              </div>
+              </div>
+            <div className="row amenity_section_property">
+             
+              <div className="col-6">
+                <img
+                  className="property_icon"
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934966144.png"
+                  
+                  alt="printer"
+                />
+                <div>
+                  <p className="facility_name facility_name_property">
+                  Printing facilities
+                  </p>
+                </div>
+              </div>
+              <div className="col-6">
+                <img
+                  className="property_icon"
+                  src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934946067.png"
+                  alt="parking"
+                />
+                <div>
+                  <p className="facility_name facility_name_property">
+                  Kitchen facility
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+            <hr className="devider_line" />
+            <div className="row map">
+                  <h3 className="mt30 mb-0 property_h3">
+                    {workSpace?.name +
+                      " " +
+                      workSpace?.location?.city?.name}{" "}
+                    on Google Map
+                  </h3>
+                  <p >
+                    {workSpace?.location?.address}
+                  </p>
+                  <div className="map_box">
+                    <LeafletMap
+                      latitude={latitude}
+                      longitude={longitude}
+                      name={workSpace?.name}
+                    />
+                  </div>
+                </div>
             <hr className="devider_line" />
             <div className="row about_property_section">
               <h3 className="property_h3">Coworking Space</h3>

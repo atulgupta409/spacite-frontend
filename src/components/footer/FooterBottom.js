@@ -57,7 +57,7 @@ function FooterBottom() {
             </Link>
             <div className="footer_phone mob_hide">
               <p style={{ marginBottom: "0" }}>Phone :</p>
-              <a href="tel: 9999108078">+91 9999108078</a>
+              <a href="tel: 9355289999">+91 9355289999</a>
             </div>
           </div>
           <div className="col-md-3 col-6">
@@ -91,9 +91,9 @@ function FooterBottom() {
               <li className="footer_list_item">
                 <Link onClick={openModal}>Virtual Office</Link>
               </li>
-              <li className="footer_list_item">
+              {/* <li className="footer_list_item">
                 <Link to="/about">About Us</Link>
-              </li>
+              </li> */}
               <li className="footer_list_item">
                 <Link to="/contact">Contact Us</Link>
               </li>

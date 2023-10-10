@@ -37,6 +37,9 @@ function HomeContact({ city, microlocation }) {
   const [user, setUser] = useState({ name: "", email: "", phone: "" });
   const [loading, setLoading] = useState(false);
 
+  const dateTimeString = new Date().toLocaleString();
+ const [date, time] = dateTimeString.split(', ');
+
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -135,16 +138,17 @@ function HomeContact({ city, microlocation }) {
           },
           body: JSON.stringify([
             [
-              user.name,
-              user.email,
-              user.phone,
+              date,
+              time,
+              city,
+              microlocation,
               officeType,
               noSeats,
               moveIn,
-              city,
-              microlocation,
+              user.name,
+              user.email,
+              user.phone,
               location,
-              new Date().toLocaleString(),
             ],
           ]),
         }

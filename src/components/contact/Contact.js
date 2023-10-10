@@ -124,14 +124,14 @@ function Contact() {
           },
           body: JSON.stringify([
             [
-              user.name,
-              user.email,
-              user.phone,
+              new Date().toLocaleString(),
               officeType,
               noSeats,
               user.query,
               location,
-              new Date().toLocaleString(),
+              user.name,
+              user.email,
+              user.phone,
             ],
           ]),
         }
