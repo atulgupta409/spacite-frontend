@@ -333,6 +333,21 @@ const PropertyPage = () => {
     setTimeout(() => setShake(false), 500);
   };
 
+
+  const myPlans = workSpace?.plans;
+  let lowestPrice = Infinity; // Initialize with a high value
+
+  if (plans && plans.length > 0) {
+    for (const plan of plans) {
+      if (plan?.price !== undefined && plan.price < lowestPrice) {
+        lowestPrice = plan.price;
+      }
+    }
+  }
+
+  const formattedPrice =
+    lowestPrice !== Infinity ? lowestPrice.toLocaleString() : "";
+
   const { seo, images } = workSpace;
   const city = workSpace?.location?.city?.name;
   const decodedDescription = decode(workSpace?.description);
@@ -420,12 +435,7 @@ const PropertyPage = () => {
           <div className="col-md-3 price_section_box">
             <p>Starting</p>
             <p className="price_section_property">
-              ₹
-              {workSpace?.plans
-                ?.reduce((prev, current) => {
-                  return current.price < prev.price ? current : prev;
-                })
-                .price?.toLocaleString()}
+              ₹{formattedPrice}
               /*<span>month</span>
             </p>
           </div>
@@ -915,12 +925,7 @@ const PropertyPage = () => {
           <div className="starting_price">
             <p>Starting</p>
             <p>
-              ₹{" "}
-              {workSpace?.plans
-                ?.reduce((prev, current) => {
-                  return current.price < prev.price ? current : prev;
-                })
-                .price.toLocaleString()}
+              ₹ {formattedPrice}
               /- <span>month</span>
             </p>
           </div>
