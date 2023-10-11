@@ -502,7 +502,7 @@ const PropertyPage = () => {
             </div> */}
              
             <hr className="devider_line" />
-            <div className="mob_hide">
+            <div className="mobile_hide">
             <div className="row amenity_section_property">
               <div className="col-md-4">
                 <img className="property_icon" src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934976235.png" alt="wifi" />

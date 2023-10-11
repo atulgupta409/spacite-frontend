@@ -286,7 +286,7 @@ function Contact() {
                         <div>
                           <h5>Phone</h5>
                           <p>
-                            <a href="tel:+919999108078">+91 9999 10 8078</a>
+                            <a href="tel:+919355289999">+91 9355289999</a>
                           </p>
                         </div>
                       </div>

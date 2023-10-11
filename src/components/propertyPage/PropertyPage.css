@@ -227,6 +227,7 @@
 
 .breadcrumb-item {
   font-size: 14px !important;
+  display: inline-block;
 }
 .property_h2 {
   text-align: left;
