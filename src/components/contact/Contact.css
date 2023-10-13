@@ -16,6 +16,58 @@
 .banner_text {
   color: white;
 }
+.contact_us_page{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.contactUs_form{
+  width: 50%;
+  padding: 70px 91px;
+}
+.contactUsBtn{
+    border: none;
+    padding: 14px 112px;
+    border-radius: 12px;
+    background: #d09cff;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+}
+.contact_image{
+  width: 50%;
+  overflow: hidden;
+}
+.input_form{
+  padding: 10px;
+  border-radius: 12px;
+}
+.connect_heading{
+  text-align: justify;
+  font-size: 35px;
+}
+
+.anchor_tag{
+  text-decoration: none;
+    color: #444;
+}
+.icon_img{
+  width: 18px;
+}
+.contact_img_height{
+  height: 100vh;
+}
+.iam_interested .css-13cymwt-control{
+  border-radius: 12px !important;
+}
+.span_tag{
+  padding: 0 13px;
+}
+.input_box{
+  margin-bottom: 30px !important;
+}
 #contact_banner_area .banner_text p {
   font-size: 20px;
   line-height: 32px;

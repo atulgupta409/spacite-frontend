@@ -10,19 +10,13 @@ import baseUrl from "../../environment/api-config";
 function Contact() {
   const navigate = useNavigate();
   const optionsOfficeType = [
-    { value: "dedicated desk", label: "Dedicated Desk" },
-    { value: "private cabin", label: "Private Cabin" },
-    { value: "office suite", label: "Office Suite" },
-  ];
-  const optionSeats = [
-    { value: "1-10", label: "1-10" },
-    { value: "11-20", label: "11-20" },
-    { value: "21-50", label: "21-50" },
-    { value: "51-100", label: "51-100" },
-    { value: "100+", label: "100+" },
+    { value: "Coworking Space", label: "Coworking Space" },
+    { value: "Virtual Office", label: "Virtual Office" },
+    { value: "Private Office", label: "Private Office" },
+    { value: "Collaboration", label: "Collaboration" },
+    { value: "Any/Others", label: "Any/Others" },
   ];
 
-  // const [selectedOption, setSelectedOption] = useState(null);
   const [officeType, setOfficeType] = useState("");
   const [noSeats, setNoSeats] = useState("");
   const [nameError, setNameError] = useState("");
@@ -144,44 +138,20 @@ function Contact() {
 
   return (
     <>
-      <section
-        id="contact_banner_area"
-        style={{
-          backgroundImage: `url("https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688627675212.png")`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "right",
-        }}
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="banner_text text-center white_text">
-                <h3>Get In Touch</h3>
-                <p>
-                  Drop us a line or visit us for a cup of tea!
-                  <br />
-                  We glad to see our friends!
-                </p>
-              </div>
+          <div className="contact_us_page">
+            <div className="contact_image">
+              <img className="contact_img_height" src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1697174841865.jpg"/>
             </div>
-          </div>
-        </div>
-      </section>
-      <section id="contact_info_sec">
-        <div className="container">
-          <div className="row info_row">
-            <div className="col-md-7 col-12">
-              <div className="form_col">
-                <h3>Send your request</h3>
-                <div className="contact_page_form">
+          <div className="contactUs_form">
+            <h1 className="connect_heading">Connect with Spacite</h1>
+            <p>Best Office Spaces across Top Indian Cities</p>
                   <form onSubmit={sendEmail}>
                     <div className="row">
-                      <div className="col-12 mb-2">
+                      <div className="col-12 mb-2 input_box">
                         <input
                           type="text"
                           name="name"
-                          className="form-control"
+                          className="form-control input_form"
                           placeholder="Name*"
                           value={user.name}
                           onChange={inputChangeHandler}
@@ -189,131 +159,58 @@ function Contact() {
                           required
                         />
                       </div>
-                      <div className="col-12 mb-2">
+                      <div className="col-12 mb-2 input_box">
                         <input
                           type="text"
                           name="email"
-                          className="form-control"
-                          placeholder="E-Mail Id*"
+                          className="form-control input_form"
+                          placeholder="Email*"
                           value={user.email}
                           onChange={inputChangeHandler}
                           onBlur={validation}
                           required
                         />
                       </div>
-                      <div className="col-12 mb-2">
+                      <div className="col-12 mb-2 input_box">
                         <input
                           type="text"
                           name="phone"
-                          className="form-control"
-                          placeholder="Phone No.*"
+                          className="form-control input_form"
+                          placeholder="Phone*"
                           value={user.phone}
                           onChange={inputChangeHandler}
                           onBlur={validation}
                           required
                         />
                       </div>
-                      <div className="col-6 mb-2">
+                      <div className="col-6 mb-2 input_box">
                         <Select
+                        className="iam_interested"
                           value={optionsOfficeType.find(
                             (option) => option.value === officeType
                           )}
                           onChange={selectChangeHandlerOffice}
                           options={optionsOfficeType}
-                          placeholder="Office Type"
+                          placeholder="I am Interested in*"
                           inputProps={{
                             name: "Office type",
                           }}
                         />
                       </div>
                       <div className="col-6 mb-2">
-                        <Select
-                          value={optionSeats.find(
-                            (option) => option.value === noSeats
-                          )}
-                          onChange={selectChangeHandlerSeats}
-                          options={optionSeats}
-                          placeholder="No. of Seats"
-                          inputProps={{
-                            name: "No. of seats",
-                          }}
-                        />
-                      </div>
-                      <div className="col-12 mb-2">
-                        <textarea
-                          className="form-control"
-                          name="query"
-                          placeholder="Your Query*"
-                          value={user.query}
-                          onChange={inputChangeHandler}
-                          required
-                        ></textarea>
-                      </div>
-                      <div className="col-12 form_btn text-center">
-                        <button type="submit" className="globalBtn contactBtn">
-                          BOOK NOW
+                      <button type="submit" className="contactUsBtn">
+                          Submit
                         </button>
                       </div>
                     </div>
                   </form>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-5 col-12">
-              <div className="row">
-                <div className="col-12">
-                  <div className="contact_img">
-                    <img
-                      src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688627764667.png"
-                      alt="contact"
-                      className="img-fluid"
-                    />
+                  <div>
+                    <span className="span_tag"><img className="icon_img" src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1697179731859.png"/><a href="+91 9355289999" className="anchor_tag"> +91- 9355289999</a></span>
+                  <span className="span_tag"><img className="icon_img" src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1697179721935.png"/><a href="thespacite@gmail.com" className="anchor_tag"> thespacite@gmail.com</a></span>
                   </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-12">
-                  <div className="contact_info">
-                    <h3>Contact Information</h3>
-                    <hr />
-                  </div>
-                  <div className="row">
-                    <div className="col-12 col-sm-6 mb-4">
-                      <div className="contact_icon_box">
-                        <div className="call_icon">
-                          <IoMdCall />
-                        </div>
-                        <div>
-                          <h5>Phone</h5>
-                          <p>
-                            <a href="tel:+919355289999">+91 9355289999</a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12 col-sm-6 mb-4">
-                      <div className="contact_icon_box">
-                        <div className="call_icon">
-                          <AiOutlineMail />
-                        </div>
-                        <div className="email_box_contact">
-                          <h5>Email</h5>
-                          <p>
-                            <a href="mailto:thespacite@gmail.com">
-                              thespacite@gmail.com
-                            </a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
-      </section>
-    </>
+    </> 
   );
 }
 
