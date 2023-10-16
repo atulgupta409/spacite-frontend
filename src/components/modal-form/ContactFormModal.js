@@ -37,6 +37,9 @@ function ContactFormModal({ closeModal, location, cityName, microlocation }) {
   const [loading, setLoading] = useState(false);
   const [showThanku, setShowThanku] = useState(false);
 
+  const dateTimeString = new Date().toLocaleString();
+  const [date, time] = dateTimeString.split(', ');
+
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -135,16 +138,17 @@ function ContactFormModal({ closeModal, location, cityName, microlocation }) {
           },
           body: JSON.stringify([
             [
-              user.name,
-              user.email,
-              user.phone,
+              date,
+              time,
+              cityName,
+              microlocation,
               officeType,
               noSeats,
               moveIn,
-              cityName,
-              microlocation,
+              user.name,
+              user.email,
+              user.phone,
               location,
-              new Date().toLocaleString(),
             ],
           ]),
         }
