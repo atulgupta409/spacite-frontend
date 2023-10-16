@@ -56,7 +56,7 @@
 .icon_img{
   width: 18px;
 }
-.contact_img_height{
+.contact_img_height{  
   height: 100vh;
 }
 .iam_interested .css-13cymwt-control{
@@ -165,5 +165,53 @@
   }
   .contactBtn {
     width: 150px;
+  }
+  .contact_us_page{
+    display: block;
+  }
+  .contact_image{
+    width: 100%;
+  }
+  .contactUs_form{
+    width: 100%;
+    padding: 34px 46px;
+  }
+  .connect_heading{
+    font-size: 20px;
+  }
+  .input_form{
+    padding: 8px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+  .input_box{
+    margin-bottom: 20px !important;
+    width: 100%;
+  }
+  .contactUsBtn{
+    padding: 10px 30px;
+  }
+  .iam_interested .css-13cymwt-control{
+    border-radius: 8px !important;
+    padding: 1px; 
+  }
+  .span_tag{
+    padding: 0 2px;
+  }
+  .icon_img{
+    width: 13px;
+  }
+  .anchor_tag{
+    font-size: 13px;
+  }
+  .best_office_css{
+    font-size: 13px;
+  }
+  .iam_interested .css-1jqq78o-placeholder{
+    font-size: 13px !important;
+  }
+  .contact_img_height{
+    height: 50vh;
+    width: 100%;
   }
 }

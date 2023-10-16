@@ -443,6 +443,10 @@ const PropertyPage = () => {
         <div className="row mb_30">
           <div className="col-lg-8">
             <ImageCarousel images={images} />
+            <h3 className="property_h3 price_plan_heading">
+                    {workSpace?.name}{" "}
+                    Pricing 
+                  </h3>
             {plans?.map((planElem, i) => {
               return coworkingPlans
                 ?.filter((elem) => {
@@ -504,6 +508,9 @@ const PropertyPage = () => {
             <hr className="devider_line" />
             <div className="mobile_hide">
             <div className="row amenity_section_property">
+            <h3 className="property_h3">
+                   Amenities
+                  </h3>
               <div className="col-md-4">
                 <img className="property_icon" src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934976235.png" alt="wifi" />
                 <div>
@@ -575,6 +582,9 @@ const PropertyPage = () => {
             </div>
           <div className="desk_hide">
           <div className="row amenity_section_property">
+          <h3 className="property_h3 amenities_heading">
+                   Amenities
+                  </h3>
               <div className="col-6">
                 <img className="property_icon" src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934976235.png" alt="wifi" />
                 <div>
@@ -653,7 +663,7 @@ const PropertyPage = () => {
                     {workSpace?.name +
                       " " +
                       workSpace?.location?.city?.name}{" "}
-                    on Google Map
+                     Google location
                   </h3>
                   <p >
                     {workSpace?.location?.address}
@@ -671,7 +681,7 @@ const PropertyPage = () => {
               <h3 className="property_h3">Coworking Space</h3>
               {decodedDescription.trim() === "<p>empty</p>" ? (
                 <div className="about_property_text">
-                  This is the best coworking space in{" "}
+                  {workSpace?.name} is the best coworking space in{" "}
                   {workSpace?.location?.micro_location?.name}
                 </div>
               ) : (

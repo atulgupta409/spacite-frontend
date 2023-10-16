@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Contact.css";
 import { IoMdCall } from "react-icons/io";
 import { AiOutlineMail } from "react-icons/ai";
@@ -29,6 +29,8 @@ function Contact() {
     query: "",
   });
   const [loading, setLoading] = useState(false);
+  const dateTimeString = new Date().toLocaleString();
+  const [date, time] = dateTimeString.split(', ');
 
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
@@ -86,8 +88,6 @@ function Contact() {
             email: user.email,
             phone: user.phone,
             office_type: officeType,
-            no_of_seats: noSeats,
-            query: user.query,
             location,
           },
           {
@@ -110,7 +110,7 @@ function Contact() {
   const handleSheet = async () => {
     try {
       const response = await fetch(
-        "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=coworking",
+        "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=sheet2",
         {
           method: "POST",
           headers: {
@@ -118,14 +118,13 @@ function Contact() {
           },
           body: JSON.stringify([
             [
-              new Date().toLocaleString(),
+              date,
+              time,
               officeType,
-              noSeats,
-              user.query,
-              location,
               user.name,
               user.email,
               user.phone,
+              location,
             ],
           ]),
         }
@@ -136,6 +135,10 @@ function Contact() {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <>
           <div className="contact_us_page">
@@ -144,7 +147,7 @@ function Contact() {
             </div>
           <div className="contactUs_form">
             <h1 className="connect_heading">Connect with Spacite</h1>
-            <p>Best Office Spaces across Top Indian Cities</p>
+            <p className="best_office_css">Best Office Spaces across Top Indian Cities</p>
                   <form onSubmit={sendEmail}>
                     <div className="row">
                       <div className="col-12 mb-2 input_box">
