@@ -5,6 +5,7 @@ import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import baseUrl from "../../../environment/api-config";
+import {handleLeadSquared} from "../../service/ContactFormFunctions"
 
 function HomeContact({ city, microlocation }) {
   const navigate = useNavigate();
@@ -116,6 +117,7 @@ function HomeContact({ city, microlocation }) {
         );
         setLoading(false);
         handleSheet();
+        handleLeadSquared(user.name, user.email, user.phone, officeType, moveIn, noSeats, location, city);
         navigate("/thank-you");
       } catch (error) {
         console.error(error);
@@ -159,6 +161,8 @@ function HomeContact({ city, microlocation }) {
     }
   };
 
+  
+  
   return (
     <div className="main_banner2 home_contact_main">
       <div className="container">

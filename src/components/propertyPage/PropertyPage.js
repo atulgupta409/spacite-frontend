@@ -18,7 +18,7 @@ import Card from "../card/Card";
 import ImageCarousel from "../carousel/ImageCarousel";
 import { decode } from "html-entities";
 import LeafletMap from "./LeafletMap";
-
+import { handleLeadSquared } from "../service/ContactFormFunctions";
 const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -279,6 +279,7 @@ const PropertyPage = () => {
         );
         setLoading(false);
         handleSheet2();
+        handleLeadSquared(user.name, user.email, user.phone, officeType, moveIn, noSeats, locationPage, workSpace?.location?.city?.name);
         navigate("/thank-you");
       } catch (error) {
         console.error(error.message);

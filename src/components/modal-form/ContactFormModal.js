@@ -4,6 +4,7 @@ import axios from "axios";
 import baseUrl from "../../environment/api-config";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
+import { handleLeadSquared } from "../service/ContactFormFunctions";
 
 function ContactFormModal({ closeModal, location, cityName, microlocation }) {
   const navigate = useNavigate();
@@ -115,7 +116,7 @@ function ContactFormModal({ closeModal, location, cityName, microlocation }) {
         );
         setLoading(false);
         handleSheet();
-        // navigate("/thank-you");
+        handleLeadSquared(user.name, user.email, user.phone, officeType, moveIn, noSeats, location, cityName);
         setShowThanku(true);
       } catch (error) {
         console.error(error);
