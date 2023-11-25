@@ -11,14 +11,13 @@ import PropertyPage from "./components/propertyPage/PropertyPage";
 import Microlocation from "./components/coworkingMicrolocation/Microlocation";
 import FooterBottom from "./components/footer/FooterBottom";
 import ThankuPage from "./components/thankuPage/ThankuPage";
-import ErrorBoundary from "./components/coworkingCityPage/ErrorBoundry";
 import PrivacyPolicy from "./components/privacy-policy/PrivacyPolicy";
-
+import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 
 function App() {
- 
   return (
     <div>
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"
