@@ -58,7 +58,6 @@ export const handleLeadSquared = async (name, email, phone, officeType, moveIn, 
          console.log("Success!")
       } else {
         console.error(responseData.ExceptionMessage);
-        alert("Submission failed. Please try again.");
       }
     } catch (error) {
       console.error(error);

@@ -1,5 +1,5 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 function LeafletMap({ latitude, longitude, name }) {
   if (latitude === undefined || longitude === undefined) {

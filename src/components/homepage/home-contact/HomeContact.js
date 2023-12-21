@@ -39,7 +39,7 @@ function HomeContact({ city, microlocation }) {
   const [loading, setLoading] = useState(false);
 
   const dateTimeString = new Date().toLocaleString();
- const [date, time] = dateTimeString.split(', ');
+  const [date, time] = dateTimeString.split(", ");
 
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
@@ -108,6 +108,7 @@ function HomeContact({ city, microlocation }) {
             no_of_seats: noSeats,
             move_in: moveIn,
             location,
+            city,
           },
           {
             headers: {
@@ -117,7 +118,16 @@ function HomeContact({ city, microlocation }) {
         );
         setLoading(false);
         handleSheet();
-        handleLeadSquared(user.name, user.email, user.phone, officeType, moveIn, noSeats, location, city);
+        handleLeadSquared(
+          user.name,
+          user.email,
+          user.phone,
+          officeType,
+          moveIn,
+          noSeats,
+          location,
+          city
+        );
         navigate("/thank-you");
       } catch (error) {
         console.error(error);
@@ -161,8 +171,6 @@ function HomeContact({ city, microlocation }) {
     }
   };
 
-  
-  
   return (
     <div className="main_banner2 home_contact_main">
       <div className="container">

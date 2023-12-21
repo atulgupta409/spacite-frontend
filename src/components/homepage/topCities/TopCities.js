@@ -67,7 +67,7 @@ function TopCities() {
                 style={{ width: "94.3%" }}
               />
               <div className="top_city_overlay" style={{ width: "94.3%" }}>
-                <p>mumbai</p>
+                <p>Mumbai</p>
               </div>
             </NavLink>
           </div>

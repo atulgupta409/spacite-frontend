@@ -37,7 +37,7 @@ function PremiumBrands() {
             <div className="col-md-12" style={{ width: "99%" }}>
               <Carousel breakPoints={breakPoints} renderArrow={Myarrow}>
                 {brands
-                  ?.filter((brand) => brand?.should_show_on_home == true)
+                  ?.filter((brand) => brand?.should_show_on_home === true)
                   .map((item, i) => (
                     <div className="card premium_card" key={i}>
                       <div className="image-container">
