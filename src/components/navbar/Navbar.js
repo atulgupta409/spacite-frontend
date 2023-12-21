@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
@@ -35,13 +35,13 @@ function Navbar() {
             <div className="collapse navbar-collapse" id="main_nav">
               <ul className="navbar-nav mx-auto">
                 <li className="nav-item dropdown has-megamenu">
-                  <a
+                  <p
                     className="nav-link dropdown-toggle"
-                    href="#"
                     data-bs-toggle="dropdown"
+                    style={{ cursor: "pointer" }}
                   >
                     Coworking Space
-                  </a>
+                  </p>
                   <div className="dropdown-menu megamenu" role="menu">
                     <div className="container">
                       <div className="row megamenu-row">

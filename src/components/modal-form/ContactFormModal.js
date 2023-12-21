@@ -3,12 +3,9 @@ import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
 import baseUrl from "../../environment/api-config";
 import Select from "react-select";
-import { useNavigate } from "react-router-dom";
 import { handleLeadSquared } from "../service/ContactFormFunctions";
 
 function ContactFormModal({ closeModal, location, cityName, microlocation }) {
-  const navigate = useNavigate();
-
   const optionsOfficeType = [
     { value: "dedicated desk", label: "Dedicated Desk" },
     { value: "private cabin", label: "Private Cabin" },
@@ -39,7 +36,7 @@ function ContactFormModal({ closeModal, location, cityName, microlocation }) {
   const [showThanku, setShowThanku] = useState(false);
 
   const dateTimeString = new Date().toLocaleString();
-  const [date, time] = dateTimeString.split(', ');
+  const [date, time] = dateTimeString.split(", ");
 
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
@@ -95,7 +92,7 @@ function ContactFormModal({ closeModal, location, cityName, microlocation }) {
       validationPhone();
       setLoading(true);
       try {
-        const response = await axios.post(
+        await axios.post(
           `${baseUrl}/sendmail`,
           {
             name: user.name,
@@ -116,7 +113,16 @@ function ContactFormModal({ closeModal, location, cityName, microlocation }) {
         );
         setLoading(false);
         handleSheet();
-        handleLeadSquared(user.name, user.email, user.phone, officeType, moveIn, noSeats, location, cityName);
+        handleLeadSquared(
+          user.name,
+          user.email,
+          user.phone,
+          officeType,
+          moveIn,
+          noSeats,
+          location,
+          cityName
+        );
         setShowThanku(true);
       } catch (error) {
         console.error(error);

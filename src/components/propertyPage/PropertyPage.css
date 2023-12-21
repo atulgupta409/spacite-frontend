@@ -29,7 +29,7 @@
 }
 .price_section_box {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   flex-direction: column;
 }
 .price_section_property span {

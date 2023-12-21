@@ -23,7 +23,7 @@ const PropertyPage = () => {
   const { breakPoints, Myarrow } = useContext(CityContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [workSpace, setWorkSpaces] = useState({});
-  const [loadingSpace, setLoadingSpaces] = useState(false);
+  const [setLoadingSpaces] = useState(false);
   const { slug } = useParams();
   const navigate = useNavigate();
   const openModal = () => {
@@ -35,10 +35,6 @@ const PropertyPage = () => {
   };
 
   const location = useLocation();
-  let pathArray = location.pathname.split("/");
-  let lastElem = pathArray[pathArray.length - 1];
-  let str = lastElem.charAt(0).toUpperCase() + lastElem.slice(1);
-  let cityName = str.split("-").join(" ");
   const handleFetchWorkspacesBySlug = async () => {
     await getWorkSpaceBySlug(setWorkSpaces, slug, setLoadingSpaces);
   };
@@ -46,7 +42,7 @@ const PropertyPage = () => {
   const currentUrl = new URL(location.pathname, window.location.origin);
   // console.log(currentUrl);
   const dateTimeString = new Date().toLocaleString();
- const [date, time] = dateTimeString.split(', ');
+  const [date, time] = dateTimeString.split(", ");
   const [nearSpace, setNearSpace] = useState([]);
   const getNearSpacesHandler = async () => {
     await getNearSpaces(setNearSpace, slug);
@@ -56,7 +52,6 @@ const PropertyPage = () => {
     handleFetchWorkspacesBySlug();
     getNearSpacesHandler();
   }, [slug]);
-  // console.log(nearSpace.slice(0, 10));
 
   const workImage =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690177876357.png";
@@ -65,7 +60,6 @@ const PropertyPage = () => {
     { value: "dedicated desk", label: "Dedicated Desk" },
     { value: "private cabin", label: "Private Cabin" },
     { value: "office suite", label: "Office Suite" },
-    // { value: "custom buildout", label: "Custom Buildout" },
   ];
   const optionSeats = [
     { value: "1-10", label: "1-10" },
@@ -176,12 +170,6 @@ const PropertyPage = () => {
   }, [amenties]);
   const explore_icon =
     "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1688624307161.png";
-  const wifi_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546657692.png";
-  const parking_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546750951.png";
-  const printer_icon =
-    "https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1690546722342.png";
 
   useEffect(() => {
     const mainPriceCategory = workSpace?.plans?.map((plan, i) => ({
@@ -279,7 +267,16 @@ const PropertyPage = () => {
         );
         setLoading(false);
         handleSheet2();
-        handleLeadSquared(user.name, user.email, user.phone, officeType, moveIn, noSeats, locationPage, workSpace?.location?.city?.name);
+        handleLeadSquared(
+          user.name,
+          user.email,
+          user.phone,
+          officeType,
+          moveIn,
+          noSeats,
+          locationPage,
+          workSpace?.location?.city?.name
+        );
         navigate("/thank-you");
       } catch (error) {
         console.error(error.message);
@@ -334,9 +331,7 @@ const PropertyPage = () => {
     setTimeout(() => setShake(false), 500);
   };
 
-
-  const myPlans = workSpace?.plans;
-  let lowestPrice = Infinity; // Initialize with a high value
+  let lowestPrice = Infinity;
 
   if (plans && plans.length > 0) {
     for (const plan of plans) {

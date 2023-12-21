@@ -19,7 +19,7 @@ function Herohome() {
   const location = useLocation();
   const currentUrl = new URL(location.pathname, window.location.origin);
 
-  const [defaultSeo, setDefaultSeo] = useState({
+  const defaultSeo = {
     title: "Spacite - find best coworking spaces",
     description: "Spacite - find best coworking spaces",
     keywords: "Default Keywords",
@@ -31,7 +31,7 @@ function Herohome() {
       title: "Spacite - find best coworking spaces",
       description: "Spacite - find best coworking spaces",
     },
-  });
+  };
 
   const [seo, setSeo] = useState(defaultSeo);
 

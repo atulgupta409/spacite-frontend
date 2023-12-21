@@ -3,11 +3,8 @@ import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
 import baseUrl from "../../environment/api-config";
 import Select from "react-select";
-import { useNavigate } from "react-router-dom";
 
 function FormModal({ closeModal, location }) {
-  const navigate = useNavigate();
-
   const optionsPlanType = [
     { value: "gst registration", label: "GST Registartion" },
     { value: "business registration", label: "Business Registration" },
@@ -98,7 +95,7 @@ function FormModal({ closeModal, location }) {
       validationPhone();
       setLoading(true);
       try {
-        const response = await axios.post(
+        await axios.post(
           `${baseUrl}/sendmail`,
           {
             name: user.name,
