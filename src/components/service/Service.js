@@ -75,18 +75,14 @@ export const getWorkSpaceByMicrolocation = async (
   }
 };
 
-export const getWorkSpaceBySlug = async (
-  setWorkspaces,
-  slug,
-  setLoadingSpaces
-) => {
+export const getWorkSpaceBySlug = async (setWorkspaces, slug) => {
   try {
-    setLoadingSpaces(true);
+    // setLoadingSpaces(true);
     const { data } = await axios.get(
       `${baseUrl}/api/coworking-details-slug/${slug}`
     );
     setWorkspaces(data[0]);
-    setLoadingSpaces(false);
+    // setLoadingSpaces(false);
   } catch (err) {
     console.log(err);
   }
