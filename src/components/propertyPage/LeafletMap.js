@@ -9,14 +9,12 @@ function LeafletMap({ latitude, longitude, name }) {
 
   return (
     <div>
-      <MapContainer
-        center={position}
-        zoom={14}
-        scrollWheelZoom={false}
-      >
+      <MapContainer center={position} zoom={14} scrollWheelZoom={false}>
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}@2x.png"
         />
         <Marker position={position}>
           <Popup>{name}</Popup>

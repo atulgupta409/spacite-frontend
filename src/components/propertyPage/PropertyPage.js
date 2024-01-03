@@ -586,10 +586,10 @@ const PropertyPage = () => {
                 </div>
               </div>
             </div>
-            <div className="desk_hide">
+            <div className="desk_hide text_mob_center">
               <div className="row amenity_section_property">
                 <h3 className="property_h3 amenities_heading">Amenities</h3>
-                <div className="col-6">
+                <div className="col-7">
                   <img
                     className="property_icon"
                     src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934976235.png"
@@ -601,7 +601,7 @@ const PropertyPage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-5">
                   <img
                     className="property_icon"
                     src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934924079.png"
@@ -615,7 +615,7 @@ const PropertyPage = () => {
                 </div>
               </div>
               <div className="row amenity_section_property">
-                <div className="col-6">
+                <div className="col-7">
                   <img
                     className="property_icon"
                     src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934956297.png"
@@ -627,7 +627,7 @@ const PropertyPage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-5">
                   <img
                     className="property_icon"
                     src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934936416.png"
@@ -641,7 +641,7 @@ const PropertyPage = () => {
                 </div>
               </div>
               <div className="row amenity_section_property">
-                <div className="col-6">
+                <div className="col-7">
                   <img
                     className="property_icon"
                     src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934966144.png"
@@ -653,7 +653,7 @@ const PropertyPage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="col-6">
+                <div className="col-5">
                   <img
                     className="property_icon"
                     src="https://spacite-bucket.s3.ap-south-1.amazonaws.com/image-1696934946067.png"
@@ -937,7 +937,7 @@ const PropertyPage = () => {
         </Modal>
       </div> */}
       <nav className="navbar fixed-bottom navbar-light bg-white desk_hide">
-        <div className="container-fluid" style={{ padding: "18px 20px" }}>
+        <div className="container-fluid">
           <div className="starting_price">
             <p>Starting</p>
             <p>
