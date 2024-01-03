@@ -240,7 +240,7 @@ h2 {
 @media only screen and (max-width: 768px) {
   .desk_hide {
     display: block;
-    text-align: center;
+    /* text-align: center; */
   }
   .mobile_hide {
     display: none;
